@@ -4,11 +4,10 @@ import java.util.Date;
 
 
 
-
 /**
  * @author rustu
  * @version 1.0
- * @created 10-Oct-2011 05:11:04 p.m.
+ * @created 10-Oct-2011 05:53:19 p.m.
  */
 public class MaestroDeEstructuraDeProducto {
 

@@ -5,7 +5,7 @@ package infind.entidades;
 /**
  * @author rustu
  * @version 1.0
- * @created 10-Oct-2011 05:11:13 p.m.
+ * @created 10-Oct-2011 05:53:21 p.m.
  */
 public class ProductoIntermedio extends ProductosFabricables {
 
@@ -14,6 +14,4 @@ public class ProductoIntermedio extends ProductosFabricables {
 	public ProductoIntermedio(){
 
 	}
-
-
 }
