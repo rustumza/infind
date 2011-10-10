@@ -5,7 +5,7 @@ package infind.entidades;
 /**
  * @author rustu
  * @version 1.0
- * @created 10-Oct-2011 05:11:07 p.m.
+ * @created 10-Oct-2011 05:53:20 p.m.
  */
 public class EtapaDeRutaDeFabricacion {
 
@@ -24,7 +24,7 @@ public class EtapaDeRutaDeFabricacion {
 	 */
 	private int tiempoDeTrabajoTotal;
 	public MaestroDeCentroDeTrabajo m_MaestroDeCentroDeTrabajo;
-	public DetalleDeArticuloEnEtapaDeFabricacion m_detalleDeArticuloEnEtapaDeFabricacion;
+	public detalleDeArticuloEnEtapaDeFabricacion m_detalleDeArticuloEnEtapaDeFabricacion;
 
 	public EtapaDeRutaDeFabricacion(){
 
