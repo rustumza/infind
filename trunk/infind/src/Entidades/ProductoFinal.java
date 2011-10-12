@@ -32,6 +32,24 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
         this.id = id;
     }
 
+    public char getCategoriaABC() {
+        return categoriaABC;
+    }
+
+    public void setCategoriaABC(char categoriaABC) {
+        this.categoriaABC = categoriaABC;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

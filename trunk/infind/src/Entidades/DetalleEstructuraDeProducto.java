@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -23,6 +24,11 @@ public class DetalleEstructuraDeProducto extends ObjetoPersitente implements Ser
     private Long id;
     private Boolean eliminado;
     private float cantidad;
+    @ManyToOne
+    private MaestroDeArticulo maestroArticulo;
+    @ManyToOne
+    private MaestroDeEstructuraDeProducto maestroDeEstrucruraDeProducto;
+    
 
     public Long getId() {
         return id;
@@ -31,6 +37,40 @@ public class DetalleEstructuraDeProducto extends ObjetoPersitente implements Ser
     public void setId(Long id) {
         this.id = id;
     }
+
+    public float getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(float cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public MaestroDeArticulo getMaestroArticulo() {
+        return maestroArticulo;
+    }
+
+    public void setMaestroArticulo(MaestroDeArticulo maestroArticulo) {
+        this.maestroArticulo = maestroArticulo;
+    }
+
+    public MaestroDeEstructuraDeProducto getMaestroDeEstrucruraDeProducto() {
+        return maestroDeEstrucruraDeProducto;
+    }
+
+    public void setMaestroDeEstrucruraDeProducto(MaestroDeEstructuraDeProducto maestroDeEstrucruraDeProducto) {
+        this.maestroDeEstrucruraDeProducto = maestroDeEstrucruraDeProducto;
+    }
+    
+    
 
     @Override
     public int hashCode() {

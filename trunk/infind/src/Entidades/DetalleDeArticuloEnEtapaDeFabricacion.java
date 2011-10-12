@@ -17,16 +17,19 @@ import persistencia.ObjetoPersitente;
  * @author eduardo
  */
 @Entity
-public class Maquina extends ObjetoPersitente implements Serializable {
+public class DetalleDeArticuloEnEtapaDeFabricacion extends ObjetoPersitente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
-    private String codigo;
-    private String descripcion;
+    private float cantidad;
+    private String unidadDeMedida;
     @ManyToOne
-    private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
+    private EtapaDeRutaDeFabricacion etapaRutaFabricacion;
+    @ManyToOne
+    private MaestroDeArticulo maestroArticulo;
+    
 
     public Long getId() {
         return id;
@@ -36,20 +39,12 @@ public class Maquina extends ObjetoPersitente implements Serializable {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public float getCantidad() {
+        return cantidad;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCantidad(float cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Boolean getEliminado() {
@@ -60,12 +55,28 @@ public class Maquina extends ObjetoPersitente implements Serializable {
         this.eliminado = eliminado;
     }
 
-    public MaestroDeCentroDeTrabajo getMaestroCentroTrabajo() {
-        return maestroCentroTrabajo;
+    public EtapaDeRutaDeFabricacion getEtapaRutaFabricacion() {
+        return etapaRutaFabricacion;
     }
 
-    public void setMaestroCentroTrabajo(MaestroDeCentroDeTrabajo maestroCentroTrabajo) {
-        this.maestroCentroTrabajo = maestroCentroTrabajo;
+    public void setEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaRutaFabricacion) {
+        this.etapaRutaFabricacion = etapaRutaFabricacion;
+    }
+
+    public MaestroDeArticulo getMaestroArticulo() {
+        return maestroArticulo;
+    }
+
+    public void setMaestroArticulo(MaestroDeArticulo maestroArticulo) {
+        this.maestroArticulo = maestroArticulo;
+    }
+
+    public String getUnidadDeMedida() {
+        return unidadDeMedida;
+    }
+
+    public void setUnidadDeMedida(String unidadDeMedida) {
+        this.unidadDeMedida = unidadDeMedida;
     }
     
     
@@ -80,10 +91,10 @@ public class Maquina extends ObjetoPersitente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Maquina)) {
+        if (!(object instanceof DetalleDeArticuloEnEtapaDeFabricacion)) {
             return false;
         }
-        Maquina other = (Maquina) object;
+        DetalleDeArticuloEnEtapaDeFabricacion other = (DetalleDeArticuloEnEtapaDeFabricacion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -92,7 +103,7 @@ public class Maquina extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Maquina[ id=" + id + " ]";
+        return "Entidades.detalleDeArticuloEnEtapaDeFabricacion[ id=" + id + " ]";
     }
     
 }

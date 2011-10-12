@@ -36,6 +36,47 @@ public class Stock extends ObjetoPersitente implements Serializable {
         this.id = id;
     }
 
+    public float getCantidadADisponerAFuturo() {
+        return cantidadADisponerAFuturo;
+    }
+
+    public void setCantidadADisponerAFuturo(float cantidadADisponerAFuturo) {
+        this.cantidadADisponerAFuturo = cantidadADisponerAFuturo;
+    }
+
+    public float getCantidadNecesaria() {
+        return cantidadNecesaria;
+    }
+
+    public void setCantidadNecesaria(float cantidadNecesaria) {
+        this.cantidadNecesaria = cantidadNecesaria;
+    }
+
+    public float getCantidadReservada() {
+        return cantidadReservada;
+    }
+
+    public void setCantidadReservada(float cantidadReservada) {
+        this.cantidadReservada = cantidadReservada;
+    }
+
+    public float getCantidadTotal() {
+        return cantidadTotal;
+    }
+
+    public void setCantidadTotal(float cantidadTotal) {
+        this.cantidadTotal = cantidadTotal;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
