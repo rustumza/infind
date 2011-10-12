@@ -11,17 +11,11 @@ public class EtapaDeRutaDeFabricacion {
 
 	private int cantidadDeOperarios;
 	private int nroEtapa;
-	/**
-	 * en minutos
-	 */
+	
 	private int tiempoDeTrabajoDeMaquinas;
-	/**
-	 * en minutus
-	 */
+	
 	private int tiempoDeTrabajoDeOperarios;
-	/**
-	 * en minutos
-	 */
+	
 	private int tiempoDeTrabajoTotal;
 	public MaestroDeCentroDeTrabajo m_MaestroDeCentroDeTrabajo;
 	public detalleDeArticuloEnEtapaDeFabricacion m_detalleDeArticuloEnEtapaDeFabricacion;
