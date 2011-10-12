@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -21,6 +22,8 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
+    @ManyToOne
+    private ProductoTipoIQE productoTipoIQE;
     
 
     @Override
@@ -32,6 +35,24 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public ProductoTipoIQE getProductoTipoIQE() {
+        return productoTipoIQE;
+    }
+
+    public void setProductoTipoIQE(ProductoTipoIQE productoTipoIQE) {
+        this.productoTipoIQE = productoTipoIQE;
+    }
+    
+    
 
     @Override
     public int hashCode() {

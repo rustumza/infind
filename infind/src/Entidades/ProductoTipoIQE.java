@@ -31,6 +31,16 @@ public class ProductoTipoIQE extends ObjetoPersitente implements Serializable {
         this.id = id;
     }
 
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

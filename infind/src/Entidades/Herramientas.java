@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -25,6 +26,8 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     private Boolean eliminado;
     private String codigo;
     private String descripcion;
+    @ManyToOne
+    private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
 
     public Long getId() {
         return id;
@@ -33,6 +36,42 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public MaestroDeCentroDeTrabajo getMaestroCentroTrabajo() {
+        return maestroCentroTrabajo;
+    }
+
+    public void setMaestroCentroTrabajo(MaestroDeCentroDeTrabajo maestroCentroTrabajo) {
+        this.maestroCentroTrabajo = maestroCentroTrabajo;
+    }
+    
+    
+    
+    
 
     @Override
     public int hashCode() {

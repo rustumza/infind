@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,6 +21,9 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Boolean eliminado;
+    @ManyToOne
+    private Proveedor proveedor;
 
     @Override
     public Long getId() {
@@ -30,6 +34,24 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+    
+    
 
     @Override
     public int hashCode() {

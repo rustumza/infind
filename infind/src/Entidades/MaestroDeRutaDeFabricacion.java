@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -22,6 +23,8 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
+    @OneToMany
+    private EtapaDeRutaDeFabricacion etapaRutaFabricacion;
     
 
     public Long getId() {
@@ -31,6 +34,24 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public EtapaDeRutaDeFabricacion getEtapaRutaFabricacion() {
+        return etapaRutaFabricacion;
+    }
+
+    public void setEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaRutaFabricacion) {
+        this.etapaRutaFabricacion = etapaRutaFabricacion;
+    }
+    
+    
 
     @Override
     public int hashCode() {
