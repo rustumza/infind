@@ -5,6 +5,8 @@
 package interfacesGraficas.Controladores;
 
 import interfacesGraficas.PantallaMadre;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -13,6 +15,16 @@ import interfacesGraficas.PantallaMadre;
 public class ControladorPantallaMadre {
 
     PantallaMadre pantalla;
+
+    public ControladorPantallaMadre() {
+        pantalla.getCrearCentro().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                crearCentro();
+            }
+        });
+    }
+    
     
     public void iniciar() {
         pantalla = new PantallaMadre();
