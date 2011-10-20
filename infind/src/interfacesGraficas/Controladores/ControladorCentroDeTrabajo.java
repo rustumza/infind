@@ -5,6 +5,7 @@
 package interfacesGraficas.Controladores;
 
 import interfacesGraficas.PantallaCrearCentro;
+import interfacesGraficas.PantallaMadre;
 
 /**
  *
@@ -12,15 +13,23 @@ import interfacesGraficas.PantallaCrearCentro;
  */
 public class ControladorCentroDeTrabajo {
     private PantallaCrearCentro pantallacrearcentro;
+    
 
     
     public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
-        pantallacrearcentro = new PantallaCrearCentro(null, false);
+        pantallacrearcentro = new PantallaCrearCentro(contrPantMadre.get, false);
+        
         
     }
 
     public void crearCentro() {
         
+        iniciar();
+    }
+    
+    public void iniciar(){
+        pantallacrearcentro.setVisible(true);
+        pantallacrearcentro.setLocationRelativeTo(null);
     }
     
 }

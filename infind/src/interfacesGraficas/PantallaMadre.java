@@ -11,6 +11,9 @@
 package interfacesGraficas;
 
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -132,4 +135,71 @@ private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables
+
+    public JMenu getArticulos() {
+        return articulos;
+    }
+
+    public void setArticulos(JMenu articulos) {
+        this.articulos = articulos;
+    }
+
+    public JMenu getCentrosDeTrabajo() {
+        return centrosDeTrabajo;
+    }
+
+    public void setCentrosDeTrabajo(JMenu centrosDeTrabajo) {
+        this.centrosDeTrabajo = centrosDeTrabajo;
+    }
+
+    public ControladorPantallaMadre getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorPantallaMadre controlador) {
+        this.controlador = controlador;
+    }
+
+    public JMenuItem getCrearCentro() {
+        return crearCentro;
+    }
+
+    public void setCrearCentro(JMenuItem crearCentro) {
+        this.crearCentro = crearCentro;
+    }
+
+    public JMenuItem getEditarCentro() {
+        return editarCentro;
+    }
+
+    public void setEditarCentro(JMenuItem editarCentro) {
+        this.editarCentro = editarCentro;
+    }
+
+    public JMenu getEstructuraDeProducto() {
+        return estructuraDeProducto;
+    }
+
+    public void setEstructuraDeProducto(JMenu estructuraDeProducto) {
+        this.estructuraDeProducto = estructuraDeProducto;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JMenu getRutaDeFabricacion() {
+        return rutaDeFabricacion;
+    }
+
+    public void setRutaDeFabricacion(JMenu rutaDeFabricacion) {
+        this.rutaDeFabricacion = rutaDeFabricacion;
+    }
+
+    
+
 }
