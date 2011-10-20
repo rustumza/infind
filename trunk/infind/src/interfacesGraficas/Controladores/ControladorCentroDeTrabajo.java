@@ -18,5 +18,9 @@ public class ControladorCentroDeTrabajo {
         pantallacrearcentro = new PantallaCrearCentro(null, false);
         
     }
+
+    public void crearCentro() {
+        
+    }
     
 }
