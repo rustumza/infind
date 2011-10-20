@@ -5,7 +5,7 @@
 
 package infind;
 
-import interfacesGraficas.Controladores.controladorPantallaMadre;
+import interfacesGraficas.Controladores.ControladorPantallaMadre;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new controladorPantallaMadre().iniciar();
+        new ControladorPantallaMadre().iniciar();
     }
 
 }

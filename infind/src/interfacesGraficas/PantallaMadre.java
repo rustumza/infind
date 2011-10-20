@@ -10,7 +10,7 @@
  */
 package interfacesGraficas;
 
-import interfacesGraficas.Controladores.controladorPantallaMadre;
+import interfacesGraficas.Controladores.ControladorPantallaMadre;
 
 /**
  *
@@ -18,12 +18,12 @@ import interfacesGraficas.Controladores.controladorPantallaMadre;
  */
 public class PantallaMadre extends javax.swing.JFrame {
     
-    controladorPantallaMadre controlador;
+    ControladorPantallaMadre controlador;
 
     /** Creates new form PantallaMadre */
     public PantallaMadre() {
         initComponents();
-        controlador = new controladorPantallaMadre();
+        controlador = new ControladorPantallaMadre();
     }
 
     /** This method is called from within the constructor to

@@ -14,7 +14,7 @@ public class ControladorCentroDeTrabajo {
     private PantallaCrearCentro pantallacrearcentro;
 
     
-    public ControladorCentroDeTrabajo() {
+    public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
         pantallacrearcentro = new PantallaCrearCentro(null, false);
         
     }

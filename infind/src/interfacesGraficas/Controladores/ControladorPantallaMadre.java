@@ -10,7 +10,7 @@ import interfacesGraficas.PantallaMadre;
  *
  * @author rustu
  */
-public class controladorPantallaMadre {
+public class ControladorPantallaMadre {
 
     PantallaMadre pantalla;
     
@@ -23,8 +23,6 @@ public class controladorPantallaMadre {
        new ControladorCentroDeTrabajo(this).crearCentro();
     }
     
-    public PantallaMadre getPantallaMadre(){ 
-        return pantalla;
-    }
+    
     
 }
