@@ -23,6 +23,8 @@ public class controladorPantallaMadre {
        new ControladorCentroDeTrabajo(this).crearCentro();
     }
     
-    
+    public PantallaMadre getPantallaMadre(){ 
+        return pantalla;
+    }
     
 }
