@@ -36,6 +36,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         articulos = new javax.swing.JMenu();
         estructuraDeProducto = new javax.swing.JMenu();
         centrosDeTrabajo = new javax.swing.JMenu();
+        crearCentro = new javax.swing.JMenuItem();
+        editarCentro = new javax.swing.JMenuItem();
         rutaDeFabricacion = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +49,13 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuBar1.add(estructuraDeProducto);
 
         centrosDeTrabajo.setText("Centros de trabajo");
+
+        crearCentro.setText("Crear centro");
+        centrosDeTrabajo.add(crearCentro);
+
+        editarCentro.setText("Editar centro");
+        centrosDeTrabajo.add(editarCentro);
+
         jMenuBar1.add(centrosDeTrabajo);
 
         rutaDeFabricacion.setText("Ruta de fabricación");
@@ -62,7 +71,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         pack();
@@ -103,6 +112,8 @@ public class PantallaMadre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu articulos;
     private javax.swing.JMenu centrosDeTrabajo;
+    private javax.swing.JMenuItem crearCentro;
+    private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu rutaDeFabricacion;
