@@ -10,15 +10,20 @@
  */
 package interfacesGraficas;
 
+import interfacesGraficas.Controladores.controladorPantallaMadre;
+
 /**
  *
  * @author rustu
  */
 public class PantallaMadre extends javax.swing.JFrame {
+    
+    controladorPantallaMadre controlador;
 
     /** Creates new form PantallaMadre */
     public PantallaMadre() {
         initComponents();
+        controlador = new controladorPantallaMadre();
     }
 
     /** This method is called from within the constructor to
@@ -51,6 +56,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         centrosDeTrabajo.setText("Centros de trabajo");
 
         crearCentro.setText("Crear centro");
+        crearCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearCentroActionPerformed(evt);
+            }
+        });
         centrosDeTrabajo.add(crearCentro);
 
         editarCentro.setText("Editar centro");
@@ -76,6 +86,10 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCentroActionPerformed
+    controlador.crearCentro();
+}//GEN-LAST:event_crearCentroActionPerformed
 
     /**
      * @param args the command line arguments

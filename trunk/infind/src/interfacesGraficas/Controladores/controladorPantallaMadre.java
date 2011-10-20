@@ -18,6 +18,10 @@ public class controladorPantallaMadre {
         pantalla = new PantallaMadre();
         pantalla.setVisible(true);
     }
+
+    public void crearCentro() {
+       new ControladorCentroDeTrabajo(this).crearCentro();
+    }
     
     
     
