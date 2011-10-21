@@ -22,7 +22,7 @@ public class DetalleDeArticuloEnEtapaDeFabricacion extends ObjetoPersitente impl
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Boolean eliminado;
+    private Boolean eliminado = false;
     private float cantidad;
     private String unidadDeMedida;
     @ManyToOne

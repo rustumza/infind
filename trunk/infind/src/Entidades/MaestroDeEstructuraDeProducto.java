@@ -6,6 +6,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class MaestroDeEstructuraDeProducto extends ObjetoPersitente implements S
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaEnLaQueEntroEnVigencia;
     @OneToMany
-    private DetalleEstructuraDeProducto detalleEstructuraProductoList;
+    private List<DetalleEstructuraDeProducto> detallesEstructuraProductoList;
     @OneToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacion;
     @ManyToOne
@@ -50,12 +51,12 @@ public class MaestroDeEstructuraDeProducto extends ObjetoPersitente implements S
         this.id = id;
     }
 
-    public DetalleEstructuraDeProducto getDetalleEstructuraProductoList() {
-        return detalleEstructuraProductoList;
+    public List<DetalleEstructuraDeProducto> getDetalleEstructuraProductoList() {
+        return detallesEstructuraProductoList;
     }
 
-    public void setDetalleEstructuraProductoList(DetalleEstructuraDeProducto detalleEstructuraProductoList) {
-        this.detalleEstructuraProductoList = detalleEstructuraProductoList;
+    public void setDetalleEstructuraProductoList(List<DetalleEstructuraDeProducto> detalleEstructuraProductoList) {
+        this.detallesEstructuraProductoList = detalleEstructuraProductoList;
     }
 
     public Boolean getEliminado() {

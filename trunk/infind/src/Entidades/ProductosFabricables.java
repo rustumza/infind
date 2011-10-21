@@ -18,15 +18,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ProductosFabricables extends MaestroDeArticulo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Boolean eliminado;
+    
+    private Boolean eliminado=false;
+     * 
+     */
     @ManyToOne
     private ProductoTipoIQE productoTipoIQE;
     
 
-    @Override
+    /*@Override
     public Long getId() {
         return id;
     }
@@ -35,14 +38,19 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     public void setId(Long id) {
         this.id = id;
     }
+     
 
+    @Override
     public Boolean getEliminado() {
         return eliminado;
     }
 
+    @Override
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+     * 
+     */
 
     public ProductoTipoIQE getProductoTipoIQE() {
         return productoTipoIQE;
@@ -57,7 +65,7 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -68,7 +76,7 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
             return false;
         }
         ProductosFabricables other = (ProductosFabricables) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -76,7 +84,7 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
 
     @Override
     public String toString() {
-        return "Entidades.ProductosFabricables[ id=" + id + " ]";
+        return "Entidades.ProductosFabricables[ id=" + getId() + " ]";
     }
     
 }

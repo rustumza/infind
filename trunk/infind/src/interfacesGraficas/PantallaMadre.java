@@ -42,6 +42,17 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         articulos = new javax.swing.JMenu();
+        crearArticulo = new javax.swing.JMenu();
+        crearMateriaPrima = new javax.swing.JMenuItem();
+        crearProductoIntermedio = new javax.swing.JMenuItem();
+        crearProductoComponente = new javax.swing.JMenuItem();
+        crearProductoFinal = new javax.swing.JMenuItem();
+        editarArticulo = new javax.swing.JMenuItem();
+        Listar = new javax.swing.JMenu();
+        listarMateriasPrimas = new javax.swing.JMenuItem();
+        listarProductosComponentes = new javax.swing.JMenuItem();
+        listarProductosIntermedios = new javax.swing.JMenuItem();
+        listarProductosFinales = new javax.swing.JMenuItem();
         estructuraDeProducto = new javax.swing.JMenu();
         centrosDeTrabajo = new javax.swing.JMenu();
         crearCentro = new javax.swing.JMenuItem();
@@ -51,6 +62,52 @@ public class PantallaMadre extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         articulos.setText("Articulos");
+
+        crearArticulo.setText("Crear Articulo");
+
+        crearMateriaPrima.setText("Materia prima");
+        crearMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearMateriaPrimaActionPerformed(evt);
+            }
+        });
+        crearArticulo.add(crearMateriaPrima);
+
+        crearProductoIntermedio.setText("Producto intermedio");
+        crearArticulo.add(crearProductoIntermedio);
+
+        crearProductoComponente.setText("Producto componente");
+        crearArticulo.add(crearProductoComponente);
+
+        crearProductoFinal.setText("Producto final");
+        crearProductoFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProductoFinalActionPerformed(evt);
+            }
+        });
+        crearArticulo.add(crearProductoFinal);
+
+        articulos.add(crearArticulo);
+
+        editarArticulo.setText("Editar articulo");
+        articulos.add(editarArticulo);
+
+        Listar.setText("Listar articulos");
+
+        listarMateriasPrimas.setText("Materias primas");
+        Listar.add(listarMateriasPrimas);
+
+        listarProductosComponentes.setText("Productos componentes");
+        Listar.add(listarProductosComponentes);
+
+        listarProductosIntermedios.setText("Productos intermedios");
+        Listar.add(listarProductosIntermedios);
+
+        listarProductosFinales.setText("Productos finales");
+        Listar.add(listarProductosFinales);
+
+        articulos.add(Listar);
+
         jMenuBar1.add(articulos);
 
         estructuraDeProducto.setText("Estructura de Prodocto");
@@ -94,6 +151,14 @@ private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     controlador.crearCentro();
 }//GEN-LAST:event_crearCentroActionPerformed
 
+private void crearProductoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoFinalActionPerformed
+    controlador.crearProductoFinal();
+}//GEN-LAST:event_crearProductoFinalActionPerformed
+
+private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMateriaPrimaActionPerformed
+    controlador.crearMateriaPrima();
+}//GEN-LAST:event_crearMateriaPrimaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -127,12 +192,23 @@ private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
      * 
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Listar;
     private javax.swing.JMenu articulos;
     private javax.swing.JMenu centrosDeTrabajo;
+    private javax.swing.JMenu crearArticulo;
     private javax.swing.JMenuItem crearCentro;
+    private javax.swing.JMenuItem crearMateriaPrima;
+    private javax.swing.JMenuItem crearProductoComponente;
+    private javax.swing.JMenuItem crearProductoFinal;
+    private javax.swing.JMenuItem crearProductoIntermedio;
+    private javax.swing.JMenuItem editarArticulo;
     private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem listarMateriasPrimas;
+    private javax.swing.JMenuItem listarProductosComponentes;
+    private javax.swing.JMenuItem listarProductosFinales;
+    private javax.swing.JMenuItem listarProductosIntermedios;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables
 

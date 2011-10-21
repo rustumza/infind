@@ -17,13 +17,17 @@ import javax.persistence.Id;
 @Entity
 public class ProductoFinal extends ProductosFabricables implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    
     private Boolean eliminado;
+     * 
+     */
     private char categoriaABC;
            
-
+/*
     public Long getId() {
         return id;
     }
@@ -31,7 +35,7 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
     public void setId(Long id) {
         this.id = id;
     }
-
+*/
     public char getCategoriaABC() {
         return categoriaABC;
     }
@@ -40,20 +44,23 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
         this.categoriaABC = categoriaABC;
     }
 
-    public Boolean getEliminado() {
+    /*
+     * public Boolean getEliminado() {
         return eliminado;
     }
 
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+     * 
+     */
     
     
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -64,7 +71,7 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
             return false;
         }
         ProductoFinal other = (ProductoFinal) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -72,7 +79,7 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
 
     @Override
     public String toString() {
-        return "Entidades.ProductoFinal[ id=" + id + " ]";
+        return "Entidades.ProductoFinal[ id=" + getId() + " ]";
     }
     
 }

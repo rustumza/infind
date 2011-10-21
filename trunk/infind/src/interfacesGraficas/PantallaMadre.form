@@ -8,6 +8,73 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Articulos"/>
           </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="crearArticulo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Crear Articulo"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="crearMateriaPrima">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Materia prima"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearMateriaPrimaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="crearProductoIntermedio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto intermedio"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="crearProductoComponente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto componente"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="crearProductoFinal">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto final"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearProductoFinalActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="editarArticulo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar articulo"/>
+              </Properties>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="Listar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar articulos"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="listarMateriasPrimas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Materias primas"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="listarProductosComponentes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Productos componentes"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="listarProductosIntermedios">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Productos intermedios"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="listarProductosFinales">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Productos finales"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="estructuraDeProducto">
           <Properties>
