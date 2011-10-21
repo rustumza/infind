@@ -13,11 +13,12 @@ import interfacesGraficas.PantallaMadre;
  */
 public class ControladorCentroDeTrabajo {
     private PantallaCrearCentro pantallacrearcentro;
+    PantallaMadre pantallaMadre;
     
 
     
     public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
-        pantallacrearcentro = new PantallaCrearCentro(contrPantMadre.get, false);
+        pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
         
         
     }
