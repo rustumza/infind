@@ -7,6 +7,7 @@ package interfacesGraficas.Controladores;
 import interfacesGraficas.PantallaMadre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -29,6 +30,7 @@ public class ControladorPantallaMadre {
     public void iniciar() {
         pantalla = new PantallaMadre();
         pantalla.setVisible(true);
+        pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void crearCentro() {
