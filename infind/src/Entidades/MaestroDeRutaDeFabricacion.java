@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     private Long id;
     private Boolean eliminado;
     @OneToMany
-    private EtapaDeRutaDeFabricacion etapaRutaFabricacion;
+    private List<EtapaDeRutaDeFabricacion> etapasRutaFabricacion;
     
 
     public Long getId() {
@@ -43,12 +44,12 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
         this.eliminado = eliminado;
     }
 
-    public EtapaDeRutaDeFabricacion getEtapaRutaFabricacion() {
-        return etapaRutaFabricacion;
+    public List<EtapaDeRutaDeFabricacion> getEtapaRutaFabricacion() {
+        return etapasRutaFabricacion;
     }
 
-    public void setEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaRutaFabricacion) {
-        this.etapaRutaFabricacion = etapaRutaFabricacion;
+    public void setEtapaRutaFabricacion(List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion) {
+        this.etapasRutaFabricacion = etapaRutaFabricacion;
     }
     
     

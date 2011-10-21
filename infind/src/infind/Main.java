@@ -6,6 +6,7 @@
 package infind;
 
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
+import persistencia.Conexion;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Conexion.getInstancia().getSession();
         new ControladorPantallaMadre().iniciar();
     }
 

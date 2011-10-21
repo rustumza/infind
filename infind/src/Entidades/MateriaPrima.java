@@ -18,14 +18,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class MateriaPrima extends MaestroDeArticulo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+     
     private Boolean eliminado;
+     * 
+     */
     @ManyToOne
     private Proveedor proveedor;
 
-    @Override
+    /*@Override
     public Long getId() {
         return id;
     }
@@ -42,6 +45,8 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+     * 
+     */
 
     public Proveedor getProveedor() {
         return proveedor;
@@ -55,7 +60,7 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -66,7 +71,7 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
             return false;
         }
         MateriaPrima other = (MateriaPrima) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -74,7 +79,7 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.MateriaPrima[ id=" + id + " ]";
+        return "Entidades.MateriaPrima[ id=" + getId() + " ]";
     }
     
 }

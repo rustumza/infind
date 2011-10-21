@@ -34,6 +34,18 @@ public class ControladorPantallaMadre {
     public void crearCentro() {
        new ControladorCentroDeTrabajo(this).crearCentro();
     }
+
+    public void crearArticulo() {
+        
+    }
+
+    public void crearMateriaPrima() {
+        
+    }
+
+    public void crearProductoFinal() {
+        
+    }
     
     
     

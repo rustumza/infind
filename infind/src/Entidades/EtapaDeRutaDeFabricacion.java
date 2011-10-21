@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +34,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
     @OneToMany
-    private DetalleDeArticuloEnEtapaDeFabricacion detalleArtEnEtapaFabList;
+    private List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList;
     @ManyToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacionList;
 
@@ -53,12 +54,12 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
         this.cantidadDeOperarios = cantidadDeOperarios;
     }
 
-    public DetalleDeArticuloEnEtapaDeFabricacion getDetalleArtEnEtapaFabList() {
-        return detalleArtEnEtapaFabList;
+    public List<DetalleDeArticuloEnEtapaDeFabricacion> getDetalleArtEnEtapaFabList() {
+        return detallesArtEnEtapaFabList;
     }
 
-    public void setDetalleArtEnEtapaFabList(DetalleDeArticuloEnEtapaDeFabricacion detalleArtEnEtapaFabList) {
-        this.detalleArtEnEtapaFabList = detalleArtEnEtapaFabList;
+    public void setDetalleArtEnEtapaFabList(List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArtEnEtapaFabList) {
+        this.detallesArtEnEtapaFabList = detalleArtEnEtapaFabList;
     }
 
     public Boolean getEliminado() {

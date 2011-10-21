@@ -2,6 +2,7 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="infindPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>Entidades.DetalleDeArticuloEnEtapaDeFabricacion</class>
     <class>Entidades.DetalleEstructuraDeProducto</class>
     <class>Entidades.EtapaDeRutaDeFabricacion</class>
     <class>Entidades.Herramientas</class>
@@ -16,13 +17,12 @@
     <class>Entidades.ProductoIntermedio</class>
     <class>Entidades.ProductoTipoIQE</class>
     <class>Entidades.ProductosFabricables</class>
+    <class>Entidades.Proveedor</class>
     <class>Entidades.Stock</class>
-    <class>Entidades.detalleDeArticuloEnEtapaDeFabricacion</class>
-    <class>Entidades.proveedor</class>
     <properties>
-      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.username" value="inf"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-      <property name="hibernate.connection.password" value="informatica"/>
+      <property name="hibernate.connection.password" value="ind"/>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bd_infind"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

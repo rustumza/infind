@@ -18,14 +18,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ProductoComponente extends MaestroDeArticulo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private Boolean eliminado;
+     * 
+     */
     @ManyToOne
     private Proveedor proveedor;
 
-    @Override
+    /*@Override
     public Long getId() {
         return id;
     }
@@ -34,6 +37,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     public void setId(Long id) {
         this.id = id;
     }
+     
 
     public Boolean getEliminado() {
         return eliminado;
@@ -42,6 +46,8 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+     * 
+     */
 
     public Proveedor getProveedor() {
         return proveedor;
@@ -56,7 +62,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -67,7 +73,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
             return false;
         }
         ProductoComponente other = (ProductoComponente) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -75,7 +81,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
 
     @Override
     public String toString() {
-        return "Entidades.ProductoComponente[ id=" + id + " ]";
+        return "Entidades.ProductoComponente[ id=" + getId() + " ]";
     }
     
 }
