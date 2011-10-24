@@ -18,6 +18,7 @@ public class ControladorPantallaMadre {
     PantallaMadre pantalla;
 
     public ControladorPantallaMadre() {
+        
         pantalla.getCrearCentro().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
