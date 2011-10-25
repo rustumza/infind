@@ -21,7 +21,7 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Boolean eliminado;
+    private Boolean eliminado = false;
     private String codigo;
     private String nombreCentro;
     private String descripcion;

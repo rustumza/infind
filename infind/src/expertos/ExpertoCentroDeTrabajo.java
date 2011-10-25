@@ -90,7 +90,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
     public void eliminar(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
         
-        centro.setEliminado(true);
+        centro.setEliminado(Boolean.TRUE);
 
         try {
             Fachada.getInstancia().guardar(centro);
