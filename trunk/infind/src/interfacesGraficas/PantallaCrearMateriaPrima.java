@@ -48,9 +48,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         unidadDeMedidaLabel = new javax.swing.JLabel();
         proveedorPredeterminadoLabel = new javax.swing.JLabel();
         proveedorPredeterminadoComboBox = new javax.swing.JComboBox();
-        menu = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        toolbar = new javax.swing.JToolBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,6 +84,8 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         proveedorPredeterminadoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        toolbar.setRollover(true);
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
@@ -112,11 +112,13 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                         .addComponent(proveedorPredeterminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(categoriaLabel))
                 .addContainerGap(428, Short.MAX_VALUE))
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(codigoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreLabel)
@@ -151,14 +153,6 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
-        menu.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        menu.add(jMenu2);
-
-        setJMenuBar(menu);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,7 +163,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,9 +220,6 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel fechaDeVencimientoLabel;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar menu;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel observacionLabel;
     private javax.swing.JPanel panelPrincipal;
@@ -237,6 +228,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private javax.swing.JLabel proveedorPredeterminadoLabel;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
     private javax.swing.JLabel tipoLabel;
+    private javax.swing.JToolBar toolbar;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
     private javax.swing.JLabel unidadDeMedidaLabel;
     // End of variables declaration//GEN-END:variables
