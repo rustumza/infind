@@ -13,6 +13,7 @@ package interfacesGraficas;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -48,7 +49,8 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         campoCodigo = new javax.swing.JTextField();
         campoNombre = new javax.swing.JTextField();
-        campoDescripcion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        campoDescripcion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jRadioCodigo = new javax.swing.JRadioButton();
         jRadioNombre = new javax.swing.JRadioButton();
@@ -135,18 +137,22 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 300;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel1.add(campoNombre, gridBagConstraints);
+
+        campoDescripcion.setColumns(20);
+        campoDescripcion.setRows(5);
+        jScrollPane1.setViewportView(campoDescripcion);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 300;
-        gridBagConstraints.ipady = 50;
+        gridBagConstraints.ipadx = 40;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
-        jPanel1.add(campoDescripcion, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
+        jPanel1.add(jScrollPane1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -264,7 +270,7 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
     private javax.swing.JTextField campoBuscaCodigo;
     private javax.swing.JTextField campoBuscaNombre;
     private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextArea campoDescripcion;
     private javax.swing.JTextField campoNombre;
     private javax.swing.ButtonGroup grupodebusqueda;
     private javax.swing.JLabel jLabel1;
@@ -274,6 +280,7 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioCodigo;
     private javax.swing.JRadioButton jRadioNombre;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -301,11 +308,11 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         this.campoCodigo = campoCodigo;
     }
 
-    public JTextField getCampoDescripcion() {
+    public JTextArea getCampoDescripcion() {
         return campoDescripcion;
     }
 
-    public void setCampoDescripcion(JTextField campoDescripcion) {
+    public void setCampoDescripcion(JTextArea campoDescripcion) {
         this.campoDescripcion = campoDescripcion;
     }
 
