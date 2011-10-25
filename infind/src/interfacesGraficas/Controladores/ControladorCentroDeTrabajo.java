@@ -299,10 +299,10 @@ public class ControladorCentroDeTrabajo {
     }
 
     public void finalizarCrearCentro() {
-        pantallacrearcentro.setVisible(false);
+        pantallacrearcentro.dispose();
     }
 
     public void finalizarEditarCentro() {
-        pantallaEditarCentro.setVisible(false);
+        pantallaEditarCentro.dispose();
     }
 }

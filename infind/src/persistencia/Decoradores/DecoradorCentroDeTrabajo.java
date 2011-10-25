@@ -26,15 +26,15 @@ public class DecoradorCentroDeTrabajo extends ExpertoCentroDeTrabajo {
         }
     }
 
-    /* @Override
-    public void eliminar(Producto articulo) throws ExpertoCentroDeTrabajoException {
+     @Override
+    public void eliminar(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
     try {
     Conexion.getInstancia().iniciarTX();
-    super.eliminar(articulo);
+    super.eliminar(centro);
     Conexion.getInstancia().confirmarTx();
     } catch (ExpertoCentroDeTrabajoException ex) {
     Conexion.getInstancia().deshacerTx();
     throw ex;
     }
-    }*/
+    }
 }
