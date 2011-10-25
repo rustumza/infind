@@ -32,7 +32,7 @@ public class Main {
         } catch (ParseException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Conexion.getInstancia().getSession();
+        Conexion.getInstancia().getSession();
         ControladorPantallaMadre cpm = new ControladorPantallaMadre();
         cpm.iniciar();
     }

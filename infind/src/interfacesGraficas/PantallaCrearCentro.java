@@ -10,6 +10,8 @@
  */
 package interfacesGraficas;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author diego
@@ -92,7 +94,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 5, 0, 0);
         jPanel2.add(jTextField1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -139,4 +141,23 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBotonGuardar() {
+        return botonGuardar;
+    }
+
+    public void setBotonGuardar(JButton botonGuardar) {
+        this.botonGuardar = botonGuardar;
+    }
+
+    public JButton getBotonSalir() {
+        return botonSalir;
+    }
+
+    public void setBotonSalir(JButton botonSalir) {
+        this.botonSalir = botonSalir;
+    }
+
+
+    
 }
