@@ -4,6 +4,7 @@
  */
 package expertos;
 
+import DTOs.DTOCentro;
 import Entidades.MaestroDeCentroDeTrabajo;
 import excepciones.ExpertoCentroDeTrabajoException;
 import java.util.List;
@@ -15,32 +16,64 @@ import persistencia.Fachada;
  *
  * @author eduardo
  */
-public class ExpertoCentroDeTrabajo extends Experto{
+public class ExpertoCentroDeTrabajo extends Experto {
 
-    /* public List<Producto> buscarArticulos(DTOArticulo dtoArticulo) throws ExpertoArticuloException {
-    
-    List<Producto> articulosEncontrados = null;
-    
-    if (dtoArticulo == null) {
-    
-    articulosEncontrados = Fachada.getInstancia().buscar(Producto.class, null);
-    } else {
-    Criteria criterioProducto = Fachada.getInstancia().crearCriterio(Producto.class);
-    if (dtoArticulo.getCodigoProducto() != null) {
-    criterioProducto.add(Restrictions.like("codigoProducto", dtoArticulo.getCodigoProducto()));
+    public List<MaestroDeCentroDeTrabajo> buscarCentrosDeTrabajo(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
+
+        List<MaestroDeCentroDeTrabajo> centrosEncontrados = null;
+
+        if (centro == null) {
+
+            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, null);
+        } else {
+            Criteria criterioCentro = Fachada.getInstancia().crearCriterio(MaestroDeCentroDeTrabajo.class);
+            if (centro.getCodigo() != null) {
+                criterioCentro.add(Restrictions.like("codigo", centro.getCodigo()));
+            }
+            
+            if (centro.getNombreCentro() != null) {
+                criterioCentro.add(Restrictions.like("nombreCentro", centro.getNombreCentro()));
+            }
+
+            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioCentro);
+        }
+        /*if (centrosEncontrados.isEmpty()) {
+        throw new ExpertoCentroDeTrabajoException("No se encontraron Productos para los datos ingresados");
+        
+        }*/
+
+        return centrosEncontrados;
     }
-    if (dtoArticulo.getNombreProducto() != null) {
-    criterioProducto.add(Restrictions.like("nombreProducto", "%" + dtoArticulo.getNombreProducto() + "%").ignoreCase());
-    }
-    articulosEncontrados = Fachada.getInstancia().buscar(Producto.class, criterioProducto);
-    }
-    if (articulosEncontrados.isEmpty()) {
-    throw new ExpertoArticuloException("No se encontraron Productos para los datos ingresados");
     
-    }
+ //busca los centros desde la pantalla editar centros
     
-    return articulosEncontrados;
-    }*/
+    public List<MaestroDeCentroDeTrabajo> buscarCentros(DTOCentro dtoCentro) throws ExpertoCentroDeTrabajoException {
+
+        List<MaestroDeCentroDeTrabajo> centrosEncontrados = null;
+
+        if (dtoCentro == null) {
+
+            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, null);
+        } else {
+            Criteria criterioCentro = Fachada.getInstancia().crearCriterio(MaestroDeCentroDeTrabajo.class);
+            if (dtoCentro.getCodigoCentro() != null) {
+                criterioCentro.add(Restrictions.like("codigo", dtoCentro.getCodigoCentro()));
+            }
+            
+            if (dtoCentro.getNombreCentro() != null) {
+                criterioCentro.add(Restrictions.like("nombreCentro", dtoCentro.getNombreCentro()));
+            }
+
+            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioCentro);
+        }
+        if (centrosEncontrados.isEmpty()) {
+        throw new ExpertoCentroDeTrabajoException("No se encontró Centro de Trabajo para los datos ingresados");
+        
+        }
+
+        return centrosEncontrados;
+    }
+
 
     /*public List<EstadoProducto> buscarEstados() {
     List<EstadoProducto> estadoEncontrada = null;
@@ -73,18 +106,17 @@ public class ExpertoCentroDeTrabajo extends Experto{
     }
 
     /*public void eliminar(Producto producto) throws ExpertoCentroDeTrabajoException {
-        producto.setEliminado(true);
-
-        try {
-            Fachada.getInstancia().guardar(producto);
-
-        } catch (Exception ex) {
-            throw new ExpertoCentroDeTrabajoException("Error al eliminar el Centro de Trabajo");
-        }
-
-
+    producto.setEliminado(true);
+    
+    try {
+    Fachada.getInstancia().guardar(producto);
+    
+    } catch (Exception ex) {
+    throw new ExpertoCentroDeTrabajoException("Error al eliminar el Centro de Trabajo");
+    }
+    
+    
     }*/
-
     private boolean centroInvalido(MaestroDeCentroDeTrabajo centro) {
         if (centro.getCodigo().length() == 0) {
             return true;
@@ -95,6 +127,4 @@ public class ExpertoCentroDeTrabajo extends Experto{
         }
 
     }
-
-    
 }

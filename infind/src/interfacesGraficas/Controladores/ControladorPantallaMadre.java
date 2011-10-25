@@ -29,6 +29,14 @@ public class ControladorPantallaMadre {
             }
         });
         
+//boton editar centro
+        pantalla.getEditarCentro().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                editarCentro();
+            }
+        });
+        
 //boton salir        
         pantalla.getBotonSalir().addActionListener(new ActionListener() {
 
@@ -48,6 +56,11 @@ public class ControladorPantallaMadre {
     public void crearCentro() {
        new ControladorCentroDeTrabajo(this).crearCentro();
     }
+    
+    public void editarCentro(){
+        new ControladorCentroDeTrabajo(this).editarCentro();
+    }
+            
 
     public void crearArticulo() {
         
@@ -60,6 +73,7 @@ public class ControladorPantallaMadre {
     public void crearProductoFinal() {
         
     }
+    
     
     
     
