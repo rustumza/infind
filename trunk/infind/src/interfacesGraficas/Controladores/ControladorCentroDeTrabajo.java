@@ -14,6 +14,7 @@ import interfacesGraficas.PantallaEditarCentro;
 import interfacesGraficas.PantallaMadre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public class ControladorCentroDeTrabajo {
     PantallaEditarCentro pantallaEditarCentro;
     ExpertoCentroDeTrabajo expertoCentroDeTrabajo;
     MaestroDeCentroDeTrabajo centroDeTrabajoSeleccionado = null;
-    List<MaestroDeCentroDeTrabajo> centroEncontrado = null;
+    MaestroDeCentroDeTrabajo centroEncontrado = null;
 
     public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
         pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
@@ -111,19 +112,19 @@ public class ControladorCentroDeTrabajo {
         if (pantallaEditarCentro.getjRadioCodigo().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(1));
 
-            if (!centroEncontrado.isEmpty()) {
-                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.get(0).getCodigo());
-                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.get(0).getDescripcion());
-                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.get(0).getNombreCentro());
+            if (!centroEncontrado.getCodigo().isEmpty()) {
+                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.getCodigo());
+                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.getDescripcion());
+                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.getNombreCentro());
             }
 
         } else if (pantallaEditarCentro.getjRadioNombre().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(2));
 
-            if (!centroEncontrado.isEmpty()) {
-                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.get(0).getCodigo());
-                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.get(0).getDescripcion());
-                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.get(0).getNombreCentro());
+            if (!centroEncontrado.getCodigo().isEmpty()) {
+                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.getCodigo());
+                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.getDescripcion());
+                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.getNombreCentro());
             }
 
 
@@ -191,7 +192,32 @@ public class ControladorCentroDeTrabajo {
     }
 
     public void actualizarCentro() {
-        //asdfjkagsd
+        
+         if (centroEncontrado == null) {
+            return;
+        }
+        
+        
+        centroEncontrado.setCodigo(pantallaEditarCentro.getCampoCodigo().getText());
+        centroEncontrado.setDescripcion(pantallaEditarCentro.getCampoDescripcion().getText());
+        centroEncontrado.setNombreCentro(pantallaEditarCentro.getCampoNombre().getText());
+        centroEncontrado.setEliminado(Boolean.FALSE);
+
+
+        try {
+            
+                expertoCentroDeTrabajo.guardar(centroEncontrado);
+                limpiarPantallaEditarCentroDeTrabajo();
+                centroEncontrado = null;
+                JOptionPane.showMessageDialog(pantallacrearcentro, "Centro de Trabajo Actualizado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                pantallacrearcentro.setVisible(false);
+            
+        } catch (ExpertoCentroDeTrabajoException ex) {
+            Logger.getLogger(ControladorCentroDeTrabajo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        
     }
 
     public void limpiarPantallaCentroDeTrabajo() {
