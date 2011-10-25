@@ -40,6 +40,7 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         grupodebusqueda = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         botonActualizar = new javax.swing.JButton();
+        botonEliminarCentro = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,13 +65,23 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         botonActualizar.setToolTipText("Guardar Cambios");
         botonActualizar.setFocusable(false);
         botonActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonActualizar.setMargin(new java.awt.Insets(2, 0, 2, 14));
         botonActualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(botonActualizar);
+
+        botonEliminarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
+        botonEliminarCentro.setToolTipText("Eliminar Centro de Trabajo");
+        botonEliminarCentro.setFocusable(false);
+        botonEliminarCentro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonEliminarCentro.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        botonEliminarCentro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(botonEliminarCentro);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         botonSalir.setToolTipText("Salir");
         botonSalir.setFocusable(false);
         botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonSalir.setMargin(new java.awt.Insets(2, 0, 2, 14));
         botonSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(botonSalir);
 
@@ -247,6 +258,7 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBuscarCentro;
+    private javax.swing.JButton botonEliminarCentro;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoBuscaCodigo;
     private javax.swing.JTextField campoBuscaNombre;
@@ -358,6 +370,15 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         this.jRadioNombre = jRadioNombre;
     }
 
+    public JButton getBotonEliminarCentro() {
+        return botonEliminarCentro;
+    }
+
+    public void setBotonEliminarCentro(JButton botonEliminarCentro) {
+        this.botonEliminarCentro = botonEliminarCentro;
+    }
+
+    
     
 
     

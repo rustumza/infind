@@ -103,6 +103,13 @@ public class ControladorCentroDeTrabajo {
                 }
             }
         });
+        
+        pantallaEditarCentro.getBotonEliminarCentro().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                eliminarCentro();
+            }
+        });
 
     }
 
@@ -215,11 +222,47 @@ public class ControladorCentroDeTrabajo {
         } catch (ExpertoCentroDeTrabajoException ex) {
             Logger.getLogger(ControladorCentroDeTrabajo.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
+    
+    public void eliminarCentro(){
+        
+            if (centroEncontrado != null) {
+            int seleccion = JOptionPane.showOptionDialog(null,
+                    "Está seguro que desea eliminar el Centro de Trabajo \nCódigo: " + centroEncontrado.getCodigo() + ". Nombre: " + centroEncontrado.getNombreCentro(),
+                    "ELIMINAR CENTRO DE TRABAJO",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, // null para icono por defecto.
+                    new Object[]{"Aceptar", "Cancelar"}, // null para YES, NO y CANCEL
+                    "Cancelar");
+            if (seleccion == 0) {
+                try {
+                    //centroEncontrado.setEliminado(Boolean.TRUE);
+                    expertoCentroDeTrabajo.eliminar(centroEncontrado);
+                    JOptionPane.showMessageDialog(pantallaEditarCentro, "Centro de Trabajo Eliminado Correctamente", "INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    pantallaEditarCentro.getCampoBuscaNombre().setText("");
+                    pantallaEditarCentro.getCampoBuscaCodigo().setText("");
+                    pantallaEditarCentro.getCampoCodigo().setText("");
+                    pantallaEditarCentro.getCampoDescripcion().setText("");
+                    pantallaEditarCentro.getCampoNombre().setText("");
+                    
+
+                } catch (ExpertoCentroDeTrabajoException ex) {
+                    JOptionPane.showMessageDialog(pantallaEditarCentro, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(pantallaEditarCentro, "Debe seleccionar un Centro de Trabajo", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         
     }
-
+    
+    
+    
     public void limpiarPantallaCentroDeTrabajo() {
         pantallacrearcentro.getCampoCodigo().setText("");
         pantallacrearcentro.getCampoDescripcion().setText("");
