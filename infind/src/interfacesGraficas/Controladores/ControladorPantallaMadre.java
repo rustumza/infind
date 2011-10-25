@@ -15,21 +15,32 @@ import javax.swing.JFrame;
  */
 public class ControladorPantallaMadre {
 
-    PantallaMadre pantalla;
+    private PantallaMadre pantalla;
 
     public ControladorPantallaMadre() {
-        
+        pantalla = new PantallaMadre();
+        pantalla.setTitle("Informática Industrial - EON Argentina");
+
+//boton crear centro de trabajo        
         pantalla.getCrearCentro().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 crearCentro();
             }
         });
+        
+//boton salir        
+        pantalla.getBotonSalir().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
     
     
     public void iniciar() {
-        pantalla = new PantallaMadre();
+        
         pantalla.setVisible(true);
         pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
