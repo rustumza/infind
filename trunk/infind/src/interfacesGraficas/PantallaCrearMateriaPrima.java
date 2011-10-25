@@ -31,131 +31,145 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        panelPrincipal = new javax.swing.JPanel();
+        categoriaLabel = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        costoEstandarLabel = new javax.swing.JLabel();
+        costoUnitarioPorOmisionLabel = new javax.swing.JLabel();
+        descripcionLabel = new javax.swing.JLabel();
+        estadoLabel = new javax.swing.JLabel();
+        fechaDeVencimientoLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        observacionLabel = new javax.swing.JLabel();
+        precioBaseLabel = new javax.swing.JLabel();
+        tamañoLoteEstandarLabel = new javax.swing.JLabel();
+        tipoLabel = new javax.swing.JLabel();
+        ubicacionEnElAlmacenLabel = new javax.swing.JLabel();
+        unidadDeMedidaLabel = new javax.swing.JLabel();
+        proveedorPredeterminadoLabel = new javax.swing.JLabel();
+        proveedorPredeterminadoComboBox = new javax.swing.JComboBox();
+        menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Categoria");
+        categoriaLabel.setText("Categoria");
 
-        jLabel2.setText("Código");
+        codigoLabel.setText("Código");
 
-        jLabel3.setText("Costo Estandar");
+        costoEstandarLabel.setText("Costo Estandar");
 
-        jLabel4.setText("Costo unitario por omision");
+        costoUnitarioPorOmisionLabel.setText("Costo unitario por omision");
 
-        jLabel5.setText("Descripcion");
+        descripcionLabel.setText("Descripcion");
 
-        jLabel6.setText("Estado");
+        estadoLabel.setText("Estado");
 
-        jLabel7.setText("Fecha de vencimiento");
+        fechaDeVencimientoLabel.setText("Fecha de vencimiento");
 
-        jLabel8.setText("Nombre");
+        nombreLabel.setText("Nombre");
 
-        jLabel9.setText("Observación");
+        observacionLabel.setText("Observación");
 
-        jLabel10.setText("Precio base");
+        precioBaseLabel.setText("Precio base");
 
-        jLabel11.setText("Tamaño lote estandar");
+        tamañoLoteEstandarLabel.setText("Tamaño lote estandar");
 
-        jLabel12.setText("Tipo");
+        tipoLabel.setText("Tipo");
 
-        jLabel13.setText("Ubicación en el almacén");
+        ubicacionEnElAlmacenLabel.setText("Ubicación en el almacén");
 
-        jLabel14.setText("Unidad de medida");
+        unidadDeMedidaLabel.setText("Unidad de medida");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        proveedorPredeterminadoLabel.setText("proveedor predeterminado");
+
+        proveedorPredeterminadoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14))
-                .addContainerGap(528, Short.MAX_VALUE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descripcionLabel)
+                    .addComponent(estadoLabel)
+                    .addComponent(fechaDeVencimientoLabel)
+                    .addComponent(codigoLabel)
+                    .addComponent(observacionLabel)
+                    .addComponent(costoUnitarioPorOmisionLabel)
+                    .addComponent(nombreLabel)
+                    .addComponent(costoEstandarLabel)
+                    .addComponent(precioBaseLabel)
+                    .addComponent(tamañoLoteEstandarLabel)
+                    .addComponent(tipoLabel)
+                    .addComponent(ubicacionEnElAlmacenLabel)
+                    .addComponent(unidadDeMedidaLabel)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(proveedorPredeterminadoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(proveedorPredeterminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(categoriaLabel))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(codigoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(nombreLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel3)
+                .addComponent(observacionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(categoriaLabel)
+                .addGap(9, 9, 9)
+                .addComponent(costoEstandarLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(costoUnitarioPorOmisionLabel)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel5)
+                .addComponent(descripcionLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(estadoLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(fechaDeVencimientoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
+                .addComponent(precioBaseLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addComponent(tamañoLoteEstandarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addComponent(tipoLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel13)
+                .addComponent(ubicacionEnElAlmacenLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addComponent(unidadDeMedidaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(proveedorPredeterminadoLabel)
+                    .addComponent(proveedorPredeterminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        menu.add(jMenu1);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        menu.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,23 +219,25 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel categoriaLabel;
+    private javax.swing.JLabel codigoLabel;
+    private javax.swing.JLabel costoEstandarLabel;
+    private javax.swing.JLabel costoUnitarioPorOmisionLabel;
+    private javax.swing.JLabel descripcionLabel;
+    private javax.swing.JLabel estadoLabel;
+    private javax.swing.JLabel fechaDeVencimientoLabel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JLabel observacionLabel;
+    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JLabel precioBaseLabel;
+    private javax.swing.JComboBox proveedorPredeterminadoComboBox;
+    private javax.swing.JLabel proveedorPredeterminadoLabel;
+    private javax.swing.JLabel tamañoLoteEstandarLabel;
+    private javax.swing.JLabel tipoLabel;
+    private javax.swing.JLabel ubicacionEnElAlmacenLabel;
+    private javax.swing.JLabel unidadDeMedidaLabel;
     // End of variables declaration//GEN-END:variables
 }
