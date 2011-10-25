@@ -45,15 +45,16 @@ public class ExpertoCentroDeTrabajo extends Experto {
         return centrosEncontrados;
     }
     
- //busca los centros desde la pantalla editar centros
+ //busca el centro desde la pantalla editar centros
     
-    public List<MaestroDeCentroDeTrabajo> buscarCentros(DTOCentro dtoCentro) throws ExpertoCentroDeTrabajoException {
+    public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoCentroDeTrabajoException {
 
-        List<MaestroDeCentroDeTrabajo> centrosEncontrados = null;
+        List<MaestroDeCentroDeTrabajo> centroEncontrado = null;
+        MaestroDeCentroDeTrabajo centroDevuelto = null;
 
         if (dtoCentro == null) {
 
-            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, null);
+            centroEncontrado = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, null);
         } else {
             Criteria criterioCentro = Fachada.getInstancia().crearCriterio(MaestroDeCentroDeTrabajo.class);
             if (dtoCentro.getCodigoCentro() != null) {
@@ -64,14 +65,15 @@ public class ExpertoCentroDeTrabajo extends Experto {
                 criterioCentro.add(Restrictions.like("nombreCentro", dtoCentro.getNombreCentro()));
             }
 
-            centrosEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioCentro);
+            centroEncontrado =  Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioCentro);
         }
-        if (centrosEncontrados.isEmpty()) {
+        if (centroEncontrado.isEmpty()) {
         throw new ExpertoCentroDeTrabajoException("No se encontró Centro de Trabajo para los datos ingresados");
         
         }
 
-        return centrosEncontrados;
+        centroDevuelto = centroEncontrado.get(0);
+        return centroDevuelto;
     }
 
 
