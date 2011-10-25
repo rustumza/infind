@@ -21,12 +21,12 @@ import javax.swing.JMenuItem;
  */
 public class PantallaMadre extends javax.swing.JFrame {
     
-    //ControladorPantallaMadre controlador;
+    ControladorPantallaMadre controlador;
 
     /** Creates new form PantallaMadre */
-    public PantallaMadre() {
+    public PantallaMadre(ControladorPantallaMadre cpm) {
         initComponents();
-        //controlador = new ControladorPantallaMadre();
+        controlador = cpm;
     }
 
     /** This method is called from within the constructor to
@@ -63,6 +63,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         rutaDeFabricacion = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Informática Industrial - EON Argentina");
 
         jMenu1.setText("Archivo");
         jMenu1.setMargin(new java.awt.Insets(2, 2, 2, 12));
@@ -71,6 +72,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenu1.add(botonAyuda);
 
         botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
         jMenu1.add(botonSalir);
 
         jMenuBar1.add(jMenu1);
@@ -141,6 +147,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         centrosDeTrabajo.add(crearCentro);
 
         editarCentro.setText("Editar centro");
+        editarCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarCentroActionPerformed(evt);
+            }
+        });
         centrosDeTrabajo.add(editarCentro);
 
         jMenuBar1.add(centrosDeTrabajo);
@@ -166,16 +177,24 @@ public class PantallaMadre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCentroActionPerformed
-   // controlador.crearCentro();
+    controlador.crearCentro();
 }//GEN-LAST:event_crearCentroActionPerformed
 
 private void crearProductoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoFinalActionPerformed
-    //controlador.crearProductoFinal();
+    controlador.crearProductoFinal();
 }//GEN-LAST:event_crearProductoFinalActionPerformed
 
 private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMateriaPrimaActionPerformed
-    //controlador.crearMateriaPrima();
+    controlador.crearMateriaPrima();
 }//GEN-LAST:event_crearMateriaPrimaActionPerformed
+
+private void editarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCentroActionPerformed
+    controlador.editarCentro();
+}//GEN-LAST:event_editarCentroActionPerformed
+
+private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+    System.exit(0);
+}//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments

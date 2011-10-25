@@ -57,6 +57,7 @@ public class PantallaEditarCentro extends javax.swing.JDialog {
         botonBuscarCentro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Editar centro de trabajo");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
