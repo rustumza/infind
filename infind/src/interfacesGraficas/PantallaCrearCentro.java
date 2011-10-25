@@ -48,6 +48,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         campoNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Crear centro de trabajo");
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 

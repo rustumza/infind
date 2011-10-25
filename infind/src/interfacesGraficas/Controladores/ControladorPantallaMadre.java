@@ -18,37 +18,12 @@ public class ControladorPantallaMadre {
     private PantallaMadre pantalla;
 
     public ControladorPantallaMadre() {
-        pantalla = new PantallaMadre();
-        pantalla.setTitle("Informática Industrial - EON Argentina");
+        pantalla = new PantallaMadre(this);
 
-//boton crear centro de trabajo        
-        pantalla.getCrearCentro().addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                crearCentro();
-            }
-        });
-        
-//boton editar centro
-        pantalla.getEditarCentro().addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                editarCentro();
-            }
-        });
-        
-//boton salir        
-        pantalla.getBotonSalir().addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
     }
     
     
     public void iniciar() {
-        
         pantalla.setVisible(true);
         pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
