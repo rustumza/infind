@@ -17,6 +17,10 @@ public class ControladorPantallaMadre {
 
     private PantallaMadre pantalla;
 
+    public PantallaMadre getPantalla() {
+        return pantalla;
+    }
+
     public ControladorPantallaMadre() {
         pantalla = new PantallaMadre(this);
 
@@ -42,7 +46,7 @@ public class ControladorPantallaMadre {
     }
 
     public void crearMateriaPrima() {
-        
+        new ControladorMateriaPrima(this).crearMateriaPrima();
     }
 
     public void crearProductoFinal() {

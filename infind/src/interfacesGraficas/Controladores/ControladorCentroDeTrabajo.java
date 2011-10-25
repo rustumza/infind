@@ -32,8 +32,11 @@ public class ControladorCentroDeTrabajo {
     ExpertoCentroDeTrabajo expertoCentroDeTrabajo;
     MaestroDeCentroDeTrabajo centroDeTrabajoSeleccionado = null;
     MaestroDeCentroDeTrabajo centroEncontrado = null;
+    ControladorPantallaMadre controladorPantallaMadre;
 
     public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
+        controladorPantallaMadre = contrPantMadre;
+        pantallaMadre = controladorPantallaMadre.getPantalla();
         pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
         pantallaEditarCentro = new PantallaEditarCentro(pantallaMadre, false);
         expertoCentroDeTrabajo = (ExpertoCentroDeTrabajo) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.CENTRO_DE_TRABAJO);
