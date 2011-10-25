@@ -21,12 +21,12 @@ import javax.swing.JMenuItem;
  */
 public class PantallaMadre extends javax.swing.JFrame {
     
-    ControladorPantallaMadre controlador;
+    //ControladorPantallaMadre controlador;
 
     /** Creates new form PantallaMadre */
     public PantallaMadre() {
         initComponents();
-        controlador = new ControladorPantallaMadre();
+        //controlador = new ControladorPantallaMadre();
     }
 
     /** This method is called from within the constructor to
@@ -41,6 +41,9 @@ public class PantallaMadre extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        botonAyuda = new javax.swing.JMenuItem();
+        botonSalir = new javax.swing.JMenuItem();
         articulos = new javax.swing.JMenu();
         crearArticulo = new javax.swing.JMenu();
         crearMateriaPrima = new javax.swing.JMenuItem();
@@ -61,7 +64,19 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jMenu1.setText("Archivo");
+        jMenu1.setMargin(new java.awt.Insets(2, 2, 2, 12));
+
+        botonAyuda.setText("Ayuda");
+        jMenu1.add(botonAyuda);
+
+        botonSalir.setText("Salir");
+        jMenu1.add(botonSalir);
+
+        jMenuBar1.add(jMenu1);
+
         articulos.setText("Articulos");
+        articulos.setMargin(new java.awt.Insets(2, 2, 2, 12));
 
         crearArticulo.setText("Crear Articulo");
 
@@ -110,10 +125,12 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(articulos);
 
-        estructuraDeProducto.setText("Estructura de Prodocto");
+        estructuraDeProducto.setText("Estructura de Producto");
+        estructuraDeProducto.setMargin(new java.awt.Insets(2, 2, 2, 12));
         jMenuBar1.add(estructuraDeProducto);
 
         centrosDeTrabajo.setText("Centros de trabajo");
+        centrosDeTrabajo.setMargin(new java.awt.Insets(2, 2, 2, 12));
 
         crearCentro.setText("Crear centro");
         crearCentro.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +146,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuBar1.add(centrosDeTrabajo);
 
         rutaDeFabricacion.setText("Ruta de fabricación");
+        rutaDeFabricacion.setMargin(new java.awt.Insets(2, 2, 2, 12));
         jMenuBar1.add(rutaDeFabricacion);
 
         setJMenuBar(jMenuBar1);
@@ -148,15 +166,15 @@ public class PantallaMadre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void crearCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCentroActionPerformed
-    controlador.crearCentro();
+   // controlador.crearCentro();
 }//GEN-LAST:event_crearCentroActionPerformed
 
 private void crearProductoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoFinalActionPerformed
-    controlador.crearProductoFinal();
+    //controlador.crearProductoFinal();
 }//GEN-LAST:event_crearProductoFinalActionPerformed
 
 private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMateriaPrimaActionPerformed
-    controlador.crearMateriaPrima();
+    //controlador.crearMateriaPrima();
 }//GEN-LAST:event_crearMateriaPrimaActionPerformed
 
     /**
@@ -194,6 +212,8 @@ private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Listar;
     private javax.swing.JMenu articulos;
+    private javax.swing.JMenuItem botonAyuda;
+    private javax.swing.JMenuItem botonSalir;
     private javax.swing.JMenu centrosDeTrabajo;
     private javax.swing.JMenu crearArticulo;
     private javax.swing.JMenuItem crearCentro;
@@ -204,6 +224,7 @@ private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {/
     private javax.swing.JMenuItem editarArticulo;
     private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarProductosComponentes;
@@ -228,13 +249,7 @@ private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {/
         this.centrosDeTrabajo = centrosDeTrabajo;
     }
 
-    public ControladorPantallaMadre getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(ControladorPantallaMadre controlador) {
-        this.controlador = controlador;
-    }
+    
 
     public JMenuItem getCrearCentro() {
         return crearCentro;
@@ -274,6 +289,22 @@ private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {/
 
     public void setRutaDeFabricacion(JMenu rutaDeFabricacion) {
         this.rutaDeFabricacion = rutaDeFabricacion;
+    }
+
+    public JMenuItem getBotonAyuda() {
+        return botonAyuda;
+    }
+
+    public void setBotonAyuda(JMenuItem botonAyuda) {
+        this.botonAyuda = botonAyuda;
+    }
+
+    public JMenuItem getBotonSalir() {
+        return botonSalir;
+    }
+
+    public void setBotonSalir(JMenuItem botonSalir) {
+        this.botonSalir = botonSalir;
     }
 
     
