@@ -57,6 +57,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         botonGuardar.setToolTipText("Guardar Centro de Trabajo");
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonGuardar.setMargin(new java.awt.Insets(2, 0, 2, 14));
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(botonGuardar);
 
@@ -64,6 +65,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         botonSalir.setToolTipText("Salir");
         botonSalir.setFocusable(false);
         botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonSalir.setMargin(new java.awt.Insets(2, 0, 2, 14));
         botonSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(botonSalir);
 
