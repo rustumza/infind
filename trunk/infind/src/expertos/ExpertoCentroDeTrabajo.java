@@ -15,7 +15,7 @@ import persistencia.Fachada;
  *
  * @author eduardo
  */
-public class ExpertoCentroDeTrabajo {
+public class ExpertoCentroDeTrabajo extends Experto{
 
     /* public List<Producto> buscarArticulos(DTOArticulo dtoArticulo) throws ExpertoArticuloException {
     
