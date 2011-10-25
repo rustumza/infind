@@ -11,6 +11,7 @@
 package interfacesGraficas;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -41,8 +42,8 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        campoCodigo = new javax.swing.JTextField();
+        campoDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,7 +96,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 0, 0);
-        jPanel2.add(jTextField1, gridBagConstraints);
+        jPanel2.add(campoCodigo, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -103,7 +104,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.ipady = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 20);
-        jPanel2.add(jTextField2, gridBagConstraints);
+        jPanel2.add(campoDescripcion, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -133,12 +134,12 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField campoCodigo;
+    private javax.swing.JTextField campoDescripcion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -156,6 +157,22 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
 
     public void setBotonSalir(JButton botonSalir) {
         this.botonSalir = botonSalir;
+    }
+
+    public JTextField getCampoCodigo() {
+        return campoCodigo;
+    }
+
+    public void setCampoCodigo(JTextField campoCodigo) {
+        this.campoCodigo = campoCodigo;
+    }
+
+    public JTextField getCampoDescripcion() {
+        return campoDescripcion;
+    }
+
+    public void setCampoDescripcion(JTextField campoDescripcion) {
+        this.campoDescripcion = campoDescripcion;
     }
 
 
