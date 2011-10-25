@@ -23,6 +23,7 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     private Long id;
     private Boolean eliminado;
     private String codigo;
+    private String nombreCentro;
     private String descripcion;
 
     public Long getId() {
@@ -56,6 +57,16 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+
+    public String getNombreCentro() {
+        return nombreCentro;
+    }
+
+    public void setNombreCentro(String nombreCentro) {
+        this.nombreCentro = nombreCentro;
+    }
+    
+    
     
     
 

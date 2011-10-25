@@ -249,6 +249,88 @@ private void crearMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {/
         this.centrosDeTrabajo = centrosDeTrabajo;
     }
 
+    public JMenu getCrearArticulo() {
+        return crearArticulo;
+    }
+
+    public void setCrearArticulo(JMenu crearArticulo) {
+        this.crearArticulo = crearArticulo;
+    }
+
+    public JMenuItem getCrearMateriaPrima() {
+        return crearMateriaPrima;
+    }
+
+    public void setCrearMateriaPrima(JMenuItem crearMateriaPrima) {
+        this.crearMateriaPrima = crearMateriaPrima;
+    }
+
+    public JMenuItem getCrearProductoComponente() {
+        return crearProductoComponente;
+    }
+
+    public void setCrearProductoComponente(JMenuItem crearProductoComponente) {
+        this.crearProductoComponente = crearProductoComponente;
+    }
+
+    public JMenuItem getCrearProductoFinal() {
+        return crearProductoFinal;
+    }
+
+    public void setCrearProductoFinal(JMenuItem crearProductoFinal) {
+        this.crearProductoFinal = crearProductoFinal;
+    }
+
+    public JMenuItem getCrearProductoIntermedio() {
+        return crearProductoIntermedio;
+    }
+
+    public void setCrearProductoIntermedio(JMenuItem crearProductoIntermedio) {
+        this.crearProductoIntermedio = crearProductoIntermedio;
+    }
+
+    public JMenuItem getEditarArticulo() {
+        return editarArticulo;
+    }
+
+    public void setEditarArticulo(JMenuItem editarArticulo) {
+        this.editarArticulo = editarArticulo;
+    }
+
+    public JMenuItem getListarMateriasPrimas() {
+        return listarMateriasPrimas;
+    }
+
+    public void setListarMateriasPrimas(JMenuItem listarMateriasPrimas) {
+        this.listarMateriasPrimas = listarMateriasPrimas;
+    }
+
+    public JMenuItem getListarProductosComponentes() {
+        return listarProductosComponentes;
+    }
+
+    public void setListarProductosComponentes(JMenuItem listarProductosComponentes) {
+        this.listarProductosComponentes = listarProductosComponentes;
+    }
+
+    public JMenuItem getListarProductosFinales() {
+        return listarProductosFinales;
+    }
+
+    public void setListarProductosFinales(JMenuItem listarProductosFinales) {
+        this.listarProductosFinales = listarProductosFinales;
+    }
+
+    public JMenuItem getListarProductosIntermedios() {
+        return listarProductosIntermedios;
+    }
+
+    public void setListarProductosIntermedios(JMenuItem listarProductosIntermedios) {
+        this.listarProductosIntermedios = listarProductosIntermedios;
+    }
+    
+    
+
     
 
     public JMenuItem getCrearCentro() {
