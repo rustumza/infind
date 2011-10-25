@@ -32,138 +32,237 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private void initComponents() {
 
         panelPrincipal = new javax.swing.JPanel();
-        categoriaLabel = new javax.swing.JLabel();
-        codigoLabel = new javax.swing.JLabel();
-        costoEstandarLabel = new javax.swing.JLabel();
-        costoUnitarioPorOmisionLabel = new javax.swing.JLabel();
-        descripcionLabel = new javax.swing.JLabel();
-        estadoLabel = new javax.swing.JLabel();
-        fechaDeVencimientoLabel = new javax.swing.JLabel();
-        nombreLabel = new javax.swing.JLabel();
-        observacionLabel = new javax.swing.JLabel();
-        precioBaseLabel = new javax.swing.JLabel();
-        tamañoLoteEstandarLabel = new javax.swing.JLabel();
-        tipoLabel = new javax.swing.JLabel();
+        toolbar = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcionTextArea = new javax.swing.JTextArea();
+        codigoTextBox = new javax.swing.JTextField();
+        nombreTextBox = new javax.swing.JTextField();
         ubicacionEnElAlmacenLabel = new javax.swing.JLabel();
         unidadDeMedidaLabel = new javax.swing.JLabel();
-        proveedorPredeterminadoLabel = new javax.swing.JLabel();
-        proveedorPredeterminadoComboBox = new javax.swing.JComboBox();
-        toolbar = new javax.swing.JToolBar();
+        tamañoLoteEstandarLabel = new javax.swing.JLabel();
+        observacionLabel = new javax.swing.JLabel();
+        precioBaseLabel = new javax.swing.JLabel();
+        categoriaLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        descripcionLabel = new javax.swing.JLabel();
+        costoUnitarioPorOmisionLabel = new javax.swing.JLabel();
+        costoEstandarLabel = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        fechaDeVencimientoLabel = new javax.swing.JLabel();
+        estadoLabel = new javax.swing.JLabel();
+        categoriaListBox = new javax.swing.JComboBox();
+        costoEstandarTextBox = new javax.swing.JTextField();
+        costoUnitarioPorOmisionTextBox = new javax.swing.JTextField();
+        fechaVencimientoTextBox = new javax.swing.JTextField();
+        precioBaseTextBox = new javax.swing.JTextField();
+        tamanioLoteEstandarTextBox = new javax.swing.JTextField();
+        estadoListBox = new javax.swing.JComboBox();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        observacionTextArea = new javax.swing.JTextArea();
+        ubicacionAlamcenTextBox = new javax.swing.JTextField();
+        unidadDeMedidaListBox = new javax.swing.JComboBox();
+        estadoFechaEntrarActividadTextBox = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        categoriaLabel.setText("Categoria");
+        toolbar.setRollover(true);
 
-        codigoLabel.setText("Código");
+        jButton1.setText("jButton1");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(jButton1);
 
-        costoEstandarLabel.setText("Costo Estandar");
-
-        costoUnitarioPorOmisionLabel.setText("Costo unitario por omision");
-
-        descripcionLabel.setText("Descripcion");
-
-        estadoLabel.setText("Estado");
-
-        fechaDeVencimientoLabel.setText("Fecha de vencimiento");
-
-        nombreLabel.setText("Nombre");
-
-        observacionLabel.setText("Observación");
-
-        precioBaseLabel.setText("Precio base");
-
-        tamañoLoteEstandarLabel.setText("Tamaño lote estandar");
-
-        tipoLabel.setText("Tipo");
+        descripcionTextArea.setColumns(20);
+        descripcionTextArea.setRows(5);
+        jScrollPane1.setViewportView(descripcionTextArea);
 
         ubicacionEnElAlmacenLabel.setText("Ubicación en el almacén");
 
         unidadDeMedidaLabel.setText("Unidad de medida");
 
-        proveedorPredeterminadoLabel.setText("proveedor predeterminado");
+        tamañoLoteEstandarLabel.setText("Tamaño lote estandar");
 
-        proveedorPredeterminadoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        observacionLabel.setText("Observación");
 
-        toolbar.setRollover(true);
+        precioBaseLabel.setText("Precio base");
+
+        categoriaLabel.setText("Categoria");
+
+        nombreLabel.setText("Nombre");
+
+        descripcionLabel.setText("Descripcion");
+
+        costoUnitarioPorOmisionLabel.setText("Costo unitario por omisión");
+
+        costoEstandarLabel.setText("Costo Estandar");
+
+        codigoLabel.setText("Código");
+
+        fechaDeVencimientoLabel.setText("Fecha de vencimiento");
+
+        estadoLabel.setText("Estado");
+
+        categoriaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
+
+        estadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
+
+        observacionTextArea.setColumns(20);
+        observacionTextArea.setRows(5);
+        jScrollPane3.setViewportView(observacionTextArea);
+
+        unidadDeMedidaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Litros", "Kilios", "Gramos", "Cm3" }));
+
+        jLabel1.setText("Entrar en actividad en");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(codigoLabel)
+                            .addComponent(nombreLabel)
+                            .addComponent(descripcionLabel)
+                            .addComponent(unidadDeMedidaLabel))
+                        .addGap(85, 85, 85)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unidadDeMedidaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)))
+                    .addComponent(estadoLabel)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(categoriaLabel)
+                            .addComponent(costoEstandarLabel)
+                            .addComponent(costoUnitarioPorOmisionLabel)
+                            .addComponent(precioBaseLabel)
+                            .addComponent(fechaDeVencimientoLabel)
+                            .addComponent(tamañoLoteEstandarLabel))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(estadoFechaEntrarActividadTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3)
+                            .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaVencimientoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(ubicacionEnElAlmacenLabel)
+                    .addComponent(observacionLabel))
+                .addGap(322, 322, 322))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoLabel)
+                    .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreLabel)
+                    .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descripcionLabel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unidadDeMedidaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unidadDeMedidaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(categoriaLabel)
+                    .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(costoEstandarLabel)
+                    .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(costoUnitarioPorOmisionLabel)
+                    .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(precioBaseLabel)
+                    .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estadoLabel)
+                    .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(estadoFechaEntrarActividadTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fechaDeVencimientoLabel)
+                    .addComponent(fechaVencimientoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tamañoLoteEstandarLabel)
+                    .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ubicacionEnElAlmacenLabel)
+                    .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(observacionLabel)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(272, Short.MAX_VALUE))
+        );
+
+        jScrollPane2.setViewportView(jPanel1);
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descripcionLabel)
-                    .addComponent(estadoLabel)
-                    .addComponent(fechaDeVencimientoLabel)
-                    .addComponent(codigoLabel)
-                    .addComponent(observacionLabel)
-                    .addComponent(costoUnitarioPorOmisionLabel)
-                    .addComponent(nombreLabel)
-                    .addComponent(costoEstandarLabel)
-                    .addComponent(precioBaseLabel)
-                    .addComponent(tamañoLoteEstandarLabel)
-                    .addComponent(tipoLabel)
-                    .addComponent(ubicacionEnElAlmacenLabel)
-                    .addComponent(unidadDeMedidaLabel)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(proveedorPredeterminadoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(proveedorPredeterminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(categoriaLabel))
-                .addContainerGap(428, Short.MAX_VALUE))
-            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(toolbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(observacionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(categoriaLabel)
-                .addGap(9, 9, 9)
-                .addComponent(costoEstandarLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(costoUnitarioPorOmisionLabel)
-                .addGap(12, 12, 12)
-                .addComponent(descripcionLabel)
-                .addGap(18, 18, 18)
-                .addComponent(estadoLabel)
-                .addGap(18, 18, 18)
-                .addComponent(fechaDeVencimientoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(precioBaseLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tamañoLoteEstandarLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoLabel)
-                .addGap(18, 18, 18)
-                .addComponent(ubicacionEnElAlmacenLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(unidadDeMedidaLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(proveedorPredeterminadoLabel)
-                    .addComponent(proveedorPredeterminadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,64 +271,42 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaCrearMateriaPrima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaCrearMateriaPrima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaCrearMateriaPrima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaCrearMateriaPrima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                PantallaCrearMateriaPrima dialog = new PantallaCrearMateriaPrima(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel categoriaLabel;
+    private javax.swing.JComboBox categoriaListBox;
     private javax.swing.JLabel codigoLabel;
+    private javax.swing.JTextField codigoTextBox;
     private javax.swing.JLabel costoEstandarLabel;
+    private javax.swing.JTextField costoEstandarTextBox;
     private javax.swing.JLabel costoUnitarioPorOmisionLabel;
+    private javax.swing.JTextField costoUnitarioPorOmisionTextBox;
     private javax.swing.JLabel descripcionLabel;
+    private javax.swing.JTextArea descripcionTextArea;
+    private javax.swing.JTextField estadoFechaEntrarActividadTextBox;
     private javax.swing.JLabel estadoLabel;
+    private javax.swing.JComboBox estadoListBox;
     private javax.swing.JLabel fechaDeVencimientoLabel;
+    private javax.swing.JTextField fechaVencimientoTextBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel nombreLabel;
+    private javax.swing.JTextField nombreTextBox;
     private javax.swing.JLabel observacionLabel;
+    private javax.swing.JTextArea observacionTextArea;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
-    private javax.swing.JComboBox proveedorPredeterminadoComboBox;
-    private javax.swing.JLabel proveedorPredeterminadoLabel;
+    private javax.swing.JTextField precioBaseTextBox;
+    private javax.swing.JTextField tamanioLoteEstandarTextBox;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
-    private javax.swing.JLabel tipoLabel;
     private javax.swing.JToolBar toolbar;
+    private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
     private javax.swing.JLabel unidadDeMedidaLabel;
+    private javax.swing.JComboBox unidadDeMedidaListBox;
     // End of variables declaration//GEN-END:variables
 }
