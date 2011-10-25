@@ -11,6 +11,7 @@
 package interfacesGraficas;
 
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -43,9 +44,10 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         campoCodigo = new javax.swing.JTextField();
-        campoDescripcion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        campoDescripcion = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear centro de trabajo");
@@ -102,14 +104,6 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 0, 0);
         jPanel2.add(campoCodigo, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 300;
-        gridBagConstraints.ipady = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 20);
-        jPanel2.add(campoDescripcion, gridBagConstraints);
 
         jLabel3.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -121,10 +115,22 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 300;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoNombre, gridBagConstraints);
+
+        campoDescripcion.setColumns(20);
+        campoDescripcion.setRows(5);
+        jScrollPane1.setViewportView(campoDescripcion);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
+        jPanel2.add(jScrollPane1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -157,13 +163,14 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextArea campoDescripcion;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -191,11 +198,11 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         this.campoCodigo = campoCodigo;
     }
 
-    public JTextField getCampoDescripcion() {
+    public JTextArea getCampoDescripcion() {
         return campoDescripcion;
     }
 
-    public void setCampoDescripcion(JTextField campoDescripcion) {
+    public void setCampoDescripcion(JTextArea campoDescripcion) {
         this.campoDescripcion = campoDescripcion;
     }
 
