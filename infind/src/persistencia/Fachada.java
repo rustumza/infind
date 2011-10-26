@@ -33,6 +33,14 @@ public class Fachada {
         criteria.add(Restrictions.eq("eliminado", false));
         return criteria;
     }
+    
+    public Criteria crearCriterioSinEliminado(Class tipoObjeto) {
+        Session s = null;
+        s = Conexion.getInstancia().getSession();
+        Criteria criteria = s.createCriteria(tipoObjeto);
+        return criteria;
+    }
+    
 
     public List buscar(Class tipoObjeto, Criteria criterio) {
         if (criterio == null) {
