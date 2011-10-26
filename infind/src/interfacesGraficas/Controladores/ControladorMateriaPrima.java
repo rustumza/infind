@@ -65,6 +65,13 @@ public class ControladorMateriaPrima {
             pantallaCrearMateriPrima.getPrecioBaseTextBox().requestFocus();
             return;       
         }
+        if(((String)(pantallaCrearMateriPrima.getEstadoListBox().getModel().getSelectedItem())).equals("Activo")){
+            matPrim.setEliminado(false);
+        }else{
+            matPrim.setEliminado(true);
+            matPrim.setFechaEntrarEnActividad(pantallaCrearMateriPrima.getEstadoEntrarEnActividadEnFechajDateChooser().getDate());
+        }
+        matPrim.setTamanioLoteEstandar(tamanioLoteEstandar);
         
         
     }

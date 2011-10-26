@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import com.toedter.calendar.JDateChooser;
 import interfacesGraficas.Controladores.ControladorMateriaPrima;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -66,12 +67,10 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         costoUnitarioPorOmisionLabel = new javax.swing.JLabel();
         costoEstandarLabel = new javax.swing.JLabel();
         codigoLabel = new javax.swing.JLabel();
-        fechaDeVencimientoLabel = new javax.swing.JLabel();
         estadoLabel = new javax.swing.JLabel();
         categoriaListBox = new javax.swing.JComboBox();
         costoEstandarTextBox = new javax.swing.JTextField();
         costoUnitarioPorOmisionTextBox = new javax.swing.JTextField();
-        fechaVencimientoTextBox = new javax.swing.JTextField();
         precioBaseTextBox = new javax.swing.JTextField();
         tamanioLoteEstandarTextBox = new javax.swing.JTextField();
         estadoListBox = new javax.swing.JComboBox();
@@ -79,8 +78,8 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         observacionTextArea = new javax.swing.JTextArea();
         ubicacionAlamcenTextBox = new javax.swing.JTextField();
         unidadDeMedidaListBox = new javax.swing.JComboBox();
-        estadoFechaEntrarActividadTextBox = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
+        estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,6 +108,8 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(salir);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
+
         descripcionTextArea.setColumns(20);
         descripcionTextArea.setRows(5);
         jScrollPane1.setViewportView(descripcionTextArea);
@@ -135,8 +136,6 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         codigoLabel.setText("Código");
 
-        fechaDeVencimientoLabel.setText("Fecha de vencimiento");
-
         estadoLabel.setText("Estado");
 
         categoriaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
@@ -154,7 +153,9 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         unidadDeMedidaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Litros", "Kilios", "Gramos", "Cm3" }));
 
-        jLabel1.setText("Entrar en actividad en");
+        estadoEntrarEnActividadEnFechaLabel.setText("Entrar en actividad en fecha");
+
+        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,7 +175,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                             .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(unidadDeMedidaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(estadoLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,29 +183,27 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                             .addComponent(costoEstandarLabel)
                             .addComponent(costoUnitarioPorOmisionLabel)
                             .addComponent(precioBaseLabel)
-                            .addComponent(fechaDeVencimientoLabel)
-                            .addComponent(tamañoLoteEstandarLabel))
+                            .addComponent(tamañoLoteEstandarLabel)
+                            .addComponent(ubicacionEnElAlmacenLabel)
+                            .addComponent(observacionLabel))
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estadoFechaEntrarActividadTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaVencimientoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(ubicacionEnElAlmacenLabel)
-                    .addComponent(observacionLabel))
-                .addGap(322, 322, 322))
+                                .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(estadoEntrarEnActividadEnFechaLabel)
+                                .addGap(12, 12, 12)
+                                .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,16 +241,13 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                     .addComponent(precioBaseLabel)
                     .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estadoLabel)
-                    .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(estadoFechaEntrarActividadTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechaDeVencimientoLabel)
-                    .addComponent(fechaVencimientoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(estadoLabel)
+                        .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(estadoEntrarEnActividadEnFechaLabel))
+                    .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tamañoLoteEstandarLabel)
                     .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -263,7 +259,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(observacionLabel)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -272,18 +268,19 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(toolbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE))
-                .addGap(12, 12, 12))
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(toolbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -307,9 +304,9 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
 private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
     if(((String)estadoListBox.getModel().getSelectedItem()).equals("Inactivo")){
-        estadoFechaEntrarActividadTextBox.setEditable(true);
+        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(true);
     }else{
-        estadoFechaEntrarActividadTextBox.setEditable(false);
+        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
     }
 }//GEN-LAST:event_estadoListBoxActionPerformed
 
@@ -333,13 +330,11 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JTextField costoUnitarioPorOmisionTextBox;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JTextArea descripcionTextArea;
-    private javax.swing.JTextField estadoFechaEntrarActividadTextBox;
+    private javax.swing.JLabel estadoEntrarEnActividadEnFechaLabel;
+    private com.toedter.calendar.JDateChooser estadoEntrarEnActividadEnFechajDateChooser;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JComboBox estadoListBox;
-    private javax.swing.JLabel fechaDeVencimientoLabel;
-    private javax.swing.JTextField fechaVencimientoTextBox;
     private javax.swing.JButton guardar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -457,14 +452,6 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         this.descripcionTextArea = descripcionTextArea;
     }
 
-    public JTextField getEstadoFechaEntrarActividadTextBox() {
-        return estadoFechaEntrarActividadTextBox;
-    }
-
-    public void setEstadoFechaEntrarActividadTextBox(JTextField estadoFechaEntrarActividadTextBox) {
-        this.estadoFechaEntrarActividadTextBox = estadoFechaEntrarActividadTextBox;
-    }
-
     public JLabel getEstadoLabel() {
         return estadoLabel;
     }
@@ -481,36 +468,12 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         this.estadoListBox = estadoListBox;
     }
 
-    public JLabel getFechaDeVencimientoLabel() {
-        return fechaDeVencimientoLabel;
-    }
-
-    public void setFechaDeVencimientoLabel(JLabel fechaDeVencimientoLabel) {
-        this.fechaDeVencimientoLabel = fechaDeVencimientoLabel;
-    }
-
-    public JTextField getFechaVencimientoTextBox() {
-        return fechaVencimientoTextBox;
-    }
-
-    public void setFechaVencimientoTextBox(JTextField fechaVencimientoTextBox) {
-        this.fechaVencimientoTextBox = fechaVencimientoTextBox;
-    }
-
     public JButton getGuardar() {
         return guardar;
     }
 
     public void setGuardar(JButton guardar) {
         this.guardar = guardar;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
     }
 
     public JPanel getjPanel1() {
@@ -663,6 +626,22 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     public void setUnidadDeMedidaListBox(JComboBox unidadDeMedidaListBox) {
         this.unidadDeMedidaListBox = unidadDeMedidaListBox;
+    }
+
+    public JLabel getEstadoEntrarEnActividadEnFechaLabel() {
+        return estadoEntrarEnActividadEnFechaLabel;
+    }
+
+    public void setEstadoEntrarEnActividadEnFechaLabel(JLabel estadoEntrarEnActividadEnFechaLabel) {
+        this.estadoEntrarEnActividadEnFechaLabel = estadoEntrarEnActividadEnFechaLabel;
+    }
+
+    public JDateChooser getEstadoEntrarEnActividadEnFechajDateChooser() {
+        return estadoEntrarEnActividadEnFechajDateChooser;
+    }
+
+    public void setEstadoEntrarEnActividadEnFechajDateChooser(JDateChooser estadoEntrarEnActividadEnFechajDateChooser) {
+        this.estadoEntrarEnActividadEnFechajDateChooser = estadoEntrarEnActividadEnFechajDateChooser;
     }
 
 
