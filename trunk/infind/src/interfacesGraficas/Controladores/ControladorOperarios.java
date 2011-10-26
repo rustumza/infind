@@ -56,7 +56,7 @@ public class ControladorOperarios {
     }
 
     public void editarOperario() {
-        pantallaEditarOperario = new PantallaEditarOperario(pantallaMadre, true);
+        pantallaEditarOperario = new PantallaEditarOperario(pantallaMadre, true, this);
         modeloTablaOperariosEncontrados = new ModeloTablaOperariosEncontrados();
         pantallaEditarOperario.getTablaOperariosEncontrados().setModel(modeloTablaOperariosEncontrados);
         pantallaEditarOperario.setVisible(true);
@@ -91,6 +91,19 @@ public class ControladorOperarios {
             Logger.getLogger(ControladorOperarios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    
+    public void actualizarOperario(){
+        
+        
+        
+    }
+    
+    public void eliminarOperario(){
+        
+        
+        
     }
     
     
