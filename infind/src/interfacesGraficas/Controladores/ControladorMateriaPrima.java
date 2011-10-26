@@ -5,6 +5,7 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.MateriaPrima;
+import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.PantallaCrearMateriaPrima;
 import javax.swing.JOptionPane;
 
@@ -16,9 +17,11 @@ public class ControladorMateriaPrima {
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearMateriaPrima pantallaCrearMateriPrima;
+    ExpertoMateriaPrima experto;
     
     ControladorMateriaPrima(ControladorPantallaMadre contPantMad) {
         controladorPantallaMadre = contPantMad;
+        experto = new ExpertoMateriaPrima();
     }
 
     public void crearMateriaPrima() {
@@ -82,7 +85,7 @@ public class ControladorMateriaPrima {
         matPrim.setUbicacionEnAlmacen(pantallaCrearMateriPrima.getUbicacionAlamcenTextBox().getText());
         matPrim.setObservacion(pantallaCrearMateriPrima.getObservacionTextArea().getText());
         
-        
+        experto.guardar(matPrim);
         
     }
     
