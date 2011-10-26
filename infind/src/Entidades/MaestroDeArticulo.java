@@ -33,7 +33,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String descripcion;
     private String estado;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fechaDeVencimiento;
+    private Date fechaEntrarEnActividad;
     private String nombre;
     private String observacion;
     private float precioBase;
@@ -108,12 +108,12 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
         this.estado = estado;
     }
 
-    public Date getFechaDeVencimiento() {
-        return fechaDeVencimiento;
+    public Date getFechaEntrarEnActividad() {
+        return fechaEntrarEnActividad;
     }
 
-    public void setFechaDeVencimiento(Date fechaDeVencimiento) {
-        this.fechaDeVencimiento = fechaDeVencimiento;
+    public void setFechaEntrarEnActividad(Date fechaEntrarEnActividad) {
+        this.fechaEntrarEnActividad = fechaEntrarEnActividad;
     }
 
     public String getNombre() {
