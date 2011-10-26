@@ -71,7 +71,17 @@ public class ControladorMateriaPrima {
             matPrim.setEliminado(true);
             matPrim.setFechaEntrarEnActividad(pantallaCrearMateriPrima.getEstadoEntrarEnActividadEnFechajDateChooser().getDate());
         }
-        matPrim.setTamanioLoteEstandar(tamanioLoteEstandar);
+        
+        try{
+            matPrim.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
+            return;       
+        }
+        matPrim.setUbicacionEnAlmacen(pantallaCrearMateriPrima.getUbicacionAlamcenTextBox().getText());
+        matPrim.setObservacion(pantallaCrearMateriPrima.getObservacionTextArea().getText());
+        
         
         
     }
