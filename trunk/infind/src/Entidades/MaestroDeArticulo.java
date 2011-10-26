@@ -37,7 +37,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String nombre;
     private String observacion;
     private float precioBase;
-    private float tamanioLoteEstandar;
+    private int tamanioLoteEstandar;
     private String tipo;
     private String ubicacionEnAlmacen;
     private String unidadDeMedida;
@@ -148,11 +148,11 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
         this.stock = stock;
     }
 
-    public float getTamanioLoteEstandar() {
+    public int getTamanioLoteEstandar() {
         return tamanioLoteEstandar;
     }
 
-    public void setTamanioLoteEstandar(float tamanioLoteEstandar) {
+    public void setTamanioLoteEstandar(int tamanioLoteEstandar) {
         this.tamanioLoteEstandar = tamanioLoteEstandar;
     }
 
