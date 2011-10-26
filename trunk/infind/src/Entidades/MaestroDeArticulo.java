@@ -27,7 +27,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private Long id;
     private Boolean eliminado;
     private char categoria;
-    private String condigo;
+    private String codigo;
     private float costoEstandar;
     private float costoUnitarioPorOmision;
     private String descripcion;
@@ -60,12 +60,12 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
         this.categoria = categoria;
     }
 
-    public String getCondigo() {
-        return condigo;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCondigo(String condigo) {
-        this.condigo = condigo;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public float getCostoEstandar() {

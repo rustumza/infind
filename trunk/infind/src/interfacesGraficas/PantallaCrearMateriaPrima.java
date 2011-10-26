@@ -10,16 +10,29 @@
  */
 package interfacesGraficas;
 
+import interfacesGraficas.Controladores.ControladorMateriaPrima;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
 /**
  *
  * @author rustu
  */
 public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
-
+    
+    ControladorMateriaPrima controlador;
+    
     /** Creates new form NewJDialog */
-    public PantallaCrearMateriaPrima(java.awt.Frame parent, boolean modal) {
+    public PantallaCrearMateriaPrima(java.awt.Frame parent, boolean modal, ControladorMateriaPrima controladorMP) {
         super(parent, modal);
         initComponents();
+        controlador = controladorMP;
     }
 
     /** This method is called from within the constructor to
@@ -33,7 +46,9 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         panelPrincipal = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -71,11 +86,28 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         toolbar.setRollover(true);
 
-        jButton1.setText("jButton1");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolbar.add(jButton1);
+        guardar.setText("Guardar");
+        guardar.setFocusable(false);
+        guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
+        toolbar.add(guardar);
+
+        cancelar.setText("Cancelar");
+        cancelar.setFocusable(false);
+        cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(cancelar);
+
+        salir.setText("Salir");
+        salir.setFocusable(false);
+        salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(salir);
 
         descripcionTextArea.setColumns(20);
         descripcionTextArea.setRows(5);
@@ -110,6 +142,11 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         categoriaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
 
         estadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
+        estadoListBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoListBoxActionPerformed(evt);
+            }
+        });
 
         observacionTextArea.setColumns(20);
         observacionTextArea.setRows(5);
@@ -268,11 +305,24 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
+    if(((String)estadoListBox.getModel().getSelectedItem()).equals("Inactivo")){
+        estadoFechaEntrarActividadTextBox.setEditable(true);
+    }else{
+        estadoFechaEntrarActividadTextBox.setEditable(false);
+    }
+}//GEN-LAST:event_estadoListBoxActionPerformed
+
+private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+    controlador.guardar();
+}//GEN-LAST:event_guardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelar;
     private javax.swing.JLabel categoriaLabel;
     private javax.swing.JComboBox categoriaListBox;
     private javax.swing.JLabel codigoLabel;
@@ -288,7 +338,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private javax.swing.JComboBox estadoListBox;
     private javax.swing.JLabel fechaDeVencimientoLabel;
     private javax.swing.JTextField fechaVencimientoTextBox;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -301,6 +351,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
     private javax.swing.JTextField precioBaseTextBox;
+    private javax.swing.JButton salir;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
     private javax.swing.JToolBar toolbar;
@@ -309,4 +360,311 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
     private javax.swing.JLabel unidadDeMedidaLabel;
     private javax.swing.JComboBox unidadDeMedidaListBox;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getCancelar() {
+        return cancelar;
+    }
+
+    public void setCancelar(JButton cancelar) {
+        this.cancelar = cancelar;
+    }
+
+    public JLabel getCategoriaLabel() {
+        return categoriaLabel;
+    }
+
+    public void setCategoriaLabel(JLabel categoriaLabel) {
+        this.categoriaLabel = categoriaLabel;
+    }
+
+    public JComboBox getCategoriaListBox() {
+        return categoriaListBox;
+    }
+
+    public void setCategoriaListBox(JComboBox categoriaListBox) {
+        this.categoriaListBox = categoriaListBox;
+    }
+
+    public JLabel getCodigoLabel() {
+        return codigoLabel;
+    }
+
+    public void setCodigoLabel(JLabel codigoLabel) {
+        this.codigoLabel = codigoLabel;
+    }
+
+    public JTextField getCodigoTextBox() {
+        return codigoTextBox;
+    }
+
+    public void setCodigoTextBox(JTextField codigoTextBox) {
+        this.codigoTextBox = codigoTextBox;
+    }
+
+    public ControladorMateriaPrima getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorMateriaPrima controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getCostoEstandarLabel() {
+        return costoEstandarLabel;
+    }
+
+    public void setCostoEstandarLabel(JLabel costoEstandarLabel) {
+        this.costoEstandarLabel = costoEstandarLabel;
+    }
+
+    public JTextField getCostoEstandarTextBox() {
+        return costoEstandarTextBox;
+    }
+
+    public void setCostoEstandarTextBox(JTextField costoEstandarTextBox) {
+        this.costoEstandarTextBox = costoEstandarTextBox;
+    }
+
+    public JLabel getCostoUnitarioPorOmisionLabel() {
+        return costoUnitarioPorOmisionLabel;
+    }
+
+    public void setCostoUnitarioPorOmisionLabel(JLabel costoUnitarioPorOmisionLabel) {
+        this.costoUnitarioPorOmisionLabel = costoUnitarioPorOmisionLabel;
+    }
+
+    public JTextField getCostoUnitarioPorOmisionTextBox() {
+        return costoUnitarioPorOmisionTextBox;
+    }
+
+    public void setCostoUnitarioPorOmisionTextBox(JTextField costoUnitarioPorOmisionTextBox) {
+        this.costoUnitarioPorOmisionTextBox = costoUnitarioPorOmisionTextBox;
+    }
+
+    public JLabel getDescripcionLabel() {
+        return descripcionLabel;
+    }
+
+    public void setDescripcionLabel(JLabel descripcionLabel) {
+        this.descripcionLabel = descripcionLabel;
+    }
+
+    public JTextArea getDescripcionTextArea() {
+        return descripcionTextArea;
+    }
+
+    public void setDescripcionTextArea(JTextArea descripcionTextArea) {
+        this.descripcionTextArea = descripcionTextArea;
+    }
+
+    public JTextField getEstadoFechaEntrarActividadTextBox() {
+        return estadoFechaEntrarActividadTextBox;
+    }
+
+    public void setEstadoFechaEntrarActividadTextBox(JTextField estadoFechaEntrarActividadTextBox) {
+        this.estadoFechaEntrarActividadTextBox = estadoFechaEntrarActividadTextBox;
+    }
+
+    public JLabel getEstadoLabel() {
+        return estadoLabel;
+    }
+
+    public void setEstadoLabel(JLabel estadoLabel) {
+        this.estadoLabel = estadoLabel;
+    }
+
+    public JComboBox getEstadoListBox() {
+        return estadoListBox;
+    }
+
+    public void setEstadoListBox(JComboBox estadoListBox) {
+        this.estadoListBox = estadoListBox;
+    }
+
+    public JLabel getFechaDeVencimientoLabel() {
+        return fechaDeVencimientoLabel;
+    }
+
+    public void setFechaDeVencimientoLabel(JLabel fechaDeVencimientoLabel) {
+        this.fechaDeVencimientoLabel = fechaDeVencimientoLabel;
+    }
+
+    public JTextField getFechaVencimientoTextBox() {
+        return fechaVencimientoTextBox;
+    }
+
+    public void setFechaVencimientoTextBox(JTextField fechaVencimientoTextBox) {
+        this.fechaVencimientoTextBox = fechaVencimientoTextBox;
+    }
+
+    public JButton getGuardar() {
+        return guardar;
+    }
+
+    public void setGuardar(JButton guardar) {
+        this.guardar = guardar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JLabel getNombreLabel() {
+        return nombreLabel;
+    }
+
+    public void setNombreLabel(JLabel nombreLabel) {
+        this.nombreLabel = nombreLabel;
+    }
+
+    public JTextField getNombreTextBox() {
+        return nombreTextBox;
+    }
+
+    public void setNombreTextBox(JTextField nombreTextBox) {
+        this.nombreTextBox = nombreTextBox;
+    }
+
+    public JLabel getObservacionLabel() {
+        return observacionLabel;
+    }
+
+    public void setObservacionLabel(JLabel observacionLabel) {
+        this.observacionLabel = observacionLabel;
+    }
+
+    public JTextArea getObservacionTextArea() {
+        return observacionTextArea;
+    }
+
+    public void setObservacionTextArea(JTextArea observacionTextArea) {
+        this.observacionTextArea = observacionTextArea;
+    }
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public void setPanelPrincipal(JPanel panelPrincipal) {
+        this.panelPrincipal = panelPrincipal;
+    }
+
+    public JLabel getPrecioBaseLabel() {
+        return precioBaseLabel;
+    }
+
+    public void setPrecioBaseLabel(JLabel precioBaseLabel) {
+        this.precioBaseLabel = precioBaseLabel;
+    }
+
+    public JTextField getPrecioBaseTextBox() {
+        return precioBaseTextBox;
+    }
+
+    public void setPrecioBaseTextBox(JTextField precioBaseTextBox) {
+        this.precioBaseTextBox = precioBaseTextBox;
+    }
+
+    public JButton getSalir() {
+        return salir;
+    }
+
+    public void setSalir(JButton salir) {
+        this.salir = salir;
+    }
+
+    public JTextField getTamanioLoteEstandarTextBox() {
+        return tamanioLoteEstandarTextBox;
+    }
+
+    public void setTamanioLoteEstandarTextBox(JTextField tamanioLoteEstandarTextBox) {
+        this.tamanioLoteEstandarTextBox = tamanioLoteEstandarTextBox;
+    }
+
+    public JLabel getTamañoLoteEstandarLabel() {
+        return tamañoLoteEstandarLabel;
+    }
+
+    public void setTamañoLoteEstandarLabel(JLabel tamañoLoteEstandarLabel) {
+        this.tamañoLoteEstandarLabel = tamañoLoteEstandarLabel;
+    }
+
+    public JToolBar getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(JToolBar toolbar) {
+        this.toolbar = toolbar;
+    }
+
+    public JTextField getUbicacionAlamcenTextBox() {
+        return ubicacionAlamcenTextBox;
+    }
+
+    public void setUbicacionAlamcenTextBox(JTextField ubicacionAlamcenTextBox) {
+        this.ubicacionAlamcenTextBox = ubicacionAlamcenTextBox;
+    }
+
+    public JLabel getUbicacionEnElAlmacenLabel() {
+        return ubicacionEnElAlmacenLabel;
+    }
+
+    public void setUbicacionEnElAlmacenLabel(JLabel ubicacionEnElAlmacenLabel) {
+        this.ubicacionEnElAlmacenLabel = ubicacionEnElAlmacenLabel;
+    }
+
+    public JLabel getUnidadDeMedidaLabel() {
+        return unidadDeMedidaLabel;
+    }
+
+    public void setUnidadDeMedidaLabel(JLabel unidadDeMedidaLabel) {
+        this.unidadDeMedidaLabel = unidadDeMedidaLabel;
+    }
+
+    public JComboBox getUnidadDeMedidaListBox() {
+        return unidadDeMedidaListBox;
+    }
+
+    public void setUnidadDeMedidaListBox(JComboBox unidadDeMedidaListBox) {
+        this.unidadDeMedidaListBox = unidadDeMedidaListBox;
+    }
+
+
+
 }
