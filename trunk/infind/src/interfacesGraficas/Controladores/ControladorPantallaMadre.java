@@ -53,6 +53,15 @@ public class ControladorPantallaMadre {
         
     }
     
+    public void crearOperario(){
+        new ControladorOperarios(this).crearOperario();
+        
+    }
+    
+    public void editarOperario(){
+        new ControladorOperarios(this).editarOperario();
+    }
+    
     
     
     

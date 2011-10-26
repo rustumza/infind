@@ -61,6 +61,9 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearCentro = new javax.swing.JMenuItem();
         editarCentro = new javax.swing.JMenuItem();
         rutaDeFabricacion = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        menuIngresarOperarios = new javax.swing.JMenuItem();
+        menuEditarOperarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -160,6 +163,26 @@ public class PantallaMadre extends javax.swing.JFrame {
         rutaDeFabricacion.setMargin(new java.awt.Insets(2, 2, 2, 12));
         jMenuBar1.add(rutaDeFabricacion);
 
+        jMenu2.setText("Operarios");
+
+        menuIngresarOperarios.setText("Ingresar Operarios");
+        menuIngresarOperarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuIngresarOperariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuIngresarOperarios);
+
+        menuEditarOperarios.setText("Editar Operarios");
+        menuEditarOperarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarOperariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuEditarOperarios);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,6 +218,14 @@ private void editarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
     System.exit(0);
 }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void menuIngresarOperariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuIngresarOperariosActionPerformed
+        controlador.crearOperario();
+    }//GEN-LAST:event_menuIngresarOperariosActionPerformed
+
+    private void menuEditarOperariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarOperariosActionPerformed
+        controlador.editarOperario();
+    }//GEN-LAST:event_menuEditarOperariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,11 +275,14 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
     private javax.swing.JMenuItem listarProductosIntermedios;
+    private javax.swing.JMenuItem menuEditarOperarios;
+    private javax.swing.JMenuItem menuIngresarOperarios;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables
 
