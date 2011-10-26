@@ -6,6 +6,7 @@ package interfacesGraficas.Controladores;
 
 import DTOs.DTOCentro;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.Numerador;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoCentroDeTrabajoException;
 import expertos.ExpertoCentroDeTrabajo;
@@ -131,7 +132,7 @@ public class ControladorCentroDeTrabajo {
         } else if (pantallaEditarCentro.getjRadioNombre().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(2));
 
-            if (!centroEncontrado.getCodigo().isEmpty()) {
+            if (!centroEncontrado.getNombreCentro().isEmpty()) {
                 pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.getCodigo());
                 pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.getDescripcion());
                 pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.getNombreCentro());
@@ -294,6 +295,10 @@ public class ControladorCentroDeTrabajo {
     public void iniciarCrearCentro() {
         pantallacrearcentro.setVisible(true);
         pantallacrearcentro.setLocationRelativeTo(null);
+        Numerador numerador = new Numerador();
+        numerador.setNombre("7.1.1.");
+        Numerador numero = expertoCentroDeTrabajo.buscarNumerador(numerador);
+        //pantallacrearcentro.getCampoCodigo().setText(numero);
     }
 
     public void iniciarEditarCentro() {
