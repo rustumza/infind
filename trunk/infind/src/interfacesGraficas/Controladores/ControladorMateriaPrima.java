@@ -42,6 +42,30 @@ public class ControladorMateriaPrima {
         matPrim.setDescripcion(pantallaCrearMateriPrima.getDescripcionTextArea().getText());
         matPrim.setUnidadDeMedida((String)pantallaCrearMateriPrima.getUnidadDeMedidaListBox().getModel().getSelectedItem());
         matPrim.setCategoria(((String)pantallaCrearMateriPrima.getCategoriaListBox().getModel().getSelectedItem()).charAt(0));
+        try{
+            matPrim.setCostoEstandar(Float.valueOf(pantallaCrearMateriPrima.getCostoEstandarTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un costo estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearMateriPrima.getCostoEstandarTextBox().requestFocus();
+            return;
+        }
+        
+        try{
+            matPrim.setCostoUnitarioPorOmision(Float.valueOf(pantallaCrearMateriPrima.getCostoUnitarioPorOmisionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un costo unitario por omisión incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearMateriPrima.getCostoUnitarioPorOmisionTextBox().requestFocus();
+            return;      
+        }
+        
+        try{
+            matPrim.setPrecioBase(Float.valueOf(pantallaCrearMateriPrima.getPrecioBaseTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un precio base incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearMateriPrima.getPrecioBaseTextBox().requestFocus();
+            return;       
+        }
+        
         
     }
     
