@@ -10,11 +10,16 @@
  */
 package interfacesGraficas;
 
+import Entidades.Operario;
+import excepciones.ExpertoOperarioException;
 import interfacesGraficas.Controladores.ControladorOperarios;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -29,10 +34,13 @@ import javax.swing.JToolBar;
 public class PantallaEditarOperario extends javax.swing.JDialog {
 
     ControladorOperarios controlador;
+    Operario operarioSeleccionado;
+
     /** Creates new form PantallaEditarOperario */
-    public PantallaEditarOperario(java.awt.Frame parent, boolean modal,ControladorOperarios controladorOper) {
+    public PantallaEditarOperario(java.awt.Frame parent, boolean modal, ControladorOperarios controladorOper) {
         super(parent, modal);
         initComponents();
+        controlador = controladorOper;
     }
 
     /** This method is called from within the constructor to
@@ -72,6 +80,8 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         campoCorreo = new javax.swing.JTextField();
         campoDireccion = new javax.swing.JTextField();
         comboEditarPuesto = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        campoCodigo = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaOperariosEncontrados = new javax.swing.JTable();
@@ -136,6 +146,11 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         grupoBuscarOperario.add(radioBotonCodigo);
         radioBotonCodigo.setSelected(true);
         radioBotonCodigo.setText("Código Operario:");
+        radioBotonCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonCodigoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -145,6 +160,11 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
 
         grupoBuscarOperario.add(radioBotonNombre);
         radioBotonNombre.setText("Nombre Operario:");
+        radioBotonNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonNombreActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -170,6 +190,11 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
 
         botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/edit-find.png"))); // NOI18N
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -190,7 +215,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel1.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
@@ -198,7 +223,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel2.setText("Apellido:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
@@ -206,15 +231,15 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel3.setText("DNI:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("Teléfono:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
@@ -222,7 +247,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel5.setText("Dirección:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel5, gridBagConstraints);
@@ -230,7 +255,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel6.setText("Correo Electrónico:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel6, gridBagConstraints);
@@ -238,7 +263,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         jLabel8.setText("Puesto:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel8, gridBagConstraints);
@@ -246,7 +271,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         campoNombre.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
@@ -255,7 +280,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         campoApellido.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
@@ -264,28 +289,28 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         campoDNI.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(campoDNI, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(campoTelefono, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(campoCorreo, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
@@ -294,11 +319,28 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         comboEditarPuesto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(comboEditarPuesto, gridBagConstraints);
+
+        jLabel9.setText("Código:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel2.add(jLabel9, gridBagConstraints);
+
+        campoCodigo.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
+        jPanel2.add(campoCodigo, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -322,6 +364,11 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaOperariosEncontrados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaOperariosEncontradosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaOperariosEncontrados);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -330,7 +377,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +398,12 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        controlador.actualizarOperario();
+        try {
+            controlador.actualizarOperario();
+        } catch (ExpertoOperarioException ex) {
+            Logger.getLogger(PantallaEditarOperario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
@@ -362,10 +414,39 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
+private void radioBotonCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonCodigoActionPerformed
+    if (radioBotonCodigo.isSelected()) {
+        campoBuscaCodigo.setEnabled(true);
+        campoBuscaNombre.setEnabled(false);
+    }
+}//GEN-LAST:event_radioBotonCodigoActionPerformed
+
+private void radioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonNombreActionPerformed
+    if (radioBotonNombre.isSelected()) {
+        campoBuscaNombre.setEnabled(true);
+        campoBuscaCodigo.setEnabled(false);
+    }
+}//GEN-LAST:event_radioBotonNombreActionPerformed
+
+private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+    try {
+
+        controlador.buscarOperarios();
+    } catch (ExpertoOperarioException ex) {
+        JOptionPane.showMessageDialog(this, "No se encontró ningún Operario", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        controlador.limpiarPantallaEditarOperador();
+    }
+}//GEN-LAST:event_botonBuscarActionPerformed
+
+private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaOperariosEncontradosMouseClicked
+    int fila = getTablaOperariosEncontrados().rowAtPoint(evt.getPoint());
+    int click = evt.getClickCount();
+
+    controlador.tabla(fila, click);
+}//GEN-LAST:event_tablaOperariosEncontradosMouseClicked
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonEliminar;
@@ -374,6 +455,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoBuscaCodigo;
     private javax.swing.JTextField campoBuscaNombre;
+    private javax.swing.JTextField campoCodigo;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDNI;
     private javax.swing.JTextField campoDireccion;
@@ -389,6 +471,7 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -555,6 +638,30 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
         return jLabel6;
     }
 
+    public JTextField getCampoCodigo() {
+        return campoCodigo;
+    }
+
+    public void setCampoCodigo(JTextField campoCodigo) {
+        this.campoCodigo = campoCodigo;
+    }
+
+    public ControladorOperarios getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorOperarios controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
     public void setjLabel6(JLabel jLabel6) {
         this.jLabel6 = jLabel6;
     }
@@ -638,7 +745,4 @@ public class PantallaEditarOperario extends javax.swing.JDialog {
     public void setTablaOperariosEncontrados(JTable tablaOperariosEncontrados) {
         this.tablaOperariosEncontrados = tablaOperariosEncontrados;
     }
-
-    
-    
 }

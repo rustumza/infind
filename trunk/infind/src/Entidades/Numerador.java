@@ -21,8 +21,10 @@ public class Numerador extends ObjetoPersitente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nroTipoClasificacion;
+    private String nombre;
+    private String ultimaClasificacion;
     private String codificacion;
+    private Boolean eliminado = false;
 
     
     
@@ -42,13 +44,33 @@ public class Numerador extends ObjetoPersitente implements Serializable {
         this.codificacion = codificacion;
     }
 
-    public String getNroTipoClasificacion() {
-        return nroTipoClasificacion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNroTipoClasificacion(String nroTipoClasificacion) {
-        this.nroTipoClasificacion = nroTipoClasificacion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public String getUltimaClasificacion() {
+        return ultimaClasificacion;
+    }
+
+    public void setUltimaClasificacion(String ultimaClasificacion) {
+        this.ultimaClasificacion = ultimaClasificacion;
+    }
+    
+    
+    
+    
     
     
 

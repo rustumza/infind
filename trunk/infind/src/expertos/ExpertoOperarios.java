@@ -23,7 +23,9 @@ public class ExpertoOperarios extends Experto {
     public List<Operario> buscarOperarios(DTOOperario dtoOperario) throws ExpertoOperarioException {
 
         List<Operario> operarioEncontrado = null;
-        
+        Operario operarioDevuelto = null;
+
+
         if (dtoOperario == null) {
 
             operarioEncontrado = Fachada.getInstancia().buscar(Operario.class, null);
@@ -44,8 +46,10 @@ public class ExpertoOperarios extends Experto {
 
         }
 
-        
+         
         return operarioEncontrado;
+
+
     }
 
     public void guardar(Operario operario) throws ExpertoOperarioException {
@@ -90,22 +94,21 @@ public class ExpertoOperarios extends Experto {
             return true;
         } else if (operario.getTelefono() == 0) {
             return true;
-        /*} else if (operario.getTipoOperario() == null) {
+            /*} else if (operario.getTipoOperario() == null) {
             return true;*/
         } else {
             return false;
         }
-        
+
 
     }
-    
-    
-    public List<TipoOperario> buscarTipoOperario(){
+
+    public List<TipoOperario> buscarTipoOperario() {
         List<TipoOperario> tipoOperarioEncontrada = null;
 
-       tipoOperarioEncontrada = Fachada.getInstancia().buscar(TipoOperario.class, null);
+        tipoOperarioEncontrada = Fachada.getInstancia().buscar(TipoOperario.class, null);
 
-       return tipoOperarioEncontrada;
+        return tipoOperarioEncontrada;
 
     }
 }

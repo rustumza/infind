@@ -6,6 +6,7 @@ package expertos;
 
 import DTOs.DTOCentro;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.Numerador;
 import excepciones.ExpertoCentroDeTrabajoException;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -17,6 +18,24 @@ import persistencia.Fachada;
  * @author eduardo
  */
 public class ExpertoCentroDeTrabajo extends Experto {
+
+    public Numerador buscarNumerador(Numerador numerador) {
+        
+        List<Numerador> numeroEncontrado = null;
+
+        Criteria criterioCentro = Fachada.getInstancia().crearCriterio(Numerador.class);
+        if (numerador != null) {
+            
+            
+            criterioCentro.add(Restrictions.like("codificacion", numerador.getCodificacion()));
+        }
+
+
+        numeroEncontrado = Fachada.getInstancia().buscar(Numerador.class, criterioCentro);
+        
+
+        return numeroEncontrado.get(0);
+    }
 
     public List<MaestroDeCentroDeTrabajo> buscarCentrosDeTrabajo(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
 
@@ -89,7 +108,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
     }
 
     public void eliminar(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
-        
+
         centro.setEliminado(Boolean.TRUE);
 
         try {
