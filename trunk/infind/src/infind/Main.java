@@ -10,6 +10,7 @@ import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import excepciones.ExpertoCentroDeTrabajoException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +32,6 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-
             UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,18 +41,21 @@ public class Main {
         Conexion.getInstancia().getSession();
         //ControladorPantallaMadre cpm = new ControladorPantallaMadre();
         //cpm.iniciar();
-
+        Date fechaSistema = new Date();
         List<MaestroDeArticulo> articulosDisponibles = null;
-        Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
+        Criteria criterioArticulo = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeArticulo.class);
         criterioArticulo.add(Restrictions.eq("eliminado", true));
         articulosDisponibles = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioArticulo);
         for (MaestroDeArticulo maestroDeArticulo : articulosDisponibles) {
-            System.out.println("Eliminado ??? : " + maestroDeArticulo.getEliminado());
+            if (maestroDeArticulo.getFechaEntrarEnActividad().before(fechaSistema) || maestroDeArticulo.getFechaEntrarEnActividad().equals(fechaSistema)) {
+                System.out.println("Eliminado?: " + maestroDeArticulo.getEliminado() + "  Nombre: " + maestroDeArticulo.getNombre());
+                maestroDeArticulo.setFechaEntrarEnActividad(null);
+                maestroDeArticulo.setEliminado(Boolean.FALSE);
+      //TODO:
+                //Esta comentada por el tema de la persistencia
+                //Fachada.getInstancia().guardar(maestroDeArticulo);
+            }
         }
-
-
-
-
 
         new ControladorPantallaMadre().iniciar();
     }
