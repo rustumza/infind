@@ -151,7 +151,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuIngresarOperarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingresar Operarios"/>
+                <Property name="text" type="java.lang.String" value="Crear Operarios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuIngresarOperariosActionPerformed"/>

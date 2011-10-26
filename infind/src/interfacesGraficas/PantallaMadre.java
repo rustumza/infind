@@ -165,7 +165,7 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenu2.setText("Operarios");
 
-        menuIngresarOperarios.setText("Ingresar Operarios");
+        menuIngresarOperarios.setText("Crear Operarios");
         menuIngresarOperarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuIngresarOperariosActionPerformed(evt);

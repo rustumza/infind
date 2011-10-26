@@ -22,6 +22,7 @@ public class Operario extends ObjetoPersitente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String codigoOperario;
     private String nombre;
     private String apellido;
     private int dni;
@@ -103,6 +104,16 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public void setTipoOperario(TipoOperario tipoOperario) {
         this.tipoOperario = tipoOperario;
     }
+
+    public String getCodigoOperario() {
+        return codigoOperario;
+    }
+
+    public void setCodigoOperario(String codigoOperario) {
+        this.codigoOperario = codigoOperario;
+    }
+    
+    
     
     
     

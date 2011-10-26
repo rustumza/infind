@@ -22,6 +22,7 @@ public class TipoOperario implements Serializable {
     private Long id;
     private String numeroTipoOperario;
     private String nombre;
+    private Boolean eliminado = false;
 
     public Long getId() {
         return id;
@@ -46,6 +47,15 @@ public class TipoOperario implements Serializable {
     public void setNumeroTipoOperario(String numeroTipoOperario) {
         this.numeroTipoOperario = numeroTipoOperario;
     }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+    
     
     
 
