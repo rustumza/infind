@@ -10,9 +10,16 @@
  */
 package interfacesGraficas;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -37,6 +44,8 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         grupoMaquinas = new javax.swing.ButtonGroup();
+        grupoOperarios = new javax.swing.ButtonGroup();
+        grupoHerramientas = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         botonGuardar = new javax.swing.JButton();
@@ -50,41 +59,41 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         campoDescripcion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        radioBotonBuscaCodigo = new javax.swing.JRadioButton();
-        radioBotonBuscaNombre = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        botonBuscarMaquinas = new javax.swing.JButton();
+        radioBotonBuscaCodigoMaquinas = new javax.swing.JRadioButton();
+        radioBotonBuscaNombreMaquinas = new javax.swing.JRadioButton();
+        campoBuscaCodigoMaquinaNuevo = new javax.swing.JTextField();
+        campoBuscaNombreMaquinaNuevo = new javax.swing.JTextField();
+        botonBuscarMaquinasNuevo = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablaAgregaMaquina = new javax.swing.JTable();
+        tablaBuscaMaquinaNuevo = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tablaAgregaMaquinaNuevo = new javax.swing.JTable();
+        botonEliminarMaquinaAgregada = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        radioBotonCodigoOperario = new javax.swing.JRadioButton();
+        radioBotonApellidoOperario = new javax.swing.JRadioButton();
+        campoBuscaCodigoOperarioNuevo = new javax.swing.JTextField();
+        campoBuscaApellidoOperarioNuevo = new javax.swing.JTextField();
+        botonBuscaOperarioNuevo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaBuscaOperariosNuevo = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
+        tablaAgregaOperariosNuevo = new javax.swing.JTable();
+        botonEliminarOperarioAgregado = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        radioBotonCodigoHerramientas = new javax.swing.JRadioButton();
+        radioBotonNombreHerramientas = new javax.swing.JRadioButton();
+        campoBuscaCodigoHerramientaNuevo = new javax.swing.JTextField();
+        campoBuscaNombreHerramientaNuevo = new javax.swing.JTextField();
+        botonBuscaHerramientaNuevo = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaBuscaHerramientaNuevo = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        tablaAgregaHerramientaNuevo = new javax.swing.JTable();
+        botonEliminarHerramientaAgregada = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear centro de trabajo");
@@ -175,55 +184,67 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 10, 20);
         jPanel1.add(jPanel2, gridBagConstraints);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Máquinas"));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        grupoMaquinas.add(radioBotonBuscaCodigo);
-        radioBotonBuscaCodigo.setSelected(true);
-        radioBotonBuscaCodigo.setText("Código:");
+        grupoMaquinas.add(radioBotonBuscaCodigoMaquinas);
+        radioBotonBuscaCodigoMaquinas.setSelected(true);
+        radioBotonBuscaCodigoMaquinas.setText("Código:");
+        radioBotonBuscaCodigoMaquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaCodigoMaquinasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
-        jPanel3.add(radioBotonBuscaCodigo, gridBagConstraints);
+        jPanel3.add(radioBotonBuscaCodigoMaquinas, gridBagConstraints);
 
-        grupoMaquinas.add(radioBotonBuscaNombre);
-        radioBotonBuscaNombre.setText("Nombre:");
+        grupoMaquinas.add(radioBotonBuscaNombreMaquinas);
+        radioBotonBuscaNombreMaquinas.setText("Nombre:");
+        radioBotonBuscaNombreMaquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaNombreMaquinasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel3.add(radioBotonBuscaNombre, gridBagConstraints);
+        jPanel3.add(radioBotonBuscaNombreMaquinas, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        jPanel3.add(jTextField1, gridBagConstraints);
+        jPanel3.add(campoBuscaCodigoMaquinaNuevo, gridBagConstraints);
+
+        campoBuscaNombreMaquinaNuevo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
-        jPanel3.add(jTextField2, gridBagConstraints);
+        jPanel3.add(campoBuscaNombreMaquinaNuevo, gridBagConstraints);
 
-        botonBuscarMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
-        botonBuscarMaquinas.setText("Buscar");
+        botonBuscarMaquinasNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscarMaquinasNuevo.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(botonBuscarMaquinas, gridBagConstraints);
+        jPanel3.add(botonBuscarMaquinasNuevo, gridBagConstraints);
 
-        tablaAgregaMaquina.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBuscaMaquinaNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -234,7 +255,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tablaAgregaMaquina);
+        jScrollPane3.setViewportView(tablaBuscaMaquinaNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -249,7 +270,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Máquinas Agregadas"));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAgregaMaquinaNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -260,7 +281,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaAgregaMaquinaNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -274,15 +295,15 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 10, 10);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        jButton1.setText("Eliminar");
-        jButton1.setToolTipText("Eliminar Máquina");
+        botonEliminarMaquinaAgregada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarMaquinaAgregada.setText("Eliminar");
+        botonEliminarMaquinaAgregada.setToolTipText("Eliminar Máquina");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 15, 0);
-        jPanel4.add(jButton1, gridBagConstraints);
+        jPanel4.add(botonEliminarMaquinaAgregada, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -303,32 +324,46 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Operarios"));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        jRadioButton1.setText("Código:");
+        grupoOperarios.add(radioBotonCodigoOperario);
+        radioBotonCodigoOperario.setSelected(true);
+        radioBotonCodigoOperario.setText("Código:");
+        radioBotonCodigoOperario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonCodigoOperarioActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
-        jPanel5.add(jRadioButton1, gridBagConstraints);
+        jPanel5.add(radioBotonCodigoOperario, gridBagConstraints);
 
-        jRadioButton2.setText("Apellido:");
+        grupoOperarios.add(radioBotonApellidoOperario);
+        radioBotonApellidoOperario.setText("Apellido:");
+        radioBotonApellidoOperario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonApellidoOperarioActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel5.add(jRadioButton2, gridBagConstraints);
+        jPanel5.add(radioBotonApellidoOperario, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        jPanel5.add(jTextField3, gridBagConstraints);
+        jPanel5.add(campoBuscaCodigoOperarioNuevo, gridBagConstraints);
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        campoBuscaApellidoOperarioNuevo.setEnabled(false);
+        campoBuscaApellidoOperarioNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                campoBuscaApellidoOperarioNuevoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -337,18 +372,18 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
-        jPanel5.add(jTextField4, gridBagConstraints);
+        jPanel5.add(campoBuscaApellidoOperarioNuevo, gridBagConstraints);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
-        jButton2.setText("Buscar");
+        botonBuscaOperarioNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscaOperarioNuevo.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel5.add(jButton2, gridBagConstraints);
+        jPanel5.add(botonBuscaOperarioNuevo, gridBagConstraints);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBuscaOperariosNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -359,7 +394,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable2);
+        jScrollPane4.setViewportView(tablaBuscaOperariosNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -374,7 +409,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Operarios Agregados"));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAgregaOperariosNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -385,7 +420,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(jTable3);
+        jScrollPane5.setViewportView(tablaAgregaOperariosNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -399,14 +434,14 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel6.add(jScrollPane5, gridBagConstraints);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        jButton5.setText("Eliminar");
+        botonEliminarOperarioAgregado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarOperarioAgregado.setText("Eliminar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
-        jPanel6.add(jButton5, gridBagConstraints);
+        jPanel6.add(botonEliminarOperarioAgregado, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -421,52 +456,67 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel1.add(jPanel5, gridBagConstraints);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Herramientas"));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
-        jRadioButton3.setText("Codigo:");
+        grupoHerramientas.add(radioBotonCodigoHerramientas);
+        radioBotonCodigoHerramientas.setSelected(true);
+        radioBotonCodigoHerramientas.setText("Codigo:");
+        radioBotonCodigoHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonCodigoHerramientasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
-        jPanel7.add(jRadioButton3, gridBagConstraints);
+        jPanel7.add(radioBotonCodigoHerramientas, gridBagConstraints);
 
-        jRadioButton4.setText("Nombre:");
+        grupoHerramientas.add(radioBotonNombreHerramientas);
+        radioBotonNombreHerramientas.setText("Nombre:");
+        radioBotonNombreHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonNombreHerramientasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel7.add(jRadioButton4, gridBagConstraints);
+        jPanel7.add(radioBotonNombreHerramientas, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 0, 0);
-        jPanel7.add(jTextField5, gridBagConstraints);
+        jPanel7.add(campoBuscaCodigoHerramientaNuevo, gridBagConstraints);
+
+        campoBuscaNombreHerramientaNuevo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
-        jPanel7.add(jTextField6, gridBagConstraints);
+        jPanel7.add(campoBuscaNombreHerramientaNuevo, gridBagConstraints);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
-        jButton3.setText("Buscar");
+        botonBuscaHerramientaNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscaHerramientaNuevo.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel7.add(jButton3, gridBagConstraints);
+        jPanel7.add(botonBuscaHerramientaNuevo, gridBagConstraints);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBuscaHerramientaNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -477,7 +527,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable4);
+        jScrollPane6.setViewportView(tablaBuscaHerramientaNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -492,7 +542,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Herramientas Agregadas"));
         jPanel8.setLayout(new java.awt.GridBagLayout());
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAgregaHerramientaNuevo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -503,7 +553,7 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane7.setViewportView(jTable5);
+        jScrollPane7.setViewportView(tablaAgregaHerramientaNuevo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -517,14 +567,14 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel8.add(jScrollPane7, gridBagConstraints);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        jButton4.setText("Eliminar");
+        botonEliminarHerramientaAgregada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarHerramientaAgregada.setText("Eliminar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
-        jPanel8.add(jButton4, gridBagConstraints);
+        jPanel8.add(botonEliminarHerramientaAgregada, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -561,26 +611,76 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void campoBuscaApellidoOperarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscaApellidoOperarioNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_campoBuscaApellidoOperarioNuevoActionPerformed
+
+    private void radioBotonCodigoOperarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonCodigoOperarioActionPerformed
+        if (radioBotonCodigoOperario.isSelected()) {
+        campoBuscaCodigoOperarioNuevo.setEnabled(true);
+        campoBuscaApellidoOperarioNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonCodigoOperarioActionPerformed
+
+    private void radioBotonApellidoOperarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonApellidoOperarioActionPerformed
+        if (radioBotonApellidoOperario.isSelected()) {
+        campoBuscaApellidoOperarioNuevo.setEnabled(true);
+        campoBuscaCodigoOperarioNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonApellidoOperarioActionPerformed
+
+    private void radioBotonBuscaCodigoMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaCodigoMaquinasActionPerformed
+        if (radioBotonBuscaCodigoMaquinas.isSelected()) {
+        campoBuscaCodigoMaquinaNuevo.setEnabled(true);
+        campoBuscaNombreMaquinaNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaCodigoMaquinasActionPerformed
+
+    private void radioBotonBuscaNombreMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaNombreMaquinasActionPerformed
+        if (radioBotonBuscaNombreMaquinas.isSelected()) {
+        campoBuscaNombreMaquinaNuevo.setEnabled(true);
+        campoBuscaCodigoMaquinaNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaNombreMaquinasActionPerformed
+
+    private void radioBotonCodigoHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonCodigoHerramientasActionPerformed
+       if (radioBotonCodigoHerramientas.isSelected()) {
+        campoBuscaCodigoHerramientaNuevo.setEnabled(true);
+        campoBuscaNombreHerramientaNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonCodigoHerramientasActionPerformed
+
+    private void radioBotonNombreHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonNombreHerramientasActionPerformed
+        if (radioBotonNombreHerramientas.isSelected()) {
+        campoBuscaNombreHerramientaNuevo.setEnabled(true);
+        campoBuscaCodigoHerramientaNuevo.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonNombreHerramientasActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscarMaquinas;
+    private javax.swing.JButton botonBuscaHerramientaNuevo;
+    private javax.swing.JButton botonBuscaOperarioNuevo;
+    private javax.swing.JButton botonBuscarMaquinasNuevo;
+    private javax.swing.JButton botonEliminarHerramientaAgregada;
+    private javax.swing.JButton botonEliminarMaquinaAgregada;
+    private javax.swing.JButton botonEliminarOperarioAgregado;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField campoBuscaApellidoOperarioNuevo;
+    private javax.swing.JTextField campoBuscaCodigoHerramientaNuevo;
+    private javax.swing.JTextField campoBuscaCodigoMaquinaNuevo;
+    private javax.swing.JTextField campoBuscaCodigoOperarioNuevo;
+    private javax.swing.JTextField campoBuscaNombreHerramientaNuevo;
+    private javax.swing.JTextField campoBuscaNombreMaquinaNuevo;
     private javax.swing.JTextField campoCodigo;
     private javax.swing.JTextArea campoDescripcion;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.ButtonGroup grupoHerramientas;
     private javax.swing.ButtonGroup grupoMaquinas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.ButtonGroup grupoOperarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -592,10 +692,6 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -603,21 +699,19 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JRadioButton radioBotonBuscaCodigo;
-    private javax.swing.JRadioButton radioBotonBuscaNombre;
-    private javax.swing.JTable tablaAgregaMaquina;
+    private javax.swing.JRadioButton radioBotonApellidoOperario;
+    private javax.swing.JRadioButton radioBotonBuscaCodigoMaquinas;
+    private javax.swing.JRadioButton radioBotonBuscaNombreMaquinas;
+    private javax.swing.JRadioButton radioBotonCodigoHerramientas;
+    private javax.swing.JRadioButton radioBotonCodigoOperario;
+    private javax.swing.JRadioButton radioBotonNombreHerramientas;
+    private javax.swing.JTable tablaAgregaHerramientaNuevo;
+    private javax.swing.JTable tablaAgregaMaquinaNuevo;
+    private javax.swing.JTable tablaAgregaOperariosNuevo;
+    private javax.swing.JTable tablaBuscaHerramientaNuevo;
+    private javax.swing.JTable tablaBuscaMaquinaNuevo;
+    private javax.swing.JTable tablaBuscaOperariosNuevo;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBotonGuardar() {
@@ -659,6 +753,376 @@ public class PantallaCrearCentro extends javax.swing.JDialog {
     public void setCampoNombre(JTextField campoNombre) {
         this.campoNombre = campoNombre;
     }
+
+    public JButton getBotonBuscaHerramientaNuevo() {
+        return botonBuscaHerramientaNuevo;
+    }
+
+    public void setBotonBuscaHerramientaNuevo(JButton botonBuscaHerramientaNuevo) {
+        this.botonBuscaHerramientaNuevo = botonBuscaHerramientaNuevo;
+    }
+
+    public JButton getBotonBuscaOperarioNuevo() {
+        return botonBuscaOperarioNuevo;
+    }
+
+    public void setBotonBuscaOperarioNuevo(JButton botonBuscaOperarioNuevo) {
+        this.botonBuscaOperarioNuevo = botonBuscaOperarioNuevo;
+    }
+
+    public JButton getBotonBuscarMaquinasNuevo() {
+        return botonBuscarMaquinasNuevo;
+    }
+
+    public void setBotonBuscarMaquinasNuevo(JButton botonBuscarMaquinasNuevo) {
+        this.botonBuscarMaquinasNuevo = botonBuscarMaquinasNuevo;
+    }
+
+    public JButton getBotonEliminarHerramientaAgregada() {
+        return botonEliminarHerramientaAgregada;
+    }
+
+    public void setBotonEliminarHerramientaAgregada(JButton botonEliminarHerramientaAgregada) {
+        this.botonEliminarHerramientaAgregada = botonEliminarHerramientaAgregada;
+    }
+
+    public JButton getBotonEliminarMaquinaAgregada() {
+        return botonEliminarMaquinaAgregada;
+    }
+
+    public void setBotonEliminarMaquinaAgregada(JButton botonEliminarMaquinaAgregada) {
+        this.botonEliminarMaquinaAgregada = botonEliminarMaquinaAgregada;
+    }
+
+    public JButton getBotonEliminarOperarioAgregado() {
+        return botonEliminarOperarioAgregado;
+    }
+
+    public void setBotonEliminarOperarioAgregado(JButton botonEliminarOperarioAgregado) {
+        this.botonEliminarOperarioAgregado = botonEliminarOperarioAgregado;
+    }
+
+    public JTextField getCampoBuscaApellidoOperarioNuevo() {
+        return campoBuscaApellidoOperarioNuevo;
+    }
+
+    public void setCampoBuscaApellidoOperarioNuevo(JTextField campoBuscaApellidoOperarioNuevo) {
+        this.campoBuscaApellidoOperarioNuevo = campoBuscaApellidoOperarioNuevo;
+    }
+
+    public JTextField getCampoBuscaCodigoHerramientaNuevo() {
+        return campoBuscaCodigoHerramientaNuevo;
+    }
+
+    public void setCampoBuscaCodigoHerramientaNuevo(JTextField campoBuscaCodigoHerramientaNuevo) {
+        this.campoBuscaCodigoHerramientaNuevo = campoBuscaCodigoHerramientaNuevo;
+    }
+
+    public JTextField getCampoBuscaCodigoMaquinaNuevo() {
+        return campoBuscaCodigoMaquinaNuevo;
+    }
+
+    public void setCampoBuscaCodigoMaquinaNuevo(JTextField campoBuscaCodigoMaquinaNuevo) {
+        this.campoBuscaCodigoMaquinaNuevo = campoBuscaCodigoMaquinaNuevo;
+    }
+
+    public JTextField getCampoBuscaCodigoOperarioNuevo() {
+        return campoBuscaCodigoOperarioNuevo;
+    }
+
+    public void setCampoBuscaCodigoOperarioNuevo(JTextField campoBuscaCodigoOperarioNuevo) {
+        this.campoBuscaCodigoOperarioNuevo = campoBuscaCodigoOperarioNuevo;
+    }
+
+    public JTextField getCampoBuscaNombreHerramientaNuevo() {
+        return campoBuscaNombreHerramientaNuevo;
+    }
+
+    public void setCampoBuscaNombreHerramientaNuevo(JTextField campoBuscaNombreHerramientaNuevo) {
+        this.campoBuscaNombreHerramientaNuevo = campoBuscaNombreHerramientaNuevo;
+    }
+
+    public JTextField getCampoBuscaNombreMaquinaNuevo() {
+        return campoBuscaNombreMaquinaNuevo;
+    }
+
+    public void setCampoBuscaNombreMaquinaNuevo(JTextField campoBuscaNombreMaquinaNuevo) {
+        this.campoBuscaNombreMaquinaNuevo = campoBuscaNombreMaquinaNuevo;
+    }
+
+    public ButtonGroup getGrupoHerramientas() {
+        return grupoHerramientas;
+    }
+
+    public void setGrupoHerramientas(ButtonGroup grupoHerramientas) {
+        this.grupoHerramientas = grupoHerramientas;
+    }
+
+    public ButtonGroup getGrupoMaquinas() {
+        return grupoMaquinas;
+    }
+
+    public void setGrupoMaquinas(ButtonGroup grupoMaquinas) {
+        this.grupoMaquinas = grupoMaquinas;
+    }
+
+    public ButtonGroup getGrupoOperarios() {
+        return grupoOperarios;
+    }
+
+    public void setGrupoOperarios(ButtonGroup grupoOperarios) {
+        this.grupoOperarios = grupoOperarios;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JPanel getjPanel6() {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6) {
+        this.jPanel6 = jPanel6;
+    }
+
+    public JPanel getjPanel7() {
+        return jPanel7;
+    }
+
+    public void setjPanel7(JPanel jPanel7) {
+        this.jPanel7 = jPanel7;
+    }
+
+    public JPanel getjPanel8() {
+        return jPanel8;
+    }
+
+    public void setjPanel8(JPanel jPanel8) {
+        this.jPanel8 = jPanel8;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4) {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JScrollPane getjScrollPane5() {
+        return jScrollPane5;
+    }
+
+    public void setjScrollPane5(JScrollPane jScrollPane5) {
+        this.jScrollPane5 = jScrollPane5;
+    }
+
+    public JScrollPane getjScrollPane6() {
+        return jScrollPane6;
+    }
+
+    public void setjScrollPane6(JScrollPane jScrollPane6) {
+        this.jScrollPane6 = jScrollPane6;
+    }
+
+    public JScrollPane getjScrollPane7() {
+        return jScrollPane7;
+    }
+
+    public void setjScrollPane7(JScrollPane jScrollPane7) {
+        this.jScrollPane7 = jScrollPane7;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    public JRadioButton getRadioBotonApellidoOperario() {
+        return radioBotonApellidoOperario;
+    }
+
+    public void setRadioBotonApellidoOperario(JRadioButton radioBotonApellidoOperario) {
+        this.radioBotonApellidoOperario = radioBotonApellidoOperario;
+    }
+
+    public JRadioButton getRadioBotonBuscaCodigoMaquinas() {
+        return radioBotonBuscaCodigoMaquinas;
+    }
+
+    public void setRadioBotonBuscaCodigoMaquinas(JRadioButton radioBotonBuscaCodigoMaquinas) {
+        this.radioBotonBuscaCodigoMaquinas = radioBotonBuscaCodigoMaquinas;
+    }
+
+    public JRadioButton getRadioBotonBuscaNombreMaquinas() {
+        return radioBotonBuscaNombreMaquinas;
+    }
+
+    public void setRadioBotonBuscaNombreMaquinas(JRadioButton radioBotonBuscaNombreMaquinas) {
+        this.radioBotonBuscaNombreMaquinas = radioBotonBuscaNombreMaquinas;
+    }
+
+    public JRadioButton getRadioBotonCodigoHerramientas() {
+        return radioBotonCodigoHerramientas;
+    }
+
+    public void setRadioBotonCodigoHerramientas(JRadioButton radioBotonCodigoHerramientas) {
+        this.radioBotonCodigoHerramientas = radioBotonCodigoHerramientas;
+    }
+
+    public JRadioButton getRadioBotonCodigoOperario() {
+        return radioBotonCodigoOperario;
+    }
+
+    public void setRadioBotonCodigoOperario(JRadioButton radioBotonCodigoOperario) {
+        this.radioBotonCodigoOperario = radioBotonCodigoOperario;
+    }
+
+    public JRadioButton getRadioBotonNombreHerramientas() {
+        return radioBotonNombreHerramientas;
+    }
+
+    public void setRadioBotonNombreHerramientas(JRadioButton radioBotonNombreHerramientas) {
+        this.radioBotonNombreHerramientas = radioBotonNombreHerramientas;
+    }
+
+    public JTable getTablaAgregaHerramientaNuevo() {
+        return tablaAgregaHerramientaNuevo;
+    }
+
+    public void setTablaAgregaHerramientaNuevo(JTable tablaAgregaHerramientaNuevo) {
+        this.tablaAgregaHerramientaNuevo = tablaAgregaHerramientaNuevo;
+    }
+
+    public JTable getTablaAgregaMaquinaNuevo() {
+        return tablaAgregaMaquinaNuevo;
+    }
+
+    public void setTablaAgregaMaquinaNuevo(JTable tablaAgregaMaquinaNuevo) {
+        this.tablaAgregaMaquinaNuevo = tablaAgregaMaquinaNuevo;
+    }
+
+    public JTable getTablaAgregaOperariosNuevo() {
+        return tablaAgregaOperariosNuevo;
+    }
+
+    public void setTablaAgregaOperariosNuevo(JTable tablaAgregaOperariosNuevo) {
+        this.tablaAgregaOperariosNuevo = tablaAgregaOperariosNuevo;
+    }
+
+    public JTable getTablaBuscaHerramientaNuevo() {
+        return tablaBuscaHerramientaNuevo;
+    }
+
+    public void setTablaBuscaHerramientaNuevo(JTable tablaBuscaHerramientaNuevo) {
+        this.tablaBuscaHerramientaNuevo = tablaBuscaHerramientaNuevo;
+    }
+
+    public JTable getTablaBuscaMaquinaNuevo() {
+        return tablaBuscaMaquinaNuevo;
+    }
+
+    public void setTablaBuscaMaquinaNuevo(JTable tablaBuscaMaquinaNuevo) {
+        this.tablaBuscaMaquinaNuevo = tablaBuscaMaquinaNuevo;
+    }
+
+    public JTable getTablaBuscaOperariosNuevo() {
+        return tablaBuscaOperariosNuevo;
+    }
+
+    public void setTablaBuscaOperariosNuevo(JTable tablaBuscaOperariosNuevo) {
+        this.tablaBuscaOperariosNuevo = tablaBuscaOperariosNuevo;
+    }
+    
+    
 
     
 
