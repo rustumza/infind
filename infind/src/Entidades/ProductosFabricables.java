@@ -6,16 +6,15 @@ package Entidades;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author eduardo
  */
 @Entity
+@PrimaryKeyJoinColumn(name="maestroArtuculoId")
 public class ProductosFabricables extends MaestroDeArticulo implements Serializable {
     private static final long serialVersionUID = 1L;
     /*@Id

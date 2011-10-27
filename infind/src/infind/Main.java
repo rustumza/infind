@@ -53,7 +53,7 @@ public class Main {
                 maestroDeArticulo.setEliminado(Boolean.FALSE);
       //TODO:
                 //Esta comentada por el tema de la persistencia
-                //Fachada.getInstancia().guardar(maestroDeArticulo);
+                Fachada.getInstancia().guardar(maestroDeArticulo);
             }
         }
 

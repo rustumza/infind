@@ -6,10 +6,14 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import persistencia.ObjetoPersitente;
@@ -19,6 +23,8 @@ import persistencia.ObjetoPersitente;
  * @author eduardo
  */
 @Entity
+@Inheritance(strategy= InheritanceType.JOINED)
+@DiscriminatorColumn(name = "Tipo", discriminatorType = DiscriminatorType.STRING)
 public class MaestroDeArticulo extends ObjetoPersitente implements Serializable {
 
     private static final long serialVersionUID = 1L;
