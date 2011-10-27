@@ -5,8 +5,10 @@
 package expertos;
 
 import DTOs.DTOCentro;
+import DTOs.DTOOperario;
 import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.Numerador;
+import Entidades.Operario;
 import excepciones.ExpertoCentroDeTrabajoException;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -93,6 +95,36 @@ public class ExpertoCentroDeTrabajo extends Experto {
         centroDevuelto = centroEncontrado.get(0);
         return centroDevuelto;
     }
+    
+    
+    public List<Operario> buscarOperarios(DTOOperario operario) throws ExpertoCentroDeTrabajoException {
+
+        List<Operario> operarioEncontrados = null;
+
+        if (operario == null) {
+
+            operarioEncontrados = Fachada.getInstancia().buscar(Operario.class, null);
+        } else {
+            Criteria criterioOperario = Fachada.getInstancia().crearCriterio(Operario.class);
+            if (operario.getCodigoOperario() != null) {
+                criterioOperario.add(Restrictions.like("codigoOperario", operario.getCodigoOperario()));
+            }
+
+            if (operario.getApellidoOperario() != null) {
+                criterioOperario.add(Restrictions.like("apellido", operario.getApellidoOperario()));
+            }
+
+            operarioEncontrados = Fachada.getInstancia().buscar(Operario.class, criterioOperario);
+        }
+       if (operarioEncontrados.isEmpty()) {
+        throw new ExpertoCentroDeTrabajoException("No se encontraron Operarios para los datos ingresados");
+        
+        }
+
+        return operarioEncontrados;
+    }
+    
+    
 
     public void guardar(MaestroDeCentroDeTrabajo centroDeTrabajo) throws ExpertoCentroDeTrabajoException {
         if (centroInvalido(centroDeTrabajo)) {
