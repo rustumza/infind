@@ -77,10 +77,6 @@ public class Maquina extends ObjetoPersitente implements Serializable {
         this.nombreMaquina = nombreMaquina;
     }
     
-    
-    
-    
-
     @Override
     public int hashCode() {
         int hash = 0;
