@@ -24,6 +24,7 @@ public class Maquina extends ObjetoPersitente implements Serializable {
     private Long id;
     private Boolean eliminado;
     private String codigo;
+    private String nombreMaquina;
     private String descripcion;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
@@ -67,6 +68,16 @@ public class Maquina extends ObjetoPersitente implements Serializable {
     public void setMaestroCentroTrabajo(MaestroDeCentroDeTrabajo maestroCentroTrabajo) {
         this.maestroCentroTrabajo = maestroCentroTrabajo;
     }
+
+    public String getNombreMaquina() {
+        return nombreMaquina;
+    }
+
+    public void setNombreMaquina(String nombreMaquina) {
+        this.nombreMaquina = nombreMaquina;
+    }
+    
+    
     
     
 

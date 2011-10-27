@@ -58,6 +58,9 @@ public class ControladorCentroDeTrabajo {
                 guardarCentroDeTrabajo();
             }
         });
+        
+        
+        
 
 //pantalla editar centro 
 
