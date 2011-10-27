@@ -50,7 +50,7 @@ public class ModeloTablaBuscaMaquinasNuevo extends ModeloTabla{
 
 
 
-     public Maquina buscarOperario (String nombre){
+     public Maquina buscarMaquina (String nombre){
          for (Object maquina : getListaElementos()) {
              if (((Maquina) maquina).getNombreMaquina().equals(nombre)) {
                  return (Maquina) maquina;

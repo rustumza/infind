@@ -25,6 +25,7 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     private Long id;
     private Boolean eliminado;
     private String codigo;
+    private String nombreHerramientas;
     private String descripcion;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
@@ -68,6 +69,16 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     public void setMaestroCentroTrabajo(MaestroDeCentroDeTrabajo maestroCentroTrabajo) {
         this.maestroCentroTrabajo = maestroCentroTrabajo;
     }
+
+    public String getNombreHerramientas() {
+        return nombreHerramientas;
+    }
+
+    public void setNombreHerramientas(String nombreHerramientas) {
+        this.nombreHerramientas = nombreHerramientas;
+    }
+    
+    
     
     
     
