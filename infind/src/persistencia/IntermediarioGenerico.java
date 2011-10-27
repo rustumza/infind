@@ -34,7 +34,6 @@ public class IntermediarioGenerico {
             } else {
                 em.persist(obj);
             }
-            Conexion.getInstancia().confirmarTx();
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("error");
