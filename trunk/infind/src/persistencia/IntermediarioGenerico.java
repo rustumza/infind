@@ -33,7 +33,9 @@ public class IntermediarioGenerico {
                 em.merge(obj);
             } else {
                 em.persist(obj);
-            }        } catch (Exception ex) {
+            }
+            Conexion.getInstancia().confirmarTx();
+        } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("error");
         }
