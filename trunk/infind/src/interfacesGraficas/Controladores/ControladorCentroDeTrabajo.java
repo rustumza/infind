@@ -5,16 +5,28 @@
 package interfacesGraficas.Controladores;
 
 import DTOs.DTOCentro;
+import DTOs.DTOOperario;
+import Entidades.Herramientas;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.Maquina;
 import Entidades.Numerador;
+import Entidades.Operario;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoCentroDeTrabajoException;
 import expertos.ExpertoCentroDeTrabajo;
+import interfacesGraficas.ModeloTablas.ModeloTablaAgregaHerramientasNuevo;
+import interfacesGraficas.ModeloTablas.ModeloTablaAgregaMaquinasNuevo;
+import interfacesGraficas.ModeloTablas.ModeloTablaAgregaOperarioNuevo;
+import interfacesGraficas.ModeloTablas.ModeloTablaBuscaHerramientasNuevo;
+import interfacesGraficas.ModeloTablas.ModeloTablaBuscaMaquinasNuevo;
+import interfacesGraficas.ModeloTablas.ModeloTablaBuscaOperarioNuevo;
 import interfacesGraficas.PantallaCrearCentro;
 import interfacesGraficas.PantallaEditarCentro;
 import interfacesGraficas.PantallaMadre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,6 +46,15 @@ public class ControladorCentroDeTrabajo {
     MaestroDeCentroDeTrabajo centroDeTrabajoSeleccionado = null;
     MaestroDeCentroDeTrabajo centroEncontrado = null;
     ControladorPantallaMadre controladorPantallaMadre;
+    ModeloTablaBuscaHerramientasNuevo modeloTablaBuscaHerramientasNuevo;
+    ModeloTablaAgregaHerramientasNuevo modeloTablaAgregaHerramientasNuevo;
+    ModeloTablaAgregaMaquinasNuevo modeloTablaAgregaMaquinasNuevo;
+    ModeloTablaAgregaOperarioNuevo modeloTablaAgregaOperarioNuevo;
+    ModeloTablaBuscaMaquinasNuevo modeloTablaBuscaMaquinasNuevo;
+    ModeloTablaBuscaOperarioNuevo modeloTablaBuscaOperarioNuevo;
+    Operario operarioNuevoSeleccionado;
+    Maquina maquinaNuevoSeleccionado;
+    Herramientas herramientaNuevoSeleccionado;
 
     public ControladorCentroDeTrabajo(ControladorPantallaMadre contrPantMadre) {
         controladorPantallaMadre = contrPantMadre;
@@ -41,6 +62,19 @@ public class ControladorCentroDeTrabajo {
         pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
         pantallaEditarCentro = new PantallaEditarCentro(pantallaMadre, false);
         expertoCentroDeTrabajo = (ExpertoCentroDeTrabajo) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.CENTRO_DE_TRABAJO);
+        modeloTablaAgregaHerramientasNuevo = new ModeloTablaAgregaHerramientasNuevo();
+        pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
+        modeloTablaAgregaOperarioNuevo = new ModeloTablaAgregaOperarioNuevo();
+        pantallacrearcentro.getTablaAgregaOperariosNuevo().setModel(modeloTablaAgregaOperarioNuevo);
+        modeloTablaAgregaMaquinasNuevo = new ModeloTablaAgregaMaquinasNuevo();
+        pantallacrearcentro.getTablaAgregaMaquinaNuevo().setModel(modeloTablaAgregaMaquinasNuevo);
+        modeloTablaBuscaHerramientasNuevo = new ModeloTablaBuscaHerramientasNuevo();
+        pantallacrearcentro.getTablaBuscaHerramientaNuevo().setModel(modeloTablaBuscaHerramientasNuevo);
+        modeloTablaBuscaMaquinasNuevo = new ModeloTablaBuscaMaquinasNuevo();
+        pantallacrearcentro.getTablaBuscaMaquinaNuevo().setModel(modeloTablaBuscaMaquinasNuevo);
+        modeloTablaBuscaOperarioNuevo = new ModeloTablaBuscaOperarioNuevo();
+        pantallacrearcentro.getTablaBuscaOperariosNuevo().setModel(modeloTablaBuscaOperarioNuevo);
+
 
 //pantalla nuevo centro        
         //boton salir        
@@ -59,8 +93,88 @@ public class ControladorCentroDeTrabajo {
             }
         });
         
+  //busca Operario
+        //boton buscar
+        pantallacrearcentro.getBotonBuscaOperarioNuevo().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    buscarOperarioNuevo();
+                } catch (ExpertoCentroDeTrabajoException ex) {
+                   JOptionPane.showMessageDialog(pantallacrearcentro, "No se encontró ningún Operario", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    //limpiarPantallaEditarCentroDeTrabajo();
+                }
+            }
+        });
         
+        //pantalla busca Operarios Nuevo
+        pantallacrearcentro.getTablaBuscaOperariosNuevo().addMouseListener(new MouseAdapter() {
         
+          @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = pantallacrearcentro.getTablaBuscaOperariosNuevo().rowAtPoint(e.getPoint());
+                operarioNuevoSeleccionado = modeloTablaBuscaOperarioNuevo.buscarOperario(pantallacrearcentro.getTablaBuscaOperariosNuevo().getValueAt(fila, 1).toString());
+                if (e.getClickCount() == 2) {
+
+               //     agregarOperarioNuevo();
+
+                }
+            }
+        
+        });
+   //busca MAquinas
+        //boton buscar
+        pantallacrearcentro.getBotonBuscarMaquinasNuevo().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+             //   buscarMaquinaNuevo();
+            }
+        });
+        
+        //pantalla busca Operarios Nuevo
+        pantallacrearcentro.getTablaBuscaMaquinaNuevo().addMouseListener(new MouseAdapter() {
+        
+          @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = pantallacrearcentro.getTablaBuscaMaquinaNuevo().rowAtPoint(e.getPoint());
+                maquinaNuevoSeleccionado = modeloTablaBuscaMaquinasNuevo.buscarMaquina(pantallacrearcentro.getTablaBuscaMaquinaNuevo().getValueAt(fila, 1).toString());
+                if (e.getClickCount() == 2) {
+
+             //       agregarMaquinaNuevo();
+
+                }
+            }
+        
+        }); 
+        
+   //busca Herramientas
+        //boton buscar
+        pantallacrearcentro.getBotonBuscaHerramientaNuevo().addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+          //      buscarHerramientasNuevo();
+            }
+        });
+        
+        //pantalla busca Operarios Nuevo
+        pantallacrearcentro.getTablaBuscaHerramientaNuevo().addMouseListener(new MouseAdapter() {
+        
+          @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = pantallacrearcentro.getTablaBuscaHerramientaNuevo().rowAtPoint(e.getPoint());
+                herramientaNuevoSeleccionado = modeloTablaBuscaHerramientasNuevo.buscarHerramientas(pantallacrearcentro.getTablaBuscaHerramientaNuevo().getValueAt(fila, 1).toString());
+                if (e.getClickCount() == 2) {
+
+              //      agregarHerramientasNuevo();
+
+                }
+            }
+        
+        });     
+        
+
+
+
 
 //pantalla editar centro 
 
@@ -110,7 +224,7 @@ public class ControladorCentroDeTrabajo {
                 }
             }
         });
-        
+
         pantallaEditarCentro.getBotonEliminarCentro().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +233,51 @@ public class ControladorCentroDeTrabajo {
         });
 
     }
+    
+    public void buscarOperarioNuevo() throws ExpertoCentroDeTrabajoException{
+        
+
+        if (!modeloTablaBuscaOperarioNuevo.getListaElementos().isEmpty()) {
+            modeloTablaBuscaOperarioNuevo.clear();
+
+        }
+        if (pantallacrearcentro.getRadioBotonCodigoOperario().isSelected()) {
+            modeloTablaBuscaOperarioNuevo.addAllRow(expertoCentroDeTrabajo.buscarOperarios(armarDTOOperario(1)));
+
+        } else if (pantallacrearcentro.getRadioBotonApellidoOperario().isSelected()) {
+            modeloTablaBuscaOperarioNuevo.addAllRow(expertoCentroDeTrabajo.buscarOperarios(armarDTOOperario(2)));
+
+        }
+
+    }
+
+    public DTOOperario armarDTOOperario(Integer caso) {
+
+        DTOOperario nuevoDto = new DTOOperario();
+
+        switch (caso) {
+            case 1:
+
+                if (!pantallacrearcentro.getCampoBuscaCodigoOperarioNuevo().getText().equals("")) {
+                    nuevoDto.setCodigoOperario(pantallacrearcentro.getCampoBuscaCodigoOperarioNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+
+                break;
+            case 2:
+
+                if (!pantallacrearcentro.getCampoBuscaApellidoOperarioNuevo().getText().equals(""))  {
+                    nuevoDto.setApellidoOperario(pantallacrearcentro.getCampoBuscaApellidoOperarioNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+                break;
+        }
+        return nuevoDto;
+    }
+
+    
 
     public void buscarCentroDeTrabajo() throws ExpertoCentroDeTrabajoException {
 
@@ -206,12 +365,12 @@ public class ControladorCentroDeTrabajo {
     }
 
     public void actualizarCentro() {
-        
-         if (centroEncontrado == null) {
+
+        if (centroEncontrado == null) {
             return;
         }
-        
-        
+
+
         centroEncontrado.setCodigo(pantallaEditarCentro.getCampoCodigo().getText());
         centroEncontrado.setDescripcion(pantallaEditarCentro.getCampoDescripcion().getText());
         centroEncontrado.setNombreCentro(pantallaEditarCentro.getCampoNombre().getText());
@@ -219,22 +378,21 @@ public class ControladorCentroDeTrabajo {
 
 
         try {
-            
-                expertoCentroDeTrabajo.guardar(centroEncontrado);
-                limpiarPantallaEditarCentroDeTrabajo();
-                centroEncontrado = null;
-                JOptionPane.showMessageDialog(pantallacrearcentro, "Centro de Trabajo Actualizado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-                pantallacrearcentro.setVisible(false);
-            
+
+            expertoCentroDeTrabajo.guardar(centroEncontrado);
+            limpiarPantallaEditarCentroDeTrabajo();
+            centroEncontrado = null;
+            JOptionPane.showMessageDialog(pantallacrearcentro, "Centro de Trabajo Actualizado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            pantallacrearcentro.setVisible(false);
+
         } catch (ExpertoCentroDeTrabajoException ex) {
             Logger.getLogger(ControladorCentroDeTrabajo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    
-    public void eliminarCentro(){
-        
-            if (centroEncontrado != null) {
+    public void eliminarCentro() {
+
+        if (centroEncontrado != null) {
             int seleccion = JOptionPane.showOptionDialog(null,
                     "Está seguro que desea eliminar el Centro de Trabajo \nCódigo: " + centroEncontrado.getCodigo() + ". Nombre: " + centroEncontrado.getNombreCentro(),
                     "ELIMINAR CENTRO DE TRABAJO",
@@ -253,7 +411,7 @@ public class ControladorCentroDeTrabajo {
                     pantallaEditarCentro.getCampoCodigo().setText("");
                     pantallaEditarCentro.getCampoDescripcion().setText("");
                     pantallaEditarCentro.getCampoNombre().setText("");
-                    
+
 
                 } catch (ExpertoCentroDeTrabajoException ex) {
                     JOptionPane.showMessageDialog(pantallaEditarCentro, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -265,11 +423,9 @@ public class ControladorCentroDeTrabajo {
             JOptionPane.showMessageDialog(pantallaEditarCentro, "Debe seleccionar un Centro de Trabajo", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        
+
     }
-    
-    
-    
+
     public void limpiarPantallaCentroDeTrabajo() {
         pantallacrearcentro.getCampoCodigo().setText("");
         pantallacrearcentro.getCampoDescripcion().setText("");
@@ -298,10 +454,7 @@ public class ControladorCentroDeTrabajo {
     public void iniciarCrearCentro() {
         pantallacrearcentro.setVisible(true);
         pantallacrearcentro.setLocationRelativeTo(null);
-        Numerador numerador = new Numerador();
-        numerador.setNombre("7.1.1.");
-        Numerador numero = expertoCentroDeTrabajo.buscarNumerador(numerador);
-        //pantallacrearcentro.getCampoCodigo().setText(numero);
+       
     }
 
     public void iniciarEditarCentro() {
