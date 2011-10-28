@@ -23,7 +23,7 @@ import interfacesGraficas.ModeloTablas.ModeloTablaBuscaHerramientasNuevo;
 import interfacesGraficas.ModeloTablas.ModeloTablaBuscaMaquinasNuevo;
 import interfacesGraficas.ModeloTablas.ModeloTablaBuscaOperarioNuevo;
 import interfacesGraficas.PantallaCrearCentro;
-import interfacesGraficas.PantallaEditarCentro;
+import interfacesGraficas.PantallaEDCentro;
 import interfacesGraficas.PantallaMadre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +34,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+import persistencia.Fachada;
 
 /**
  *
@@ -43,7 +46,7 @@ public class ControladorCentroDeTrabajo {
 
     PantallaCrearCentro pantallacrearcentro;
     PantallaMadre pantallaMadre;
-    PantallaEditarCentro pantallaEditarCentro;
+    PantallaEDCentro pantallaEditarCentro;
     ExpertoCentroDeTrabajo expertoCentroDeTrabajo;
     MaestroDeCentroDeTrabajo centroDeTrabajoSeleccionado = null;
     MaestroDeCentroDeTrabajo centroEncontrado = null;
@@ -62,7 +65,7 @@ public class ControladorCentroDeTrabajo {
         controladorPantallaMadre = contrPantMadre;
         pantallaMadre = controladorPantallaMadre.getPantalla();
         pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
-        pantallaEditarCentro = new PantallaEditarCentro(pantallaMadre, false);
+        pantallaEditarCentro = new PantallaEDCentro(pantallaMadre, false);
         expertoCentroDeTrabajo = (ExpertoCentroDeTrabajo) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.CENTRO_DE_TRABAJO);
         modeloTablaAgregaHerramientasNuevo = new ModeloTablaAgregaHerramientasNuevo();
         pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
@@ -234,22 +237,22 @@ public class ControladorCentroDeTrabajo {
             }
         });
 
-        pantallaEditarCentro.getjRadioCodigo().addActionListener(new ActionListener() {
+        pantallaEditarCentro.getRadioBotonCodigoBuscaCentro().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
-                if (pantallaEditarCentro.getjRadioCodigo().isSelected()) {
-                    pantallaEditarCentro.getCampoBuscaCodigo().setEnabled(true);
-                    pantallaEditarCentro.getCampoBuscaNombre().setEnabled(false);
+                if (pantallaEditarCentro.getRadioBotonCodigoBuscaCentro().isSelected()) {
+                    pantallaEditarCentro.getCampoBuscaCodigoCentro().setEnabled(true);
+                    pantallaEditarCentro.getCampoBuscaNombreCentro().setEnabled(false);
                 }
             }
         });
 
-        pantallaEditarCentro.getjRadioNombre().addActionListener(new ActionListener() {
+        pantallaEditarCentro.getRadioBotonNombreBuscaCentro().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
-                if (pantallaEditarCentro.getjRadioNombre().isSelected()) {
-                    pantallaEditarCentro.getCampoBuscaNombre().setEnabled(true);
-                    pantallaEditarCentro.getCampoBuscaCodigo().setEnabled(false);
+                if (pantallaEditarCentro.getRadioBotonNombreBuscaCentro().isSelected()) {
+                    pantallaEditarCentro.getCampoBuscaNombreCentro().setEnabled(true);
+                    pantallaEditarCentro.getCampoBuscaCodigoCentro().setEnabled(false);
                 }
             }
         });
@@ -453,22 +456,22 @@ public class ControladorCentroDeTrabajo {
     public void buscarCentroDeTrabajo() throws ExpertoCentroDeTrabajoException {
 
 
-        if (pantallaEditarCentro.getjRadioCodigo().isSelected()) {
+        if (pantallaEditarCentro.getRadioBotonCodigoBuscaCentro().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(1));
 
             if (!centroEncontrado.getCodigo().isEmpty()) {
-                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.getCodigo());
-                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.getDescripcion());
-                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.getNombreCentro());
+                pantallaEditarCentro.getCampoCodigoCentro().setText(centroEncontrado.getCodigo());
+                pantallaEditarCentro.getCampoDescripcionCentro().setText(centroEncontrado.getDescripcion());
+                pantallaEditarCentro.getCampoNombreCentro().setText(centroEncontrado.getNombreCentro());
             }
 
-        } else if (pantallaEditarCentro.getjRadioNombre().isSelected()) {
+        } else if (pantallaEditarCentro.getRadioBotonNombreBuscaCentro().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(2));
 
             if (!centroEncontrado.getNombreCentro().isEmpty()) {
-                pantallaEditarCentro.getCampoCodigo().setText(centroEncontrado.getCodigo());
-                pantallaEditarCentro.getCampoDescripcion().setText(centroEncontrado.getDescripcion());
-                pantallaEditarCentro.getCampoNombre().setText(centroEncontrado.getNombreCentro());
+                pantallaEditarCentro.getCampoCodigoCentro().setText(centroEncontrado.getCodigo());
+                pantallaEditarCentro.getCampoDescripcionCentro().setText(centroEncontrado.getDescripcion());
+                pantallaEditarCentro.getCampoNombreCentro().setText(centroEncontrado.getNombreCentro());
             }
 
 
@@ -483,8 +486,8 @@ public class ControladorCentroDeTrabajo {
         switch (caso) {
             case 1:
 
-                if (!pantallaEditarCentro.getCampoBuscaCodigo().getText().equals("")) {
-                    nuevoDto.setCodigoCentro(pantallaEditarCentro.getCampoBuscaCodigo().getText());
+                if (!pantallaEditarCentro.getCampoBuscaCodigoCentro().getText().equals("")) {
+                    nuevoDto.setCodigoCentro(pantallaEditarCentro.getCampoBuscaCodigoCentro().getText());
                 } else {
                     nuevoDto = null;
                 }
@@ -492,8 +495,8 @@ public class ControladorCentroDeTrabajo {
                 break;
             case 2:
 
-                if (!pantallaEditarCentro.getCampoBuscaNombre().getText().equals("")) {
-                    nuevoDto.setNombreCentro(pantallaEditarCentro.getCampoBuscaNombre().getText());
+                if (!pantallaEditarCentro.getCampoBuscaNombreCentro().getText().equals("")) {
+                    nuevoDto.setNombreCentro(pantallaEditarCentro.getCampoBuscaNombreCentro().getText());
                 } else {
                     nuevoDto = null;
                 }
@@ -544,9 +547,9 @@ public class ControladorCentroDeTrabajo {
         }
 
 
-        centroEncontrado.setCodigo(pantallaEditarCentro.getCampoCodigo().getText());
-        centroEncontrado.setDescripcion(pantallaEditarCentro.getCampoDescripcion().getText());
-        centroEncontrado.setNombreCentro(pantallaEditarCentro.getCampoNombre().getText());
+        centroEncontrado.setCodigo(pantallaEditarCentro.getCampoCodigoCentro().getText());
+        centroEncontrado.setDescripcion(pantallaEditarCentro.getCampoDescripcionCentro().getText());
+        centroEncontrado.setNombreCentro(pantallaEditarCentro.getCampoNombreCentro().getText());
         centroEncontrado.setEliminado(Boolean.FALSE);
 
 
@@ -579,12 +582,7 @@ public class ControladorCentroDeTrabajo {
                     //centroEncontrado.setEliminado(Boolean.TRUE);
                     expertoCentroDeTrabajo.eliminar(centroEncontrado);
                     JOptionPane.showMessageDialog(pantallaEditarCentro, "Centro de Trabajo Eliminado Correctamente", "INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-                    pantallaEditarCentro.getCampoBuscaNombre().setText("");
-                    pantallaEditarCentro.getCampoBuscaCodigo().setText("");
-                    pantallaEditarCentro.getCampoCodigo().setText("");
-                    pantallaEditarCentro.getCampoDescripcion().setText("");
-                    pantallaEditarCentro.getCampoNombre().setText("");
-
+                    limpiarPantallaEditarCentroDeTrabajo();
 
                 } catch (ExpertoCentroDeTrabajoException ex) {
                     JOptionPane.showMessageDialog(pantallaEditarCentro, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -606,14 +604,15 @@ public class ControladorCentroDeTrabajo {
     }
 
     public void limpiarPantallaEditarCentroDeTrabajo() {
-        pantallaEditarCentro.getCampoBuscaCodigo().setText("");
-        pantallaEditarCentro.getCampoBuscaNombre().setText("");
-        pantallaEditarCentro.getCampoCodigo().setText("");
-        pantallaEditarCentro.getCampoDescripcion().setText("");
-        pantallaEditarCentro.getCampoNombre().setText("");
+        pantallaEditarCentro.getCampoBuscaCodigoCentro().setText("");
+        pantallaEditarCentro.getCampoBuscaNombreCentro().setText("");
+        pantallaEditarCentro.getCampoCodigoCentro().setText("");
+        pantallaEditarCentro.getCampoDescripcionCentro().setText("");
+        pantallaEditarCentro.getCampoNombreCentro().setText("");
 
 
     }
+    
 
     public void crearCentro() {
 
@@ -627,6 +626,19 @@ public class ControladorCentroDeTrabajo {
     public void iniciarCrearCentro() {
         pantallacrearcentro.setVisible(true);
         pantallacrearcentro.setLocationRelativeTo(null);
+
+ // busco el último número y le sumo 1 para obtener el nuevo código del centro de trabajo       
+        List<Numerador> numeroDisponibles = null;
+        Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+        criterioNumerador.add(Restrictions.eq("codificacion", "7.1.1."));
+        numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+        String codifica = numeroDisponibles.get(0).getCodificacion();
+        String num = numeroDisponibles.get(0).getUltimaClasificacion();
+        int nume = Integer.parseInt(num);
+        nume = nume + 1;
+        num = String.valueOf(nume);
+        String nuevoNumero = codifica + num ;
+        pantallacrearcentro.getCampoCodigo().setText(nuevoNumero);
 
     }
 
