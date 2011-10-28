@@ -5,10 +5,12 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
@@ -27,8 +29,8 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     private String codigo;
     private String nombreHerramientas;
     private String descripcion;
-    @ManyToOne
-    private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
+    @ManyToMany
+    private List<MaestroDeCentroDeTrabajo> maestroCentroTrabajo;
 
     public Long getId() {
         return id;
@@ -62,13 +64,15 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
         this.eliminado = eliminado;
     }
 
-    public MaestroDeCentroDeTrabajo getMaestroCentroTrabajo() {
+    public List<MaestroDeCentroDeTrabajo> getMaestroCentroTrabajo() {
         return maestroCentroTrabajo;
     }
 
-    public void setMaestroCentroTrabajo(MaestroDeCentroDeTrabajo maestroCentroTrabajo) {
+    public void setMaestroCentroTrabajo(List<MaestroDeCentroDeTrabajo> maestroCentroTrabajo) {
         this.maestroCentroTrabajo = maestroCentroTrabajo;
     }
+
+   
 
     public String getNombreHerramientas() {
         return nombreHerramientas;

@@ -26,19 +26,19 @@ import persistencia.Fachada;
 public class ExpertoCentroDeTrabajo extends Experto {
 
     public Numerador buscarNumerador(String codigoABusacar) {
-        
+
         List<Numerador> numeroEncontrado = null;
 
         Criteria criterioCentro = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
         if (!codigoABusacar.isEmpty()) {
-            
-            
+
+
             criterioCentro.add(Restrictions.like("codificacion", codigoABusacar));
         }
 
 
         numeroEncontrado = Fachada.getInstancia().buscar(Numerador.class, criterioCentro);
-        
+
 
         return numeroEncontrado.get(0);
     }
@@ -90,6 +90,8 @@ public class ExpertoCentroDeTrabajo extends Experto {
             }
 
             centroEncontrado = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioCentro);
+
+
         }
         if (centroEncontrado.isEmpty()) {
             throw new ExpertoCentroDeTrabajoException("No se encontró Centro de Trabajo para los datos ingresados");
@@ -99,8 +101,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
         centroDevuelto = centroEncontrado.get(0);
         return centroDevuelto;
     }
-    
-    
+
     public List<Operario> buscarOperarios(DTOOperario operario) throws ExpertoCentroDeTrabajoException {
 
         List<Operario> operarioEncontrados = null;
@@ -120,15 +121,14 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             operarioEncontrados = Fachada.getInstancia().buscar(Operario.class, criterioOperario);
         }
-       if (operarioEncontrados.isEmpty()) {
-        throw new ExpertoCentroDeTrabajoException("No se encontraron Operarios para los datos ingresados");
-        
+        if (operarioEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Operarios para los datos ingresados");
+
         }
 
         return operarioEncontrados;
     }
-    
-    
+
     public List<Maquina> buscarMaquina(DTOMaquina maquina) throws ExpertoCentroDeTrabajoException {
 
         List<Maquina> maquinaEncontrados = null;
@@ -137,7 +137,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, null);
         } else {
-            Criteria criterioMaquina = Fachada.getInstancia().crearCriterio(Maquina .class);
+            Criteria criterioMaquina = Fachada.getInstancia().crearCriterio(Maquina.class);
             if (maquina.getCodigoMaquina() != null) {
                 criterioMaquina.add(Restrictions.like("codigo", maquina.getCodigoMaquina()));
             }
@@ -148,16 +148,14 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioMaquina);
         }
-       if (maquinaEncontrados.isEmpty()) {
-        throw new ExpertoCentroDeTrabajoException("No se encontraron Máquinas para los datos ingresados");
-        
+        if (maquinaEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Máquinas para los datos ingresados");
+
         }
 
         return maquinaEncontrados;
     }
-    
-    
-    
+
     public List<Herramientas> buscarHerramienta(DTOHerramienta herramienta) throws ExpertoCentroDeTrabajoException {
 
         List<Herramientas> herramientaEncontrados = null;
@@ -166,7 +164,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             herramientaEncontrados = Fachada.getInstancia().buscar(Herramientas.class, null);
         } else {
-            Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas .class);
+            Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas.class);
             if (herramienta.getCodigoHerramienta() != null) {
                 criterioHerramientas.add(Restrictions.like("codigo", herramienta.getCodigoHerramienta()));
             }
@@ -177,14 +175,66 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             herramientaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioHerramientas);
         }
-       if (herramientaEncontrados.isEmpty()) {
-        throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
-        
+        if (herramientaEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
+
+        }
+
+        return herramientaEncontrados;
+    }
+
+    public List<Herramientas> buscarHerramientaAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException, NoSuchFieldException {
+
+        List<Herramientas> herramientaEncontrados = null;
+
+        Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas.class);
+        criterioHerramientas.add(Restrictions.eq(String.valueOf(Herramientas.class.getField(codigoCentroTrabajo)), codigoCentroTrabajo));
+
+        herramientaEncontrados = Fachada.getInstancia().buscar(Herramientas.class, criterioHerramientas);
+
+        if (herramientaEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
+
         }
 
         return herramientaEncontrados;
     }
     
+    
+    
+    public List<Maquina> buscarMaquinaAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException {
+
+        List<Maquina> maquinaEncontrados = null;
+
+        Criteria criterioMaquina = Fachada.getInstancia().crearCriterio(Maquina.class);
+        criterioMaquina.add(Restrictions.eq("maestroCentroTrabajo_id ", codigoCentroTrabajo));
+
+        maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioMaquina);
+
+        if (maquinaEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
+
+        }
+
+        return maquinaEncontrados;
+    }
+    
+    public List<Operario> buscarOperariosAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException {
+
+        List<Operario> operariosEncontrados = null;
+
+        Criteria criterioOperarios = Fachada.getInstancia().crearCriterio(Operario.class);
+        criterioOperarios.add(Restrictions.eq("maestroCentroTrabajo_id ", codigoCentroTrabajo));
+
+        operariosEncontrados = Fachada.getInstancia().buscar(Operario.class, criterioOperarios);
+
+        if (operariosEncontrados.isEmpty()) {
+            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
+
+        }
+
+        return operariosEncontrados;
+    }
     
     
     
