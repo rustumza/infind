@@ -10,9 +10,16 @@
  */
 package interfacesGraficas;
 
+
+import excepciones.ExpertoCentroDeTrabajoException;
+import interfacesGraficas.Controladores.ControladorCentroDeTrabajo;
+import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -27,10 +34,13 @@ import javax.swing.JToolBar;
  */
 public class PantallaEDCentro extends javax.swing.JDialog {
 
+    ControladorCentroDeTrabajo controlador;
+    private PantallaEDCentro pantallaEditarCentro;
     /** Creates new form PantallaCrearCentro */
-    public PantallaEDCentro(java.awt.Frame parent, boolean modal) {
+    public PantallaEDCentro(java.awt.Frame parent, boolean modal, ControladorCentroDeTrabajo control) {
         super(parent, modal);
         initComponents();
+        controlador = control;
     }
 
     /** This method is called from within the constructor to
@@ -581,6 +591,11 @@ public class PantallaEDCentro extends javax.swing.JDialog {
 
         botonBuscaHerramientaNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscaHerramientaNuevo.setText("Buscar");
+        botonBuscaHerramientaNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscaHerramientaNuevoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -741,6 +756,14 @@ public class PantallaEDCentro extends javax.swing.JDialog {
         campoBuscaCodigoHerramientaNuevo.setEnabled(false);
     }
     }//GEN-LAST:event_radioBotonNombreHerramientasActionPerformed
+
+    private void botonBuscaHerramientaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscaHerramientaNuevoActionPerformed
+        try {
+            controlador.buscarHerramientasNuevo();
+        } catch (ExpertoCentroDeTrabajoException ex) {
+            JOptionPane.showMessageDialog(pantallaEditarCentro, "No se encontró ninguna Herramienta", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_botonBuscaHerramientaNuevoActionPerformed
 
     /**
      * @param args the command line arguments

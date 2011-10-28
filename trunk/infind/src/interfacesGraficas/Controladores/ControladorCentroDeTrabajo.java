@@ -65,20 +65,28 @@ public class ControladorCentroDeTrabajo {
         controladorPantallaMadre = contrPantMadre;
         pantallaMadre = controladorPantallaMadre.getPantalla();
         pantallacrearcentro = new PantallaCrearCentro(pantallaMadre, false);
-        pantallaEditarCentro = new PantallaEDCentro(pantallaMadre, false);
+        pantallaEditarCentro = new PantallaEDCentro(pantallaMadre, false, this);
         expertoCentroDeTrabajo = (ExpertoCentroDeTrabajo) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.CENTRO_DE_TRABAJO);
         modeloTablaAgregaHerramientasNuevo = new ModeloTablaAgregaHerramientasNuevo();
-        pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
+            pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
+            pantallaEditarCentro.getTablaAgregaHerramientaEditar().setModel(modeloTablaAgregaHerramientasNuevo);
         modeloTablaAgregaOperarioNuevo = new ModeloTablaAgregaOperarioNuevo();
-        pantallacrearcentro.getTablaAgregaOperariosNuevo().setModel(modeloTablaAgregaOperarioNuevo);
+            pantallacrearcentro.getTablaAgregaOperariosNuevo().setModel(modeloTablaAgregaOperarioNuevo);
+            pantallaEditarCentro.getTablaAgregaOperariosEditar().setModel(modeloTablaAgregaOperarioNuevo);
         modeloTablaAgregaMaquinasNuevo = new ModeloTablaAgregaMaquinasNuevo();
-        pantallacrearcentro.getTablaAgregaMaquinaNuevo().setModel(modeloTablaAgregaMaquinasNuevo);
+            pantallacrearcentro.getTablaAgregaMaquinaNuevo().setModel(modeloTablaAgregaMaquinasNuevo);
+            pantallaEditarCentro.getTablaAgregaMaquinaEditar().setModel(modeloTablaAgregaMaquinasNuevo);
         modeloTablaBuscaHerramientasNuevo = new ModeloTablaBuscaHerramientasNuevo();
-        pantallacrearcentro.getTablaBuscaHerramientaNuevo().setModel(modeloTablaBuscaHerramientasNuevo);
+            pantallacrearcentro.getTablaBuscaHerramientaNuevo().setModel(modeloTablaBuscaHerramientasNuevo);
+            pantallaEditarCentro.getTablaBuscaHerramientaEditar().setModel(modeloTablaBuscaHerramientasNuevo);
         modeloTablaBuscaMaquinasNuevo = new ModeloTablaBuscaMaquinasNuevo();
-        pantallacrearcentro.getTablaBuscaMaquinaNuevo().setModel(modeloTablaBuscaMaquinasNuevo);
+            pantallacrearcentro.getTablaBuscaMaquinaNuevo().setModel(modeloTablaBuscaMaquinasNuevo);
+            pantallaEditarCentro.getTablaBuscaMaquinaEditar().setModel(modeloTablaBuscaMaquinasNuevo);
         modeloTablaBuscaOperarioNuevo = new ModeloTablaBuscaOperarioNuevo();
-        pantallacrearcentro.getTablaBuscaOperariosNuevo().setModel(modeloTablaBuscaOperarioNuevo);
+            pantallacrearcentro.getTablaBuscaOperariosNuevo().setModel(modeloTablaBuscaOperarioNuevo);
+            pantallaEditarCentro.getTablaBuscaOperariosEditar().setModel(modeloTablaBuscaOperarioNuevo);
+        
+        
 
 
 //pantalla nuevo centro        
