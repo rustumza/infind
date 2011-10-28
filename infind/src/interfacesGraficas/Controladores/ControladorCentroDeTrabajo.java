@@ -649,6 +649,144 @@ public class ControladorCentroDeTrabajo {
         pantallacrearcentro.getCampoCodigo().setText(nuevoNumero);
 
     }
+    
+    
+    
+    
+    public void buscarOperarioEditar() throws ExpertoCentroDeTrabajoException {
+
+
+        if (!modeloTablaBuscaOperarioNuevo.getListaElementos().isEmpty()) {
+            modeloTablaBuscaOperarioNuevo.clear();
+
+        }
+        if (pantallaEditarCentro.getRadioBotonCodigoOperario().isSelected()) {
+            modeloTablaBuscaOperarioNuevo.addAllRow(expertoCentroDeTrabajo.buscarOperarios(armarDTOOperarioEditar(1)));
+
+        } else if (pantallaEditarCentro.getRadioBotonApellidoOperario().isSelected()) {
+            modeloTablaBuscaOperarioNuevo.addAllRow(expertoCentroDeTrabajo.buscarOperarios(armarDTOOperarioEditar(2)));
+
+        }
+
+    }
+
+    public DTOOperario armarDTOOperarioEditar(Integer caso) {
+
+        DTOOperario nuevoDto = new DTOOperario();
+
+        switch (caso) {
+            case 1:
+
+                if (!pantallaEditarCentro.getCampoBuscaCodigoOperarioNuevo().getText().equals("")) {
+                    nuevoDto.setCodigoOperario(pantallaEditarCentro.getCampoBuscaCodigoOperarioNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+
+                break;
+            case 2:
+
+                if (!pantallaEditarCentro.getCampoBuscaApellidoOperarioNuevo().getText().equals("")) {
+                    nuevoDto.setApellidoOperario(pantallaEditarCentro.getCampoBuscaApellidoOperarioNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+                break;
+        }
+        return nuevoDto;
+    }
+
+    public void buscarMaquinaEditar() throws ExpertoCentroDeTrabajoException {
+
+
+        if (!modeloTablaBuscaMaquinasNuevo.getListaElementos().isEmpty()) {
+            modeloTablaBuscaMaquinasNuevo.clear();
+
+        }
+        if (pantallaEditarCentro.getRadioBotonBuscaCodigoMaquinas().isSelected()) {
+            modeloTablaBuscaMaquinasNuevo.addAllRow(expertoCentroDeTrabajo.buscarMaquina(armarDTOMaquinaEditar(1)));
+
+        } else if (pantallaEditarCentro.getRadioBotonBuscaNombreMaquinas().isSelected()) {
+            modeloTablaBuscaMaquinasNuevo.addAllRow(expertoCentroDeTrabajo.buscarMaquina(armarDTOMaquinaEditar(2)));
+
+        }
+
+    }
+
+    public DTOMaquina armarDTOMaquinaEditar(Integer caso) {
+
+        DTOMaquina nuevoDto = new DTOMaquina();
+
+        switch (caso) {
+            case 1:
+
+                if (!pantallaEditarCentro.getCampoBuscaCodigoMaquinaNuevo().getText().equals("")) {
+                    nuevoDto.setCodigoMaquina(pantallaEditarCentro.getCampoBuscaCodigoMaquinaNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+
+                break;
+            case 2:
+
+                if (!pantallaEditarCentro.getCampoBuscaNombreMaquinaNuevo().getText().equals("")) {
+                    nuevoDto.setNombreMaquina(pantallaEditarCentro.getCampoBuscaNombreMaquinaNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+                break;
+        }
+        return nuevoDto;
+    }
+
+    public void buscarHerramientasEditar() throws ExpertoCentroDeTrabajoException {
+
+
+        if (!modeloTablaBuscaHerramientasNuevo.getListaElementos().isEmpty()) {
+            modeloTablaBuscaHerramientasNuevo.clear();
+
+        }
+        if (pantallaEditarCentro.getRadioBotonCodigoHerramientas().isSelected()) {
+            modeloTablaBuscaHerramientasNuevo.addAllRow(expertoCentroDeTrabajo.buscarHerramienta(armarDTOHerramientaEditar(1)));
+
+        } else if (pantallacrearcentro.getRadioBotonNombreHerramientas().isSelected()) {
+            modeloTablaBuscaHerramientasNuevo.addAllRow(expertoCentroDeTrabajo.buscarHerramienta(armarDTOHerramientaEditar(2)));
+
+        }
+
+    }
+
+    public DTOHerramienta armarDTOHerramientaEditar(Integer caso) {
+
+        DTOHerramienta nuevoDto = new DTOHerramienta();
+
+        switch (caso) {
+            case 1:
+
+                if (!pantallaEditarCentro.getCampoBuscaCodigoHerramientaNuevo().getText().equals("")) {
+                    nuevoDto.setCodigoHerramienta(pantallaEditarCentro.getCampoBuscaCodigoHerramientaNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+
+                break;
+            case 2:
+
+                if (!pantallaEditarCentro.getCampoBuscaNombreHerramientaNuevo().getText().equals("")) {
+                    nuevoDto.setNombreHerramienta(pantallaEditarCentro.getCampoBuscaNombreHerramientaNuevo().getText());
+                } else {
+                    nuevoDto = null;
+                }
+                break;
+        }
+        return nuevoDto;
+    }
+
+    
+    
+    
+    
+    
 
     public void iniciarEditarCentro() {
         pantallaEditarCentro.setVisible(true);
