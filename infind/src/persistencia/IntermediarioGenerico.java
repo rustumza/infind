@@ -27,6 +27,7 @@ public class IntermediarioGenerico {
      * @throws Exception 
      */
     public void guardar(ObjetoPersitente obj) throws Exception {
+        Conexion.getInstancia().iniciarTX();
         em = Conexion.getInstancia().getEntityManager();
         try {
             if (obj.getId() != null) {
@@ -34,6 +35,7 @@ public class IntermediarioGenerico {
             } else {
                 em.persist(obj);
             }
+            Conexion.getInstancia().confirmarTx();
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("error");
@@ -41,12 +43,14 @@ public class IntermediarioGenerico {
     }
 
     public List buscar(Class object, Criteria criterio) {
+        Conexion.getInstancia().iniciarTX();
         List<ObjetoPersitente> lista = null;
         try {
             lista = criterio.list();
         } catch (SQLGrammarException ex) {
             System.out.println(ex.getMessage());
         }
+        Conexion.getInstancia().confirmarTx();
         return lista;
     }
 }
