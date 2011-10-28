@@ -5,8 +5,12 @@
 package expertos;
 
 import DTOs.DTOCentro;
+import DTOs.DTOHerramienta;
+import DTOs.DTOMaquina;
 import DTOs.DTOOperario;
+import Entidades.Herramientas;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.Maquina;
 import Entidades.Numerador;
 import Entidades.Operario;
 import excepciones.ExpertoCentroDeTrabajoException;
@@ -111,7 +115,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
             }
 
             if (operario.getApellidoOperario() != null) {
-                criterioOperario.add(Restrictions.like("apellido", operario.getApellidoOperario()));
+                criterioOperario.add(Restrictions.like("apellido", operario.getApellidoOperario()).ignoreCase());
             }
 
             operarioEncontrados = Fachada.getInstancia().buscar(Operario.class, criterioOperario);
@@ -123,6 +127,65 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
         return operarioEncontrados;
     }
+    
+    
+    public List<Maquina> buscarMaquina(DTOMaquina maquina) throws ExpertoCentroDeTrabajoException {
+
+        List<Maquina> maquinaEncontrados = null;
+
+        if (maquina == null) {
+
+            maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, null);
+        } else {
+            Criteria criterioMaquina = Fachada.getInstancia().crearCriterio(Maquina .class);
+            if (maquina.getCodigoMaquina() != null) {
+                criterioMaquina.add(Restrictions.like("codigo", maquina.getCodigoMaquina()));
+            }
+
+            if (maquina.getNombreMaquina() != null) {
+                criterioMaquina.add(Restrictions.like("nombreMaquina", maquina.getNombreMaquina()).ignoreCase());
+            }
+
+            maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioMaquina);
+        }
+       if (maquinaEncontrados.isEmpty()) {
+        throw new ExpertoCentroDeTrabajoException("No se encontraron Máquinas para los datos ingresados");
+        
+        }
+
+        return maquinaEncontrados;
+    }
+    
+    
+    
+    public List<Herramientas> buscarHerramienta(DTOHerramienta herramienta) throws ExpertoCentroDeTrabajoException {
+
+        List<Herramientas> herramientaEncontrados = null;
+
+        if (herramienta == null) {
+
+            herramientaEncontrados = Fachada.getInstancia().buscar(Herramientas.class, null);
+        } else {
+            Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas .class);
+            if (herramienta.getCodigoHerramienta() != null) {
+                criterioHerramientas.add(Restrictions.like("codigo", herramienta.getCodigoHerramienta()));
+            }
+
+            if (herramienta.getNombreHerramienta() != null) {
+                criterioHerramientas.add(Restrictions.ilike("nombreHerramientas", herramienta.getNombreHerramienta()));
+            }
+
+            herramientaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioHerramientas);
+        }
+       if (herramientaEncontrados.isEmpty()) {
+        throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
+        
+        }
+
+        return herramientaEncontrados;
+    }
+    
+    
     
     
 

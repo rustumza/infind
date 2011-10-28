@@ -24,7 +24,7 @@ public class ModeloTablaAgregaMaquinasNuevo extends ModeloTabla{
         if(getListaElementos() == null){
             return  null;
         }
-        Maquina maquina = (Maquina) getListaElementos().get(rowIndex);
+        Maquina maquina =  (Maquina) getListaElementos().get(rowIndex);
 
         switch (columnIndex) {
             case 0:
