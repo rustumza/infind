@@ -47,24 +47,17 @@ public class Main {
         Criteria criterioArticulo = Fachada.getInstancia().crearCriterioSinEliminado(MateriaPrima.class);
         criterioArticulo.add(Restrictions.eq("eliminado", true));
         articulosDisponibles = Fachada.getInstancia().buscar(MateriaPrima.class, criterioArticulo);
-        for (MateriaPrima maestroDeArticulo : articulosDisponibles) {
-            if (maestroDeArticulo.getFechaEntrarEnActividad().before(fechaSistema) || maestroDeArticulo.getFechaEntrarEnActividad().equals(fechaSistema)) {
-                System.out.println("Eliminado?: " + maestroDeArticulo.getEliminado() + "  Nombre: " + maestroDeArticulo.getNombre());
-                maestroDeArticulo.setFechaEntrarEnActividad(null);
-                maestroDeArticulo.setEliminado(Boolean.FALSE);
-                maestroDeArticulo.setNombre("Bifes");
-
-                //TODO:
-                //Esta comentada por el tema de la persistencia
+        for (MateriaPrima materiaPrima : articulosDisponibles) {
+            if (materiaPrima.getFechaEntrarEnActividad().before(fechaSistema) || materiaPrima.getFechaEntrarEnActividad().equals(fechaSistema)) {
+                System.out.println("Eliminado?: " + materiaPrima.getEliminado() + "  Nombre: " + materiaPrima.getNombre());
+                materiaPrima.setFechaEntrarEnActividad(null);
+                materiaPrima.setEliminado(Boolean.FALSE);
                 Conexion.getInstancia().iniciarTX();
-                
-                Fachada.getInstancia().guardar(maestroDeArticulo);
+                Fachada.getInstancia().guardar(materiaPrima);
                 Conexion.getInstancia().confirmarTx();
-                
-                System.out.println("Nombre... " + maestroDeArticulo.getNombre());
             }
         }
 
-//        new ControladorPantallaMadre().iniciar();
+        new ControladorPantallaMadre().iniciar();
     }
 }
