@@ -5,10 +5,12 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
@@ -32,6 +34,8 @@ public class Operario extends ObjetoPersitente implements Serializable {
     private Boolean eliminado = false;
     @ManyToOne
     private TipoOperario tipoOperario;
+    @ManyToMany
+    private List<MaestroDeCentroDeTrabajo> centroDeTrabajo;
 
     public Long getId() {
         return id;
@@ -40,6 +44,16 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<MaestroDeCentroDeTrabajo> getCentroDeTrabajo() {
+        return centroDeTrabajo;
+    }
+
+    public void setCentroDeTrabajo(List<MaestroDeCentroDeTrabajo> centroDeTrabajo) {
+        this.centroDeTrabajo = centroDeTrabajo;
+    }
+
+    
 
     public String getApellido() {
         return apellido;

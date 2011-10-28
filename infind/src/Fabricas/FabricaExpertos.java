@@ -5,6 +5,8 @@
 package Fabricas;
 
 import expertos.Experto;
+import expertos.ExpertoCentroDeTrabajo;
+import expertos.ExpertoOperarios;
 import persistencia.Decoradores.DecoradorCentroDeTrabajo;
 import persistencia.Decoradores.DecoradorOperarios;
 
@@ -31,9 +33,9 @@ public class FabricaExpertos {
     public Experto getExperto(expertos expertoNombre) {
         switch (expertoNombre) {
             case CENTRO_DE_TRABAJO:
-                return new DecoradorCentroDeTrabajo();
+                return new ExpertoCentroDeTrabajo();
             case OPERARIOS:
-                return new DecoradorOperarios();
+                return new ExpertoOperarios();
             default:
                 return null;
 

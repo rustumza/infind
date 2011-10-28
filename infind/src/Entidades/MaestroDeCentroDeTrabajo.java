@@ -5,10 +5,13 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -25,14 +28,76 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     private String codigo;
     private String nombreCentro;
     private String descripcion;
+    @ManyToMany
+    private List<Operario> operario;
+    @ManyToMany
+    private List<Herramientas> herramientas;
+    @ManyToMany
+    private List<Maquina> maquinas;
+    
+    
 
+    
+     public void addHerramientas(Herramientas herramientas) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaLista(herramientas)) {
+            getHerramientas().add(herramientas);
+            if (herramientas.getMaestroCentroTrabajo() != null) {
+                herramientas.getMaestroCentroTrabajo().get(0).getHerramientas().remove(herramientas);
+            }
+            herramientas.getMaestroCentroTrabajo().add(this);
+            
+        }
+    }
+
+
+    private boolean estaEnLaLista(Herramientas herramienta) {
+        for (Herramientas detalleFactura : herramientas) {
+            if(herramienta==detalleFactura)
+                return true;
+        }
+        return false;
+    }
+
+    
+    
+    
     public Long getId() {
         return id;
     }
 
+    public List<Operario> getOperario() {
+        return operario;
+    }
+
+    public List<Herramientas> getHerramientas() {
+        return herramientas;
+    }
+
+    public void setHerramientas(List<Herramientas> herramientas) {
+        this.herramientas = herramientas;
+    }
+
+    public List<Maquina> getMaquinas() {
+        return maquinas;
+    }
+
+    public void setMaquinas(List<Maquina> maquinas) {
+        this.maquinas = maquinas;
+    }
+
+    
+    public void setOperario(List<Operario> operario) {
+        this.operario = operario;
+    }
+    
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    
+    
 
     public String getCodigo() {
         return codigo;
@@ -65,6 +130,10 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     public void setNombreCentro(String nombreCentro) {
         this.nombreCentro = nombreCentro;
     }
+
+   
+    
+    
     
     
     
