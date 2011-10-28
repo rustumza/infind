@@ -4,6 +4,7 @@
  */
 package expertos;
 
+import Entidades.MaestroDeArticulo;
 import Entidades.MateriaPrima;
 import persistencia.Fachada;
 
@@ -15,7 +16,7 @@ public class ExpertoMateriaPrima extends Experto{
 
     public void guardar(MateriaPrima matPrim) {
         Fachada.getInstancia().guardar(matPrim);
-        
+        //Fachada.getInstancia().guardar(matPrim);
+            
     }
-    
 }

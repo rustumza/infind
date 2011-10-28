@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.io.Serializable;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -13,7 +14,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author eduardo
  */
 @Entity
-@PrimaryKeyJoinColumn(name="maestroArtuculoId")
+@PrimaryKeyJoinColumn(name="maestroArticuloId")
+@DiscriminatorValue(value="PInter")
 public class ProductoIntermedio extends ProductosFabricables implements Serializable {
     private static final long serialVersionUID = 1L;
     /*@Id

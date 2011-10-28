@@ -16,7 +16,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  */
 @Entity
 @PrimaryKeyJoinColumn(name="maestroArticuloId")
-@DiscriminatorValue(value="PF")
+@DiscriminatorValue(value="PFab")
 public class ProductosFabricables extends MaestroDeArticulo implements Serializable {
     private static final long serialVersionUID = 1L;
     /*@Id

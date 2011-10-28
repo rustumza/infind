@@ -25,15 +25,15 @@ import persistencia.Fachada;
  */
 public class ExpertoCentroDeTrabajo extends Experto {
 
-    public Numerador buscarNumerador(Numerador numerador) {
+    public Numerador buscarNumerador(String codigoABusacar) {
         
         List<Numerador> numeroEncontrado = null;
 
-        Criteria criterioCentro = Fachada.getInstancia().crearCriterio(Numerador.class);
-        if (numerador != null) {
+        Criteria criterioCentro = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+        if (!codigoABusacar.isEmpty()) {
             
             
-            criterioCentro.add(Restrictions.like("codificacion", numerador.getCodificacion()));
+            criterioCentro.add(Restrictions.like("codificacion", codigoABusacar));
         }
 
 
