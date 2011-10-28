@@ -43,21 +43,19 @@ public class Main {
         //ControladorPantallaMadre cpm = new ControladorPantallaMadre();
         //cpm.iniciar();
         Date fechaSistema = new Date();
-        List<MateriaPrima> articulosDisponibles = null;
-        Criteria criterioArticulo = Fachada.getInstancia().crearCriterioSinEliminado(MateriaPrima.class);
+        List<MaestroDeArticulo> articulosDisponibles = null;
+        Criteria criterioArticulo = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeArticulo.class);
         criterioArticulo.add(Restrictions.eq("eliminado", true));
-        articulosDisponibles = Fachada.getInstancia().buscar(MateriaPrima.class, criterioArticulo);
-        for (MateriaPrima materiaPrima : articulosDisponibles) {
-            if (materiaPrima.getFechaEntrarEnActividad().before(fechaSistema) || materiaPrima.getFechaEntrarEnActividad().equals(fechaSistema)) {
-                System.out.println("Eliminado?: " + materiaPrima.getEliminado() + "  Nombre: " + materiaPrima.getNombre());
-                materiaPrima.setFechaEntrarEnActividad(null);
-                materiaPrima.setEliminado(Boolean.FALSE);
-                Conexion.getInstancia().iniciarTX();
-                Fachada.getInstancia().guardar(materiaPrima);
-                Conexion.getInstancia().confirmarTx();
+        articulosDisponibles = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioArticulo);
+        for (MaestroDeArticulo maestroDeArticulos : articulosDisponibles) {
+            if (maestroDeArticulos.getFechaEntrarEnActividad().before(fechaSistema) || maestroDeArticulos.getFechaEntrarEnActividad().equals(fechaSistema)) {
+                System.out.println("Eliminado?: " + maestroDeArticulos.getEliminado() + "  Nombre: " + maestroDeArticulos.getNombre());
+                maestroDeArticulos.setFechaEntrarEnActividad(null);
+                maestroDeArticulos.setEliminado(Boolean.FALSE);
+                Fachada.getInstancia().guardar(maestroDeArticulos);
             }
         }
 
-        new ControladorPantallaMadre().iniciar();
+    //    new ControladorPantallaMadre().iniciar();
     }
 }
