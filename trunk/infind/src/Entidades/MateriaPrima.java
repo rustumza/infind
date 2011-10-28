@@ -29,6 +29,16 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
     @ManyToOne
     private Proveedor proveedor;
     
+    private String tipoMateriaPrima;
+
+    public String getTipoMateriaPrima() {
+        return tipoMateriaPrima;
+    }
+
+    public void setTipoMateriaPrima(String tipoMateriaPrima) {
+        this.tipoMateriaPrima = tipoMateriaPrima;
+    }
+    
     /*@Override
     public Long getId() {
         return id;
