@@ -319,6 +319,11 @@ public class PantallaEDCentro extends javax.swing.JDialog {
 
         botonBuscarMaquinasNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscarMaquinasNuevo.setText("Buscar");
+        botonBuscarMaquinasNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarMaquinasNuevoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -458,6 +463,11 @@ public class PantallaEDCentro extends javax.swing.JDialog {
 
         botonBuscaOperarioNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscaOperarioNuevo.setText("Buscar");
+        botonBuscaOperarioNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscaOperarioNuevoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -759,11 +769,27 @@ public class PantallaEDCentro extends javax.swing.JDialog {
 
     private void botonBuscaHerramientaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscaHerramientaNuevoActionPerformed
         try {
-            controlador.buscarHerramientasNuevo();
+            controlador.buscarHerramientasEditar();
         } catch (ExpertoCentroDeTrabajoException ex) {
             JOptionPane.showMessageDialog(pantallaEditarCentro, "No se encontró ninguna Herramienta", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_botonBuscaHerramientaNuevoActionPerformed
+
+    private void botonBuscaOperarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscaOperarioNuevoActionPerformed
+        try {
+            controlador.buscarOperarioEditar();
+        } catch (ExpertoCentroDeTrabajoException ex) {
+            JOptionPane.showMessageDialog(pantallaEditarCentro, "No se encontró ningún Operario", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_botonBuscaOperarioNuevoActionPerformed
+
+    private void botonBuscarMaquinasNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarMaquinasNuevoActionPerformed
+        try {
+            controlador.buscarMaquinaEditar();
+        } catch (ExpertoCentroDeTrabajoException ex) {
+            JOptionPane.showMessageDialog(pantallaEditarCentro, "No se encontró ninguna Máquina", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_botonBuscarMaquinasNuevoActionPerformed
 
     /**
      * @param args the command line arguments
