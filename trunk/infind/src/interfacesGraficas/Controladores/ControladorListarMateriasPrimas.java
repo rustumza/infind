@@ -135,7 +135,7 @@ public class ControladorListarMateriasPrimas {
         materiaPrimaSeleccionada.setNombre(pantallaListarMateriaPrima.getCampoNombre().getText());
         materiaPrimaSeleccionada.setEliminado(Boolean.FALSE);
         materiaPrimaSeleccionada.setTamanioLoteEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoLoteEstandar().getText()));
-        materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
+        materiaPrimaSeleccionada.setCategoria(((String)pantallaListarMateriaPrima.getComboEditarCategoria().getModel().getSelectedItem()).charAt(0));
 
         try {
             expertoListarMateriaPrima.guardarMateriaPrima(materiaPrimaSeleccionada);
@@ -179,7 +179,7 @@ public class ControladorListarMateriasPrimas {
         materiaPrimaSeleccionada.setEliminado(Boolean.FALSE);
         materiaPrimaSeleccionada.setNombre(pantallaListarMateriaPrima.getCampoNombre().getText());
         materiaPrimaSeleccionada.setTamanioLoteEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoCostoEstandar().getText()));
-        materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
+        materiaPrimaSeleccionada.setCategoria( ((String)pantallaListarMateriaPrima.getComboEditarCategoria().getModel().getSelectedItem()).charAt(0));
 
         try {
             expertoListarMateriaPrima.guardarMateriaPrima(materiaPrimaSeleccionada);
