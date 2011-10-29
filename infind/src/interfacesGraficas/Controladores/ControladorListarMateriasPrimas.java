@@ -4,6 +4,7 @@
  */
 package interfacesGraficas.Controladores;
 
+import DTOs.DTOMateriaPrima;
 import Entidades.MateriaPrima;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoMateriaPrimaException;
@@ -13,6 +14,9 @@ import interfacesGraficas.ModeloTablas.ModeloTablaListarMateriasPrimas;
 import interfacesGraficas.PantallaListarMateriaPrima;
 import interfacesGraficas.PantallaMadre;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,7 +58,7 @@ public class ControladorListarMateriasPrimas {
         }
 
         if (pantallaListarMateriaPrima.getRadioBotonCodigo().isSelected()) {
-            materiaPrimaEncontrada = expertoMateriaPrima.buscarOperarios(armarDTOOperario(1));
+            materiaPrimaEncontrada = expertoMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(1));
 
             if (!materiaPrimaEncontrada.get(0).getCodigo().isEmpty()) {
                 pantallaListarMateriaPrima.getCampoCodigo().setText(materiaPrimaEncontrada.get(0).getCodigo());
@@ -70,7 +74,7 @@ public class ControladorListarMateriasPrimas {
 
         } else if (pantallaListarMateriaPrima.getRadioBotonNombre().isSelected()) {
 
-            materiaPrimaEncontrada = expertoMateriaPrima.buscarOperarios(armarDTOOperario(2));
+            materiaPrimaEncontrada = expertoMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(2));
 
             modeloTablaListarMateriasPrimas.addAllRow(materiaPrimaEncontrada);
 
@@ -84,15 +88,15 @@ public class ControladorListarMateriasPrimas {
 
         if (click == 2) {
 
-            cargarOperario(materiaPrimaSeleccionada);
+            cargarMateriaPrima(materiaPrimaSeleccionada);
 
         }
 
     }
 
-    public DTOOperario armarDTOOperario(Integer caso) {
+    public DTOMateriaPrima armarDTOMateriaPrima(Integer caso) {
 
-        DTOOperario nuevoDto = new DTOOperario();
+        DTOMateriaPrima nuevoDto = new DTOMateriaPrima();
 
         switch (caso) {
             case 1:
@@ -116,75 +120,75 @@ public class ControladorListarMateriasPrimas {
         return nuevoDto;
     }
 
-    public void guardarOperario() {
+    public void guardarMateriaPrima() {
         if (materiaPrimaSeleccionada == null) {
             materiaPrimaSeleccionada = new MateriaPrima();
 
         }
 
-        materiaPrimaSeleccionada.setApellido(pantallaCrearOperario.getCampoApellido().getText());
-        materiaPrimaSeleccionada.setCodigoOperario(pantallaCrearOperario.getCampoCodigo().getText());
-        materiaPrimaSeleccionada.setCorreoElectronico(pantallaCrearOperario.getCampoCorreo().getText());
-        materiaPrimaSeleccionada.setDireccion(pantallaCrearOperario.getCampoDireccion().getText());
-        materiaPrimaSeleccionada.setDni(Integer.valueOf(pantallaCrearOperario.getCampoDni().getText()));
+        materiaPrimaSeleccionada.setDescripcion(pantallaListarMateriaPrima.getCampoDescripcion().getText());
+        materiaPrimaSeleccionada.setCodigo(pantallaListarMateriaPrima.getCampoCodigo().getText());
+        materiaPrimaSeleccionada.setCostoEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoCostoEstandar().getText()));
+        materiaPrimaSeleccionada.setUbicacionEnAlmacen(pantallaListarMateriaPrima.getCampoUbicacion().getText());
+        materiaPrimaSeleccionada.setPrecioBase(Integer.valueOf(pantallaListarMateriaPrima.getCampoPrecioBase().getText()));
+        materiaPrimaSeleccionada.setNombre(pantallaListarMateriaPrima.getCampoNombre().getText());
         materiaPrimaSeleccionada.setEliminado(Boolean.FALSE);
-        materiaPrimaSeleccionada.setNombre(pantallaCrearOperario.getCampoNombre().getText());
-        materiaPrimaSeleccionada.setTelefono(Integer.valueOf(pantallaCrearOperario.getCampoTelefono().getText()));
-        materiaPrimaSeleccionada.setTipoOperario(((ModeloComboBoxTipoOperador) pantallaCrearOperario.getComboPuesto().getModel()).getPuestoSeleccionado());
+        materiaPrimaSeleccionada.setTamanioLoteEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoLoteEstandar().getText()));
+        materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
 
         try {
             expertoMateriaPrima.guardar(materiaPrimaSeleccionada);
-            JOptionPane.showMessageDialog(pantallaCrearOperario, "Operario Guardado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            limpiarPantallaNuevoOperador();
+            JOptionPane.showMessageDialog(pantallaListarMateriaPrima, "Materia Prima Guardada Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            limpiarPantallaNuevaMateriaPrima();
             materiaPrimaSeleccionada = null;
-            pantallaCrearOperario.dispose();
+            pantallaListarMateriaPrima.dispose();
 
-        } catch (ExpertoOperarioException ex) {
-            Logger.getLogger(ControladorOperarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExpertoMateriaPrimaException ex) {
+            Logger.getLogger(ControladorListarMateriasPrimas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void cargarOperario(MateriaPrima materiaPrima) {
+    public void cargarMateriaPrima(MateriaPrima materiaPrima) {
 
-        pantallaListarMateriaPrima.getCampoCodigo().setText(materiaPrima.getCodigoOperario());
-        pantallaListarMateriaPrima.getCampoDescripcion().setText(materiaPrima.getApellido());
-        pantallaListarMateriaPrima.getCampoLoteEstandar().setText(materiaPrima.getCorreoElectronico());
-        pantallaListarMateriaPrima.getCampoUbicacion().setText(Integer.toString(materiaPrima.getDni()));
-        pantallaListarMateriaPrima.getCampoPrecioBase().setText(materiaPrima.getDireccion());
+        pantallaListarMateriaPrima.getCampoCodigo().setText(materiaPrima.getCodigo());
+        pantallaListarMateriaPrima.getCampoDescripcion().setText(materiaPrima.getDescripcion());
+        pantallaListarMateriaPrima.getCampoLoteEstandar().setText(Integer.toString(materiaPrima.getTamanioLoteEstandar()));
+        pantallaListarMateriaPrima.getCampoUbicacion().setText(materiaPrima.getUbicacionEnAlmacen());
+        pantallaListarMateriaPrima.getCampoPrecioBase().setText(Double.toString(materiaPrima.getPrecioBase()));
         pantallaListarMateriaPrima.getCampoNombre().setText(materiaPrima.getNombre());
-        pantallaListarMateriaPrima.getCampoCostoEstandar().setText(Integer.toString(materiaPrima.getTelefono()));
+        pantallaListarMateriaPrima.getCampoCostoEstandar().setText(Double.toString(materiaPrima.getCostoEstandar()));
 
     }
 
     public void actualizarMateriaPrima() throws ExpertoMateriaPrimaException {
 
 
-        if (operarioEncontrado == null) {
+        if (materiaPrimaEncontrada == null) {
             return;
 
         }
-        materiaPrimaSeleccionada = operarioEncontrado.get(0);
+        materiaPrimaSeleccionada = materiaPrimaEncontrada.get(0);
 
-        materiaPrimaSeleccionada.setApellido(pantallaListarMateriaPrima.getCampoDescripcion().getText());
-        materiaPrimaSeleccionada.setCodigoOperario(pantallaListarMateriaPrima.getCampoCodigo().getText());
-        materiaPrimaSeleccionada.setCorreoElectronico(pantallaListarMateriaPrima.getCampoLoteEstandar().getText());
-        materiaPrimaSeleccionada.setDireccion(pantallaListarMateriaPrima.getCampoPrecioBase().getText());
-        materiaPrimaSeleccionada.setDni(Integer.valueOf(pantallaListarMateriaPrima.getCampoUbicacion().getText()));
+        materiaPrimaSeleccionada.setDescripcion(pantallaListarMateriaPrima.getCampoDescripcion().getText());
+        materiaPrimaSeleccionada.setCodigo(pantallaListarMateriaPrima.getCampoCodigo().getText());
+        materiaPrimaSeleccionada.setCostoEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoLoteEstandar().getText()));
+        materiaPrimaSeleccionada.setPrecioBase(Integer.valueOf(pantallaListarMateriaPrima.getCampoPrecioBase().getText()));
+        materiaPrimaSeleccionada.setUbicacionEnAlmacen(pantallaListarMateriaPrima.getCampoUbicacion().getText());
         materiaPrimaSeleccionada.setEliminado(Boolean.FALSE);
         materiaPrimaSeleccionada.setNombre(pantallaListarMateriaPrima.getCampoNombre().getText());
-        materiaPrimaSeleccionada.setTelefono(Integer.valueOf(pantallaListarMateriaPrima.getCampoCostoEstandar().getText()));
-        materiaPrimaSeleccionada.setTipoOperario(((ModeloComboBoxTipoOperadorActualizado) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getPuestoSeleccionado());
+        materiaPrimaSeleccionada.setTamanioLoteEstandar(Integer.valueOf(pantallaListarMateriaPrima.getCampoCostoEstandar().getText()));
+        materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
 
         try {
             expertoMateriaPrima.guardar(materiaPrimaSeleccionada);
-            JOptionPane.showMessageDialog(pantallaCrearOperario, "Operario Guardado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-            limpiarPantallaEditarOperador();
+            JOptionPane.showMessageDialog(pantallaListarMateriaPrima, "Materia Prima Guardada Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            limpiarPantallaEditarMateriaPrima();
             materiaPrimaSeleccionada = null;
             pantallaListarMateriaPrima.dispose();
 
-        } catch (ExpertoOperarioException ex) {
-            Logger.getLogger(ControladorOperarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExpertoMateriaPrimaException ex) {
+            Logger.getLogger(ControladorListarMateriasPrimas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -192,24 +196,24 @@ public class ControladorListarMateriasPrimas {
 
     }
 
-    public void eliminarOperario() {
+    public void eliminarMateriaPrima() {
     }
 
-    public void limpiarPantallaNuevoOperador() {
+    public void limpiarPantallaNuevaMateriaPrima() {
 
-        pantallaCrearOperario.getCampoApellido().setText("");
-        pantallaCrearOperario.getCampoCodigo().setText("");
-        pantallaCrearOperario.getCampoCorreo().setText("");
-        pantallaCrearOperario.getCampoDireccion().setText("");
-        pantallaCrearOperario.getCampoDni().setText("");
-        pantallaCrearOperario.getCampoNombre().setText("");
-        pantallaCrearOperario.getCampoTelefono().setText("");
-        pantallaCrearOperario.getComboPuesto().setModel(modeloComboMateriaPrima);
+        pantallaListarMateriaPrima.getCampoLoteEstandar().setText("");
+        pantallaListarMateriaPrima.getCampoCodigo().setText("");
+        pantallaListarMateriaPrima.getCampoCostoEstandar().setText("");
+        pantallaListarMateriaPrima.getCampoDescripcion().setText("");
+        pantallaListarMateriaPrima.getCampoPrecioBase().setText("");
+        pantallaListarMateriaPrima.getCampoNombre().setText("");
+        pantallaListarMateriaPrima.getCampoUbicacion().setText("");
+        pantallaListarMateriaPrima.getComboEditarCategoria().setModel(modeloComboMateriaPrima);
 
 
     }
 
-    public void limpiarPantallaEditarOperador() {
+    public void limpiarPantallaEditarMateriaPrima() {
 
         pantallaListarMateriaPrima.getCampoDescripcion().setText("");
         pantallaListarMateriaPrima.getCampoCodigo().setText("");
@@ -218,12 +222,9 @@ public class ControladorListarMateriasPrimas {
         pantallaListarMateriaPrima.getCampoUbicacion().setText("");
         pantallaListarMateriaPrima.getCampoNombre().setText("");
         pantallaListarMateriaPrima.getCampoCostoEstandar().setText("");
-        pantallaListarMateriaPrima.getComboEditarCategoria().setModel(modeloComboTipoOperadorActualizado);
+        pantallaListarMateriaPrima.getComboEditarCategoria().setModel(modeloComboMateriaPrima);
         modeloTablaListarMateriasPrimas.clear();
         pantallaListarMateriaPrima.getCampoBuscaCodigo().setText("");
         pantallaListarMateriaPrima.getCampoBuscaNombre().setText("");
-
-
-
     }
 }

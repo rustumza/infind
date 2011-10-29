@@ -407,7 +407,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        controlador.eliminarOperario();
+        controlador.eliminarMateriaPrima();
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -434,7 +434,7 @@ private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         controlador.buscarMateriaPrima();
     } catch (ExpertoMateriaPrimaException ex) {
         JOptionPane.showMessageDialog(this, "No se encontró ningúna Materia Prima", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        controlador.limpiarPantallaEditarOperador();
+        controlador.limpiarPantallaEditarMateriaPrima();
     }
 }//GEN-LAST:event_botonBuscarActionPerformed
 
