@@ -78,7 +78,7 @@ public class ExpertoListarMateriaPrima extends Experto{
             return true;
         } else if (materiaPrima.getCodigo().length() == 0) {
             return true;
-        } else if (materiaPrima.getTamanioLoteEstandar().length() == 0) {
+        } else if (materiaPrima.getTamanioLoteEstandar() == 0) {
             return true;
         } else if (materiaPrima.getUbicacionEnAlmacen().length() == 0) {
             return true;
