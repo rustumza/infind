@@ -27,7 +27,7 @@ public class FabricaExpertos {
 
     public enum expertos {
 
-        CENTRO_DE_TRABAJO, OPERARIOS
+        CENTRO_DE_TRABAJO, OPERARIOS, MATERIASPRIMAS
     }
 
     public Experto getExperto(expertos expertoNombre) {
