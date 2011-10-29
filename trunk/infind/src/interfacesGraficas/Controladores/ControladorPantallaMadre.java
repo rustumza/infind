@@ -5,8 +5,6 @@
 package interfacesGraficas.Controladores;
 
 import interfacesGraficas.PantallaMadre;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
@@ -60,6 +58,10 @@ public class ControladorPantallaMadre {
     
     public void editarOperario(){
         new ControladorOperarios(this).editarOperario();
+    }
+    
+    public void listarMateriaPrima(){
+        new ControladorListarMateriasPrimas(this).editarMateriaPrima();
     }
     
     

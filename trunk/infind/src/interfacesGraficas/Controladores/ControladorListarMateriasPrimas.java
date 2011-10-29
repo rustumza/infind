@@ -8,6 +8,7 @@ import DTOs.DTOMateriaPrima;
 import Entidades.MateriaPrima;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoMateriaPrimaException;
+import expertos.ExpertoListarMateriaPrima;
 import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.ModeloCombo.ModeloComboBoxMateriaPrima;
 import interfacesGraficas.ModeloTablas.ModeloTablaListarMateriasPrimas;
@@ -31,12 +32,12 @@ public class ControladorListarMateriasPrimas {
     MateriaPrima materiaPrimaSeleccionada;
     List<MateriaPrima> materiaPrimaEncontrada;
     ModeloComboBoxMateriaPrima modeloComboMateriaPrima;
-    ExpertoMateriaPrima expertoMateriaPrima;
+    ExpertoListarMateriaPrima expertoListarMateriaPrima;
 
     ControladorListarMateriasPrimas(ControladorPantallaMadre contPantMadre) {
         controladorPantallaMadre = contPantMadre;
         pantallaMadre = controladorPantallaMadre.getPantalla();
-        expertoMateriaPrima = (ExpertoMateriaPrima) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.MATERIASPRIMAS);
+        expertoListarMateriaPrima = (ExpertoListarMateriaPrima) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.LISTARMATERIASPRIMAS);
     }
 
     public void editarMateriaPrima() {
@@ -58,7 +59,7 @@ public class ControladorListarMateriasPrimas {
         }
 
         if (pantallaListarMateriaPrima.getRadioBotonCodigo().isSelected()) {
-            materiaPrimaEncontrada = expertoMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(1));
+            materiaPrimaEncontrada = expertoListarMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(1));
 
             if (!materiaPrimaEncontrada.get(0).getCodigo().isEmpty()) {
                 pantallaListarMateriaPrima.getCampoCodigo().setText(materiaPrimaEncontrada.get(0).getCodigo());
@@ -74,7 +75,7 @@ public class ControladorListarMateriasPrimas {
 
         } else if (pantallaListarMateriaPrima.getRadioBotonNombre().isSelected()) {
 
-            materiaPrimaEncontrada = expertoMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(2));
+            materiaPrimaEncontrada = expertoListarMateriaPrima.buscarMateriaPrima(armarDTOMateriaPrima(2));
 
             modeloTablaListarMateriasPrimas.addAllRow(materiaPrimaEncontrada);
 
@@ -102,7 +103,7 @@ public class ControladorListarMateriasPrimas {
             case 1:
 
                 if (!pantallaListarMateriaPrima.getCampoBuscaCodigo().getText().equals("")) {
-                    nuevoDto.setCodigoOperario(pantallaListarMateriaPrima.getCampoBuscaCodigo().getText());
+                    nuevoDto.setCodigoMateriaPrima(pantallaListarMateriaPrima.getCampoBuscaCodigo().getText());
                 } else {
                     nuevoDto = null;
                 }
@@ -111,7 +112,7 @@ public class ControladorListarMateriasPrimas {
             case 2:
 
                 if (!pantallaListarMateriaPrima.getCampoBuscaNombre().getText().equals("")) {
-                    nuevoDto.setNombreOperario(pantallaListarMateriaPrima.getCampoBuscaNombre().getText());
+                    nuevoDto.setNombreMateriaPrima(pantallaListarMateriaPrima.getCampoBuscaNombre().getText());
                 } else {
                     nuevoDto = null;
                 }
@@ -137,7 +138,7 @@ public class ControladorListarMateriasPrimas {
         materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
 
         try {
-            expertoMateriaPrima.guardar(materiaPrimaSeleccionada);
+            expertoListarMateriaPrima.guardarMateriaPrima(materiaPrimaSeleccionada);
             JOptionPane.showMessageDialog(pantallaListarMateriaPrima, "Materia Prima Guardada Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             limpiarPantallaNuevaMateriaPrima();
             materiaPrimaSeleccionada = null;
@@ -181,7 +182,7 @@ public class ControladorListarMateriasPrimas {
         materiaPrimaSeleccionada.setCategoria(((ModeloComboBoxMateriaPrima) pantallaListarMateriaPrima.getComboEditarCategoria().getModel()).getCategoriaSeleccionada());
 
         try {
-            expertoMateriaPrima.guardar(materiaPrimaSeleccionada);
+            expertoListarMateriaPrima.guardarMateriaPrima(materiaPrimaSeleccionada);
             JOptionPane.showMessageDialog(pantallaListarMateriaPrima, "Materia Prima Guardada Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             limpiarPantallaEditarMateriaPrima();
             materiaPrimaSeleccionada = null;
