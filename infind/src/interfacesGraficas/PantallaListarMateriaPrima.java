@@ -10,9 +10,9 @@
  */
 package interfacesGraficas;
 
-import Entidades.Operario;
-import excepciones.ExpertoOperarioException;
-import interfacesGraficas.Controladores.ControladorOperarios;
+import Entidades.MateriaPrima;
+import excepciones.ExpertoMateriaPrimaException;
+import interfacesGraficas.Controladores.ControladorListarMateriasPrimas;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -33,14 +33,14 @@ import javax.swing.JToolBar;
  */
 public class PantallaListarMateriaPrima extends javax.swing.JDialog {
 
-    ControladorOperarios controlador;
-    Operario operarioSeleccionado;
+    ControladorListarMateriasPrimas controlador;
+    MateriaPrima materiaSeleccionada;
 
     /** Creates new form PantallaEditarOperario */
-    public PantallaListarMateriaPrima(java.awt.Frame parent, boolean modal, ControladorOperarios controladorOper) {
+    public PantallaListarMateriaPrima(java.awt.Frame parent, boolean modal, ControladorListarMateriasPrimas controladorMP) {
         super(parent, modal);
         initComponents();
-        controlador = controladorOper;
+        controlador = controladorMP;
     }
 
     /** This method is called from within the constructor to
@@ -53,7 +53,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        grupoBuscarOperario = new javax.swing.ButtonGroup();
+        grupoBuscarMateriaPrima = new javax.swing.ButtonGroup();
         jLabel7 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         botonGuardar = new javax.swing.JButton();
@@ -74,17 +74,17 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
-        campoApellido = new javax.swing.JTextField();
-        campoDNI = new javax.swing.JTextField();
-        campoTelefono = new javax.swing.JTextField();
-        campoCorreo = new javax.swing.JTextField();
-        campoDireccion = new javax.swing.JTextField();
-        comboEditarPuesto = new javax.swing.JComboBox();
+        campoDescripcion = new javax.swing.JTextField();
+        campoUbicacion = new javax.swing.JTextField();
+        campoCostoEstandar = new javax.swing.JTextField();
+        campoLoteEstandar = new javax.swing.JTextField();
+        campoPrecioBase = new javax.swing.JTextField();
+        comboEditarCategoria = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         campoCodigo = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaOperariosEncontrados = new javax.swing.JTable();
+        tablaMateriasPrimasEncontradas = new javax.swing.JTable();
 
         jLabel7.setText("jLabel7");
 
@@ -107,7 +107,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         jToolBar1.add(botonGuardar);
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
-        botonEliminar.setToolTipText("Eliminar Operario");
+        botonEliminar.setToolTipText("Eliminar Materia Prima");
         botonEliminar.setFocusable(false);
         botonEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonEliminar.setMargin(new java.awt.Insets(2, 0, 2, 14));
@@ -143,7 +143,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         panelMateriasPrimas.setBorder(javax.swing.BorderFactory.createTitledBorder("Materias Primas"));
         panelMateriasPrimas.setLayout(new java.awt.GridBagLayout());
 
-        grupoBuscarOperario.add(radioBotonCodigo);
+        grupoBuscarMateriaPrima.add(radioBotonCodigo);
         radioBotonCodigo.setSelected(true);
         radioBotonCodigo.setText("Código Materia Prima:");
         radioBotonCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         panelMateriasPrimas.add(radioBotonCodigo, gridBagConstraints);
 
-        grupoBuscarOperario.add(radioBotonNombre);
+        grupoBuscarMateriaPrima.add(radioBotonNombre);
         radioBotonNombre.setText("Nombre Materia Prima:");
         radioBotonNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +208,6 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         getContentPane().add(panelMateriasPrimas, gridBagConstraints);
-        panelMateriasPrimas.getAccessibleContext().setAccessibleName("Materias Primas");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Materia Prima"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -221,7 +220,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
 
-        jLabel2.setText("Apellido:");
+        jLabel2.setText("Descripcion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -229,7 +228,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        jLabel3.setText("DNI:");
+        jLabel3.setText("Ubicacion en almacen:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -237,7 +236,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("Teléfono:");
+        jLabel4.setText("Costo estandar:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -245,7 +244,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
 
-        jLabel5.setText("Dirección:");
+        jLabel5.setText("Precio base:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -253,7 +252,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setText("Correo Electrónico:");
+        jLabel6.setText("Lote estandar:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -261,7 +260,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel6, gridBagConstraints);
 
-        jLabel8.setText("Puesto:");
+        jLabel8.setText("Categoria");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -278,60 +277,60 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(campoNombre, gridBagConstraints);
 
-        campoApellido.setEnabled(false);
+        campoDescripcion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(campoApellido, gridBagConstraints);
+        jPanel2.add(campoDescripcion, gridBagConstraints);
 
-        campoDNI.setEnabled(false);
+        campoUbicacion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(campoDNI, gridBagConstraints);
+        jPanel2.add(campoUbicacion, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(campoTelefono, gridBagConstraints);
+        jPanel2.add(campoCostoEstandar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(campoCorreo, gridBagConstraints);
+        jPanel2.add(campoLoteEstandar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(campoDireccion, gridBagConstraints);
+        jPanel2.add(campoPrecioBase, gridBagConstraints);
 
-        comboEditarPuesto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEditarCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
-        jPanel2.add(comboEditarPuesto, gridBagConstraints);
+        jPanel2.add(comboEditarCategoria, gridBagConstraints);
 
         jLabel9.setText("Código:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 5);
         jPanel2.add(jLabel9, gridBagConstraints);
 
         campoCodigo.setEnabled(false);
@@ -354,7 +353,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Materias Primas Encontradas"));
 
-        tablaOperariosEncontrados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMateriasPrimasEncontradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -365,12 +364,12 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaOperariosEncontrados.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaMateriasPrimasEncontradas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaOperariosEncontradosMouseClicked(evt);
+                tablaMateriasPrimasEncontradasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaOperariosEncontrados);
+        jScrollPane1.setViewportView(tablaMateriasPrimasEncontradas);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -400,8 +399,8 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         try {
-            controlador.actualizarOperario();
-        } catch (ExpertoOperarioException ex) {
+            controlador.actualizarMateriaPrima();
+        } catch (ExpertoMateriaPrimaException ex) {
             Logger.getLogger(PantallaListarMateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
         }
        
@@ -432,19 +431,19 @@ private void radioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//
 private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
     try {
 
-        controlador.buscarOperarios();
-    } catch (ExpertoOperarioException ex) {
-        JOptionPane.showMessageDialog(this, "No se encontró ningún Operario", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        controlador.buscarMateriaPrima();
+    } catch (ExpertoMateriaPrimaException ex) {
+        JOptionPane.showMessageDialog(this, "No se encontró ningúna Materia Prima", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         controlador.limpiarPantallaEditarOperador();
     }
 }//GEN-LAST:event_botonBuscarActionPerformed
 
-private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaOperariosEncontradosMouseClicked
-    int fila = getTablaOperariosEncontrados().rowAtPoint(evt.getPoint());
+private void tablaMateriasPrimasEncontradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMateriasPrimasEncontradasMouseClicked
+    int fila = getTablaMateriasPrimasEncontradas().rowAtPoint(evt.getPoint());
     int click = evt.getClickCount();
 
     controlador.tabla(fila, click);
-}//GEN-LAST:event_tablaOperariosEncontradosMouseClicked
+}//GEN-LAST:event_tablaMateriasPrimasEncontradasMouseClicked
     /**
      * @param args the command line arguments
      */
@@ -453,17 +452,17 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoBuscaCodigo;
     private javax.swing.JTextField campoBuscaNombre;
     private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoCorreo;
-    private javax.swing.JTextField campoDNI;
-    private javax.swing.JTextField campoDireccion;
+    private javax.swing.JTextField campoCostoEstandar;
+    private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextField campoLoteEstandar;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JTextField campoTelefono;
-    private javax.swing.JComboBox comboEditarPuesto;
-    private javax.swing.ButtonGroup grupoBuscarOperario;
+    private javax.swing.JTextField campoPrecioBase;
+    private javax.swing.JTextField campoUbicacion;
+    private javax.swing.JComboBox comboEditarCategoria;
+    private javax.swing.ButtonGroup grupoBuscarMateriaPrima;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -480,7 +479,7 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
     private javax.swing.JPanel panelMateriasPrimas;
     private javax.swing.JRadioButton radioBotonCodigo;
     private javax.swing.JRadioButton radioBotonNombre;
-    private javax.swing.JTable tablaOperariosEncontrados;
+    private javax.swing.JTable tablaMateriasPrimasEncontradas;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBotonBuscar() {
@@ -515,12 +514,12 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
         this.botonSalir = botonSalir;
     }
 
-    public JTextField getCampoApellido() {
-        return campoApellido;
+    public JTextField getCampoDescripcion() {
+        return campoDescripcion;
     }
 
-    public void setCampoApellido(JTextField campoApellido) {
-        this.campoApellido = campoApellido;
+    public void setCampoDescripcion(JTextField campoDescripcion) {
+        this.campoDescripcion = campoDescripcion;
     }
 
     public JTextField getCampoBuscaCodigo() {
@@ -539,28 +538,28 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
         this.campoBuscaNombre = campoBuscaNombre;
     }
 
-    public JTextField getCampoCorreo() {
-        return campoCorreo;
+    public JTextField getCampoLoteEstandar() {
+        return campoLoteEstandar;
     }
 
-    public void setCampoCorreo(JTextField campoCorreo) {
-        this.campoCorreo = campoCorreo;
+    public void setCampoLoteEstandar(JTextField campoLoteEstandar) {
+        this.campoLoteEstandar = campoLoteEstandar;
     }
 
-    public JTextField getCampoDNI() {
-        return campoDNI;
+    public JTextField getCampoUbicacion() {
+        return campoUbicacion;
     }
 
-    public void setCampoDNI(JTextField campoDNI) {
-        this.campoDNI = campoDNI;
+    public void setCampoUbicacion(JTextField campoUbicacion) {
+        this.campoUbicacion = campoUbicacion;
     }
 
-    public JTextField getCampoDireccion() {
-        return campoDireccion;
+    public JTextField getCampoPrecioBase() {
+        return campoPrecioBase;
     }
 
-    public void setCampoDireccion(JTextField campoDireccion) {
-        this.campoDireccion = campoDireccion;
+    public void setCampoPrecioBase(JTextField campoPrecioBase) {
+        this.campoPrecioBase = campoPrecioBase;
     }
 
     public JTextField getCampoNombre() {
@@ -571,28 +570,28 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
         this.campoNombre = campoNombre;
     }
 
-    public JTextField getCampoTelefono() {
-        return campoTelefono;
+    public JTextField getCampoCostoEstandar() {
+        return campoCostoEstandar;
     }
 
-    public void setCampoTelefono(JTextField campoTelefono) {
-        this.campoTelefono = campoTelefono;
+    public void setCampoCostoEstandar(JTextField campoCostoEstandar) {
+        this.campoCostoEstandar = campoCostoEstandar;
     }
 
-    public JComboBox getComboEditarPuesto() {
-        return comboEditarPuesto;
+    public JComboBox getComboEditarCategoria() {
+        return comboEditarCategoria;
     }
 
-    public void setComboEditarPuesto(JComboBox comboEditarPuesto) {
-        this.comboEditarPuesto = comboEditarPuesto;
+    public void setComboEditarCategoria(JComboBox comboEditarCategoria) {
+        this.comboEditarCategoria = comboEditarCategoria;
     }
 
-    public ButtonGroup getGrupoBuscarOperario() {
-        return grupoBuscarOperario;
+    public ButtonGroup getGrupoBuscarMateriaPrima() {
+        return grupoBuscarMateriaPrima;
     }
 
-    public void setGrupoBuscarOperario(ButtonGroup grupoBuscarOperario) {
-        this.grupoBuscarOperario = grupoBuscarOperario;
+    public void setGrupoBuscarMateriaPrima(ButtonGroup grupoBuscarMateriaPrima) {
+        this.grupoBuscarMateriaPrima = grupoBuscarMateriaPrima;
     }
 
     public JLabel getjLabel1() {
@@ -647,11 +646,11 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
         this.campoCodigo = campoCodigo;
     }
 
-    public ControladorOperarios getControlador() {
+    public ControladorListarMateriasPrimas getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorOperarios controlador) {
+    public void setControlador(ControladorListarMateriasPrimas controlador) {
         this.controlador = controlador;
     }
 
@@ -739,11 +738,11 @@ private void tablaOperariosEncontradosMouseClicked(java.awt.event.MouseEvent evt
         this.radioBotonNombre = radioBotonNombre;
     }
 
-    public JTable getTablaOperariosEncontrados() {
-        return tablaOperariosEncontrados;
+    public JTable getTablaMateriasPrimasEncontradas() {
+        return tablaMateriasPrimasEncontradas;
     }
 
-    public void setTablaOperariosEncontrados(JTable tablaOperariosEncontrados) {
-        this.tablaOperariosEncontrados = tablaOperariosEncontrados;
+    public void setTablaMateriasPrimasEncontradas(JTable tablaMateriasPrimasEncontradas) {
+        this.tablaMateriasPrimasEncontradas = tablaMateriasPrimasEncontradas;
     }
 }
