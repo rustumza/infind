@@ -119,6 +119,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         Listar.setText("Listar articulos");
 
         listarMateriasPrimas.setText("Materias primas");
+        listarMateriasPrimas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarMateriasPrimasActionPerformed(evt);
+            }
+        });
         Listar.add(listarMateriasPrimas);
 
         listarProductosComponentes.setText("Productos componentes");
@@ -189,7 +194,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 687, Short.MAX_VALUE)
+            .addGap(0, 688, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +231,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void menuEditarOperariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarOperariosActionPerformed
         controlador.editarOperario();
     }//GEN-LAST:event_menuEditarOperariosActionPerformed
+
+    private void listarMateriasPrimasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMateriasPrimasActionPerformed
+        controlador.listarMateriaPrima();
+    }//GEN-LAST:event_listarMateriasPrimasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,10 +390,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setListarProductosIntermedios(JMenuItem listarProductosIntermedios) {
         this.listarProductosIntermedios = listarProductosIntermedios;
     }
-    
-    
-
-    
 
     public JMenuItem getCrearCentro() {
         return crearCentro;

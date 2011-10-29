@@ -4,7 +4,7 @@
  */
 
 /*
- * PantallaEditarOperario.java
+ * PantallaEditarMateriaPrima.java
  *
  * Created on 26/10/2011, 09:17:18
  */
@@ -36,7 +36,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
     ControladorListarMateriasPrimas controlador;
     MateriaPrima materiaSeleccionada;
 
-    /** Creates new form PantallaEditarOperario */
+    /** Creates new form PantallaEditarMateriaPrima*/
     public PantallaListarMateriaPrima(java.awt.Frame parent, boolean modal, ControladorListarMateriasPrimas controladorMP) {
         super(parent, modal);
         initComponents();

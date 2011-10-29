@@ -9,7 +9,6 @@ import Entidades.MateriaPrima;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoMateriaPrimaException;
 import expertos.ExpertoListarMateriaPrima;
-import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.ModeloCombo.ModeloComboBoxMateriaPrima;
 import interfacesGraficas.ModeloTablas.ModeloTablaListarMateriasPrimas;
 import interfacesGraficas.PantallaListarMateriaPrima;
@@ -45,7 +44,6 @@ public class ControladorListarMateriasPrimas {
         modeloTablaListarMateriasPrimas = new ModeloTablaListarMateriasPrimas();
         pantallaListarMateriaPrima.getTablaMateriasPrimasEncontradas().setModel(modeloTablaListarMateriasPrimas);
         pantallaListarMateriaPrima.getComboEditarCategoria().setModel(modeloComboMateriaPrima);
-
         pantallaListarMateriaPrima.setVisible(true);
         pantallaListarMateriaPrima.setLocationRelativeTo(null);
 
