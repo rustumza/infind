@@ -316,7 +316,7 @@ public class PantallaListarMateriaPrima extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
         jPanel2.add(campoPrecioBase, gridBagConstraints);
 
-        comboEditarCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEditarCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
