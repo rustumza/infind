@@ -61,7 +61,7 @@ public class ControladorPantallaMadre {
     }
     
     public void listarMateriaPrima(){
-        new ControladorListarMateriasPrimas(this).editarMateriaPrima();
+        new ControladorListarMateriasPrimas(this).iniciar();
     }
     
     
