@@ -6,6 +6,7 @@ package interfacesGraficas.ModeloTablas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.table.AbstractTableModel;
 import persistencia.ObjetoPersitente;
 
