@@ -47,9 +47,9 @@ public class ControladorListarMateriasPrimas {
         Criteria criterioCentro = null;
         
         if(pantalla.getMostrarMateriasPrimasEliminadasCheckBox().isSelected()){
-            Fachada.getInstancia().crearCriterio(MateriaPrima.class);
+            criterioCentro = Fachada.getInstancia().crearCriterioSinEliminado(MateriaPrima.class);
         }else{
-            Fachada.getInstancia().crearCriterioSinEliminado(MateriaPrima.class);
+            criterioCentro = Fachada.getInstancia().crearCriterio(MateriaPrima.class);
         }
         
         materiaPrimaEncontrada = Fachada.getInstancia().buscar(MateriaPrima.class, criterioCentro);

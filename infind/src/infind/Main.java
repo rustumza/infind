@@ -48,11 +48,13 @@ public class Main {
         criterioArticulo.add(Restrictions.eq("eliminado", true));
         articulosDisponibles = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioArticulo);
         for (MaestroDeArticulo maestroDeArticulos : articulosDisponibles) {
-            if (maestroDeArticulos.getFechaEntrarEnActividad().before(fechaSistema)) {
-           //     System.out.println("Eliminado?: " + maestroDeArticulos.getEliminado() + "  Nombre: " + maestroDeArticulos.getNombre());
-                maestroDeArticulos.setFechaEntrarEnActividad(null);
-                maestroDeArticulos.setEliminado(Boolean.FALSE);
-                Fachada.getInstancia().guardar(maestroDeArticulos);
+            if(maestroDeArticulos.getFechaEntrarEnActividad()!=null){
+                if (maestroDeArticulos.getFechaEntrarEnActividad().before(fechaSistema)) {
+               //     System.out.println("Eliminado?: " + maestroDeArticulos.getEliminado() + "  Nombre: " + maestroDeArticulos.getNombre());
+                    maestroDeArticulos.setFechaEntrarEnActividad(null);
+                    maestroDeArticulos.setEliminado(Boolean.FALSE);
+                    Fachada.getInstancia().guardar(maestroDeArticulos);
+                }
             }
         }
 
