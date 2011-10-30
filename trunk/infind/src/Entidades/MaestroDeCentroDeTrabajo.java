@@ -6,7 +6,9 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +30,7 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     private String codigo;
     private String nombreCentro;
     private String descripcion;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Operario> operario;
     @ManyToMany
     private List<Herramientas> herramientas;
