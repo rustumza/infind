@@ -127,12 +127,27 @@ public class PantallaMadre extends javax.swing.JFrame {
         Listar.add(listarMateriasPrimas);
 
         listarProductosComponentes.setText("Productos componentes");
+        listarProductosComponentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProductosComponentesActionPerformed(evt);
+            }
+        });
         Listar.add(listarProductosComponentes);
 
         listarProductosIntermedios.setText("Productos intermedios");
+        listarProductosIntermedios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProductosIntermediosActionPerformed(evt);
+            }
+        });
         Listar.add(listarProductosIntermedios);
 
         listarProductosFinales.setText("Productos finales");
+        listarProductosFinales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProductosFinalesActionPerformed(evt);
+            }
+        });
         Listar.add(listarProductosFinales);
 
         articulos.add(Listar);
@@ -235,6 +250,18 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void listarMateriasPrimasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMateriasPrimasActionPerformed
         controlador.listarMateriaPrima();
     }//GEN-LAST:event_listarMateriasPrimasActionPerformed
+
+    private void listarProductosComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosComponentesActionPerformed
+        controlador.listarProductoComponente();
+    }//GEN-LAST:event_listarProductosComponentesActionPerformed
+
+    private void listarProductosIntermediosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosIntermediosActionPerformed
+        controlador.listarProductosIntermedios();
+    }//GEN-LAST:event_listarProductosIntermediosActionPerformed
+
+    private void listarProductosFinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosFinalesActionPerformed
+        controlador.listarProductosFinales();
+    }//GEN-LAST:event_listarProductosFinalesActionPerformed
 
     /**
      * @param args the command line arguments

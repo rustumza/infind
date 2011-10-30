@@ -19,7 +19,7 @@ public class ModeloTablaListarMateriasPrimas extends ModeloTabla{
 
     public ModeloTablaListarMateriasPrimas() {
 
-        super("Código", "Nombre", "Categoria");
+        super("Código", "Nombre", "Categoria", "Ubicacion en almacén");
     }
 
     @Override
@@ -36,6 +36,8 @@ public class ModeloTablaListarMateriasPrimas extends ModeloTabla{
                 return materiaPrima.getNombre();
             case 2:
                 return materiaPrima.getCategoria();
+            case 3:
+                return materiaPrima.getUbicacionEnAlmacen();
             default:
                 return "";
         }
