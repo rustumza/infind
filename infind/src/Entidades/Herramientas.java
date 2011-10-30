@@ -7,6 +7,7 @@ package Entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     private String codigo;
     private String nombreHerramientas;
     private String descripcion;
-    @ManyToMany
+    @ManyToMany 
     private List<MaestroDeCentroDeTrabajo> maestroCentroTrabajo;
 
     public Long getId() {

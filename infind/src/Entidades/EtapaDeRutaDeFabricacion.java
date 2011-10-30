@@ -7,6 +7,7 @@ package Entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     private int tiempoDeTrabajoTotal;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
-    @OneToMany
+    @OneToMany 
     private List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList;
     @ManyToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacionList;

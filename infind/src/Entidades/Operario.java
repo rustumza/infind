@@ -7,6 +7,7 @@ package Entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ import persistencia.ObjetoPersitente;
  */
 @Entity
 public class Operario extends ObjetoPersitente implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,10 +34,10 @@ public class Operario extends ObjetoPersitente implements Serializable {
     private String direccion;
     private String correoElectronico;
     private Boolean eliminado = false;
+    @ManyToMany 
+    private List<MaestroDeCentroDeTrabajo> centroDeTrabajo;
     @ManyToOne
     private TipoOperario tipoOperario;
-    @ManyToMany
-    private List<MaestroDeCentroDeTrabajo> centroDeTrabajo;
 
     public Long getId() {
         return id;
@@ -52,8 +54,6 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public void setCentroDeTrabajo(List<MaestroDeCentroDeTrabajo> centroDeTrabajo) {
         this.centroDeTrabajo = centroDeTrabajo;
     }
-
-    
 
     public String getApellido() {
         return apellido;
@@ -126,12 +126,6 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public void setCodigoOperario(String codigoOperario) {
         this.codigoOperario = codigoOperario;
     }
-    
-    
-    
-    
-    
-    
 
     @Override
     public int hashCode() {
@@ -157,5 +151,4 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public String toString() {
         return "Entidades.Operario[ id=" + id + " ]";
     }
-    
 }

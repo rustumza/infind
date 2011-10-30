@@ -31,6 +31,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -68,25 +69,25 @@ public class ControladorCentroDeTrabajo {
         pantallaEditarCentro = new PantallaEDCentro(pantallaMadre, false, this);
         expertoCentroDeTrabajo = (ExpertoCentroDeTrabajo) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.CENTRO_DE_TRABAJO);
         modeloTablaAgregaHerramientasNuevo = new ModeloTablaAgregaHerramientasNuevo();
-            pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
-            pantallaEditarCentro.getTablaAgregaHerramientaEditar().setModel(modeloTablaAgregaHerramientasNuevo);
+        pantallacrearcentro.getTablaAgregaHerramientaNuevo().setModel(modeloTablaAgregaHerramientasNuevo);
+        pantallaEditarCentro.getTablaAgregaHerramientaEditar().setModel(modeloTablaAgregaHerramientasNuevo);
         modeloTablaAgregaOperarioNuevo = new ModeloTablaAgregaOperarioNuevo();
-            pantallacrearcentro.getTablaAgregaOperariosNuevo().setModel(modeloTablaAgregaOperarioNuevo);
-            pantallaEditarCentro.getTablaAgregaOperariosEditar().setModel(modeloTablaAgregaOperarioNuevo);
+        pantallacrearcentro.getTablaAgregaOperariosNuevo().setModel(modeloTablaAgregaOperarioNuevo);
+        pantallaEditarCentro.getTablaAgregaOperariosEditar().setModel(modeloTablaAgregaOperarioNuevo);
         modeloTablaAgregaMaquinasNuevo = new ModeloTablaAgregaMaquinasNuevo();
-            pantallacrearcentro.getTablaAgregaMaquinaNuevo().setModel(modeloTablaAgregaMaquinasNuevo);
-            pantallaEditarCentro.getTablaAgregaMaquinaEditar().setModel(modeloTablaAgregaMaquinasNuevo);
+        pantallacrearcentro.getTablaAgregaMaquinaNuevo().setModel(modeloTablaAgregaMaquinasNuevo);
+        pantallaEditarCentro.getTablaAgregaMaquinaEditar().setModel(modeloTablaAgregaMaquinasNuevo);
         modeloTablaBuscaHerramientasNuevo = new ModeloTablaBuscaHerramientasNuevo();
-            pantallacrearcentro.getTablaBuscaHerramientaNuevo().setModel(modeloTablaBuscaHerramientasNuevo);
-            pantallaEditarCentro.getTablaBuscaHerramientaEditar().setModel(modeloTablaBuscaHerramientasNuevo);
+        pantallacrearcentro.getTablaBuscaHerramientaNuevo().setModel(modeloTablaBuscaHerramientasNuevo);
+        pantallaEditarCentro.getTablaBuscaHerramientaEditar().setModel(modeloTablaBuscaHerramientasNuevo);
         modeloTablaBuscaMaquinasNuevo = new ModeloTablaBuscaMaquinasNuevo();
-            pantallacrearcentro.getTablaBuscaMaquinaNuevo().setModel(modeloTablaBuscaMaquinasNuevo);
-            pantallaEditarCentro.getTablaBuscaMaquinaEditar().setModel(modeloTablaBuscaMaquinasNuevo);
+        pantallacrearcentro.getTablaBuscaMaquinaNuevo().setModel(modeloTablaBuscaMaquinasNuevo);
+        pantallaEditarCentro.getTablaBuscaMaquinaEditar().setModel(modeloTablaBuscaMaquinasNuevo);
         modeloTablaBuscaOperarioNuevo = new ModeloTablaBuscaOperarioNuevo();
-            pantallacrearcentro.getTablaBuscaOperariosNuevo().setModel(modeloTablaBuscaOperarioNuevo);
-            pantallaEditarCentro.getTablaBuscaOperariosEditar().setModel(modeloTablaBuscaOperarioNuevo);
-        
-        
+        pantallacrearcentro.getTablaBuscaOperariosNuevo().setModel(modeloTablaBuscaOperarioNuevo);
+        pantallaEditarCentro.getTablaBuscaOperariosEditar().setModel(modeloTablaBuscaOperarioNuevo);
+
+
 
 
 //pantalla nuevo centro        
@@ -474,12 +475,17 @@ public class ControladorCentroDeTrabajo {
                 pantallaEditarCentro.getCampoCodigoCentro().setText(centroEncontrado.getCodigo());
                 pantallaEditarCentro.getCampoDescripcionCentro().setText(centroEncontrado.getDescripcion());
                 pantallaEditarCentro.getCampoNombreCentro().setText(centroEncontrado.getNombreCentro());
-                //List<Herramientas> herramientas = expertoCentroDeTrabajo.buscarHerramientaAgregadas(centroEncontrado.getCodigo());
+                List<Herramientas> herramientas = centroEncontrado.getHerramientas();
+                List<Maquina> maquinas = centroEncontrado.getMaquinas();
+                List<Operario> operario = centroEncontrado.getOperario();
+                
+
+                //List<Herramientas> herramientas = expertoCentroDeTrabajo.buscarHerramientaAgregadas(centroEncontrado.getId());
                 //List<Maquina> maquinas = expertoCentroDeTrabajo.buscarMaquinaAgregadas(centroEncontrado.getCodigo());
                 //List<Operario> operarios = expertoCentroDeTrabajo.buscarOperariosAgregadas(centroEncontrado.getCodigo());
-                //modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
-                //modeloTablaAgregaMaquinasNuevo.addAllRow(maquinas);
-                //modeloTablaAgregaOperarioNuevo.addAllRow(operarios);
+                modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
+                modeloTablaAgregaMaquinasNuevo.addAllRow(maquinas);
+                modeloTablaAgregaOperarioNuevo.addAllRow(operario);
             }
 
         } else if (pantallaEditarCentro.getRadioBotonNombreBuscaCentro().isSelected()) {
@@ -489,10 +495,10 @@ public class ControladorCentroDeTrabajo {
                 pantallaEditarCentro.getCampoCodigoCentro().setText(centroEncontrado.getCodigo());
                 pantallaEditarCentro.getCampoDescripcionCentro().setText(centroEncontrado.getDescripcion());
                 pantallaEditarCentro.getCampoNombreCentro().setText(centroEncontrado.getNombreCentro());
-                List<Herramientas> herramientas = expertoCentroDeTrabajo.buscarHerramientaAgregadas(centroEncontrado.getCodigo());
+                // List<Herramientas> herramientas = expertoCentroDeTrabajo.buscarHerramientaAgregadas(centroEncontrado.getCodigo());
                 List<Maquina> maquinas = expertoCentroDeTrabajo.buscarMaquinaAgregadas(centroEncontrado.getCodigo());
                 List<Operario> operarios = expertoCentroDeTrabajo.buscarOperariosAgregadas(centroEncontrado.getCodigo());
-                modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
+                // modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
                 modeloTablaAgregaMaquinasNuevo.addAllRow(maquinas);
                 modeloTablaAgregaOperarioNuevo.addAllRow(operarios);
             }
@@ -538,6 +544,9 @@ public class ControladorCentroDeTrabajo {
         centroDeTrabajoSeleccionado.setDescripcion(pantallacrearcentro.getCampoDescripcion().getText());
         centroDeTrabajoSeleccionado.setNombreCentro(pantallacrearcentro.getCampoNombre().getText());
         centroDeTrabajoSeleccionado.setEliminado(Boolean.FALSE);
+        centroDeTrabajoSeleccionado.setOperario(modeloTablaAgregaOperarioNuevo.getListaElementos());
+        centroDeTrabajoSeleccionado.setHerramientas(modeloTablaAgregaHerramientasNuevo.getListaElementos());
+        centroDeTrabajoSeleccionado.setMaquinas(modeloTablaAgregaMaquinasNuevo.getListaElementos());
         //TODO: debo buscar los operarios, herramientas y maquinas que se encuentren en las tablas
         //para poder guardarlas, ya que son las relaciones del centro de trabajo que estoy guardando
 
@@ -551,10 +560,26 @@ public class ControladorCentroDeTrabajo {
             } else {
 
                 expertoCentroDeTrabajo.guardar(centroDeTrabajoSeleccionado);
+
                 limpiarPantallaCentroDeTrabajo();
                 centroDeTrabajoSeleccionado = null;
                 JOptionPane.showMessageDialog(pantallacrearcentro, "Centro de Trabajo Guardado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
                 pantallacrearcentro.setVisible(false);
+
+                //genero el nuevo numero de la clase numerador para la fila de centros de trabajo
+
+                List<Numerador> numeroDisponibles = null;
+                Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+                criterioNumerador.add(Restrictions.eq("codificacion", "7.1.1."));
+                numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+                String codifica = numeroDisponibles.get(0).getCodificacion();
+                String num = numeroDisponibles.get(0).getUltimaClasificacion();
+                int nume = Integer.parseInt(num);
+                nume = nume + 1;
+                num = String.valueOf(nume);
+                numeroDisponibles.get(0).setUltimaClasificacion(num);
+                expertoCentroDeTrabajo.guardarNumerador(numeroDisponibles.get(0));
+
             }
         } catch (ExpertoCentroDeTrabajoException ex) {
             Logger.getLogger(ControladorCentroDeTrabajo.class.getName()).log(Level.SEVERE, null, ex);
@@ -635,7 +660,6 @@ public class ControladorCentroDeTrabajo {
 
 
     }
-    
 
     public void crearCentro() {
 
@@ -650,7 +674,7 @@ public class ControladorCentroDeTrabajo {
         pantallacrearcentro.setVisible(true);
         pantallacrearcentro.setLocationRelativeTo(null);
 
- // busco el último número y le sumo 1 para obtener el nuevo código del centro de trabajo       
+        // busco el último número y le sumo 1 para obtener el nuevo código del centro de trabajo
         List<Numerador> numeroDisponibles = null;
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
         criterioNumerador.add(Restrictions.eq("codificacion", "7.1.1."));
@@ -660,14 +684,11 @@ public class ControladorCentroDeTrabajo {
         int nume = Integer.parseInt(num);
         nume = nume + 1;
         num = String.valueOf(nume);
-        String nuevoNumero = codifica + num ;
+        String nuevoNumero = codifica + num;
         pantallacrearcentro.getCampoCodigo().setText(nuevoNumero);
 
     }
-    
-    
-    
-    
+
     public void buscarOperarioEditar() throws ExpertoCentroDeTrabajoException {
 
 
@@ -796,12 +817,6 @@ public class ControladorCentroDeTrabajo {
         }
         return nuevoDto;
     }
-
-    
-    
-    
-    
-    
 
     public void iniciarEditarCentro() {
         pantallaEditarCentro.setVisible(true);

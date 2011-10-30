@@ -183,19 +183,18 @@ public class ExpertoCentroDeTrabajo extends Experto {
         return herramientaEncontrados;
     }
 
-    public List<Herramientas> buscarHerramientaAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException, NoSuchFieldException {
+    public List<Herramientas> buscarHerramientaAgregadas(Long idCentroTrabajo) throws ExpertoCentroDeTrabajoException, NoSuchFieldException {
 
         List<Herramientas> herramientaEncontrados = null;
 
-        Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas.class);
-        criterioHerramientas.add(Restrictions.eq(String.valueOf(Herramientas.class.getField(codigoCentroTrabajo)), codigoCentroTrabajo));
-
+        Criteria criterioHerramientas = Fachada.getInstancia().crearCriterioSinEliminado(Herramientas.class);
+        criterioHerramientas.add(Restrictions.eq("id", idCentroTrabajo));
         herramientaEncontrados = Fachada.getInstancia().buscar(Herramientas.class, criterioHerramientas);
 
-        if (herramientaEncontrados.isEmpty()) {
+        /*if (herramientaEncontrados.isEmpty()) {
             throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
 
-        }
+        }*/
 
         return herramientaEncontrados;
     }
@@ -251,6 +250,17 @@ public class ExpertoCentroDeTrabajo extends Experto {
             }
         }
     }
+
+     public void guardarNumerador(Numerador nuevoNumero) throws ExpertoCentroDeTrabajoException {
+
+            try {
+                Fachada.getInstancia().guardar(nuevoNumero);
+            } catch (Exception ex) {
+                throw new ExpertoCentroDeTrabajoException("Error al guardar el Numerador");
+            }
+
+    }
+
 
     public void eliminar(MaestroDeCentroDeTrabajo centro) throws ExpertoCentroDeTrabajoException {
 
