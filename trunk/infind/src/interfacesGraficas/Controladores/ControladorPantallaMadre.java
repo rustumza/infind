@@ -23,24 +23,21 @@ public class ControladorPantallaMadre {
         pantalla = new PantallaMadre(this);
 
     }
-    
-    
+
     public void iniciar() {
         pantalla.setVisible(true);
         pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void crearCentro() {
-       new ControladorCentroDeTrabajo(this).crearCentro();
+        new ControladorCentroDeTrabajo(this).crearCentro();
     }
-    
-    public void editarCentro(){
+
+    public void editarCentro() {
         new ControladorCentroDeTrabajo(this).editarCentro();
     }
-            
 
     public void crearArticulo() {
-        
     }
 
     public void crearMateriaPrima() {
@@ -48,23 +45,30 @@ public class ControladorPantallaMadre {
     }
 
     public void crearProductoFinal() {
-        
     }
-    
-    public void crearOperario(){
+
+    public void crearOperario() {
         new ControladorOperarios(this).crearOperario();
-        
+
     }
-    
-    public void editarOperario(){
+
+    public void editarOperario() {
         new ControladorOperarios(this).editarOperario();
     }
-    
-    public void listarMateriaPrima(){
+
+    public void listarMateriaPrima() {
         new ControladorListarMateriasPrimas(this).iniciar();
     }
-    
-    
-    
-    
+
+    public void listarProductoComponente() {
+        new ControladorListarProductosComponentes(this).iniciar();
+    }
+
+    public void listarProductosIntermedios() {
+        new ControladorListarProductosIntermedios(this).iniciar();
+    }
+
+    public void listarProductosFinales() {
+        new ControladorListarProductosFinales(this).iniciar();
+    }
 }
