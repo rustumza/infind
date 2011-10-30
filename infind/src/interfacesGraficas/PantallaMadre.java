@@ -61,6 +61,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearCentro = new javax.swing.JMenuItem();
         editarCentro = new javax.swing.JMenuItem();
         rutaDeFabricacion = new javax.swing.JMenu();
+        menuEditarRuta = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuIngresarOperarios = new javax.swing.JMenuItem();
         menuEditarOperarios = new javax.swing.JMenuItem();
@@ -181,6 +183,23 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         rutaDeFabricacion.setText("Ruta de fabricación");
         rutaDeFabricacion.setMargin(new java.awt.Insets(2, 2, 2, 12));
+        rutaDeFabricacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rutaDeFabricacionActionPerformed(evt);
+            }
+        });
+
+        menuEditarRuta.setText("Crear Ruta de Fabricación");
+        menuEditarRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarRutaActionPerformed(evt);
+            }
+        });
+        rutaDeFabricacion.add(menuEditarRuta);
+
+        jMenuItem2.setText("Editar Ruta de Fabricación");
+        rutaDeFabricacion.add(jMenuItem2);
+
         jMenuBar1.add(rutaDeFabricacion);
 
         jMenu2.setText("Operarios");
@@ -209,7 +228,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
+            .addGap(0, 698, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,6 +282,14 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         controlador.listarProductosFinales();
     }//GEN-LAST:event_listarProductosFinalesActionPerformed
 
+    private void rutaDeFabricacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaDeFabricacionActionPerformed
+       
+    }//GEN-LAST:event_rutaDeFabricacionActionPerformed
+
+    private void menuEditarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarRutaActionPerformed
+         controlador.crearRutaFabricacion();
+    }//GEN-LAST:event_menuEditarRutaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,11 +340,13 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
     private javax.swing.JMenuItem listarProductosIntermedios;
     private javax.swing.JMenuItem menuEditarOperarios;
+    private javax.swing.JMenuItem menuEditarRuta;
     private javax.swing.JMenuItem menuIngresarOperarios;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables

@@ -71,4 +71,8 @@ public class ControladorPantallaMadre {
     public void listarProductosFinales() {
         new ControladorListarProductosFinales(this).iniciar();
     }
+
+    public void crearRutaFabricacion(){
+        new ControladorCrearRutaDeFabricacion(this).crearRutaFabricacion();
+    }
 }

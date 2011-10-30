@@ -29,6 +29,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     private Boolean eliminado;
     private int cantidadDeOperarios;
     private int nroEtapa;
+    private String nombreEtapa;
     private int tiempoDeTrabajoDeMaquinas;
     private int tiempoDeTrabajoDeOperarios;
     private int tiempoDeTrabajoTotal;
@@ -46,6 +47,24 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<DetalleDeArticuloEnEtapaDeFabricacion> getDetallesArtEnEtapaFabList() {
+        return detallesArtEnEtapaFabList;
+    }
+
+    public void setDetallesArtEnEtapaFabList(List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList) {
+        this.detallesArtEnEtapaFabList = detallesArtEnEtapaFabList;
+    }
+
+    public String getNombreEtapa() {
+        return nombreEtapa;
+    }
+
+    public void setNombreEtapa(String nombreEtapa) {
+        this.nombreEtapa = nombreEtapa;
+    }
+
+    
 
     public int getCantidadDeOperarios() {
         return cantidadDeOperarios;
