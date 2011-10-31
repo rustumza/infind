@@ -6,6 +6,7 @@ package interfacesGraficas.Controladores;
 
 import Entidades.MateriaPrima;
 import Entidades.Numerador;
+import Entidades.Proveedor;
 import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.PantallaCrearMateriaPrima;
 import interfacesGraficas.PantallaEditarMateriaPrima;
@@ -136,7 +137,7 @@ public class ControladorMateriaPrima {
     public void editarMateriaPrima(String codigoMateriaPrima){
         MateriaPrima matPrim = experto.buscarMateriaPrima(codigoMateriaPrima);
         pantallaEditarMateriPrima = new PantallaEditarMateriaPrima(controladorPantallaMadre.getPantalla(), false, this);
-        cargarDatosEnPantalla(matPrim);
+        cargarDatosEnPantallaEditar(matPrim);
         pantallaEditarMateriPrima.setVisible(true);
     
     }
@@ -145,8 +146,8 @@ public class ControladorMateriaPrima {
         
     }
 
-    private void cargarDatosEnPantalla(MateriaPrima matPrim) {
-        pantallaEditarMateriPrima.getTipoMateriaPrimaListBox().setSelectedItem(matPrim.getTipoMateriaPrima());
+    private void cargarDatosEnPantallaEditar(MateriaPrima matPrim) {
+        pantallaEditarMateriPrima.getTipoMateriaPrimaTextBox().setText(matPrim.getTipoMateriaPrima());
         pantallaEditarMateriPrima.getCodigoTextBox().setText(matPrim.getCodigo());
         pantallaEditarMateriPrima.getNombreTextBox().setText(matPrim.getNombre());
         pantallaEditarMateriPrima.getDescripcionTextArea().setText(matPrim.getDescripcion());
@@ -163,11 +164,74 @@ public class ControladorMateriaPrima {
         }else{
             pantallaEditarMateriPrima.getEstadoListBox().setSelectedItem("Activo");
         }
-        pantallaEditarMateriPrima.getTamañoLoteEstandarLabel().setText(String.valueOf(matPrim.getTamanioLoteEstandar()));
+        pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().setText(String.valueOf(matPrim.getTamanioLoteEstandar()));
         pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().setText(matPrim.getUbicacionEnAlmacen());
         pantallaEditarMateriPrima.getObservacionTextArea().setText(matPrim.getObservacion());
         pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setModel(new DefaultComboBoxModel(matPrim.getProveedores().toArray()));
-        pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setSelectedItem(matPrim.getProveedorPredeterminado());
+        if(matPrim.getProveedorPredeterminado() != null){
+            pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setSelectedItem(matPrim.getProveedorPredeterminado());
+        }
     }
+    
+    
+    public void editar() {
+        MateriaPrima matPrim = experto.getMateriaPrima();
+        //TODO bloquear botones de gaurdar, cancear. etc
+        if(pantallaEditarMateriPrima.getNombreTextBox().getText().isEmpty() | pantallaEditarMateriPrima.getNombreTextBox().getText().equals(" ")){
+                JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Debe ingresar un nombre para la materia prima", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantallaEditarMateriPrima.getNombreTextBox().requestFocus();
+                return;
+        }else{
+            matPrim.setNombre(pantallaEditarMateriPrima.getNombreTextBox().getText());
+        }
+        matPrim.setDescripcion(pantallaEditarMateriPrima.getDescripcionTextArea().getText());
+        matPrim.setUnidadDeMedida((String)pantallaEditarMateriPrima.getUnidadDeMedidaListBox().getModel().getSelectedItem());
+        matPrim.setCategoria(((String)pantallaEditarMateriPrima.getCategoriaListBox().getModel().getSelectedItem()).charAt(0));
+        try{
+            matPrim.setCostoEstandar(Float.valueOf(pantallaEditarMateriPrima.getCostoEstandarTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un costo estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarMateriPrima.getCostoEstandarTextBox().requestFocus();
+            return;
+        }
+        
+        try{
+            matPrim.setCostoUnitarioPorOmision(Float.valueOf(pantallaEditarMateriPrima.getCostoUnitarioPorOmisionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un costo unitario por omisión incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarMateriPrima.getCostoUnitarioPorOmisionTextBox().requestFocus();
+            return;      
+        }
+        
+        try{
+            matPrim.setPrecioBase(Float.valueOf(pantallaEditarMateriPrima.getPrecioBaseTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un precio base incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarMateriPrima.getPrecioBaseTextBox().requestFocus();
+            return;       
+        }
+        if(((String)(pantallaEditarMateriPrima.getEstadoListBox().getModel().getSelectedItem())).equals("Activo")){
+            matPrim.setEliminado(false);
+        }else{
+            matPrim.setEliminado(true);
+            matPrim.setFechaEntrarEnActividad(pantallaEditarMateriPrima.getEstadoEntrarEnActividadEnFechajDateChooser().getDate());
+        }
+        
+        try{
+            matPrim.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
+            return;       
+        }
+        matPrim.setUbicacionEnAlmacen(pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().getText());
+        matPrim.setObservacion(pantallaEditarMateriPrima.getObservacionTextArea().getText());
+        matPrim.setProveedorPredeterminado((Proveedor)pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().getModel().getSelectedItem());
+        experto.guardar(matPrim);
+        
+        
+        JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Materia prima guardada con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     
 }

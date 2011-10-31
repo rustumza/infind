@@ -75,4 +75,9 @@ public class ControladorPantallaMadre {
     public void crearRutaFabricacion(){
         new ControladorCrearRutaDeFabricacion(this).crearRutaFabricacion();
     }
+
+    public void crearProveedor() {
+        new ControladorProveedores(this).crearProveedor();
+    }
+
 }

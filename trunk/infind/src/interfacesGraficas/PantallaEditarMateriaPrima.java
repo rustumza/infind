@@ -60,7 +60,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         nombreTextBox = new javax.swing.JTextField();
         ubicacionEnElAlmacenLabel = new javax.swing.JLabel();
         unidadDeMedidaLabel = new javax.swing.JLabel();
-        tamañoLoteEstandarLabel = new javax.swing.JLabel();
+        tamanioLoteEstandarLabel = new javax.swing.JLabel();
         observacionLabel = new javax.swing.JLabel();
         precioBaseLabel = new javax.swing.JLabel();
         categoriaLabel = new javax.swing.JLabel();
@@ -83,9 +83,9 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
         tipoMateriaPrimaLabel = new javax.swing.JLabel();
-        tipoMateriaPrimaListBox = new javax.swing.JComboBox();
         preoveedorPredeterminadoLabel = new javax.swing.JLabel();
         proveedorPredeterminadoListBox = new javax.swing.JComboBox();
+        tipoMateriaPrimaTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -143,7 +143,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
 
         unidadDeMedidaLabel.setText("Unidad de medida");
 
-        tamañoLoteEstandarLabel.setText("Tamaño lote estandar");
+        tamanioLoteEstandarLabel.setText("Tamaño lote estandar");
 
         observacionLabel.setText("Observación");
 
@@ -184,16 +184,11 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
 
         tipoMateriaPrimaLabel.setText("Tipo materia prima");
 
-        tipoMateriaPrimaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria" }));
-        tipoMateriaPrimaListBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoMateriaPrimaListBoxActionPerformed(evt);
-            }
-        });
-
         preoveedorPredeterminadoLabel.setText("Proveedor predeterminado");
 
         proveedorPredeterminadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tipoMateriaPrimaTextBox.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,7 +205,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                             .addComponent(costoEstandarLabel)
                             .addComponent(costoUnitarioPorOmisionLabel)
                             .addComponent(precioBaseLabel)
-                            .addComponent(tamañoLoteEstandarLabel)
+                            .addComponent(tamanioLoteEstandarLabel)
                             .addComponent(ubicacionEnElAlmacenLabel)
                             .addComponent(observacionLabel))
                         .addGap(22, 22, 22)
@@ -243,8 +238,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                             .addComponent(codigoLabel))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tipoMateriaPrimaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(preoveedorPredeterminadoLabel)
                         .addGap(18, 18, 18)
@@ -256,8 +251,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoMateriaPrimaLabel))
+                    .addComponent(tipoMateriaPrimaLabel)
+                    .addComponent(tipoMateriaPrimaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel)
@@ -299,7 +294,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                             .addComponent(estadoEntrarEnActividadEnFechaLabel))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tamañoLoteEstandarLabel)
+                            .addComponent(tamanioLoteEstandarLabel)
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -365,12 +360,8 @@ private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_estadoListBoxActionPerformed
 
 private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-    controlador.guardar();
+    controlador.editar();
 }//GEN-LAST:event_guardarActionPerformed
-
-private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMateriaPrimaListBoxActionPerformed
-    controlador.cambiarTipoMateriaPrima();
-}//GEN-LAST:event_tipoMateriaPrimaListBoxActionPerformed
 
 private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
     controlador.eliminar();
@@ -412,10 +403,10 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JLabel preoveedorPredeterminadoLabel;
     private javax.swing.JComboBox proveedorPredeterminadoListBox;
     private javax.swing.JButton salir;
+    private javax.swing.JLabel tamanioLoteEstandarLabel;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
-    private javax.swing.JLabel tamañoLoteEstandarLabel;
     private javax.swing.JLabel tipoMateriaPrimaLabel;
-    private javax.swing.JComboBox tipoMateriaPrimaListBox;
+    private javax.swing.JTextField tipoMateriaPrimaTextBox;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
@@ -647,12 +638,12 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.tamanioLoteEstandarTextBox = tamanioLoteEstandarTextBox;
     }
 
-    public JLabel getTamañoLoteEstandarLabel() {
-        return tamañoLoteEstandarLabel;
+    public JLabel getTamanioLoteEstandarLabel() {
+        return tamanioLoteEstandarLabel;
     }
 
-    public void setTamañoLoteEstandarLabel(JLabel tamañoLoteEstandarLabel) {
-        this.tamañoLoteEstandarLabel = tamañoLoteEstandarLabel;
+    public void setTamanioLoteEstandarLabel(JLabel tamanioLoteEstandarLabel) {
+        this.tamanioLoteEstandarLabel = tamanioLoteEstandarLabel;
     }
 
     public JToolBar getToolbar() {
@@ -719,14 +710,6 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.tipoMateriaPrimaLabel = tipoMateriaPrimaLabel;
     }
 
-    public JComboBox getTipoMateriaPrimaListBox() {
-        return tipoMateriaPrimaListBox;
-    }
-
-    public void setTipoMateriaPrimaListBox(JComboBox tipoMateriaPrimaListBox) {
-        this.tipoMateriaPrimaListBox = tipoMateriaPrimaListBox;
-    }
-
     public JButton getEliminar() {
         return eliminar;
     }
@@ -749,6 +732,14 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     public void setProveedorPredeterminadoListBox(JComboBox proveedorPredeterminadoListBox) {
         this.proveedorPredeterminadoListBox = proveedorPredeterminadoListBox;
+    }
+
+    public JTextField getTipoMateriaPrimaTextBox() {
+        return tipoMateriaPrimaTextBox;
+    }
+
+    public void setTipoMateriaPrimaTextBox(JTextField tipoMateriaPrimaTextBox) {
+        this.tipoMateriaPrimaTextBox = tipoMateriaPrimaTextBox;
     }
 
 

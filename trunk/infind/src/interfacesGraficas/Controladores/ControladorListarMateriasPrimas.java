@@ -38,7 +38,6 @@ public class ControladorListarMateriasPrimas {
     public void editarMateriaPrima(int matePrimSeleccionada) {
        String codigoMateriaPrima = (String) pantalla.getTablaMateriasPrimasEncontradas().getModel().getValueAt(matePrimSeleccionada, 0);
        new ControladorMateriaPrima(controladorPantallaMadre).editarMateriaPrima(codigoMateriaPrima);
-        System.out.println("me hicieron doble clic");
     }
 
     public void recargarTabla() {

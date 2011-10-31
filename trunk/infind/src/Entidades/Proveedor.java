@@ -101,6 +101,9 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
 
     public void addMateriaPrima(MateriaPrima materiaPrima) {
         //if (!getDetallesDeFactura().contains(detalle)) {
+        if(getMateriasPrimas() == null){
+            setMateriasPrimas(new ArrayList<MateriaPrima>());
+        }
         if (!estaEnLaListaMateriaPrima(materiaPrima)) {
 
             getMateriasPrimas().add(materiaPrima);
@@ -126,6 +129,9 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
     
     public void addProductoComponente(ProductoComponente productoComponente) {
         //if (!getDetallesDeFactura().contains(detalle)) {
+        if(getProductosComponentes() == null){
+            setProductosComponentes(new ArrayList<ProductoComponente>());
+        }
         if (!estaEnLaListaProdComp(productoComponente)) {
 
             getProductosComponentes().add(productoComponente);
@@ -172,7 +178,7 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.proveedor[ id=" + id + " ]";
+        return getNombre();
     }
     
 }

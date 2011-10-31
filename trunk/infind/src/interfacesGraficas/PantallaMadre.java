@@ -50,7 +50,6 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearProductoIntermedio = new javax.swing.JMenuItem();
         crearProductoComponente = new javax.swing.JMenuItem();
         crearProductoFinal = new javax.swing.JMenuItem();
-        editarArticulo = new javax.swing.JMenuItem();
         Listar = new javax.swing.JMenu();
         listarMateriasPrimas = new javax.swing.JMenuItem();
         listarProductosComponentes = new javax.swing.JMenuItem();
@@ -63,9 +62,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         rutaDeFabricacion = new javax.swing.JMenu();
         menuEditarRuta = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        operarios = new javax.swing.JMenu();
         menuIngresarOperarios = new javax.swing.JMenuItem();
         menuEditarOperarios = new javax.swing.JMenuItem();
+        proveedores = new javax.swing.JMenu();
+        crearProveedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -114,9 +115,6 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearArticulo.add(crearProductoFinal);
 
         articulos.add(crearArticulo);
-
-        editarArticulo.setText("Editar articulo");
-        articulos.add(editarArticulo);
 
         Listar.setText("Listar articulos");
 
@@ -202,7 +200,7 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(rutaDeFabricacion);
 
-        jMenu2.setText("Operarios");
+        operarios.setText("Operarios");
 
         menuIngresarOperarios.setText("Crear Operarios");
         menuIngresarOperarios.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +208,7 @@ public class PantallaMadre extends javax.swing.JFrame {
                 menuIngresarOperariosActionPerformed(evt);
             }
         });
-        jMenu2.add(menuIngresarOperarios);
+        operarios.add(menuIngresarOperarios);
 
         menuEditarOperarios.setText("Editar Operarios");
         menuEditarOperarios.addActionListener(new java.awt.event.ActionListener() {
@@ -218,9 +216,21 @@ public class PantallaMadre extends javax.swing.JFrame {
                 menuEditarOperariosActionPerformed(evt);
             }
         });
-        jMenu2.add(menuEditarOperarios);
+        operarios.add(menuEditarOperarios);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(operarios);
+
+        proveedores.setText("Proveedores");
+
+        crearProveedores.setText("Crear proveedores");
+        crearProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProveedoresActionPerformed(evt);
+            }
+        });
+        proveedores.add(crearProveedores);
+
+        jMenuBar1.add(proveedores);
 
         setJMenuBar(jMenuBar1);
 
@@ -228,7 +238,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGap(0, 747, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,6 +300,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
          controlador.crearRutaFabricacion();
     }//GEN-LAST:event_menuEditarRutaActionPerformed
 
+private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProveedoresActionPerformed
+        controlador.crearProveedor();
+}//GEN-LAST:event_crearProveedoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,11 +348,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem crearProductoComponente;
     private javax.swing.JMenuItem crearProductoFinal;
     private javax.swing.JMenuItem crearProductoIntermedio;
-    private javax.swing.JMenuItem editarArticulo;
+    private javax.swing.JMenuItem crearProveedores;
     private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem listarMateriasPrimas;
@@ -348,6 +361,8 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem menuEditarOperarios;
     private javax.swing.JMenuItem menuEditarRuta;
     private javax.swing.JMenuItem menuIngresarOperarios;
+    private javax.swing.JMenu operarios;
+    private javax.swing.JMenu proveedores;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables
 
@@ -405,14 +420,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     public void setCrearProductoIntermedio(JMenuItem crearProductoIntermedio) {
         this.crearProductoIntermedio = crearProductoIntermedio;
-    }
-
-    public JMenuItem getEditarArticulo() {
-        return editarArticulo;
-    }
-
-    public void setEditarArticulo(JMenuItem editarArticulo) {
-        this.editarArticulo = editarArticulo;
     }
 
     public JMenuItem getListarMateriasPrimas() {

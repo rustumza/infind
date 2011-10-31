@@ -46,7 +46,7 @@ public class ExpertoMateriaPrima extends Experto{
     public MateriaPrima buscarMateriaPrima(String codigoMateriaPrima) {
         
         List<MateriaPrima> listaMateriaPrima = null;
-        Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+        Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(MateriaPrima.class);
         criterioNumerador.add(Restrictions.eq("codigo", codigoMateriaPrima));
         listaMateriaPrima = Fachada.getInstancia().buscar(MateriaPrima.class, criterioNumerador);
         materiaPrimaExperto = listaMateriaPrima.get(0);
