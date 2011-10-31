@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -32,6 +34,7 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
     @ManyToOne
     private Proveedor proveedorPredeterminado;
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Proveedor> Proveedores;
     
     private String tipoMateriaPrima;
@@ -131,7 +134,7 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.MateriaPrima[ id=" + getId() + " ]";
+        return getNombre();
     }
     
 }

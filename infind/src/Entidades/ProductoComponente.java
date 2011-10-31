@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -32,6 +34,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     @ManyToOne
     private Proveedor proveedor;
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Proveedor> proveedores;
 
     /*@Override
@@ -119,7 +122,7 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
 
     @Override
     public String toString() {
-        return "Entidades.ProductoComponente[ id=" + getId() + " ]";
+        return getNombre();
     }
     
 }
