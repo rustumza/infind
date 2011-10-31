@@ -7,6 +7,7 @@ package expertos;
 import DTOs.DTOMateriaPrima;
 import Entidades.MateriaPrima;
 import Entidades.Numerador;
+import Entidades.Proveedor;
 import excepciones.ExpertoMateriaPrimaException;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -19,6 +20,8 @@ import persistencia.Fachada;
  */
 public class ExpertoMateriaPrima extends Experto{
 
+    MateriaPrima materiaPrimaExperto;
+    
     public void guardar(MateriaPrima matPrim) {
         Fachada.getInstancia().guardar(matPrim);
         
@@ -39,4 +42,20 @@ public class ExpertoMateriaPrima extends Experto{
         Fachada.getInstancia().guardar(numerador);
         
     }
+
+    public MateriaPrima buscarMateriaPrima(String codigoMateriaPrima) {
+        
+        List<MateriaPrima> listaMateriaPrima = null;
+        Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+        criterioNumerador.add(Restrictions.eq("codigo", codigoMateriaPrima));
+        listaMateriaPrima = Fachada.getInstancia().buscar(MateriaPrima.class, criterioNumerador);
+        materiaPrimaExperto = listaMateriaPrima.get(0);
+        return materiaPrimaExperto;
+        
+    }
+
+    public MateriaPrima getMateriaPrima(){
+        return materiaPrimaExperto;
+    }
+
 }

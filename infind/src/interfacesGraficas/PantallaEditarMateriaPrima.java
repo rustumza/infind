@@ -49,7 +49,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         panelPrincipal = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
         guardar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -84,6 +84,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
         tipoMateriaPrimaLabel = new javax.swing.JLabel();
         tipoMateriaPrimaListBox = new javax.swing.JComboBox();
+        preoveedorPredeterminadoLabel = new javax.swing.JLabel();
+        proveedorPredeterminadoListBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,11 +104,16 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         });
         toolbar.add(guardar);
 
-        jButton1.setText("Eliminar");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolbar.add(jButton1);
+        eliminar.setText("Eliminar");
+        eliminar.setFocusable(false);
+        eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        toolbar.add(eliminar);
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         cancelar.setToolTipText("Cancelar");
@@ -184,6 +191,10 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
             }
         });
 
+        preoveedorPredeterminadoLabel.setText("Proveedor predeterminado");
+
+        proveedorPredeterminadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -233,7 +244,11 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(preoveedorPredeterminadoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,7 +310,11 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(observacionLabel)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(preoveedorPredeterminadoLabel)
+                    .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -315,7 +334,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,6 +372,10 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
     controlador.cambiarTipoMateriaPrima();
 }//GEN-LAST:event_tipoMateriaPrimaListBoxActionPerformed
 
+private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+    controlador.eliminar();
+}//GEN-LAST:event_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,12 +392,12 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JTextField costoUnitarioPorOmisionTextBox;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JTextArea descripcionTextArea;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel estadoEntrarEnActividadEnFechaLabel;
     private com.toedter.calendar.JDateChooser estadoEntrarEnActividadEnFechajDateChooser;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JComboBox estadoListBox;
     private javax.swing.JButton guardar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -386,6 +409,8 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
     private javax.swing.JTextField precioBaseTextBox;
+    private javax.swing.JLabel preoveedorPredeterminadoLabel;
+    private javax.swing.JComboBox proveedorPredeterminadoListBox;
     private javax.swing.JButton salir;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
@@ -700,6 +725,30 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
 
     public void setTipoMateriaPrimaListBox(JComboBox tipoMateriaPrimaListBox) {
         this.tipoMateriaPrimaListBox = tipoMateriaPrimaListBox;
+    }
+
+    public JButton getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JButton eliminar) {
+        this.eliminar = eliminar;
+    }
+
+    public JLabel getPreoveedorPredeterminadoLabel() {
+        return preoveedorPredeterminadoLabel;
+    }
+
+    public void setPreoveedorPredeterminadoLabel(JLabel preoveedorPredeterminadoLabel) {
+        this.preoveedorPredeterminadoLabel = preoveedorPredeterminadoLabel;
+    }
+
+    public JComboBox getProveedorPredeterminadoListBox() {
+        return proveedorPredeterminadoListBox;
+    }
+
+    public void setProveedorPredeterminadoListBox(JComboBox proveedorPredeterminadoListBox) {
+        this.proveedorPredeterminadoListBox = proveedorPredeterminadoListBox;
     }
 
 

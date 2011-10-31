@@ -5,10 +5,13 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -26,6 +29,10 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
     private int telefono;
     private String direccion;
     private String correoElectronico;
+    @ManyToMany
+    List<MateriaPrima> materiasPrimas; 
+    @ManyToMany
+    List<ProductoComponente> productosComponentes; 
 
     public Long getId() {
         return id;
@@ -73,6 +80,72 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public List<MateriaPrima> getMateriasPrimas() {
+        return materiasPrimas;
+    }
+
+
+    public List<ProductoComponente> getProductosComponentes() {
+        return productosComponentes;
+    }
+
+    public void setMateriasPrimas(List<MateriaPrima> materiasPrimas) {
+        this.materiasPrimas = materiasPrimas;
+    }
+
+    public void setProductosComponentes(List<ProductoComponente> productosComponentes) {
+        this.productosComponentes = productosComponentes;
+    }
+
+    public void addMateriaPrima(MateriaPrima materiaPrima) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaListaMateriaPrima(materiaPrima)) {
+
+            getMateriasPrimas().add(materiaPrima);
+            if (materiaPrima.getProveedores() != null) {
+                materiaPrima.getProveedores().add(this);
+            }else{
+                materiaPrima.setProveedores(new ArrayList<Proveedor>());
+                materiaPrima.getProveedores().add(this);
+            }
+
+        }
+    }
+
+    private boolean estaEnLaListaMateriaPrima(MateriaPrima matPrim) {
+        for (MateriaPrima mat : getMateriasPrimas()) {
+            if (matPrim == mat) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    public void addProductoComponente(ProductoComponente productoComponente) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaListaProdComp(productoComponente)) {
+
+            getProductosComponentes().add(productoComponente);
+            if (productoComponente.getProveedores() != null) {
+                productoComponente.getProveedores().add(this);
+            }else{
+                productoComponente.setProveedores(new ArrayList<Proveedor>());
+                productoComponente.getProveedores().add(this);
+            }
+
+        }
+    }
+
+    private boolean estaEnLaListaProdComp(ProductoComponente prodComp) {
+        for (ProductoComponente prod : getProductosComponentes()) {
+            if (prodComp == prod) {
+                return true;
+            }
+        }
+        return false;
     }
     
     
