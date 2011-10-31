@@ -126,7 +126,7 @@ public class Operario extends ObjetoPersitente implements Serializable {
     public void setCodigoOperario(String codigoOperario) {
         this.codigoOperario = codigoOperario;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

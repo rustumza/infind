@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -48,9 +49,11 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
         if (!estaEnLaListaHerramientas(herramientas)) {
             getHerramientas().add(herramientas);
             if (herramientas.getMaestroCentroTrabajo() != null) {
-                herramientas.getMaestroCentroTrabajo().get(0).getHerramientas().remove(herramientas);
+                herramientas.getMaestroCentroTrabajo().add(this);
+            }else{
+                herramientas.setMaestroCentroTrabajo(new ArrayList<MaestroDeCentroDeTrabajo>());
+                herramientas.getMaestroCentroTrabajo().add(this);
             }
-            herramientas.getMaestroCentroTrabajo().add(this);
 
         }
     }
@@ -69,9 +72,11 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
         if (!estaEnLaListaMaquina(maquina)) {
             getMaquinas().add(maquina);
             if (maquina.getMaestroCentroTrabajo() != null) {
-                maquina.getMaestroCentroTrabajo().get(0).getMaquinas().remove(maquina);
+                maquina.getMaestroCentroTrabajo().add(this);
+            }else{
+                maquina.setMaestroCentroTrabajo(new ArrayList<MaestroDeCentroDeTrabajo>());
+                maquina.getMaestroCentroTrabajo().add(this);
             }
-            maquina.getMaestroCentroTrabajo().add(this);
 
         }
     }
@@ -91,10 +96,12 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
 
             getOperario().add(operario);
             if (operario.getCentroDeTrabajo() != null) {
-                operario.getCentroDeTrabajo().get(0).getOperario().remove(operario);
+                operario.getCentroDeTrabajo().add(this);
+            }else{
+                operario.setCentroDeTrabajo(new ArrayList<MaestroDeCentroDeTrabajo>());
+                operario.getCentroDeTrabajo().add(this);
             }
-            operario.getCentroDeTrabajo().add(this);
-
+            
         }
     }
 

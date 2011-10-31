@@ -5,8 +5,11 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -28,6 +31,8 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
      */
     @ManyToOne
     private Proveedor proveedor;
+    @ManyToMany
+    private List<Proveedor> proveedores;
 
     /*@Override
     public Long getId() {
@@ -57,7 +62,39 @@ public class ProductoComponente extends MaestroDeArticulo implements Serializabl
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
+
+    public List<Proveedor> getProveedores() {
+        return proveedores;
+    }
+
+    public void setProveedores(List<Proveedor> proveedores) {
+        this.proveedores = proveedores;
+    }
     
+    
+        public void addProveedor(Proveedor proveedor) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaListaProveedor(proveedor)) {
+
+            getProveedores().add(proveedor);
+            if (proveedor.getProductosComponentes() != null) {
+                proveedor.getProductosComponentes().add(this);
+            }else{
+                proveedor.setProductosComponentes(new ArrayList<ProductoComponente>());
+                proveedor.getProductosComponentes().add(this);
+            }
+
+        }
+    }
+
+    private boolean estaEnLaListaProveedor(Proveedor proveedor) {
+        for (Proveedor prov : getProveedores()) {
+            if (proveedor == prov) {
+                return true;
+            }
+        }
+        return false;
+    }
     
 
     @Override

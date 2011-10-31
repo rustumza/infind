@@ -8,7 +8,9 @@ import Entidades.MateriaPrima;
 import Entidades.Numerador;
 import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.PantallaCrearMateriaPrima;
+import interfacesGraficas.PantallaEditarMateriaPrima;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -22,6 +24,7 @@ public class ControladorMateriaPrima {
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearMateriaPrima pantallaCrearMateriPrima;
+    PantallaEditarMateriaPrima pantallaEditarMateriPrima;
     ExpertoMateriaPrima experto;
     
     ControladorMateriaPrima(ControladorPantallaMadre contPantMad) {
@@ -128,6 +131,43 @@ public class ControladorMateriaPrima {
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
         pantallaCrearMateriPrima.getCodigoTextBox().setText(nuevoNumero);
+    }
+
+    public void editarMateriaPrima(String codigoMateriaPrima){
+        MateriaPrima matPrim = experto.buscarMateriaPrima(codigoMateriaPrima);
+        pantallaEditarMateriPrima = new PantallaEditarMateriaPrima(controladorPantallaMadre.getPantalla(), false, this);
+        cargarDatosEnPantalla(matPrim);
+        pantallaEditarMateriPrima.setVisible(true);
+    
+    }
+    
+    public void eliminar() {
+        
+    }
+
+    private void cargarDatosEnPantalla(MateriaPrima matPrim) {
+        pantallaEditarMateriPrima.getTipoMateriaPrimaListBox().setSelectedItem(matPrim.getTipoMateriaPrima());
+        pantallaEditarMateriPrima.getCodigoTextBox().setText(matPrim.getCodigo());
+        pantallaEditarMateriPrima.getNombreTextBox().setText(matPrim.getNombre());
+        pantallaEditarMateriPrima.getDescripcionTextArea().setText(matPrim.getDescripcion());
+        pantallaEditarMateriPrima.getUnidadDeMedidaListBox().setSelectedItem(matPrim.getUnidadDeMedida());
+        pantallaEditarMateriPrima.getCategoriaListBox().setSelectedItem(matPrim.getCategoria());
+        pantallaEditarMateriPrima.getCostoEstandarTextBox().setText(String.valueOf(matPrim.getCostoEstandar()));
+        pantallaEditarMateriPrima.getCostoUnitarioPorOmisionTextBox().setText(String.valueOf(matPrim.getCostoUnitarioPorOmision()));
+        pantallaEditarMateriPrima.getPrecioBaseTextBox().setText(String.valueOf(matPrim.getPrecioBase()));
+        if(matPrim.getEliminado()){
+            pantallaEditarMateriPrima.getEstadoListBox().setSelectedItem("Inactivo");
+            if(matPrim.getFechaEntrarEnActividad() != null){
+                pantallaEditarMateriPrima.getEstadoEntrarEnActividadEnFechajDateChooser().setDate(matPrim.getFechaEntrarEnActividad());
+            }
+        }else{
+            pantallaEditarMateriPrima.getEstadoListBox().setSelectedItem("Activo");
+        }
+        pantallaEditarMateriPrima.getTamañoLoteEstandarLabel().setText(String.valueOf(matPrim.getTamanioLoteEstandar()));
+        pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().setText(matPrim.getUbicacionEnAlmacen());
+        pantallaEditarMateriPrima.getObservacionTextArea().setText(matPrim.getObservacion());
+        pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setModel(new DefaultComboBoxModel(matPrim.getProveedores().toArray()));
+        pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setSelectedItem(matPrim.getProveedorPredeterminado());
     }
     
 }

@@ -5,8 +5,11 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -27,7 +30,9 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
      * 
      */
     @ManyToOne
-    private Proveedor proveedor;
+    private Proveedor proveedorPredeterminado;
+    @ManyToMany
+    private List<Proveedor> Proveedores;
     
     private String tipoMateriaPrima;
 
@@ -59,14 +64,50 @@ public class MateriaPrima extends MaestroDeArticulo implements Serializable {
      * 
      */
 
-    public Proveedor getProveedor() {
-        return proveedor;
+    public Proveedor getProveedorPredeterminado() {
+        return proveedorPredeterminado;
     }
 
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
+    public void setProveedorPredeterminado(Proveedor proveedor) {
+        this.proveedorPredeterminado = proveedor;
     }
 
+    public List<Proveedor> getProveedores() {
+        return Proveedores;
+    }
+
+    public void setProveedores(List<Proveedor> listaDeProveedores) {
+        this.Proveedores = listaDeProveedores;
+    }
+
+    
+    
+    
+    public void addProveedor(Proveedor proveedor) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaListaProveedor(proveedor)) {
+
+            getProveedores().add(proveedor);
+            if (proveedor.getMateriasPrimas() != null) {
+                proveedor.getMateriasPrimas().add(this);
+            }else{
+                proveedor.setMateriasPrimas(new ArrayList<MateriaPrima>());
+                proveedor.getMateriasPrimas().add(this);
+            }
+
+        }
+    }
+
+    private boolean estaEnLaListaProveedor(Proveedor proveedor) {
+        for (Proveedor prov : getProveedores()) {
+            if (proveedor == prov) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     
     @Override
     public int hashCode() {
