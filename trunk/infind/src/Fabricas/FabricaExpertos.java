@@ -8,6 +8,7 @@ import expertos.Experto;
 import expertos.ExpertoCentroDeTrabajo;
 import expertos.ExpertoMateriaPrima;
 import expertos.ExpertoOperarios;
+import expertos.ExpertoRutaDeFabricacion;
 
 /**
  *
@@ -26,7 +27,7 @@ public class FabricaExpertos {
 
     public enum expertos {
 
-        CENTRO_DE_TRABAJO, OPERARIOS, MATERIAPRIMA
+        CENTRO_DE_TRABAJO, OPERARIOS, MATERIAPRIMA, RUTA_FABRICACION
     }
 
     public Experto getExperto(expertos expertoNombre) {
@@ -37,6 +38,9 @@ public class FabricaExpertos {
                 return new ExpertoOperarios();
             case MATERIAPRIMA:
                 return new ExpertoMateriaPrima();
+            case RUTA_FABRICACION:
+                return new ExpertoRutaDeFabricacion();
+
             default:
                 return null;
 

@@ -630,10 +630,6 @@ public class ControladorCentroDeTrabajo {
     public void buscarCentroDeTrabajo() throws ExpertoCentroDeTrabajoException, NoSuchFieldException {
 
 
-
-
-
-
         if (pantallaEditarCentro.getRadioBotonCodigoBuscaCentro().isSelected()) {
             centroEncontrado = expertoCentroDeTrabajo.buscarCentros(armarDTOCentro(1));
 

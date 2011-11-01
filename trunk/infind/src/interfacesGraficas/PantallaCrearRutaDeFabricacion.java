@@ -11,8 +11,23 @@
 
 package interfacesGraficas;
 
+import excepciones.ExpertoExceptionRutaFabricacion;
 import interfacesGraficas.Controladores.ControladorCrearRutaDeFabricacion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -96,6 +111,8 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEtapasAgregadas = new javax.swing.JTable();
+        botonEliminarEtapa = new javax.swing.JButton();
+        botonGuardarEtapa = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         radioBotonBuscaCodigoCentro = new javax.swing.JRadioButton();
         radioBotonBuscaNombreCentro = new javax.swing.JRadioButton();
@@ -126,6 +143,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         botonGuardarRutaNueva.setFocusable(false);
         botonGuardarRutaNueva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardarRutaNueva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardarRutaNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarRutaNuevaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardarRutaNueva);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -133,6 +155,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -174,6 +201,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         grupoBuscaProdFinal.add(radioBotonBuscaNombreProdFinal);
         radioBotonBuscaNombreProdFinal.setText("Nombre:");
+        radioBotonBuscaNombreProdFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaNombreProdFinalActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -185,6 +217,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         radioBotonBuscaCodigoProdFinal.setSelected(true);
         radioBotonBuscaCodigoProdFinal.setText("Código:");
         radioBotonBuscaCodigoProdFinal.setActionCommand("Nombre:");
+        radioBotonBuscaCodigoProdFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaCodigoProdFinalActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -605,11 +642,31 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
+        botonEliminarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarEtapa.setText("Eliminar Etapa");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
+        jPanel4.add(botonEliminarEtapa, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel3.add(jPanel4, gridBagConstraints);
+
+        botonGuardarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        botonGuardarEtapa.setText("Guardar Etapa");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
+        jPanel3.add(botonGuardarEtapa, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -626,6 +683,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         grupoBuscaCedntro.add(radioBotonBuscaCodigoCentro);
         radioBotonBuscaCodigoCentro.setSelected(true);
         radioBotonBuscaCodigoCentro.setText("Código:");
+        radioBotonBuscaCodigoCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaCodigoCentroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -635,6 +697,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         grupoBuscaCedntro.add(radioBotonBuscaNombreCentro);
         radioBotonBuscaNombreCentro.setText("Nombre:");
+        radioBotonBuscaNombreCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBotonBuscaNombreCentroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -660,6 +727,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         botonBuscaCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscaCentro.setText("Buscar");
+        botonBuscaCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscaCentroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -693,8 +765,6 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel9.add(jLabel13, gridBagConstraints);
-
-        campoCodigoCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -702,8 +772,6 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel9.add(campoCodigoCentroEncontrado, gridBagConstraints);
-
-        campoNombreCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -714,7 +782,6 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         campoDescripcionCentroEncontrado.setColumns(20);
         campoDescripcionCentroEncontrado.setRows(5);
-        campoDescripcionCentroEncontrado.setEnabled(false);
         jScrollPane10.setViewportView(campoDescripcionCentroEncontrado);
 
         jScrollPane9.setViewportView(jScrollPane10);
@@ -722,8 +789,8 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.ipadx = 120;
+        gridBagConstraints.ipady = 40;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel9.add(jScrollPane9, gridBagConstraints);
@@ -752,6 +819,50 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void botonGuardarRutaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRutaNuevaActionPerformed
+        controlador.guardarRutaDeFabricacion();
+    }//GEN-LAST:event_botonGuardarRutaNuevaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void radioBotonBuscaCodigoProdFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaCodigoProdFinalActionPerformed
+         if (radioBotonBuscaCodigoProdFinal.isSelected()) {
+        campoBuscaCodigoProdFinal.setEnabled(true);
+        campoBuscaNombreProdFinal.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaCodigoProdFinalActionPerformed
+
+    private void radioBotonBuscaNombreProdFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaNombreProdFinalActionPerformed
+         if (radioBotonBuscaNombreProdFinal.isSelected()) {
+        campoBuscaNombreProdFinal.setEnabled(true);
+        campoBuscaCodigoProdFinal.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaNombreProdFinalActionPerformed
+
+    private void radioBotonBuscaCodigoCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaCodigoCentroActionPerformed
+         if (radioBotonBuscaCodigoCentro.isSelected()) {
+        campoBuscaCodigoCentro.setEnabled(true);
+        campoBuscaNombreCentro.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaCodigoCentroActionPerformed
+
+    private void radioBotonBuscaNombreCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaNombreCentroActionPerformed
+         if (radioBotonBuscaNombreCentro.isSelected()) {
+        campoBuscaNombreCentro.setEnabled(true);
+        campoBuscaCodigoCentro.setEnabled(false);
+    }
+    }//GEN-LAST:event_radioBotonBuscaNombreCentroActionPerformed
+
+    private void botonBuscaCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscaCentroActionPerformed
+        try {
+            controlador.buscarCentro();
+        } catch (ExpertoExceptionRutaFabricacion ex) {
+            Logger.getLogger(PantallaCrearRutaDeFabricacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonBuscaCentroActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -762,6 +873,8 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
     private javax.swing.JButton botonAgregaMateriaPrima;
     private javax.swing.JButton botonBuscaCentro;
     private javax.swing.JButton botonBuscarProdFinal;
+    private javax.swing.JButton botonEliminarEtapa;
+    private javax.swing.JButton botonGuardarEtapa;
     private javax.swing.JButton botonGuardarRutaNueva;
     private javax.swing.JButton botonQuitaHerramientas;
     private javax.swing.JButton botonQuitaMaquinas;
@@ -841,6 +954,616 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         this.tablaEtapasAgregadas = tablaEtapasAgregadas;
     }
 
+    public JButton getBotonAgregaHerramientas() {
+        return botonAgregaHerramientas;
+    }
+
+    public void setBotonAgregaHerramientas(JButton botonAgregaHerramientas) {
+        this.botonAgregaHerramientas = botonAgregaHerramientas;
+    }
+
+    public JButton getBotonAgregaMaquinas() {
+        return botonAgregaMaquinas;
+    }
+
+    public void setBotonAgregaMaquinas(JButton botonAgregaMaquinas) {
+        this.botonAgregaMaquinas = botonAgregaMaquinas;
+    }
+
+    public JButton getBotonAgregaMateriaPrima() {
+        return botonAgregaMateriaPrima;
+    }
+
+    public void setBotonAgregaMateriaPrima(JButton botonAgregaMateriaPrima) {
+        this.botonAgregaMateriaPrima = botonAgregaMateriaPrima;
+    }
+
+    public JButton getBotonBuscaCentro() {
+        return botonBuscaCentro;
+    }
+
+    public void setBotonBuscaCentro(JButton botonBuscaCentro) {
+        this.botonBuscaCentro = botonBuscaCentro;
+    }
+
+    public JButton getBotonBuscarProdFinal() {
+        return botonBuscarProdFinal;
+    }
+
+    public void setBotonBuscarProdFinal(JButton botonBuscarProdFinal) {
+        this.botonBuscarProdFinal = botonBuscarProdFinal;
+    }
+
+    public JButton getBotonEliminarEtapa() {
+        return botonEliminarEtapa;
+    }
+
+    public void setBotonEliminarEtapa(JButton botonEliminarEtapa) {
+        this.botonEliminarEtapa = botonEliminarEtapa;
+    }
+
+    public JButton getBotonGuardarEtapa() {
+        return botonGuardarEtapa;
+    }
+
+    public void setBotonGuardarEtapa(JButton botonGuardarEtapa) {
+        this.botonGuardarEtapa = botonGuardarEtapa;
+    }
+
+    public JButton getBotonGuardarRutaNueva() {
+        return botonGuardarRutaNueva;
+    }
+
+    public void setBotonGuardarRutaNueva(JButton botonGuardarRutaNueva) {
+        this.botonGuardarRutaNueva = botonGuardarRutaNueva;
+    }
+
+    public JButton getBotonQuitaHerramientas() {
+        return botonQuitaHerramientas;
+    }
+
+    public void setBotonQuitaHerramientas(JButton botonQuitaHerramientas) {
+        this.botonQuitaHerramientas = botonQuitaHerramientas;
+    }
+
+    public JButton getBotonQuitaMaquinas() {
+        return botonQuitaMaquinas;
+    }
+
+    public void setBotonQuitaMaquinas(JButton botonQuitaMaquinas) {
+        this.botonQuitaMaquinas = botonQuitaMaquinas;
+    }
+
+    public JButton getBotonQuitaMateriaPrima() {
+        return botonQuitaMateriaPrima;
+    }
+
+    public void setBotonQuitaMateriaPrima(JButton botonQuitaMateriaPrima) {
+        this.botonQuitaMateriaPrima = botonQuitaMateriaPrima;
+    }
+
+    public JTextField getCampoBuscaCodigoCentro() {
+        return campoBuscaCodigoCentro;
+    }
+
+    public void setCampoBuscaCodigoCentro(JTextField campoBuscaCodigoCentro) {
+        this.campoBuscaCodigoCentro = campoBuscaCodigoCentro;
+    }
+
+    public JTextField getCampoBuscaCodigoProdFinal() {
+        return campoBuscaCodigoProdFinal;
+    }
+
+    public void setCampoBuscaCodigoProdFinal(JTextField campoBuscaCodigoProdFinal) {
+        this.campoBuscaCodigoProdFinal = campoBuscaCodigoProdFinal;
+    }
+
+    public JTextField getCampoBuscaNombreCentro() {
+        return campoBuscaNombreCentro;
+    }
+
+    public void setCampoBuscaNombreCentro(JTextField campoBuscaNombreCentro) {
+        this.campoBuscaNombreCentro = campoBuscaNombreCentro;
+    }
+
+    public JTextField getCampoBuscaNombreProdFinal() {
+        return campoBuscaNombreProdFinal;
+    }
+
+    public void setCampoBuscaNombreProdFinal(JTextField campoBuscaNombreProdFinal) {
+        this.campoBuscaNombreProdFinal = campoBuscaNombreProdFinal;
+    }
+
+    public JTextField getCampoCodigoCentroEncontrado() {
+        return campoCodigoCentroEncontrado;
+    }
+
+    public void setCampoCodigoCentroEncontrado(JTextField campoCodigoCentroEncontrado) {
+        this.campoCodigoCentroEncontrado = campoCodigoCentroEncontrado;
+    }
+
+    public JTextField getCampoCodigoProdFinal() {
+        return campoCodigoProdFinal;
+    }
+
+    public void setCampoCodigoProdFinal(JTextField campoCodigoProdFinal) {
+        this.campoCodigoProdFinal = campoCodigoProdFinal;
+    }
+
+    public JTextArea getCampoDescripProdFInal() {
+        return campoDescripProdFInal;
+    }
+
+    public void setCampoDescripProdFInal(JTextArea campoDescripProdFInal) {
+        this.campoDescripProdFInal = campoDescripProdFInal;
+    }
+
+    public JTextArea getCampoDescripcionCentroEncontrado() {
+        return campoDescripcionCentroEncontrado;
+    }
+
+    public void setCampoDescripcionCentroEncontrado(JTextArea campoDescripcionCentroEncontrado) {
+        this.campoDescripcionCentroEncontrado = campoDescripcionCentroEncontrado;
+    }
+
+    public JTextField getCampoNombreCentroEncontrado() {
+        return campoNombreCentroEncontrado;
+    }
+
+    public void setCampoNombreCentroEncontrado(JTextField campoNombreCentroEncontrado) {
+        this.campoNombreCentroEncontrado = campoNombreCentroEncontrado;
+    }
+
+    public JTextField getCampoNombreEtapaRuta() {
+        return campoNombreEtapaRuta;
+    }
+
+    public void setCampoNombreEtapaRuta(JTextField campoNombreEtapaRuta) {
+        this.campoNombreEtapaRuta = campoNombreEtapaRuta;
+    }
+
+    public JTextField getCampoNombreProdFinal() {
+        return campoNombreProdFinal;
+    }
+
+    public void setCampoNombreProdFinal(JTextField campoNombreProdFinal) {
+        this.campoNombreProdFinal = campoNombreProdFinal;
+    }
+
+    public JTextField getCampoNroOperariosEtapaRuta() {
+        return campoNroOperariosEtapaRuta;
+    }
+
+    public void setCampoNroOperariosEtapaRuta(JTextField campoNroOperariosEtapaRuta) {
+        this.campoNroOperariosEtapaRuta = campoNroOperariosEtapaRuta;
+    }
+
+    public JTextField getCampoNumeroEtapaRuta() {
+        return campoNumeroEtapaRuta;
+    }
+
+    public void setCampoNumeroEtapaRuta(JTextField campoNumeroEtapaRuta) {
+        this.campoNumeroEtapaRuta = campoNumeroEtapaRuta;
+    }
+
+    public JTextField getCampoTpoMaquinaEtapaRuta() {
+        return campoTpoMaquinaEtapaRuta;
+    }
+
+    public void setCampoTpoMaquinaEtapaRuta(JTextField campoTpoMaquinaEtapaRuta) {
+        this.campoTpoMaquinaEtapaRuta = campoTpoMaquinaEtapaRuta;
+    }
+
+    public JTextField getCampoTpoOperarioEtapaRuta() {
+        return campoTpoOperarioEtapaRuta;
+    }
+
+    public void setCampoTpoOperarioEtapaRuta(JTextField campoTpoOperarioEtapaRuta) {
+        this.campoTpoOperarioEtapaRuta = campoTpoOperarioEtapaRuta;
+    }
+
+    public JTextField getCampoTpoTotalEtapaRuta() {
+        return campoTpoTotalEtapaRuta;
+    }
+
+    public void setCampoTpoTotalEtapaRuta(JTextField campoTpoTotalEtapaRuta) {
+        this.campoTpoTotalEtapaRuta = campoTpoTotalEtapaRuta;
+    }
+
+    public JComboBox getComboBoxTipoProducto() {
+        return comboBoxTipoProducto;
+    }
+
+    public void setComboBoxTipoProducto(JComboBox comboBoxTipoProducto) {
+        this.comboBoxTipoProducto = comboBoxTipoProducto;
+    }
+
+    public ControladorCrearRutaDeFabricacion getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorCrearRutaDeFabricacion controlador) {
+        this.controlador = controlador;
+    }
+
+    public ButtonGroup getGrupoBuscaCedntro() {
+        return grupoBuscaCedntro;
+    }
+
+    public void setGrupoBuscaCedntro(ButtonGroup grupoBuscaCedntro) {
+        this.grupoBuscaCedntro = grupoBuscaCedntro;
+    }
+
+    public ButtonGroup getGrupoBuscaProdFinal() {
+        return grupoBuscaProdFinal;
+    }
+
+    public void setGrupoBuscaProdFinal(ButtonGroup grupoBuscaProdFinal) {
+        this.grupoBuscaProdFinal = grupoBuscaProdFinal;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JCheckBox getjCheckBox1() {
+        return jCheckBox1;
+    }
+
+    public void setjCheckBox1(JCheckBox jCheckBox1) {
+        this.jCheckBox1 = jCheckBox1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public void setjLabel12(JLabel jLabel12) {
+        this.jLabel12 = jLabel12;
+    }
+
+    public JLabel getjLabel13() {
+        return jLabel13;
+    }
+
+    public void setjLabel13(JLabel jLabel13) {
+        this.jLabel13 = jLabel13;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JPanel getjPanel6() {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6) {
+        this.jPanel6 = jPanel6;
+    }
+
+    public JPanel getjPanel7() {
+        return jPanel7;
+    }
+
+    public void setjPanel7(JPanel jPanel7) {
+        this.jPanel7 = jPanel7;
+    }
+
+    public JPanel getjPanel8() {
+        return jPanel8;
+    }
+
+    public void setjPanel8(JPanel jPanel8) {
+        this.jPanel8 = jPanel8;
+    }
+
+    public JPanel getjPanel9() {
+        return jPanel9;
+    }
+
+    public void setjPanel9(JPanel jPanel9) {
+        this.jPanel9 = jPanel9;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane10() {
+        return jScrollPane10;
+    }
+
+    public void setjScrollPane10(JScrollPane jScrollPane10) {
+        this.jScrollPane10 = jScrollPane10;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4) {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JScrollPane getjScrollPane5() {
+        return jScrollPane5;
+    }
+
+    public void setjScrollPane5(JScrollPane jScrollPane5) {
+        this.jScrollPane5 = jScrollPane5;
+    }
+
+    public JScrollPane getjScrollPane6() {
+        return jScrollPane6;
+    }
+
+    public void setjScrollPane6(JScrollPane jScrollPane6) {
+        this.jScrollPane6 = jScrollPane6;
+    }
+
+    public JScrollPane getjScrollPane7() {
+        return jScrollPane7;
+    }
+
+    public void setjScrollPane7(JScrollPane jScrollPane7) {
+        this.jScrollPane7 = jScrollPane7;
+    }
+
+    public JScrollPane getjScrollPane8() {
+        return jScrollPane8;
+    }
+
+    public void setjScrollPane8(JScrollPane jScrollPane8) {
+        this.jScrollPane8 = jScrollPane8;
+    }
+
+    public JScrollPane getjScrollPane9() {
+        return jScrollPane9;
+    }
+
+    public void setjScrollPane9(JScrollPane jScrollPane9) {
+        this.jScrollPane9 = jScrollPane9;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    public JList getListaHerramientasAgregadas() {
+        return listaHerramientasAgregadas;
+    }
+
+    public void setListaHerramientasAgregadas(JList listaHerramientasAgregadas) {
+        this.listaHerramientasAgregadas = listaHerramientasAgregadas;
+    }
+
+    public JList getListaHerramientasCargadas() {
+        return listaHerramientasCargadas;
+    }
+
+    public void setListaHerramientasCargadas(JList listaHerramientasCargadas) {
+        this.listaHerramientasCargadas = listaHerramientasCargadas;
+    }
+
+    public JList getListaMaquiansCargadas() {
+        return listaMaquiansCargadas;
+    }
+
+    public void setListaMaquiansCargadas(JList listaMaquiansCargadas) {
+        this.listaMaquiansCargadas = listaMaquiansCargadas;
+    }
+
+    public JList getListaMaquinasAgregadas() {
+        return listaMaquinasAgregadas;
+    }
+
+    public void setListaMaquinasAgregadas(JList listaMaquinasAgregadas) {
+        this.listaMaquinasAgregadas = listaMaquinasAgregadas;
+    }
+
+    public JList getListaMateriasPrimasAgregadas() {
+        return listaMateriasPrimasAgregadas;
+    }
+
+    public void setListaMateriasPrimasAgregadas(JList listaMateriasPrimasAgregadas) {
+        this.listaMateriasPrimasAgregadas = listaMateriasPrimasAgregadas;
+    }
+
+    public JList getListaMateriasPrimasCargadas() {
+        return listaMateriasPrimasCargadas;
+    }
+
+    public void setListaMateriasPrimasCargadas(JList listaMateriasPrimasCargadas) {
+        this.listaMateriasPrimasCargadas = listaMateriasPrimasCargadas;
+    }
+
+    public JRadioButton getRadioBotonBuscaCodigoCentro() {
+        return radioBotonBuscaCodigoCentro;
+    }
+
+    public void setRadioBotonBuscaCodigoCentro(JRadioButton radioBotonBuscaCodigoCentro) {
+        this.radioBotonBuscaCodigoCentro = radioBotonBuscaCodigoCentro;
+    }
+
+    public JRadioButton getRadioBotonBuscaCodigoProdFinal() {
+        return radioBotonBuscaCodigoProdFinal;
+    }
+
+    public void setRadioBotonBuscaCodigoProdFinal(JRadioButton radioBotonBuscaCodigoProdFinal) {
+        this.radioBotonBuscaCodigoProdFinal = radioBotonBuscaCodigoProdFinal;
+    }
+
+    public JRadioButton getRadioBotonBuscaNombreCentro() {
+        return radioBotonBuscaNombreCentro;
+    }
+
+    public void setRadioBotonBuscaNombreCentro(JRadioButton radioBotonBuscaNombreCentro) {
+        this.radioBotonBuscaNombreCentro = radioBotonBuscaNombreCentro;
+    }
+
+    public JRadioButton getRadioBotonBuscaNombreProdFinal() {
+        return radioBotonBuscaNombreProdFinal;
+    }
+
+    public void setRadioBotonBuscaNombreProdFinal(JRadioButton radioBotonBuscaNombreProdFinal) {
+        this.radioBotonBuscaNombreProdFinal = radioBotonBuscaNombreProdFinal;
+    }
+
+
+    
 
     
     
