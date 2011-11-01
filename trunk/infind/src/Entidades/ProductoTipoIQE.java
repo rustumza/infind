@@ -5,22 +5,23 @@
 package Entidades;
 
 import java.io.Serializable;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import persistencia.ObjetoPersitente;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author eduardo
  */
 @Entity
-public class ProductoTipoIQE extends ObjetoPersitente implements Serializable {
-    private static final long serialVersionUID = 1L;
+@PrimaryKeyJoinColumn(name="maestroArticuloId")
+@DiscriminatorValue(value="PIQE")
+public class ProductoTipoIQE extends ProductosFabricables implements Serializable {
+    /*private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Boolean eliminado;
 
     public Long getId() {
@@ -39,12 +40,12 @@ public class ProductoTipoIQE extends ObjetoPersitente implements Serializable {
         this.eliminado = eliminado;
     }
     
-    
+*/    
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -55,7 +56,7 @@ public class ProductoTipoIQE extends ObjetoPersitente implements Serializable {
             return false;
         }
         ProductoTipoIQE other = (ProductoTipoIQE) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -63,7 +64,7 @@ public class ProductoTipoIQE extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.ProductoTipoIQE[ id=" + id + " ]";
+        return getNombre();
     }
     
 }

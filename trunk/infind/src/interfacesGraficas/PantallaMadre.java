@@ -48,11 +48,13 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearArticulo = new javax.swing.JMenu();
         crearMateriaPrima = new javax.swing.JMenuItem();
         crearProductoIntermedio = new javax.swing.JMenuItem();
+        crearProductoIQE = new javax.swing.JMenuItem();
         crearProductoComponente = new javax.swing.JMenuItem();
         crearProductoFinal = new javax.swing.JMenuItem();
         Listar = new javax.swing.JMenu();
         listarMateriasPrimas = new javax.swing.JMenuItem();
         listarProductosComponentes = new javax.swing.JMenuItem();
+        listarProductosIQE = new javax.swing.JMenuItem();
         listarProductosIntermedios = new javax.swing.JMenuItem();
         listarProductosFinales = new javax.swing.JMenuItem();
         estructuraDeProducto = new javax.swing.JMenu();
@@ -103,6 +105,9 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearProductoIntermedio.setText("Producto intermedio");
         crearArticulo.add(crearProductoIntermedio);
 
+        crearProductoIQE.setText("Producto IQE");
+        crearArticulo.add(crearProductoIQE);
+
         crearProductoComponente.setText("Producto componente");
         crearArticulo.add(crearProductoComponente);
 
@@ -133,6 +138,9 @@ public class PantallaMadre extends javax.swing.JFrame {
             }
         });
         Listar.add(listarProductosComponentes);
+
+        listarProductosIQE.setText("Productos IQE");
+        Listar.add(listarProductosIQE);
 
         listarProductosIntermedios.setText("Productos intermedios");
         listarProductosIntermedios.addActionListener(new java.awt.event.ActionListener() {
@@ -347,6 +355,7 @@ private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem crearMateriaPrima;
     private javax.swing.JMenuItem crearProductoComponente;
     private javax.swing.JMenuItem crearProductoFinal;
+    private javax.swing.JMenuItem crearProductoIQE;
     private javax.swing.JMenuItem crearProductoIntermedio;
     private javax.swing.JMenuItem crearProveedores;
     private javax.swing.JMenuItem editarCentro;
@@ -357,6 +366,7 @@ private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
+    private javax.swing.JMenuItem listarProductosIQE;
     private javax.swing.JMenuItem listarProductosIntermedios;
     private javax.swing.JMenuItem menuEditarOperarios;
     private javax.swing.JMenuItem menuEditarRuta;

@@ -53,6 +53,11 @@
                     <Property name="text" type="java.lang.String" value="Producto intermedio"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="crearProductoIQE">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto IQE"/>
+                  </Properties>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="crearProductoComponente">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Producto componente"/>
@@ -88,6 +93,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarProductosComponentesActionPerformed"/>
                   </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="listarProductosIQE">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Productos IQE"/>
+                  </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="listarProductosIntermedios">
                   <Properties>

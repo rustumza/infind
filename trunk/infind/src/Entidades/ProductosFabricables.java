@@ -85,7 +85,7 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
 
     @Override
     public String toString() {
-        return "Entidades.ProductosFabricables[ id=" + getId() + " ]";
+        return getNombre();
     }
     
 }

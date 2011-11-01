@@ -80,7 +80,7 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
 
     @Override
     public String toString() {
-        return "Entidades.ProductoFinal[ id=" + getId() + " ]";
+        return getNombre();
     }
     
 }
