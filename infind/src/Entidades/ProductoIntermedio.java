@@ -66,7 +66,7 @@ public class ProductoIntermedio extends ProductosFabricables implements Serializ
 
     @Override
     public String toString() {
-        return "Entidades.ProductoIntermedio[ id=" + getId() + " ]";
+        return getNombre();
     }
     
 }

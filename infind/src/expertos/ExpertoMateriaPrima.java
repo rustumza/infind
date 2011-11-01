@@ -58,4 +58,8 @@ public class ExpertoMateriaPrima extends Experto{
         return materiaPrimaExperto;
     }
 
+    public void editar(MateriaPrima matPrim) {
+        Fachada.getInstancia().guardar(matPrim);
+    }
+
 }

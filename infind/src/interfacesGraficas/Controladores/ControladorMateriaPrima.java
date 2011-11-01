@@ -227,7 +227,7 @@ public class ControladorMateriaPrima {
         matPrim.setUbicacionEnAlmacen(pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().getText());
         matPrim.setObservacion(pantallaEditarMateriPrima.getObservacionTextArea().getText());
         matPrim.setProveedorPredeterminado((Proveedor)pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().getModel().getSelectedItem());
-        experto.guardar(matPrim);
+        experto.editar(matPrim);
         
         
         JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Materia prima guardada con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
