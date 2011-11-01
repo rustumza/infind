@@ -38,40 +38,79 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         grupoBuscaProdFinal = new javax.swing.ButtonGroup();
+        grupoBuscaCedntro = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
+        botonGuardarRutaNueva = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        campoBuscaCodigoProdFinal = new javax.swing.JTextField();
+        campoBuscaNombreProdFinal = new javax.swing.JTextField();
+        botonBuscarProdFinal = new javax.swing.JButton();
+        radioBotonBuscaNombreProdFinal = new javax.swing.JRadioButton();
+        radioBotonBuscaCodigoProdFinal = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        campoCodigoProdFinal = new javax.swing.JTextField();
+        campoNombreProdFinal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        campoDescripProdFInal = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        comboBoxTipoProducto = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        campoNombreEtapaRuta = new javax.swing.JTextField();
+        campoNumeroEtapaRuta = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        campoTpoMaquinaEtapaRuta = new javax.swing.JTextField();
+        campoTpoOperarioEtapaRuta = new javax.swing.JTextField();
+        campoTpoTotalEtapaRuta = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaMateriasPrimasCargadas = new javax.swing.JList();
+        botonAgregaMateriaPrima = new javax.swing.JButton();
+        botonQuitaMateriaPrima = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaMateriasPrimasAgregadas = new javax.swing.JList();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listaMaquiansCargadas = new javax.swing.JList();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        listaMaquinasAgregadas = new javax.swing.JList();
+        botonAgregaMaquinas = new javax.swing.JButton();
+        botonQuitaMaquinas = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        listaHerramientasCargadas = new javax.swing.JList();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        listaHerramientasAgregadas = new javax.swing.JList();
+        botonAgregaHerramientas = new javax.swing.JButton();
+        botonQuitaHerramientas = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        campoNroOperariosEtapaRuta = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEtapasAgregadas = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
+        radioBotonBuscaCodigoCentro = new javax.swing.JRadioButton();
+        radioBotonBuscaNombreCentro = new javax.swing.JRadioButton();
+        campoBuscaCodigoCentro = new javax.swing.JTextField();
+        campoBuscaNombreCentro = new javax.swing.JTextField();
+        botonBuscaCentro = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        campoCodigoCentroEncontrado = new javax.swing.JTextField();
+        campoNombreCentroEncontrado = new javax.swing.JTextField();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        campoDescripcionCentroEncontrado = new javax.swing.JTextArea();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -82,12 +121,12 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         jToolBar1.setRollover(true);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        jButton2.setToolTipText("Guardar Ruta de Fabricación");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        botonGuardarRutaNueva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        botonGuardarRutaNueva.setToolTipText("Guardar Ruta de Fabricación");
+        botonGuardarRutaNueva.setFocusable(false);
+        botonGuardarRutaNueva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonGuardarRutaNueva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(botonGuardarRutaNueva);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         jButton1.setToolTipText("Salir");
@@ -104,50 +143,54 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         add(jToolBar1, gridBagConstraints);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto Final"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto "));
         jPanel1.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 5, 0, 0);
-        jPanel1.add(jTextField1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel1.add(campoBuscaCodigoProdFinal, gridBagConstraints);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
-        jButton3.setText("Buscar");
+        campoBuscaNombreProdFinal.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
+        jPanel1.add(campoBuscaNombreProdFinal, gridBagConstraints);
+
+        botonBuscarProdFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscarProdFinal.setText("Buscar");
+        botonBuscarProdFinal.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 0);
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(botonBuscarProdFinal, gridBagConstraints);
 
-        grupoBuscaProdFinal.add(jRadioButton1);
-        jRadioButton1.setText("Nombre:");
+        grupoBuscaProdFinal.add(radioBotonBuscaNombreProdFinal);
+        radioBotonBuscaNombreProdFinal.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 15, 0, 0);
-        jPanel1.add(jRadioButton1, gridBagConstraints);
+        jPanel1.add(radioBotonBuscaNombreProdFinal, gridBagConstraints);
 
-        grupoBuscaProdFinal.add(jRadioButton2);
-        jRadioButton2.setText("Código:");
-        jRadioButton2.setActionCommand("Nombre:");
+        grupoBuscaProdFinal.add(radioBotonBuscaCodigoProdFinal);
+        radioBotonBuscaCodigoProdFinal.setSelected(true);
+        radioBotonBuscaCodigoProdFinal.setText("Código:");
+        radioBotonBuscaCodigoProdFinal.setActionCommand("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
-        jPanel1.add(jRadioButton2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(12, 15, 0, 0);
+        jPanel1.add(radioBotonBuscaCodigoProdFinal, gridBagConstraints);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto Encontrado"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -176,28 +219,28 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        jTextField3.setEnabled(false);
+        campoCodigoProdFinal.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(16, 5, 0, 0);
-        jPanel2.add(jTextField3, gridBagConstraints);
+        jPanel2.add(campoCodigoProdFinal, gridBagConstraints);
 
-        jTextField4.setEnabled(false);
+        campoNombreProdFinal.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 5, 0, 0);
-        jPanel2.add(jTextField4, gridBagConstraints);
+        jPanel2.add(campoNombreProdFinal, gridBagConstraints);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        campoDescripProdFInal.setColumns(20);
+        campoDescripProdFInal.setRows(5);
+        campoDescripProdFInal.setEnabled(false);
+        jScrollPane1.setViewportView(campoDescripProdFInal);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -208,12 +251,29 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 30);
         jPanel1.add(jPanel2, gridBagConstraints);
+
+        jLabel6.setText("Tipo Producto:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
+        jPanel1.add(jLabel6, gridBagConstraints);
+
+        comboBoxTipoProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio", "Producto Tipo IQE", "Producto Final" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
+        jPanel1.add(comboBoxTipoProducto, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -246,31 +306,14 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel3.add(jTextField5, gridBagConstraints);
+        jPanel3.add(campoNombreEtapaRuta, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
-        jPanel3.add(jTextField6, gridBagConstraints);
-
-        jLabel6.setText("Ctro de Trab:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
-        jPanel3.add(jLabel6, gridBagConstraints);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel3.add(jComboBox1, gridBagConstraints);
+        jPanel3.add(campoNumeroEtapaRuta, gridBagConstraints);
 
         jLabel7.setText("Tmpo Trabajo Máquinas: (min)");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -284,6 +327,7 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel3.add(jLabel8, gridBagConstraints);
@@ -292,30 +336,31 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel3.add(jLabel9, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
-        jPanel3.add(jTextField7, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 10);
+        jPanel3.add(campoTpoMaquinaEtapaRuta, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel3.add(jTextField8, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 10);
+        jPanel3.add(campoTpoOperarioEtapaRuta, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel3.add(jTextField9, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 10);
+        jPanel3.add(campoTpoTotalEtapaRuta, gridBagConstraints);
 
         jCheckBox1.setText("Etapa Producto Tipo IQE");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -326,13 +371,210 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel3.add(jCheckBox1, gridBagConstraints);
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Materias Primas"));
+        jPanel5.setToolTipText("Materias Primas");
+        jPanel5.setLayout(new java.awt.GridBagLayout());
+
+        listaMateriasPrimasCargadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(listaMateriasPrimasCargadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 30);
+        jPanel5.add(jScrollPane3, gridBagConstraints);
+
+        botonAgregaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
+        botonAgregaMateriaPrima.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        jPanel5.add(botonAgregaMateriaPrima, gridBagConstraints);
+
+        botonQuitaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
+        botonQuitaMateriaPrima.setText("Quitar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        jPanel5.add(botonQuitaMateriaPrima, gridBagConstraints);
+
+        listaMateriasPrimasAgregadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(listaMateriasPrimasAgregadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 20);
+        jPanel5.add(jScrollPane4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
+        jPanel3.add(jPanel5, gridBagConstraints);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Máquinas"));
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        listaMaquiansCargadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(listaMaquiansCargadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 30);
+        jPanel6.add(jScrollPane5, gridBagConstraints);
+
+        listaMaquinasAgregadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(listaMaquinasAgregadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 20);
+        jPanel6.add(jScrollPane6, gridBagConstraints);
+
+        botonAgregaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
+        botonAgregaMaquinas.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        jPanel6.add(botonAgregaMaquinas, gridBagConstraints);
+
+        botonQuitaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
+        botonQuitaMaquinas.setText("Quitar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        jPanel6.add(botonQuitaMaquinas, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
+        jPanel3.add(jPanel6, gridBagConstraints);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Herramientas"));
+        jPanel7.setLayout(new java.awt.GridBagLayout());
+
+        listaHerramientasCargadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(listaHerramientasCargadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 30);
+        jPanel7.add(jScrollPane8, gridBagConstraints);
+
+        listaHerramientasAgregadas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane7.setViewportView(listaHerramientasAgregadas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 20);
+        jPanel7.add(jScrollPane7, gridBagConstraints);
+
+        botonAgregaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
+        botonAgregaHerramientas.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        jPanel7.add(botonAgregaHerramientas, gridBagConstraints);
+
+        botonQuitaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
+        botonQuitaHerramientas.setText("Quitar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        jPanel7.add(botonQuitaHerramientas, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
+        jPanel3.add(jPanel7, gridBagConstraints);
+
+        jLabel10.setText("Nº de Operarios");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
-        add(jPanel3, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
+        jPanel3.add(jLabel10, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        jPanel3.add(campoNroOperariosEtapaRuta, gridBagConstraints);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Etapas Creadas"));
         jPanel4.setLayout(new java.awt.GridBagLayout());
@@ -364,12 +606,142 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        jPanel3.add(jPanel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
-        add(jPanel4, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
+        add(jPanel3, gridBagConstraints);
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Centro de Trabajo"));
+        jPanel8.setLayout(new java.awt.GridBagLayout());
+
+        grupoBuscaCedntro.add(radioBotonBuscaCodigoCentro);
+        radioBotonBuscaCodigoCentro.setSelected(true);
+        radioBotonBuscaCodigoCentro.setText("Código:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel8.add(radioBotonBuscaCodigoCentro, gridBagConstraints);
+
+        grupoBuscaCedntro.add(radioBotonBuscaNombreCentro);
+        radioBotonBuscaNombreCentro.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel8.add(radioBotonBuscaNombreCentro, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
+        jPanel8.add(campoBuscaCodigoCentro, gridBagConstraints);
+
+        campoBuscaNombreCentro.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 5, 0, 0);
+        jPanel8.add(campoBuscaNombreCentro, gridBagConstraints);
+
+        botonBuscaCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscaCentro.setText("Buscar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 10, 0, 0);
+        jPanel8.add(botonBuscaCentro, gridBagConstraints);
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Centro de Trabajo Encontrado"));
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        jLabel11.setText("Código:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
+        jPanel9.add(jLabel11, gridBagConstraints);
+
+        jLabel12.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
+        jPanel9.add(jLabel12, gridBagConstraints);
+
+        jLabel13.setText("Descripción");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
+        jPanel9.add(jLabel13, gridBagConstraints);
+
+        campoCodigoCentroEncontrado.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
+        jPanel9.add(campoCodigoCentroEncontrado, gridBagConstraints);
+
+        campoNombreCentroEncontrado.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        jPanel9.add(campoNombreCentroEncontrado, gridBagConstraints);
+
+        campoDescripcionCentroEncontrado.setColumns(20);
+        campoDescripcionCentroEncontrado.setRows(5);
+        campoDescripcionCentroEncontrado.setEnabled(false);
+        jScrollPane10.setViewportView(campoDescripcionCentroEncontrado);
+
+        jScrollPane9.setViewportView(jScrollPane10);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel9.add(jScrollPane9, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 10, 10, 10);
+        jPanel8.add(jPanel9, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        add(jPanel8, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -385,13 +757,41 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
     */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregaHerramientas;
+    private javax.swing.JButton botonAgregaMaquinas;
+    private javax.swing.JButton botonAgregaMateriaPrima;
+    private javax.swing.JButton botonBuscaCentro;
+    private javax.swing.JButton botonBuscarProdFinal;
+    private javax.swing.JButton botonGuardarRutaNueva;
+    private javax.swing.JButton botonQuitaHerramientas;
+    private javax.swing.JButton botonQuitaMaquinas;
+    private javax.swing.JButton botonQuitaMateriaPrima;
+    private javax.swing.JTextField campoBuscaCodigoCentro;
+    private javax.swing.JTextField campoBuscaCodigoProdFinal;
+    private javax.swing.JTextField campoBuscaNombreCentro;
+    private javax.swing.JTextField campoBuscaNombreProdFinal;
+    private javax.swing.JTextField campoCodigoCentroEncontrado;
+    private javax.swing.JTextField campoCodigoProdFinal;
+    private javax.swing.JTextArea campoDescripProdFInal;
+    private javax.swing.JTextArea campoDescripcionCentroEncontrado;
+    private javax.swing.JTextField campoNombreCentroEncontrado;
+    private javax.swing.JTextField campoNombreEtapaRuta;
+    private javax.swing.JTextField campoNombreProdFinal;
+    private javax.swing.JTextField campoNroOperariosEtapaRuta;
+    private javax.swing.JTextField campoNumeroEtapaRuta;
+    private javax.swing.JTextField campoTpoMaquinaEtapaRuta;
+    private javax.swing.JTextField campoTpoOperarioEtapaRuta;
+    private javax.swing.JTextField campoTpoTotalEtapaRuta;
+    private javax.swing.JComboBox comboBoxTipoProducto;
+    private javax.swing.ButtonGroup grupoBuscaCedntro;
     private javax.swing.ButtonGroup grupoBuscaProdFinal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -404,21 +804,32 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JList listaHerramientasAgregadas;
+    private javax.swing.JList listaHerramientasCargadas;
+    private javax.swing.JList listaMaquiansCargadas;
+    private javax.swing.JList listaMaquinasAgregadas;
+    private javax.swing.JList listaMateriasPrimasAgregadas;
+    private javax.swing.JList listaMateriasPrimasCargadas;
+    private javax.swing.JRadioButton radioBotonBuscaCodigoCentro;
+    private javax.swing.JRadioButton radioBotonBuscaCodigoProdFinal;
+    private javax.swing.JRadioButton radioBotonBuscaNombreCentro;
+    private javax.swing.JRadioButton radioBotonBuscaNombreProdFinal;
     private javax.swing.JTable tablaEtapasAgregadas;
     // End of variables declaration//GEN-END:variables
 
