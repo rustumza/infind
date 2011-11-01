@@ -209,6 +209,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuBar1.add(rutaDeFabricacion);
 
         operarios.setText("Operarios");
+        operarios.setMargin(new java.awt.Insets(0, 0, 0, 5));
 
         menuIngresarOperarios.setText("Crear Operarios");
         menuIngresarOperarios.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +230,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuBar1.add(operarios);
 
         proveedores.setText("Proveedores");
+        proveedores.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
         crearProveedores.setText("Crear proveedores");
         crearProveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +248,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
