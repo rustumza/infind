@@ -182,6 +182,9 @@
         <Menu class="javax.swing.JMenu" name="operarios">
           <Properties>
             <Property name="text" type="java.lang.String" value="Operarios"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 5]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuIngresarOperarios">
@@ -205,6 +208,9 @@
         <Menu class="javax.swing.JMenu" name="proveedores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 5, 0, 5]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="crearProveedores">
@@ -243,7 +249,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="747" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="769" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
