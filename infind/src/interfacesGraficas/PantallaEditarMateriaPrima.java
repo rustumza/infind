@@ -104,7 +104,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         });
         toolbar.add(guardar);
 
-        eliminar.setText("Eliminar");
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
+        eliminar.setToolTipText("Eliminar");
         eliminar.setFocusable(false);
         eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

@@ -80,4 +80,8 @@ public class ControladorPantallaMadre {
         new ControladorProveedores(this).crearProveedor();
     }
 
+    public void crearEstructuraDeProducto() {
+        new ControladorEstructuraDeProducto(this).crearEstructuraDeProducto();
+    }
+
 }

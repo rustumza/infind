@@ -58,6 +58,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         listarProductosIntermedios = new javax.swing.JMenuItem();
         listarProductosFinales = new javax.swing.JMenuItem();
         estructuraDeProducto = new javax.swing.JMenu();
+        crearEstructuraDeProducto = new javax.swing.JMenuItem();
         centrosDeTrabajo = new javax.swing.JMenu();
         crearCentro = new javax.swing.JMenuItem();
         editarCentro = new javax.swing.JMenuItem();
@@ -164,6 +165,15 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         estructuraDeProducto.setText("Estructura de Producto");
         estructuraDeProducto.setMargin(new java.awt.Insets(2, 2, 2, 12));
+
+        crearEstructuraDeProducto.setText("Crear estructura de producto");
+        crearEstructuraDeProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEstructuraDeProductoActionPerformed(evt);
+            }
+        });
+        estructuraDeProducto.add(crearEstructuraDeProducto);
+
         jMenuBar1.add(estructuraDeProducto);
 
         centrosDeTrabajo.setText("Centros de trabajo");
@@ -314,6 +324,10 @@ private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//
         controlador.crearProveedor();
 }//GEN-LAST:event_crearProveedoresActionPerformed
 
+private void crearEstructuraDeProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEstructuraDeProductoActionPerformed
+    controlador.crearEstructuraDeProducto();
+}//GEN-LAST:event_crearEstructuraDeProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +368,7 @@ private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu centrosDeTrabajo;
     private javax.swing.JMenu crearArticulo;
     private javax.swing.JMenuItem crearCentro;
+    private javax.swing.JMenuItem crearEstructuraDeProducto;
     private javax.swing.JMenuItem crearMateriaPrima;
     private javax.swing.JMenuItem crearProductoComponente;
     private javax.swing.JMenuItem crearProductoFinal;
