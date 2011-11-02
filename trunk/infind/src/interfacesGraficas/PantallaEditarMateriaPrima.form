@@ -90,7 +90,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="eliminar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/utilidades/imagenes/iconos/user-trash-30.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Eliminar"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>

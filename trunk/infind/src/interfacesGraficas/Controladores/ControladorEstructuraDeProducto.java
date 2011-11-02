@@ -6,6 +6,8 @@ package interfacesGraficas.Controladores;
 
 import expertos.ExpertoEstructuraDeProducto;
 import interfacesGraficas.PantallaCrearEstructuraDeProducto;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -38,13 +40,35 @@ public class ControladorEstructuraDeProducto {
             //experto.buscarProductoFinal(codigo);
             
         }else if(tipo.equals("Producto IQE")){
-            pantallaCrearEstructuraDeProducto.getColorModel();
+            
         }else if(tipo.equals("Prodcuto intermedio")){
-            pantallaCrearEstructuraDeProducto.getColorModel();
+            
         
         }
     }
+
+    public void cargarListaDeMatPrimProdComp() {
+        String aux = (String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getModel().getSelectedItem();
+        List productos = null;
+        if(aux.equals("Materia prima")){
+            productos = experto.buscarMateriasPrimas();
+    
+        }else if(aux.equals("Producto componente")){
+            productos = experto.buscarProductoComponente();
+        
+        
+        }else if(aux.equals("Producto intermedio")){
+            productos = experto.buscarProductoIntermedio();
+        
+        }
+        pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setModel(new DefaultComboBoxModel(productos.toArray()));
+    
+    
+    }   
             
+    
+
+
 }
     
     

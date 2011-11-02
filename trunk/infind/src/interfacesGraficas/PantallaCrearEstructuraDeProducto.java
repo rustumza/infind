@@ -33,6 +33,7 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.controlador = controlador;
+        setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -145,7 +146,12 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Materia prima - Producto componente"));
 
-        tipoMateriaPrimaProductoComponete.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Materia prima", "Producto componente" }));
+        tipoMateriaPrimaProductoComponete.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Materia prima", "Producto componente", "Producto intermedio" }));
+        tipoMateriaPrimaProductoComponete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoMateriaPrimaProductoComponeteActionPerformed(evt);
+            }
+        });
 
         cantidadLabel.setText("Cantidad");
 
@@ -171,10 +177,10 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cantidadTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelar)))
                 .addContainerGap())
         );
@@ -264,6 +270,10 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
 private void bucarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucarProductoActionPerformed
     controlador.buscarProducto();
 }//GEN-LAST:event_bucarProductoActionPerformed
+
+private void tipoMateriaPrimaProductoComponeteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMateriaPrimaProductoComponeteActionPerformed
+    controlador.cargarListaDeMatPrimProdComp();
+}//GEN-LAST:event_tipoMateriaPrimaProductoComponeteActionPerformed
 
     /**
      * @param args the command line arguments
