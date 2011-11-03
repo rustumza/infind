@@ -282,8 +282,10 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 120;
+        gridBagConstraints.ipady = 40;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 5, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(6, 5, 5, 10);
         jPanel2.add(jScrollPane1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -431,6 +433,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         botonAgregaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaMateriaPrima.setText("Agregar");
+        botonAgregaMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregaMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -439,6 +446,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         botonQuitaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaMateriaPrima.setText("Quitar");
+        botonQuitaMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonQuitaMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -661,6 +673,11 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
 
         botonGuardarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
         botonGuardarEtapa.setText("Guardar Etapa");
+        botonGuardarEtapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarEtapaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
@@ -863,6 +880,18 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
         }
     }//GEN-LAST:event_botonBuscaCentroActionPerformed
 
+    private void botonGuardarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEtapaActionPerformed
+        controlador.guardarEtapa();
+    }//GEN-LAST:event_botonGuardarEtapaActionPerformed
+
+    private void botonAgregaMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaMateriaPrimaActionPerformed
+        controlador.agregarMatriaPrima();
+    }//GEN-LAST:event_botonAgregaMateriaPrimaActionPerformed
+
+    private void botonQuitaMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitaMateriaPrimaActionPerformed
+        controlador.sacarMateriaPrima();
+    }//GEN-LAST:event_botonQuitaMateriaPrimaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -946,6 +975,8 @@ public class PantallaCrearRutaDeFabricacion extends java.awt.Dialog {
     private javax.swing.JTable tablaEtapasAgregadas;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     public JTable getTablaEtapasAgregadas() {
         return tablaEtapasAgregadas;
     }
