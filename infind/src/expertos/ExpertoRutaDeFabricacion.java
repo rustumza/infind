@@ -5,9 +5,12 @@
 package expertos;
 
 import DTOs.DTOCentro;
+import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.MaestroDeRutaDeFabricacion;
 import Entidades.MateriaPrima;
 import excepciones.ExpertoExceptionRutaFabricacion;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -18,6 +21,10 @@ import persistencia.Fachada;
  * @author eduardo
  */
 public class ExpertoRutaDeFabricacion extends Experto {
+    
+    List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
+    
+    
 
     public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoExceptionRutaFabricacion {
 
@@ -57,5 +64,22 @@ public class ExpertoRutaDeFabricacion extends Experto {
         listaMateriaPrima = Fachada.getInstancia().buscar(MateriaPrima.class, criterioMatPrim);
         return listaMateriaPrima;
 
+    }
+    
+    public void guardarEtapaRutaFabricacion(EtapaDeRutaDeFabricacion nuevaEtapa){
+        etapaEnEspera.add(nuevaEtapa);
+        
+    }
+    
+    public List<EtapaDeRutaDeFabricacion> devolverEtapasAGuardar(){
+        
+        return etapaEnEspera;
+        
+    }
+
+    public void guardarRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
+        
+        Fachada.getInstancia().guardar(rutaNueva);
+        
     }
 }
