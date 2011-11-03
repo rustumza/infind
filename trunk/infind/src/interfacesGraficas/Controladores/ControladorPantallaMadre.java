@@ -44,6 +44,10 @@ public class ControladorPantallaMadre {
         new ControladorMateriaPrima(this).crearMateriaPrima();
     }
 
+    public void crearProductoIntermedio() {
+        new ControladorProductoIntermedio(this).crearProductoIntermedio();
+    }
+
     public void crearProductoFinal() {
     }
 
@@ -72,7 +76,7 @@ public class ControladorPantallaMadre {
         new ControladorListarProductosFinales(this).iniciar();
     }
 
-    public void crearRutaFabricacion(){
+    public void crearRutaFabricacion() {
         new ControladorCrearRutaDeFabricacion(this).crearRutaFabricacion();
     }
 
@@ -83,5 +87,4 @@ public class ControladorPantallaMadre {
     public void crearEstructuraDeProducto() {
         new ControladorEstructuraDeProducto(this).crearEstructuraDeProducto();
     }
-
 }
