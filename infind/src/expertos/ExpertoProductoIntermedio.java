@@ -25,9 +25,7 @@ public class ExpertoProductoIntermedio extends Experto {
         //sumarle uno al numerador
         List<Numerador> numeroDisponibles = null;
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
-    //    if ((proInter.getTipo()).equals("PInter")) {
-            criterioNumerador.add(Restrictions.eq("codificacion", "3.1."));
-      //  }
+        criterioNumerador.add(Restrictions.eq("codificacion", "3.1."));
         numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
         Numerador numerador = numeroDisponibles.get(0);
         String numString = numerador.getUltimaClasificacion();

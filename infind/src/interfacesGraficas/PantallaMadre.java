@@ -113,6 +113,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearArticulo.add(crearProductoIQE);
 
         crearProductoComponente.setText("Producto componente");
+        crearProductoComponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProductoComponenteActionPerformed(evt);
+            }
+        });
         crearArticulo.add(crearProductoComponente);
 
         crearProductoFinal.setText("Producto final");
@@ -333,6 +338,10 @@ private void crearEstructuraDeProductoActionPerformed(java.awt.event.ActionEvent
     private void crearProductoIntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoIntermedioActionPerformed
         controlador.crearProductoIntermedio();
     }//GEN-LAST:event_crearProductoIntermedioActionPerformed
+
+    private void crearProductoComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoComponenteActionPerformed
+        controlador.crearProductoComponente();
+    }//GEN-LAST:event_crearProductoComponenteActionPerformed
     /**
      * @param args the command line arguments
      */

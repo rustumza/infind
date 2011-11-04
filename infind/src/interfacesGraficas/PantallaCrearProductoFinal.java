@@ -11,7 +11,7 @@
 package interfacesGraficas;
 
 import com.toedter.calendar.JDateChooser;
-import interfacesGraficas.Controladores.ControladorMateriaPrima;
+import interfacesGraficas.Controladores.ControladorProductoFinal;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -25,15 +25,15 @@ import javax.swing.JToolBar;
  *
  * @author rustu
  */
-public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
+public class PantallaCrearProductoFinal extends javax.swing.JDialog {
 
-    ControladorMateriaPrima controlador;
+    ControladorProductoFinal controlador;
 
     /** Creates new form NewJDialog */
-    public PantallaCrearMateriaPrima(java.awt.Frame parent, boolean modal, ControladorMateriaPrima controladorMP) {
+    public PantallaCrearProductoFinal(java.awt.Frame parent, boolean modal, ControladorProductoFinal controladorPFinal) {
         super(parent, modal);
         initComponents();
-        controlador = controladorMP;
+        controlador = controladorPFinal;
     }
 
     /** This method is called from within the constructor to
@@ -80,15 +80,13 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
         unidadDeMedidaListBox = new javax.swing.JComboBox();
         estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
-        tipoMateriaPrimaLabel = new javax.swing.JLabel();
-        tipoMateriaPrimaListBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         toolbar.setRollover(true);
 
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        guardar.setToolTipText("Guardar Materia Prima");
+        guardar.setToolTipText("Guardar Producto Final");
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setMargin(new java.awt.Insets(2, 0, 2, 14));
@@ -177,15 +175,6 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
 
-        tipoMateriaPrimaLabel.setText("Tipo materia prima");
-
-        tipoMateriaPrimaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria" }));
-        tipoMateriaPrimaListBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoMateriaPrimaListBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,23 +218,15 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoMateriaPrimaLabel)
-                            .addComponent(codigoLabel))
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(codigoLabel)
+                        .addGap(146, 146, 146)
+                        .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoMateriaPrimaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel)
                     .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,10 +333,6 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     controlador.guardar();
 }//GEN-LAST:event_guardarActionPerformed
 
-private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMateriaPrimaListBoxActionPerformed
-    controlador.cambiarTipoMateriaPrima();
-}//GEN-LAST:event_tipoMateriaPrimaListBoxActionPerformed
-
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         dispose();
     }//GEN-LAST:event_salirActionPerformed
@@ -397,8 +374,6 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JButton salir;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
-    private javax.swing.JLabel tipoMateriaPrimaLabel;
-    private javax.swing.JComboBox tipoMateriaPrimaListBox;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
@@ -446,11 +421,11 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
         this.codigoTextBox = codigoTextBox;
     }
 
-    public ControladorMateriaPrima getControlador() {
+    public ControladorProductoFinal getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorMateriaPrima controlador) {
+    public void setControlador(ControladorProductoFinal controlador) {
         this.controlador = controlador;
     }
 
@@ -694,19 +669,4 @@ private void tipoMateriaPrimaListBoxActionPerformed(java.awt.event.ActionEvent e
         this.estadoEntrarEnActividadEnFechajDateChooser = estadoEntrarEnActividadEnFechajDateChooser;
     }
 
-    public JLabel getTipoMateriaPrimaLabel() {
-        return tipoMateriaPrimaLabel;
-    }
-
-    public void setTipoMateriaPrimaLabel(JLabel tipoMateriaPrimaLabel) {
-        this.tipoMateriaPrimaLabel = tipoMateriaPrimaLabel;
-    }
-
-    public JComboBox getTipoMateriaPrimaListBox() {
-        return tipoMateriaPrimaListBox;
-    }
-
-    public void setTipoMateriaPrimaListBox(JComboBox tipoMateriaPrimaListBox) {
-        this.tipoMateriaPrimaListBox = tipoMateriaPrimaListBox;
-    }
 }

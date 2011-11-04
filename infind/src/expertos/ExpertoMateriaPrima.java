@@ -4,11 +4,8 @@
  */
 package expertos;
 
-import DTOs.DTOMateriaPrima;
 import Entidades.MateriaPrima;
 import Entidades.Numerador;
-import Entidades.Proveedor;
-import excepciones.ExpertoMateriaPrimaException;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

@@ -32,8 +32,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="panelPrincipal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <Component id="panelPrincipal" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,9 +45,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="toolbar" alignment="0" max="32767" attributes="1"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
+                      <Component id="toolbar" alignment="0" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -58,8 +58,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="toolbar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="599" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="652" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,7 +76,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/utilidades/imagenes/iconos/Save_30.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Guardar Materia Prima"/>
+                <Property name="toolTipText" type="java.lang.String" value="Guardar Producto Final"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -87,6 +86,20 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="eliminar">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/utilidades/imagenes/iconos/user-trash-30.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Eliminar"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="cancelar">
@@ -102,9 +115,6 @@
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="salir">
               <Properties>
@@ -119,9 +129,6 @@
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -150,7 +157,7 @@
                                       <Component id="costoEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="costoUnitarioPorOmisionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="precioBaseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tamañoLoteEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tamanioLoteEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="ubicacionEnElAlmacenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="observacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -185,15 +192,14 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tipoMateriaPrimaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="codigoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="codigoTextBox" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="tipoMateriaPrimaListBox" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="codigoTextBox" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="preoveedorPredeterminadoLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="proveedorPredeterminadoListBox" min="-2" pref="257" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="48" max="32767" attributes="0"/>
@@ -203,12 +209,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tipoMateriaPrimaListBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tipoMateriaPrimaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="codigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="codigoTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -258,7 +259,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="tamañoLoteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tamanioLoteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tamanioLoteEstandarTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -274,7 +275,12 @@
                               <Component id="observacionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="preoveedorPredeterminadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="proveedorPredeterminadoListBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -312,7 +318,7 @@
                     <Property name="text" type="java.lang.String" value="Unidad de medida"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="tama&#xf1;oLoteEstandarLabel">
+                <Component class="javax.swing.JLabel" name="tamanioLoteEstandarLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tama&#xf1;o lote estandar"/>
                   </Properties>
@@ -434,23 +440,22 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="tipoMateriaPrimaLabel">
+                <Component class="javax.swing.JLabel" name="preoveedorPredeterminadoLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tipo materia prima"/>
+                    <Property name="text" type="java.lang.String" value="Proveedor predeterminado"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="tipoMateriaPrimaListBox">
+                <Component class="javax.swing.JComboBox" name="proveedorPredeterminadoListBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Primaria"/>
-                        <StringItem index="1" value="Secundaria"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="Item 1"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoMateriaPrimaListBoxActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
