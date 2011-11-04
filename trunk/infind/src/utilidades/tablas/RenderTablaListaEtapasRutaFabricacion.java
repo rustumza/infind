@@ -28,12 +28,22 @@ public class RenderTablaListaEtapasRutaFabricacion implements TableCellRenderer 
             etiqueta.setBackground(Color.YELLOW);//celeste (es el que viene por defecto en look and feel
             etiqueta.setForeground(Color.BLACK);
         }
+        
+        
+        if (isSelected) {
 
-        if (value instanceof String && value != null) {
+            etiqueta.setBackground(Color.GREEN);//celeste (es el que viene por defecto en look and feel
+            etiqueta.setForeground(Color.BLACK);
+        } else {
+            etiqueta.setBackground(Color.YELLOW);//celeste (es el que viene por defecto en look and feel
+            etiqueta.setForeground(Color.BLACK);
+        }
+
+       /* if (value instanceof String && value != null) {
             etiqueta.setText((String) value);
         } else {
             etiqueta.setText(String.valueOf(value));
-        }
+        }*/
 
 
 
