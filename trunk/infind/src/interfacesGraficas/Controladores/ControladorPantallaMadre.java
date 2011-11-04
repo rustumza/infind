@@ -48,6 +48,10 @@ public class ControladorPantallaMadre {
         new ControladorProductoIntermedio(this).crearProductoIntermedio();
     }
 
+    public void crearProductoComponente() {
+        new ControladorProductoComponente(this).crearProductoComponente();
+    }
+
     public void crearProductoFinal() {
     }
 

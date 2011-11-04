@@ -97,7 +97,7 @@ public class PantallaListarProductosIntermedios extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
         );
 
-        mostrarProductosIntermediosCheckBox.setText("Mostrar productos intermedios eliminadas");
+        mostrarProductosIntermediosCheckBox.setText("Mostrar productos intermedios eliminados");
         mostrarProductosIntermediosCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarProductosIntermediosCheckBoxActionPerformed(evt);
