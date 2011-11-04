@@ -6,6 +6,7 @@ package expertos;
 
 import DTOs.DTOCentro;
 import Entidades.EtapaDeRutaDeFabricacion;
+import Entidades.Herramientas;
 import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.MaestroDeRutaDeFabricacion;
 import Entidades.MateriaPrima;
@@ -82,4 +83,10 @@ public class ExpertoRutaDeFabricacion extends Experto {
         Fachada.getInstancia().guardar(rutaNueva);
         
     }
+
+    public void persistirEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion) {
+        Fachada.getInstancia().guardar(etapaDeRutaDeFabricacion);
+    }
+
+    
 }

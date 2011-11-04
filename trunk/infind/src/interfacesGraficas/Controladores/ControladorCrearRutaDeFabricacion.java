@@ -20,12 +20,14 @@ import interfacesGraficas.ModeloComboYListas.ModeloJListListaMateriaPrima;
 import interfacesGraficas.ModeloComboYListas.ModeloJListaMaquinas;
 import interfacesGraficas.ModeloComboYListas.ModeloJlistaHerramientas;
 import interfacesGraficas.ModeloTablas.ModeloTablaEtapaRutaAgregada;
+import interfacesGraficas.PantCrearRutaDeFabricacion;
 import interfacesGraficas.PantallaCrearOperario;
-import interfacesGraficas.PantallaCrearRutaDeFabricacion;
+
 import interfacesGraficas.PantallaMadre;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JList;
+import utilidades.tablas.RenderTablaListaEtapasRutaFabricacion;
 
 /**
  *
@@ -33,7 +35,7 @@ import javax.swing.JList;
  */
 public class ControladorCrearRutaDeFabricacion {
 
-    PantallaCrearRutaDeFabricacion pantallaCrearRutaFabricacion;
+    PantCrearRutaDeFabricacion pantallaCrearRutaFabricacion;
     PantallaMadre pantallaMadre;
     ExpertoRutaDeFabricacion expertoRutaFabricacion;
     ControladorPantallaMadre controladorPantallaMadre;
@@ -54,9 +56,10 @@ public class ControladorCrearRutaDeFabricacion {
 
         expertoRutaFabricacion = (ExpertoRutaDeFabricacion) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.RUTA_FABRICACION);
 
-        pantallaCrearRutaFabricacion = new PantallaCrearRutaDeFabricacion(pantallaMadre, false, this);
+        pantallaCrearRutaFabricacion = new PantCrearRutaDeFabricacion(pantallaMadre, false, this);
         modeloTAblaEtapaAgregada = new ModeloTablaEtapaRutaAgregada();
         pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
+        //pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setDefaultRenderer(Object.class, new RenderTablaListaEtapasRutaFabricacion());
         List<MateriaPrima> listaMatPrim = expertoRutaFabricacion.buscarMateriasPrimas();
         pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaMatPrim));
         pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima(new ArrayList<MateriaPrima>()));
@@ -64,7 +67,6 @@ public class ControladorCrearRutaDeFabricacion {
         pantallaCrearRutaFabricacion.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(new ArrayList<Herramientas>()));
         pantallaCrearRutaFabricacion.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(new ArrayList<Maquina>()));
         pantallaCrearRutaFabricacion.getListaMaquinasAgregadas().setModel(new ModeloJListaMaquinas(new ArrayList<Maquina>()));
-
         pantallaCrearRutaFabricacion.setVisible(true);
         pantallaCrearRutaFabricacion.setLocationRelativeTo(null);
 
@@ -75,11 +77,18 @@ public class ControladorCrearRutaDeFabricacion {
 
         rutaNueva.setEliminado(Boolean.FALSE);
 
-        rutaNueva.setEtapaRutaFabricacion(expertoRutaFabricacion.devolverEtapasAGuardar());
+
 
         expertoRutaFabricacion.guardarRutaDeFabricacion(rutaNueva);
-
-
+        
+        List<EtapaDeRutaDeFabricacion> etapasAGuardar = expertoRutaFabricacion.devolverEtapasAGuardar();
+        
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasAGuardar) {
+            
+            //TODO: tengo que guardar detalleArticuloEnEtapaDeFabricacion antes de guardar las etapas
+            etapaDeRutaDeFabricacion.setMaestroRutaFabricacionList(rutaNueva);
+            expertoRutaFabricacion.persistirEtapaRutaFabricacion(etapaDeRutaDeFabricacion);
+        }
 
     }
 
@@ -97,9 +106,15 @@ public class ControladorCrearRutaDeFabricacion {
                 List<Herramientas> herramientas = centroEncontrado.getHerramientas();
                 List<Maquina> maquinas = centroEncontrado.getMaquinas();
                 List<Operario> operario = centroEncontrado.getOperario();
-                pantallaCrearRutaFabricacion.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(herramientas));
+                List<Herramientas> listaHerramientas = new ArrayList<Herramientas>();
+                for (Herramientas listaherramientas : herramientas) {
+                    listaHerramientas.add(listaherramientas);
+                }
+                pantallaCrearRutaFabricacion.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(listaHerramientas));
                 pantallaCrearRutaFabricacion.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(maquinas));
-
+                
+                
+                
                 //TODO: tengo que mostrar los nombres y no el id, no se como se hace
             }
 
@@ -115,7 +130,7 @@ public class ControladorCrearRutaDeFabricacion {
                 List<Operario> operario = centroEncontrado.getOperario();
                 pantallaCrearRutaFabricacion.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(herramientas));
                 pantallaCrearRutaFabricacion.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(maquinas));
-
+               
             }
 
 
@@ -152,6 +167,7 @@ public class ControladorCrearRutaDeFabricacion {
 
     public void guardarEtapa() {
 
+        
         DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo = new DetalleDeArticuloEnEtapaDeFabricacion();
         List<DetalleDeArticuloEnEtapaDeFabricacion> listaDeDetallesArticulos = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
         List<MateriaPrima> materiasPrimas = new ArrayList<MateriaPrima>();
@@ -191,6 +207,18 @@ public class ControladorCrearRutaDeFabricacion {
         expertoRutaFabricacion.guardarEtapaRutaFabricacion(nuevaEtapa);
 
         modeloTAblaEtapaAgregada.addRow(nuevaEtapa);
+        if (pantallaCrearRutaFabricacion.getCheckEsTipoIQE().isSelected()) {
+            
+            //pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setDefaultRenderer(Object.class, new RenderTablaListaEtapasRutaFabricacion());
+            RenderTablaListaEtapasRutaFabricacion render = new RenderTablaListaEtapasRutaFabricacion();
+            render.getTableCellRendererComponent(pantallaCrearRutaFabricacion.getTablaEtapasAgregadas(), render, true, true, 1, 1);
+            pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setDefaultRenderer(Object.class, render);
+            
+        }else{
+            //TODO: arreglar el tema de los colores de la tabla
+        }
+        
+        
         limpiarPantallaEtapa();
 
     }
@@ -216,10 +244,9 @@ public class ControladorCrearRutaDeFabricacion {
         System.out.println("metodo no implementado!!");
 
     }
-    
-    
-    public void limpiarPantallaEtapa(){
-        
+
+    public void limpiarPantallaEtapa() {
+
         pantallaCrearRutaFabricacion.getCampoBuscaCodigoCentro().setText("");
         pantallaCrearRutaFabricacion.getCampoBuscaNombreCentro().setText("");
         pantallaCrearRutaFabricacion.getCampoCodigoCentroEncontrado().setText("");
@@ -238,8 +265,8 @@ public class ControladorCrearRutaDeFabricacion {
         pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima());
         List<MateriaPrima> listaMatPrim = expertoRutaFabricacion.buscarMateriasPrimas();
         pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaMatPrim));
-        
-        
-        
+
+
+
     }
 }

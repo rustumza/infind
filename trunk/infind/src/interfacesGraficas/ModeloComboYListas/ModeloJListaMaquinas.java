@@ -28,7 +28,8 @@ public class ModeloJListaMaquinas extends AbstractListModel{
         listaDeMaquinas.addAll(maquinas);
 
     }
-
+    
+    
     private void inicializarValores(){
         listaDeMaquinas = new ArrayList<Maquina>();
     }
