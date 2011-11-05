@@ -74,14 +74,6 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
         this.cantidadDeOperarios = cantidadDeOperarios;
     }
 
-    public List<DetalleDeArticuloEnEtapaDeFabricacion> getDetalleArtEnEtapaFabList() {
-        return detallesArtEnEtapaFabList;
-    }
-
-    public void setDetalleArtEnEtapaFabList(List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArtEnEtapaFabList) {
-        this.detallesArtEnEtapaFabList = detalleArtEnEtapaFabList;
-    }
-
     public Boolean getEliminado() {
         return eliminado;
     }
@@ -139,6 +131,28 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     }
     
     
+    public void addDetalle(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaLista(detalle)) {
+            getDetallesArtEnEtapaFabList().add(detalle);
+            if (detalle.getEtapaRutaFabricacion() != null) {
+                detalle.getEtapaRutaFabricacion().getDetallesArtEnEtapaFabList().remove(detalle);
+            }
+            detalle.setEtapaRutaFabricacion(this);
+        }
+    }
+
+
+    private boolean estaEnLaLista(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
+        for (DetalleDeArticuloEnEtapaDeFabricacion detalleEtapa : detallesArtEnEtapaFabList) {
+            if(detalle==detalleEtapa)
+                return true;
+        }
+        return false;
+    }
+
+    
+    
 
     @Override
     public int hashCode() {
@@ -162,6 +176,6 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
 
     @Override
     public String toString() {
-        return "Entidades.EtapaDeRutaDeFabricacion[ id=" + id + " ]";
+        return getNombreEtapa();
     }
 }

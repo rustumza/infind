@@ -27,6 +27,7 @@ import interfacesGraficas.PantallaMadre;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JList;
+import persistencia.Fachada;
 import utilidades.tablas.RenderTablaListaEtapasRutaFabricacion;
 
 /**
@@ -115,7 +116,7 @@ public class ControladorCrearRutaDeFabricacion {
                 
                 
                 
-                //TODO: tengo que mostrar los nombres y no el id, no se como se hace
+                
             }
 
         } else if (pantallaCrearRutaFabricacion.getRadioBotonBuscaNombreCentro().isSelected()) {
@@ -196,9 +197,13 @@ public class ControladorCrearRutaDeFabricacion {
             detalleArticulo.setCantidad(2);
             detalleArticulo.setEliminado(Boolean.FALSE);
             detalleArticulo.setUnidadDeMedida("cm");
+            detalleArticulo.setNumero(1);
             detalleArticulo.setMaestroArticulo(matPrima);
-            listaDeDetallesArticulos.add(detalleArticulo);
-
+            
+            expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleArticulo);
+            
+            listaDeDetallesArticulos.add(expertoRutaFabricacion.devolverDetalleArticulo(detalleArticulo));
+            
         }
 
 

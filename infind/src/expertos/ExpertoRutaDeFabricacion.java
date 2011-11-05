@@ -5,6 +5,7 @@
 package expertos;
 
 import DTOs.DTOCentro;
+import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
 import Entidades.MaestroDeCentroDeTrabajo;
@@ -24,6 +25,7 @@ import persistencia.Fachada;
 public class ExpertoRutaDeFabricacion extends Experto {
     
     List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
+    DetalleDeArticuloEnEtapaDeFabricacion detalleArticuloGuardado = new DetalleDeArticuloEnEtapaDeFabricacion();
     
     
 
@@ -86,6 +88,21 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
     public void persistirEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion) {
         Fachada.getInstancia().guardar(etapaDeRutaDeFabricacion);
+    }
+
+    public void persistirDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
+        Fachada.getInstancia().guardar(detalleArticulo);
+    }
+    
+    public DetalleDeArticuloEnEtapaDeFabricacion devolverDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle){
+        List<DetalleDeArticuloEnEtapaDeFabricacion> llistaDetalleArticulo = null;
+        
+        Criteria criterioDetalleArticulo = Fachada.getInstancia().crearCriterio(DetalleDeArticuloEnEtapaDeFabricacion.class);
+        criterioDetalleArticulo.add(Restrictions.eq("numero",detalle.getNumero() ));
+        llistaDetalleArticulo = Fachada.getInstancia().buscar(DetalleDeArticuloEnEtapaDeFabricacion.class, criterioDetalleArticulo);    
+        
+        return llistaDetalleArticulo.get(0);
+        
     }
 
     

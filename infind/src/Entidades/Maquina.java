@@ -104,7 +104,7 @@ public class Maquina extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Maquina[ id=" + id + " ]";
+        return getNombreMaquina();
     }
     
 }
