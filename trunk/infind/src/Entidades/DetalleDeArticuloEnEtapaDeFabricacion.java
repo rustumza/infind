@@ -23,6 +23,7 @@ public class DetalleDeArticuloEnEtapaDeFabricacion extends ObjetoPersitente impl
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado = false;
+    private int numero;
     private float cantidad;
     private String unidadDeMedida;
     @ManyToOne
@@ -34,6 +35,15 @@ public class DetalleDeArticuloEnEtapaDeFabricacion extends ObjetoPersitente impl
     public Long getId() {
         return id;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
 
     public void setId(Long id) {
         this.id = id;
