@@ -61,7 +61,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         campoBuscaCodigoProdFinal = new javax.swing.JTextField();
         campoBuscaNombreProdFinal = new javax.swing.JTextField();
-        botonBuscarProdFinal = new javax.swing.JButton();
         radioBotonBuscaNombreProdFinal = new javax.swing.JRadioButton();
         radioBotonBuscaCodigoProdFinal = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
@@ -74,6 +73,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         campoDescripProdFInal = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         comboBoxTipoProducto = new javax.swing.JComboBox();
+        botonBuscarProdFinal = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -188,20 +188,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoBuscaNombreProdFinal, gridBagConstraints);
 
-        botonBuscarProdFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
-        botonBuscarProdFinal.setText("Buscar");
-        botonBuscarProdFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscarProdFinalActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 0);
-        jPanel2.add(botonBuscarProdFinal, gridBagConstraints);
-
         radioBotonBuscaNombreProdFinal.setText("Nombre:");
         radioBotonBuscaNombreProdFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +300,14 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel2.add(comboBoxTipoProducto, gridBagConstraints);
+
+        botonBuscarProdFinal.setText("Buscar");
+        botonBuscarProdFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarProdFinalActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonBuscarProdFinal, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -537,6 +531,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonQuitaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaMaquinas.setText("Quitar");
+        botonQuitaMaquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonQuitaMaquinasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -592,6 +591,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonAgregaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaHerramientas.setText("Agregar");
+        botonAgregaHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregaHerramientasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -600,6 +604,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonQuitaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaHerramientas.setText("Quitar");
+        botonQuitaHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonQuitaHerramientasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -890,9 +899,21 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_botonBuscaCentroActionPerformed
 
-private void botonAgregaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaMaquinasActionPerformed
-    
-}//GEN-LAST:event_botonAgregaMaquinasActionPerformed
+    private void botonAgregaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaMaquinasActionPerformed
+        controlador.agregarMaquinas();
+    }//GEN-LAST:event_botonAgregaMaquinasActionPerformed
+
+    private void botonQuitaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitaMaquinasActionPerformed
+        controlador.sacarMaquina();
+    }//GEN-LAST:event_botonQuitaMaquinasActionPerformed
+
+    private void botonAgregaHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaHerramientasActionPerformed
+        controlador.agregarHerramientas();
+    }//GEN-LAST:event_botonAgregaHerramientasActionPerformed
+
+    private void botonQuitaHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitaHerramientasActionPerformed
+        controlador.sacarHerramientas();
+    }//GEN-LAST:event_botonQuitaHerramientasActionPerformed
 
 private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProdFinalActionPerformed
         try {
@@ -985,6 +1006,8 @@ private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt)
     public JButton getBotonAgregaHerramientas() {
         return botonAgregaHerramientas;
     }
+    
+    
 
     public void setBotonAgregaHerramientas(JButton botonAgregaHerramientas) {
         this.botonAgregaHerramientas = botonAgregaHerramientas;

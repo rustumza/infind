@@ -149,6 +149,6 @@ public class Operario extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Operario[ id=" + id + " ]";
+        return getNombre();
     }
 }

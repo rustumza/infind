@@ -89,6 +89,7 @@ public class ControladorCrearRutaDeFabricacion {
             
         }
         rutaNueva.setEliminado(Boolean.FALSE);
+        
 
 
 
@@ -97,6 +98,7 @@ public class ControladorCrearRutaDeFabricacion {
         List<EtapaDeRutaDeFabricacion> etapasAGuardar = expertoRutaFabricacion.devolverEtapasAGuardar();
         
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasAGuardar) {
+            List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
             
             List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArticuloAPersistir = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
             for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArticuloAPersistir) {
@@ -216,7 +218,7 @@ public class ControladorCrearRutaDeFabricacion {
 
             detalleArticulo.setCantidad(2);
             detalleArticulo.setEliminado(Boolean.FALSE);
-            detalleArticulo.setUnidadDeMedida("cm");
+            detalleArticulo.setUnidadDeMedida("LITROS");
             detalleArticulo.setNumero(1);
             detalleArticulo.setMaestroArticulo(matPrima);
             
@@ -232,6 +234,7 @@ public class ControladorCrearRutaDeFabricacion {
         expertoRutaFabricacion.guardarEtapaRutaFabricacion(nuevaEtapa);
 
         modeloTAblaEtapaAgregada.addRow(nuevaEtapa);
+        
         if (pantallaCrearRutaFabricacion.getCheckEsTipoIQE().isSelected()) {
             
             //pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setDefaultRenderer(Object.class, new RenderTablaListaEtapasRutaFabricacion());
@@ -270,6 +273,54 @@ public class ControladorCrearRutaDeFabricacion {
 
     }
 
+    
+    public void agregarHerramientas() {
+        int seleccionado = pantallaCrearRutaFabricacion.getListaHerramientasCargadas().getSelectedIndex();
+        Herramientas herramientasSeleccionada = ((ModeloJlistaHerramientas) pantallaCrearRutaFabricacion.getListaHerramientasCargadas().getModel()).getElementAt(seleccionado);
+        List<Herramientas> listaHerramientas = ((ModeloJlistaHerramientas) pantallaCrearRutaFabricacion.getListaHerramientasAgregadas().getModel()).getHerramientas();
+
+        if (!listaHerramientas.contains(herramientasSeleccionada)) {
+            listaHerramientas.add(herramientasSeleccionada);
+        }
+
+
+
+        pantallaCrearRutaFabricacion.getListaHerramientasAgregadas().setModel(new ModeloJlistaHerramientas(listaHerramientas));
+
+    }
+
+    public void sacarHerramientas() {
+        //TODO: hacer metodo
+        System.out.println("sacar herramientas");
+        System.out.println("metodo no implementado!!");
+
+    }
+
+    
+    public void agregarMaquinas() {
+        int seleccionado = pantallaCrearRutaFabricacion.getListaMaquiansCargadas().getSelectedIndex();
+        Maquina maquinasSeleccionada = ((ModeloJListaMaquinas) pantallaCrearRutaFabricacion.getListaMaquiansCargadas().getModel()).getElementAt(seleccionado);
+        List<Maquina> listaMaquinas = ((ModeloJListaMaquinas) pantallaCrearRutaFabricacion.getListaMaquinasAgregadas().getModel()).getMaquinas();
+
+        if (!listaMaquinas.contains(maquinasSeleccionada)) {
+            listaMaquinas.add(maquinasSeleccionada);
+        }
+
+
+
+        pantallaCrearRutaFabricacion.getListaMaquinasAgregadas().setModel(new ModeloJListaMaquinas(listaMaquinas));
+
+    }
+
+    public void sacarMaquina() {
+        //TODO: hacer metodo
+        System.out.println("sacar maquina");
+        System.out.println("metodo no implementado!!");
+
+    }
+
+    
+    
     public void limpiarPantallaEtapa() {
 
         pantallaCrearRutaFabricacion.getCampoBuscaCodigoCentro().setText("");
