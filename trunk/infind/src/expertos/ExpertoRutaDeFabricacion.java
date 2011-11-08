@@ -4,10 +4,12 @@
  */
 package expertos;
 
+import DTOs.DTOArticulo;
 import DTOs.DTOCentro;
 import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
+import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.MaestroDeRutaDeFabricacion;
 import Entidades.MateriaPrima;
@@ -26,7 +28,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
     
     List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
     DetalleDeArticuloEnEtapaDeFabricacion detalleArticuloGuardado = new DetalleDeArticuloEnEtapaDeFabricacion();
-    
+    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
     
 
     public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoExceptionRutaFabricacion {
@@ -80,7 +82,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
         
     }
 
-    public void guardarRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
+    public void persistirRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
         
         Fachada.getInstancia().guardar(rutaNueva);
         
@@ -103,6 +105,42 @@ public class ExpertoRutaDeFabricacion extends Experto {
         
         return llistaDetalleArticulo.get(0);
         
+    }
+
+    public void guardarDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
+        listaDetallesDeAticulosAGuardar.add(detalleArticulo);
+    }
+
+    public MaestroDeArticulo buscarArticulos(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
+
+    
+        List<MaestroDeArticulo> articuloEncontrado = null;
+        MaestroDeArticulo articuloDevuelto = null;
+
+        if (dtoArticulo == null) {
+
+            articuloEncontrado = Fachada.getInstancia().buscar(MaestroDeArticulo.class, null);
+        } else {
+            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
+            if (dtoArticulo.getCodigoArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("codigo", dtoArticulo.getCodigoArticulo()));
+            }
+
+            if (dtoArticulo.getNombreArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("nombre", dtoArticulo.getNombreArticulo()));
+            }
+
+            articuloEncontrado = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioArticulo);
+
+
+        }
+        if (articuloEncontrado.isEmpty()) {
+            throw new ExpertoExceptionRutaFabricacion("No se encontró Productos para los datos ingresados");
+
+        }
+
+        articuloDevuelto = articuloEncontrado.get(0);
+        return articuloDevuelto;
     }
 
     

@@ -19,6 +19,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -34,6 +35,7 @@ import javax.swing.JToolBar;
 public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
     ControladorCrearRutaDeFabricacion controlador;
+    private PantCrearRutaDeFabricacion pantalla;
 
     /** Creates new form PantCrearRutaDeFabricacion */
     public PantCrearRutaDeFabricacion(java.awt.Frame parent, boolean modal, ControladorCrearRutaDeFabricacion controlRutaFabr) {
@@ -188,7 +190,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonBuscarProdFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscarProdFinal.setText("Buscar");
-        botonBuscarProdFinal.setEnabled(false);
+        botonBuscarProdFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarProdFinalActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -518,6 +524,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonAgregaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaMaquinas.setText("Agregar");
+        botonAgregaMaquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregaMaquinasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -875,9 +886,21 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         try {
             controlador.buscarCentro();
         } catch (ExpertoExceptionRutaFabricacion ex) {
-            Logger.getLogger(PantCrearRutaDeFabricacion.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Centro de Trabajo", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_botonBuscaCentroActionPerformed
+
+private void botonAgregaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaMaquinasActionPerformed
+    
+}//GEN-LAST:event_botonAgregaMaquinasActionPerformed
+
+private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProdFinalActionPerformed
+        try {
+            controlador.buscarProducto();
+        } catch (ExpertoExceptionRutaFabricacion ex) {
+            JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Producto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+}//GEN-LAST:event_botonBuscarProdFinalActionPerformed
     /**
      * @param args the command line arguments
      */
