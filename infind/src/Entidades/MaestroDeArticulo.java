@@ -210,6 +210,6 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
 
     @Override
     public String toString() {
-        return "Entidades.MaestroDeArticulo[ id=" + id + " ]";
+        return getNombre();
     }
 }

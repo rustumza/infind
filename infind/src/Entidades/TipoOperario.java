@@ -81,7 +81,7 @@ public class TipoOperario implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TipoOperario[ id=" + id + " ]";
+        return getNombre();
     }
     
 }

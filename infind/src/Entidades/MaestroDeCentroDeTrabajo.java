@@ -200,6 +200,6 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
 
     @Override
     public String toString() {
-        return "Entidades.MaestroDeCentroDeTrabajo[ id=" + id + " ]";
+        return getNombreCentro();
     }
 }

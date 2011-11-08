@@ -27,7 +27,7 @@ import persistencia.Fachada;
 public class ExpertoRutaDeFabricacion extends Experto {
     
     List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
-    DetalleDeArticuloEnEtapaDeFabricacion detalleArticuloGuardado = new DetalleDeArticuloEnEtapaDeFabricacion();
+    List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
     List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
     
 
@@ -96,7 +96,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
         Fachada.getInstancia().guardar(detalleArticulo);
     }
     
-    public DetalleDeArticuloEnEtapaDeFabricacion devolverDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle){
+    public DetalleDeArticuloEnEtapaDeFabricacion buscarDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle){
         List<DetalleDeArticuloEnEtapaDeFabricacion> llistaDetalleArticulo = null;
         
         Criteria criterioDetalleArticulo = Fachada.getInstancia().crearCriterio(DetalleDeArticuloEnEtapaDeFabricacion.class);
