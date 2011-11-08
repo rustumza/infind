@@ -6,6 +6,8 @@ package expertos;
 
 import Entidades.Numerador;
 import Entidades.ProductoIntermedio;
+import Entidades.ProductoTipoIQE;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -53,5 +55,17 @@ public class ExpertoProductoIntermedio extends Experto {
 
     public void editar(ProductoIntermedio proInter) {
         Fachada.getInstancia().guardar(proInter);
+    }
+    
+    public List<ProductoTipoIQE> buscarProductosIQE(){
+        
+        List<ProductoTipoIQE> listaProductosIQE = null;
+        Criteria criterioPIQE = Fachada.getInstancia().crearCriterioSinEliminado(ProductoTipoIQE.class);
+        listaProductosIQE = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioPIQE);
+        if(listaProductosIQE == null){
+            listaProductosIQE = new ArrayList<ProductoTipoIQE>();
+        }
+        return listaProductosIQE;
+    
     }
 }

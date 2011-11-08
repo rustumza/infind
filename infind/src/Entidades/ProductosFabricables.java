@@ -29,6 +29,8 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     @ManyToOne
     private ProductoTipoIQE productoTipoIQE;
     
+    @ManyToOne
+    private MaestroDeEstructuraDeProducto maestroEstructuraDeProducto;
 
     /*@Override
     public Long getId() {
@@ -59,6 +61,14 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
 
     public void setProductoTipoIQE(ProductoTipoIQE productoTipoIQE) {
         this.productoTipoIQE = productoTipoIQE;
+    }
+
+    public MaestroDeEstructuraDeProducto getMaestroEstructuraDeProducto() {
+        return maestroEstructuraDeProducto;
+    }
+
+    public void setMaestroEstructuraDeProducto(MaestroDeEstructuraDeProducto maestroEstructuraDeProducto) {
+        this.maestroEstructuraDeProducto = maestroEstructuraDeProducto;
     }
     
     

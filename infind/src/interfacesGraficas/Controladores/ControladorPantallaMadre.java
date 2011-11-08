@@ -37,9 +37,6 @@ public class ControladorPantallaMadre {
         new ControladorCentroDeTrabajo(this).editarCentro();
     }
 
-    public void crearArticulo() {
-    }
-
     public void crearMateriaPrima() {
         new ControladorMateriaPrima(this).crearMateriaPrima();
     }
@@ -53,6 +50,7 @@ public class ControladorPantallaMadre {
     }
 
     public void crearProductoFinal() {
+        new ControladorProductoFinal(this).crearProductoFinal();
     }
 
     public void crearOperario() {

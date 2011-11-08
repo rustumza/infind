@@ -10,6 +10,7 @@ import Entidades.Proveedor;
 import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.PantallaCrearMateriaPrima;
 import interfacesGraficas.PantallaEditarMateriaPrima;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -47,6 +48,7 @@ public class ControladorMateriaPrima {
         nume = nume + 1;
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
+        pantallaCrearMateriPrima.getCategoriaListBox().setModel(new DefaultComboBoxModel((new ArrayList<Object>()).toArray()));
         pantallaCrearMateriPrima.getCodigoTextBox().setText(nuevoNumero);
         
         

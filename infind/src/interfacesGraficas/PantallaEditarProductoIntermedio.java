@@ -82,8 +82,8 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
         unidadDeMedidaListBox = new javax.swing.JComboBox();
         estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
-        preoveedorPredeterminadoLabel = new javax.swing.JLabel();
-        proveedorPredeterminadoListBox = new javax.swing.JComboBox();
+        productoIQERelacionadoLabel = new javax.swing.JLabel();
+        productoIQERelacionadoListBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -186,9 +186,9 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
 
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
 
-        preoveedorPredeterminadoLabel.setText("Proveedor predeterminado");
+        productoIQERelacionadoLabel.setText("Producto IQE Relacionado");
 
-        proveedorPredeterminadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        productoIQERelacionadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,32 +198,6 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(estadoLabel)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(unidadDeMedidaLabel)
-                            .addComponent(categoriaLabel)
-                            .addComponent(costoEstandarLabel)
-                            .addComponent(costoUnitarioPorOmisionLabel)
-                            .addComponent(precioBaseLabel)
-                            .addComponent(tamanioLoteEstandarLabel)
-                            .addComponent(ubicacionEnElAlmacenLabel)
-                            .addComponent(observacionLabel))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estadoEntrarEnActividadEnFechaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(unidadDeMedidaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombreLabel)
@@ -237,15 +211,39 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                         .addGap(146, 146, 146)
                         .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(preoveedorPredeterminadoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(unidadDeMedidaLabel)
+                            .addComponent(categoriaLabel)
+                            .addComponent(costoEstandarLabel)
+                            .addComponent(costoUnitarioPorOmisionLabel)
+                            .addComponent(precioBaseLabel)
+                            .addComponent(tamanioLoteEstandarLabel)
+                            .addComponent(ubicacionEnElAlmacenLabel)
+                            .addComponent(observacionLabel)
+                            .addComponent(productoIQERelacionadoLabel))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(estadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(estadoEntrarEnActividadEnFechaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(categoriaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unidadDeMedidaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel)
                     .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,9 +297,9 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(preoveedorPredeterminadoLabel)
-                    .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                    .addComponent(productoIQERelacionadoLabel)
+                    .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -394,8 +392,8 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
     private javax.swing.JTextField precioBaseTextBox;
-    private javax.swing.JLabel preoveedorPredeterminadoLabel;
-    private javax.swing.JComboBox proveedorPredeterminadoListBox;
+    private javax.swing.JLabel productoIQERelacionadoLabel;
+    private javax.swing.JComboBox productoIQERelacionadoListBox;
     private javax.swing.JButton salir;
     private javax.swing.JLabel tamanioLoteEstandarLabel;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
@@ -702,20 +700,20 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.eliminar = eliminar;
     }
 
-    public JLabel getPreoveedorPredeterminadoLabel() {
-        return preoveedorPredeterminadoLabel;
+    public JLabel getProductoIQERelacionadoLabel() {
+        return productoIQERelacionadoLabel;
     }
 
-    public void setPreoveedorPredeterminadoLabel(JLabel preoveedorPredeterminadoLabel) {
-        this.preoveedorPredeterminadoLabel = preoveedorPredeterminadoLabel;
+    public void setProductoIQERelacionadoLabel(JLabel productoIQERelacionadoLabel) {
+        this.productoIQERelacionadoLabel = productoIQERelacionadoLabel;
     }
 
-    public JComboBox getProveedorPredeterminadoListBox() {
-        return proveedorPredeterminadoListBox;
+    public JComboBox getProductoIQERelacionadoListBox() {
+        return productoIQERelacionadoListBox;
     }
 
-    public void setProveedorPredeterminadoListBox(JComboBox proveedorPredeterminadoListBox) {
-        this.proveedorPredeterminadoListBox = proveedorPredeterminadoListBox;
+    public void setProductoIQERelacionadoListBox(JComboBox ProductoIQERelacionadoListBox) {
+        this.productoIQERelacionadoListBox = ProductoIQERelacionadoListBox;
     }
 
 }
