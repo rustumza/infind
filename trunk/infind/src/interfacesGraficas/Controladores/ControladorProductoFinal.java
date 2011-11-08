@@ -6,7 +6,7 @@ package interfacesGraficas.Controladores;
 
 import Entidades.ProductoFinal;
 import Entidades.Numerador;
-import Entidades.Proveedor;
+import Entidades.ProductoTipoIQE;
 import expertos.ExpertoProductoFinal;
 import interfacesGraficas.PantallaCrearProductoFinal;
 import interfacesGraficas.PantallaEditarProductoFinal;
@@ -48,6 +48,8 @@ public class ControladorProductoFinal {
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
         pantallaCrearProductoFinal.getCodigoTextBox().setText(nuevoNumero);
+        List prodIQE = experto.buscarProductosIQE();
+        pantallaCrearProductoFinal.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(prodIQE.toArray()));
         
         
     }
@@ -107,6 +109,7 @@ public class ControladorProductoFinal {
         }
         proFinal.setUbicacionEnAlmacen(pantallaCrearProductoFinal.getUbicacionAlamcenTextBox().getText());
         proFinal.setObservacion(pantallaCrearProductoFinal.getObservacionTextArea().getText());
+        proFinal.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoFinal.getProductoIQERelacionadoListBox().getSelectedItem());
         
         experto.guardar(proFinal);
         
@@ -146,6 +149,8 @@ public class ControladorProductoFinal {
         pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().setText(String.valueOf(pFinal.getTamanioLoteEstandar()));
         pantallaEditarProductoFinal.getUbicacionAlamcenTextBox().setText(pFinal.getUbicacionEnAlmacen());
         pantallaEditarProductoFinal.getObservacionTextArea().setText(pFinal.getObservacion());
+        pantallaEditarProductoFinal.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(experto.buscarProductosIQE().toArray()));
+        pantallaEditarProductoFinal.getProductoIQERelacionadoListBox().getModel().setSelectedItem(pFinal.getProductoTipoIQE());
     }
     
     
@@ -201,6 +206,7 @@ public class ControladorProductoFinal {
         }
         pFinal.setUbicacionEnAlmacen(pantallaEditarProductoFinal.getUbicacionAlamcenTextBox().getText());
         pFinal.setObservacion(pantallaEditarProductoFinal.getObservacionTextArea().getText());
+        pFinal.setProductoTipoIQE((ProductoTipoIQE)pantallaEditarProductoFinal.getProductoIQERelacionadoListBox().getSelectedItem());
         experto.editar(pFinal);
         
         

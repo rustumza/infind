@@ -6,10 +6,12 @@ package interfacesGraficas.Controladores;
 
 import Entidades.ProductoIntermedio;
 import Entidades.Numerador;
+import Entidades.ProductoTipoIQE;
 import expertos.ExpertoProductoIntermedio;
 import interfacesGraficas.PantallaCrearProductoIntermedio;
 import interfacesGraficas.PantallaEditarProductoIntermedio;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -46,7 +48,8 @@ public class ControladorProductoIntermedio {
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
         pantallaCrearProductoIntermedio.getCodigoTextBox().setText(nuevoNumero);
-        
+        List prodIQE = experto.buscarProductosIQE();
+        pantallaCrearProductoIntermedio.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(prodIQE.toArray()));
         
     }
 
@@ -105,6 +108,7 @@ public class ControladorProductoIntermedio {
         }
         proInter.setUbicacionEnAlmacen(pantallaCrearProductoIntermedio.getUbicacionAlamcenTextBox().getText());
         proInter.setObservacion(pantallaCrearProductoIntermedio.getObservacionTextArea().getText());
+        proInter.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoIntermedio.getProductoIQERelacionadoListBox().getSelectedItem());
         
         experto.guardar(proInter);
         
@@ -144,6 +148,8 @@ public class ControladorProductoIntermedio {
         pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().setText(String.valueOf(proInter.getTamanioLoteEstandar()));
         pantallaEditarProductoIntermedio.getUbicacionAlamcenTextBox().setText(proInter.getUbicacionEnAlmacen());
         pantallaEditarProductoIntermedio.getObservacionTextArea().setText(proInter.getObservacion());
+        pantallaEditarProductoIntermedio.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(experto.buscarProductosIQE().toArray()));
+        pantallaEditarProductoIntermedio.getProductoIQERelacionadoListBox().setSelectedItem(proInter.getProductoTipoIQE());
     }
     
     
@@ -199,6 +205,7 @@ public class ControladorProductoIntermedio {
         }
         proInter.setUbicacionEnAlmacen(pantallaEditarProductoIntermedio.getUbicacionAlamcenTextBox().getText());
         proInter.setObservacion(pantallaEditarProductoIntermedio.getObservacionTextArea().getText());
+        proInter.setProductoTipoIQE((ProductoTipoIQE)pantallaEditarProductoIntermedio.getProductoIQERelacionadoListBox().getSelectedItem());
         experto.editar(proInter);
         
         

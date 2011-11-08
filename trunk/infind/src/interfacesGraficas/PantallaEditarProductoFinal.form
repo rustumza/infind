@@ -152,6 +152,22 @@
                               <Component id="estadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="descripcionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jScrollPane1" min="-2" pref="360" max="-2" attributes="1"/>
+                                      <Component id="nombreTextBox" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="codigoTextBox" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="unidadDeMedidaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="categoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="costoEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -160,6 +176,7 @@
                                       <Component id="tamanioLoteEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="ubicacionEnElAlmacenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="observacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="productoIQERelacionadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -177,39 +194,21 @@
                                       <Component id="costoUnitarioPorOmisionTextBox" alignment="0" min="-2" pref="109" max="-2" attributes="1"/>
                                       <Component id="tamanioLoteEstandarTextBox" min="-2" pref="98" max="-2" attributes="1"/>
                                       <Component id="ubicacionAlamcenTextBox" min="-2" pref="165" max="-2" attributes="1"/>
-                                      <Component id="jScrollPane3" min="-2" pref="352" max="-2" attributes="1"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="productoIQERelacionadoListBox" alignment="0" max="32767" attributes="1"/>
+                                          <Component id="jScrollPane3" alignment="0" pref="352" max="32767" attributes="1"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="descripcionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane1" min="-2" pref="360" max="-2" attributes="1"/>
-                                      <Component id="nombreTextBox" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                                  <Component id="codigoTextBox" min="-2" pref="121" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="preoveedorPredeterminadoLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="proveedorPredeterminadoListBox" min="-2" pref="257" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="codigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="codigoTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -275,12 +274,12 @@
                               <Component id="observacionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="preoveedorPredeterminadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="proveedorPredeterminadoListBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="productoIQERelacionadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="productoIQERelacionadoListBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -440,12 +439,12 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="preoveedorPredeterminadoLabel">
+                <Component class="javax.swing.JLabel" name="productoIQERelacionadoLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Proveedor predeterminado"/>
+                    <Property name="text" type="java.lang.String" value="Producto IQE relacionado"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="proveedorPredeterminadoListBox">
+                <Component class="javax.swing.JComboBox" name="productoIQERelacionadoListBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
