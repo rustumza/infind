@@ -111,6 +111,6 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Herramientas[ id=" + id + " ]";
+        return getNombreHerramientas();
     }
 }

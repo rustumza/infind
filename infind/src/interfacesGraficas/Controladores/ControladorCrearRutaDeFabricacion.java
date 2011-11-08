@@ -4,15 +4,20 @@
  */
 package interfacesGraficas.Controladores;
 
+import DTOs.DTOArticulo;
 import DTOs.DTOCentro;
 import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
+import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.MaestroDeRutaDeFabricacion;
 import Entidades.Maquina;
 import Entidades.MateriaPrima;
 import Entidades.Operario;
+import Entidades.ProductoFinal;
+import Entidades.ProductoIntermedio;
+import Entidades.ProductoTipoIQE;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoExceptionRutaFabricacion;
 import expertos.ExpertoRutaDeFabricacion;
@@ -42,6 +47,9 @@ public class ControladorCrearRutaDeFabricacion {
     ControladorPantallaMadre controladorPantallaMadre;
     ModeloTablaEtapaRutaAgregada modeloTAblaEtapaAgregada;
     MaestroDeCentroDeTrabajo centroEncontrado;
+    ProductoFinal articuloEncontradoFinal;
+    ProductoIntermedio articuloEncontradoIntermedio;
+    ProductoTipoIQE articuloEncontradoIQE;
     EtapaDeRutaDeFabricacion nuevaEtapa = new EtapaDeRutaDeFabricacion();
     ModeloJListListaMateriaPrima modeloListaMateriasPrimas = new ModeloJListListaMateriaPrima();
     MaestroDeRutaDeFabricacion rutaNueva = new MaestroDeRutaDeFabricacion();
@@ -76,20 +84,32 @@ public class ControladorCrearRutaDeFabricacion {
     public void guardarRutaDeFabricacion() {
 
 
+        if (rutaNueva != null) {
+            rutaNueva = new MaestroDeRutaDeFabricacion();
+            
+        }
         rutaNueva.setEliminado(Boolean.FALSE);
 
 
 
-        expertoRutaFabricacion.guardarRutaDeFabricacion(rutaNueva);
+        expertoRutaFabricacion.persistirRutaDeFabricacion(rutaNueva);
         
         List<EtapaDeRutaDeFabricacion> etapasAGuardar = expertoRutaFabricacion.devolverEtapasAGuardar();
         
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasAGuardar) {
             
-            //TODO: tengo que guardar detalleArticuloEnEtapaDeFabricacion antes de guardar las etapas
+            List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArticuloAPersistir = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
+            for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArticuloAPersistir) {
+                //persisto cada detalleArticulo de cada etapa
+                expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleDeArticuloEnEtapaDeFabricacion);
+                
+            }
             etapaDeRutaDeFabricacion.setMaestroRutaFabricacionList(rutaNueva);
             expertoRutaFabricacion.persistirEtapaRutaFabricacion(etapaDeRutaDeFabricacion);
         }
+        
+        //debo asignarle la ruta guardadda al maestro de estructura de producto del producto buscado
+        //en pantalla al principio
 
     }
 
@@ -200,9 +220,9 @@ public class ControladorCrearRutaDeFabricacion {
             detalleArticulo.setNumero(1);
             detalleArticulo.setMaestroArticulo(matPrima);
             
-            expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleArticulo);
+            //expertoRutaFabricacion.guardarDetalleArticuloEnEtapaFabricacion(detalleArticulo);
             
-            listaDeDetallesArticulos.add(expertoRutaFabricacion.devolverDetalleArticulo(detalleArticulo));
+            listaDeDetallesArticulos.add(detalleArticulo);
             
         }
 
@@ -274,4 +294,61 @@ public class ControladorCrearRutaDeFabricacion {
 
 
     }
+
+    public void buscarProducto() throws ExpertoExceptionRutaFabricacion {
+
+
+
+        if (pantallaCrearRutaFabricacion.getRadioBotonBuscaCodigoProdFinal().isSelected()) {
+            articuloEncontradoFinal = (ProductoFinal) expertoRutaFabricacion.buscarArticulos(armarDTOArticulo(1));
+
+            if (!articuloEncontradoFinal.getCodigo().isEmpty()) {
+                pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
+                pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
+                pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                
+            }
+
+        } else if (pantallaCrearRutaFabricacion.getRadioBotonBuscaNombreProdFinal().isSelected()) {
+            articuloEncontradoFinal = (ProductoFinal) expertoRutaFabricacion.buscarArticulos(armarDTOArticulo(2));
+
+            if (!articuloEncontradoFinal.getNombre().isEmpty()) {
+                pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
+                pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
+                pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                
+            }
+
+
+        }
+
+
+    }
+
+    public DTOArticulo armarDTOArticulo(Integer caso) {
+
+        DTOArticulo nuevoDto = new DTOArticulo();
+
+        switch (caso) {
+            case 1:
+
+                if (!pantallaCrearRutaFabricacion.getCampoBuscaCodigoProdFinal().getText().equals("")) {
+                    nuevoDto.setCodigoArticulo(pantallaCrearRutaFabricacion.getCampoBuscaCodigoProdFinal().getText());
+                } else {
+                    nuevoDto = null;
+                }
+
+                break;
+            case 2:
+
+                if (!pantallaCrearRutaFabricacion.getCampoBuscaNombreProdFinal().getText().equals("")) {
+                    nuevoDto.setNombreArticulo(pantallaCrearRutaFabricacion.getCampoBuscaNombreProdFinal().getText());
+                } else {
+                    nuevoDto = null;
+                }
+                break;
+        }
+        return nuevoDto;
+    }
+
 }
