@@ -89,6 +89,7 @@ public class ControladorCrearRutaDeFabricacion {
             
         }
         rutaNueva.setEliminado(Boolean.FALSE);
+        rutaNueva.setNumero("7");
         
 
 
@@ -98,16 +99,33 @@ public class ControladorCrearRutaDeFabricacion {
         List<EtapaDeRutaDeFabricacion> etapasAGuardar = expertoRutaFabricacion.devolverEtapasAGuardar();
         
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasAGuardar) {
-            List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
+          
             
-            List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArticuloAPersistir = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
+            /*List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArticuloAPersistir = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
             for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArticuloAPersistir) {
                 //persisto cada detalleArticulo de cada etapa
                 expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleDeArticuloEnEtapaDeFabricacion);
                 
-            }
+            }*/
             etapaDeRutaDeFabricacion.setMaestroRutaFabricacionList(rutaNueva);
             expertoRutaFabricacion.persistirEtapaRutaFabricacion(etapaDeRutaDeFabricacion);
+            
+            
+            //expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion();
+        }
+        
+        List<EtapaDeRutaDeFabricacion> etapasGuardadas = expertoRutaFabricacion.buscarEtapas(rutaNueva);
+        
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasGuardadas) {
+        
+            List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArticuloAPersistir = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
+            for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArticuloAPersistir) {
+                //persisto cada detalleArticulo de cada etapa
+                detalleDeArticuloEnEtapaDeFabricacion.setEtapaRutaFabricacion(etapaDeRutaDeFabricacion);
+                expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleDeArticuloEnEtapaDeFabricacion);
+                
+            }
+        
         }
         
         //debo asignarle la ruta guardadda al maestro de estructura de producto del producto buscado
@@ -222,8 +240,8 @@ public class ControladorCrearRutaDeFabricacion {
             detalleArticulo.setNumero(1);
             detalleArticulo.setMaestroArticulo(matPrima);
             
-            //expertoRutaFabricacion.guardarDetalleArticuloEnEtapaFabricacion(detalleArticulo);
-            
+            expertoRutaFabricacion.guardarDetalleArticuloEnEtapaFabricacion(detalleArticulo);
+           // nuevaEtapa.addDetalle(detalleArticulo);
             listaDeDetallesArticulos.add(detalleArticulo);
             
         }

@@ -24,6 +24,7 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
+    private String numero;
     @OneToMany
     private List<EtapaDeRutaDeFabricacion> etapasRutaFabricacion;
     
@@ -35,6 +36,24 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<EtapaDeRutaDeFabricacion> getEtapasRutaFabricacion() {
+        return etapasRutaFabricacion;
+    }
+
+    public void setEtapasRutaFabricacion(List<EtapaDeRutaDeFabricacion> etapasRutaFabricacion) {
+        this.etapasRutaFabricacion = etapasRutaFabricacion;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
+    
 
     public Boolean getEliminado() {
         return eliminado;
