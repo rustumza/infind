@@ -25,11 +25,10 @@ import persistencia.Fachada;
  * @author eduardo
  */
 public class ExpertoRutaDeFabricacion extends Experto {
-    
+
     List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
     List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
     List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
-    
 
     public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoExceptionRutaFabricacion {
 
@@ -70,22 +69,22 @@ public class ExpertoRutaDeFabricacion extends Experto {
         return listaMateriaPrima;
 
     }
-    
-    public void guardarEtapaRutaFabricacion(EtapaDeRutaDeFabricacion nuevaEtapa){
+
+    public void guardarEtapaRutaFabricacion(EtapaDeRutaDeFabricacion nuevaEtapa) {
         etapaEnEspera.add(nuevaEtapa);
-        
+
     }
-    
-    public List<EtapaDeRutaDeFabricacion> devolverEtapasAGuardar(){
-        
+
+    public List<EtapaDeRutaDeFabricacion> devolverEtapasAGuardar() {
+
         return etapaEnEspera;
-        
+
     }
 
     public void persistirRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
-        
+
         Fachada.getInstancia().guardar(rutaNueva);
-        
+
     }
 
     public void persistirEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion) {
@@ -95,16 +94,16 @@ public class ExpertoRutaDeFabricacion extends Experto {
     public void persistirDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
         Fachada.getInstancia().guardar(detalleArticulo);
     }
-    
-    public DetalleDeArticuloEnEtapaDeFabricacion buscarDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle){
+
+    public DetalleDeArticuloEnEtapaDeFabricacion buscarDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
         List<DetalleDeArticuloEnEtapaDeFabricacion> llistaDetalleArticulo = null;
-        
+
         Criteria criterioDetalleArticulo = Fachada.getInstancia().crearCriterio(DetalleDeArticuloEnEtapaDeFabricacion.class);
-        criterioDetalleArticulo.add(Restrictions.eq("numero",detalle.getNumero() ));
-        llistaDetalleArticulo = Fachada.getInstancia().buscar(DetalleDeArticuloEnEtapaDeFabricacion.class, criterioDetalleArticulo);    
-        
+        criterioDetalleArticulo.add(Restrictions.eq("numero", detalle.getNumero()));
+        llistaDetalleArticulo = Fachada.getInstancia().buscar(DetalleDeArticuloEnEtapaDeFabricacion.class, criterioDetalleArticulo);
+
         return llistaDetalleArticulo.get(0);
-        
+
     }
 
     public void guardarDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
@@ -113,7 +112,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
     public MaestroDeArticulo buscarArticulos(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
 
-    
+
         List<MaestroDeArticulo> articuloEncontrado = null;
         MaestroDeArticulo articuloDevuelto = null;
 
@@ -143,5 +142,23 @@ public class ExpertoRutaDeFabricacion extends Experto {
         return articuloDevuelto;
     }
 
-    
+    public List<EtapaDeRutaDeFabricacion> buscarEtapas(MaestroDeRutaDeFabricacion rutaNueva) {
+
+        List<MaestroDeRutaDeFabricacion> rutaEncontrada = null;
+
+//        Criteria criterioRuta = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeRutaDeFabricacion.class);
+  //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
+    //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
+
+        List<EtapaDeRutaDeFabricacion> etapasEncontrado = null;
+
+
+        Criteria criterioEtapa = Fachada.getInstancia().crearCriterioSinEliminado(EtapaDeRutaDeFabricacion.class);
+        criterioEtapa.add(Restrictions.eq("MaestroDeRutaDeFabricacion", rutaNueva));
+//TODO tira error en el id del maestro de ruta, no se como poner el campo relacionado
+        etapasEncontrado = Fachada.getInstancia().buscar(EtapaDeRutaDeFabricacion.class, criterioEtapa);
+
+        return etapasEncontrado;
+
+    }
 }
