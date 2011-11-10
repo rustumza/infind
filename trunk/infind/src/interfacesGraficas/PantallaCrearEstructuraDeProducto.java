@@ -64,6 +64,8 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         cancelar = new javax.swing.JButton();
         quitar = new javax.swing.JButton();
         agregar = new javax.swing.JButton();
+        unidadDeMedidaLabel = new javax.swing.JLabel();
+        unidadDeMedida = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDeMatPrimProdComp = new javax.swing.JTable();
@@ -156,22 +158,47 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
             }
         });
 
+        matPrimProdComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matPrimProdCompActionPerformed(evt);
+            }
+        });
+
         cantidadLabel.setText("Cantidad");
 
         cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         quitar.setText("Quitar");
+        quitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarActionPerformed(evt);
+            }
+        });
 
         agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
+
+        unidadDeMedidaLabel.setText("Unidad de medida");
+
+        unidadDeMedida.setText(" ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(tipoMateriaPrimaProductoComponete, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(matPrimProdComp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +206,12 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                         .addComponent(cantidadLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cantidadTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(unidadDeMedidaLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(unidadDeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,7 +232,9 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(quitar)
-                    .addComponent(agregar))
+                    .addComponent(agregar)
+                    .addComponent(unidadDeMedidaLabel)
+                    .addComponent(unidadDeMedida))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -235,7 +269,7 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Articulos de IQE"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Articulos del producto IQE relacionado"));
 
         tablaArticulosProdIQE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -314,6 +348,22 @@ private void tipoMateriaPrimaProductoComponeteActionPerformed(java.awt.event.Act
     controlador.cargarListaDeMatPrimProdComp();
 }//GEN-LAST:event_tipoMateriaPrimaProductoComponeteActionPerformed
 
+private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+    controlador.agregarDetalle();
+}//GEN-LAST:event_agregarActionPerformed
+
+private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_quitarActionPerformed
+
+private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_cancelarActionPerformed
+
+private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matPrimProdCompActionPerformed
+    controlador.cargarUnidadDeMedida();
+}//GEN-LAST:event_matPrimProdCompActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -344,6 +394,8 @@ private void tipoMateriaPrimaProductoComponeteActionPerformed(java.awt.event.Act
     private javax.swing.JTable tablaDeMatPrimProdComp;
     private javax.swing.JComboBox tipoMateriaPrimaProductoComponete;
     private javax.swing.JComboBox tipoProductoListBox;
+    private javax.swing.JLabel unidadDeMedida;
+    private javax.swing.JLabel unidadDeMedidaLabel;
     // End of variables declaration//GEN-END:variables
 
     public JButton getAgregar() {
@@ -552,6 +604,22 @@ private void tipoMateriaPrimaProductoComponeteActionPerformed(java.awt.event.Act
 
     public void setTablaArticulosProdIQE(JTable tablaArticulosProdIQE) {
         this.tablaArticulosProdIQE = tablaArticulosProdIQE;
+    }
+
+    public JLabel getUnidadDeMedida() {
+        return unidadDeMedida;
+    }
+
+    public void setUnidadDeMedida(JLabel unidadDeMedida) {
+        this.unidadDeMedida = unidadDeMedida;
+    }
+
+    public JLabel getUnidadDeMedidaLabel() {
+        return unidadDeMedidaLabel;
+    }
+
+    public void setUnidadDeMedidaLabel(JLabel unidadDeMedidaLabel) {
+        this.unidadDeMedidaLabel = unidadDeMedidaLabel;
     }
 
 
