@@ -12,6 +12,7 @@ package interfacesGraficas;
 
 import com.toedter.calendar.JDateChooser;
 import interfacesGraficas.Controladores.ControladorProductoFinal;
+import interfacesGraficas.Controladores.ControladorProductoIQE;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -25,15 +26,15 @@ import javax.swing.JToolBar;
  *
  * @author rustu
  */
-public class PantallaCrearProductoFinal extends javax.swing.JDialog {
+public class PantallaCrearProductoIQE extends javax.swing.JDialog {
 
-    ControladorProductoFinal controlador;
+    ControladorProductoIQE controlador;
 
     /** Creates new form NewJDialog */
-    public PantallaCrearProductoFinal(java.awt.Frame parent, boolean modal, ControladorProductoFinal controladorPFinal) {
+    public PantallaCrearProductoIQE(java.awt.Frame parent, boolean modal, ControladorProductoIQE controladorPIQE) {
         super(parent, modal);
         initComponents();
-        controlador = controladorPFinal;
+        controlador = controladorPIQE;
     }
 
     /** This method is called from within the constructor to
@@ -80,10 +81,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         unidadDeMedidaListBox = new javax.swing.JComboBox();
         estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
-        productoIQERelacionadoLabel = new javax.swing.JLabel();
-        productoIQERelacionadoListBox = new javax.swing.JComboBox();
-        tipoLabel = new javax.swing.JLabel();
-        tipoListBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -179,19 +176,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
 
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
 
-        productoIQERelacionadoLabel.setText("Producto IQE relacionado");
-
-        productoIQERelacionadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        tipoLabel.setText("Tipo");
-
-        tipoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Domisanitarios", "Higiene Personal" }));
-        tipoListBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoListBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -202,6 +186,18 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                     .addComponent(estadoLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreLabel)
+                            .addComponent(descripcionLabel))
+                        .addGap(116, 116, 116)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(codigoLabel)
+                        .addGap(146, 146, 146)
+                        .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unidadDeMedidaLabel)
                             .addComponent(categoriaLabel)
                             .addComponent(costoEstandarLabel)
@@ -209,11 +205,9 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                             .addComponent(precioBaseLabel)
                             .addComponent(tamañoLoteEstandarLabel)
                             .addComponent(ubicacionEnElAlmacenLabel)
-                            .addComponent(observacionLabel)
-                            .addComponent(productoIQERelacionadoLabel))
+                            .addComponent(observacionLabel))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -227,23 +221,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                             .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreLabel)
-                            .addComponent(descripcionLabel))
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoLabel)
-                            .addComponent(tipoLabel))
-                        .addGap(146, 146, 146)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,13 +229,9 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel)
                     .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLabel)
                     .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,11 +279,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(observacionLabel)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoIQERelacionadoLabel))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -329,8 +299,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -352,14 +321,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
-    if (((String) estadoListBox.getModel().getSelectedItem()).equals("Inactivo")) {
-        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(true);
-    } else {
-        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
-    }
-}//GEN-LAST:event_estadoListBoxActionPerformed
-
 private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
     controlador.guardar();
 }//GEN-LAST:event_guardarActionPerformed
@@ -372,9 +333,13 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
-private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoListBoxActionPerformed
-    controlador.buscarCodigoSegunTipo();
-}//GEN-LAST:event_tipoListBoxActionPerformed
+private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
+    if (((String) estadoListBox.getModel().getSelectedItem()).equals("Inactivo")) {
+        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(true);
+    } else {
+        estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
+    }
+}//GEN-LAST:event_estadoListBoxActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -406,13 +371,9 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
     private javax.swing.JTextField precioBaseTextBox;
-    private javax.swing.JLabel productoIQERelacionadoLabel;
-    private javax.swing.JComboBox productoIQERelacionadoListBox;
     private javax.swing.JButton salir;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
     private javax.swing.JLabel tamañoLoteEstandarLabel;
-    private javax.swing.JLabel tipoLabel;
-    private javax.swing.JComboBox tipoListBox;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
@@ -460,11 +421,11 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.codigoTextBox = codigoTextBox;
     }
 
-    public ControladorProductoFinal getControlador() {
+    public ControladorProductoIQE getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorProductoFinal controlador) {
+    public void setControlador(ControladorProductoIQE controlador) {
         this.controlador = controlador;
     }
 
@@ -708,38 +669,5 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.estadoEntrarEnActividadEnFechajDateChooser = estadoEntrarEnActividadEnFechajDateChooser;
     }
 
-    public JLabel getProductoIQERelacionadoLabel() {
-        return productoIQERelacionadoLabel;
-    }
-
-    public void setProductoIQERelacionadoLabel(JLabel productoIQERelacionadoLabel) {
-        this.productoIQERelacionadoLabel = productoIQERelacionadoLabel;
-    }
-
-    public JComboBox getProductoIQERelacionadoListBox() {
-        return productoIQERelacionadoListBox;
-    }
-
-    public void setProductoIQERelacionadoListBox(JComboBox productoIQERelacionadoListBox) {
-        this.productoIQERelacionadoListBox = productoIQERelacionadoListBox;
-    }
-
-    public JComboBox getTipoListBox() {
-        return tipoListBox;
-    }
-
-    public void setTipoListBox(JComboBox tipoListBox) {
-        this.tipoListBox = tipoListBox;
-    }
-
-    public JLabel getTipoLabel() {
-        return tipoLabel;
-    }
-
-    public void setTipoLabel(JLabel tipoLabel) {
-        this.tipoLabel = tipoLabel;
-    }
-    
-    
 
 }

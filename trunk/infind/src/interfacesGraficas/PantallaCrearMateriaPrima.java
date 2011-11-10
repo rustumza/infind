@@ -179,7 +179,7 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
 
         tipoMateriaPrimaLabel.setText("Tipo materia prima");
 
-        tipoMateriaPrimaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria" }));
+        tipoMateriaPrimaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria -  Aromatizantes", "Secundaria -  Colorantes" }));
         tipoMateriaPrimaListBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoMateriaPrimaListBoxActionPerformed(evt);
@@ -234,9 +234,9 @@ public class PantallaCrearMateriaPrima extends javax.swing.JDialog {
                             .addComponent(codigoLabel))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(tipoMateriaPrimaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

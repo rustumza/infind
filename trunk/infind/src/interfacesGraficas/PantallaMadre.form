@@ -60,6 +60,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Producto IQE"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearProductoIQEActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="crearProductoComponente">
                   <Properties>
@@ -104,6 +107,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Productos IQE"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarProductosIQEActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="listarProductosIntermedios">
                   <Properties>

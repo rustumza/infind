@@ -10,7 +10,6 @@
  */
 package interfacesGraficas;
 
-import interfacesGraficas.*;
 import com.toedter.calendar.JDateChooser;
 import interfacesGraficas.Controladores.ControladorMateriaPrima;
 import javax.swing.JButton;
@@ -239,7 +238,7 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                             .addComponent(codigoLabel))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoMateriaPrimaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoMateriaPrimaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(preoveedorPredeterminadoLabel)

@@ -27,6 +27,7 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
      * 
      */
     private char categoriaABC;
+    private String tipoProductoFinal;
            
 /*
     public Long getId() {
@@ -55,6 +56,14 @@ public class ProductoFinal extends ProductosFabricables implements Serializable 
     }
      * 
      */
+
+    public String getTipoProductoFinal() {
+        return tipoProductoFinal;
+    }
+
+    public void setTipoProductoFinal(String tipoProductoFinal) {
+        this.tipoProductoFinal = tipoProductoFinal;
+    }
     
     
 

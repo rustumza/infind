@@ -39,7 +39,7 @@ public class ControladorProductoFinal {
         
         List<Numerador> numeroDisponibles = null;
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
-        criterioNumerador.add(Restrictions.eq("codificacion", "4.1.1."));
+        criterioNumerador.add(Restrictions.eq("codificacion", "4.1."));
         numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
         String codifica = numeroDisponibles.get(0).getCodificacion();
         String num = numeroDisponibles.get(0).getUltimaClasificacion();
@@ -48,6 +48,7 @@ public class ControladorProductoFinal {
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
         pantallaCrearProductoFinal.getCodigoTextBox().setText(nuevoNumero);
+        
         List prodIQE = experto.buscarProductosIQE();
         pantallaCrearProductoFinal.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(prodIQE.toArray()));
         
@@ -59,6 +60,7 @@ public class ControladorProductoFinal {
         //TODO bloquear botones de gaurdar, cancear. etc
         
         ProductoFinal proFinal = new ProductoFinal();
+        proFinal.setTipoProductoFinal((String)pantallaCrearProductoFinal.getTipoListBox().getSelectedItem());
         proFinal.setCodigo(pantallaCrearProductoFinal.getCodigoTextBox().getText());
         if(pantallaCrearProductoFinal.getNombreTextBox().getText().isEmpty() | pantallaCrearProductoFinal.getNombreTextBox().getText().equals(" ")){
                 JOptionPane.showMessageDialog(pantallaCrearProductoFinal, "Debe ingresar un nombre para el producto final", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
@@ -131,6 +133,7 @@ public class ControladorProductoFinal {
 
     private void cargarDatosEnPantallaEditar(ProductoFinal pFinal) {
         pantallaEditarProductoFinal.getCodigoTextBox().setText(pFinal.getCodigo());
+        pantallaEditarProductoFinal.getTipoListBox().setSelectedItem(pFinal.getTipoProductoFinal());
         pantallaEditarProductoFinal.getNombreTextBox().setText(pFinal.getNombre());
         pantallaEditarProductoFinal.getDescripcionTextArea().setText(pFinal.getDescripcion());
         pantallaEditarProductoFinal.getUnidadDeMedidaListBox().setSelectedItem(pFinal.getUnidadDeMedida());
@@ -164,6 +167,7 @@ public class ControladorProductoFinal {
         }else{
             pFinal.setNombre(pantallaEditarProductoFinal.getNombreTextBox().getText());
         }
+        pFinal.setTipoProductoFinal((String)pantallaEditarProductoFinal.getTipoListBox().getSelectedItem());
         pFinal.setDescripcion(pantallaEditarProductoFinal.getDescripcionTextArea().getText());
         pFinal.setUnidadDeMedida((String)pantallaEditarProductoFinal.getUnidadDeMedidaListBox().getModel().getSelectedItem());
         pFinal.setCategoria(((String)pantallaEditarProductoFinal.getCategoriaListBox().getModel().getSelectedItem()).charAt(0));
@@ -212,6 +216,41 @@ public class ControladorProductoFinal {
         
         JOptionPane.showMessageDialog(pantallaEditarProductoFinal, "Producto final guardado con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    public void buscarCodigoSegunTipo() {
+        if(((String)pantallaCrearProductoFinal.getTipoListBox().getSelectedItem()).equals("Domisanitarios")){
+        
+            List<Numerador> numeroDisponibles = null;
+            Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+            criterioNumerador.add(Restrictions.eq("codificacion", "4.1."));
+            numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+            String codifica = numeroDisponibles.get(0).getCodificacion();
+            String num = numeroDisponibles.get(0).getUltimaClasificacion();
+            int nume = Integer.parseInt(num);
+            nume = nume + 1;
+            num = String.valueOf(nume);
+            String nuevoNumero = codifica + num;
+            pantallaCrearProductoFinal.getCodigoTextBox().setText(nuevoNumero);
+            
+        }else{
+            List<Numerador> numeroDisponibles = null;
+            Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+            criterioNumerador.add(Restrictions.eq("codificacion", "4.2."));
+            numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+            String codifica = numeroDisponibles.get(0).getCodificacion();
+            String num = numeroDisponibles.get(0).getUltimaClasificacion();
+            int nume = Integer.parseInt(num);
+            nume = nume + 1;
+            num = String.valueOf(nume);
+            String nuevoNumero = codifica + num;
+            pantallaCrearProductoFinal.getCodigoTextBox().setText(nuevoNumero);
+            
+        
+        }
+    }
     
+    
+    //Domisanitarios
+    //Higiene Personal
     
 }

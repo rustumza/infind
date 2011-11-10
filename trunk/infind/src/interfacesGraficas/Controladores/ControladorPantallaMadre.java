@@ -89,4 +89,12 @@ public class ControladorPantallaMadre {
     public void crearEstructuraDeProducto() {
         new ControladorEstructuraDeProducto(this).crearEstructuraDeProducto();
     }
+
+    public void crearProductoIQE() {
+        new ControladorProductoIQE(this).crearProductoIQE();
+    }
+
+    public void listarProductosIQE() {
+        new ControladorListarProductosIQE(this).iniciar();
+    }
 }
