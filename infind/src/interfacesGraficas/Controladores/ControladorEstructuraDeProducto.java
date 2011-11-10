@@ -71,8 +71,12 @@ public class ControladorEstructuraDeProducto {
         pantallaCrearEstructuraDeProducto.getProductoSeleccionadoTextBox().setText(prodFab.getNombre());        
         //inicializo tabla articulos de prod iqe
         ModeloTablaPantallaEstructuraDeProducto mod = new ModeloTablaPantallaEstructuraDeProducto();
-        if(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList() != null){
-            mod.setListaElementos(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
+        if(prodFab.getProductoTipoIQE() != null){
+            if(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto() != null){
+                if(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList() != null){
+                    mod.setListaElementos(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
+                }
+            }
         }else{
             mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
         }
@@ -155,9 +159,12 @@ public class ControladorEstructuraDeProducto {
         ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
         mod1.setListaElementos(estructura.getDetalleEstructuraProductoList());
         pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().setModel(mod1);
+        pantallaCrearEstructuraDeProducto.getCantidadTextBox().setText("");
         
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getAgregar().setEnabled(true);
+        
         
     
     }
@@ -165,6 +172,7 @@ public class ControladorEstructuraDeProducto {
     public void cargarDetalleSeleccionado(int detalleSeleccionado) {
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(true);
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(true);
+        pantallaCrearEstructuraDeProducto.getAgregar().setEnabled(false);
         DetalleEstructuraDeProducto detalle = (DetalleEstructuraDeProducto)((ModeloTablaPantallaEstructuraDeProducto)pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().getModel()).getRow(detalleSeleccionado);
         pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().setSelectedItem(detalle.getTipo());
         cargarListaDeMatPrimProdComp();

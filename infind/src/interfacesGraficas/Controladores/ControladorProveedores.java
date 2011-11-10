@@ -71,6 +71,8 @@ public class ControladorProveedores {
         proveedor.setTelefono(Integer.valueOf(pantallaCrearProveedor.getTelefonoTextBox().getText()));
         proveedor.setDireccion(pantallaCrearProveedor.getDireccionTextBox().getText());
         proveedor.setCorreoElectronico(pantallaCrearProveedor.getCorreoElectronicoTextbox().getText());
+        proveedor.setMateriasPrimas(new ArrayList<MateriaPrima>());
+        proveedor.setProductosComponentes(new ArrayList<ProductoComponente>());
         List<MateriaPrima> listaDeMateriasPrimas = ((ModeloJListListaMateriaPrima)pantallaCrearProveedor.getListaMateriasPrimasSeleccionadas().getModel()).getMateriasPrimas();
         for (MateriaPrima materiaPrima : listaDeMateriasPrimas) {
             proveedor.addMateriaPrima(materiaPrima);

@@ -198,6 +198,11 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         unidadDeMedida.setText(" ");
 
         editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -390,6 +395,10 @@ private void tablaDeMatPrimProdCompMouseClicked(java.awt.event.MouseEvent evt) {
 private void guardarBarraHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBarraHerramientasActionPerformed
     controlador.guardarEstructura();
 }//GEN-LAST:event_guardarBarraHerramientasActionPerformed
+
+private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+    
+}//GEN-LAST:event_editarActionPerformed
 
     /**
      * @param args the command line arguments
