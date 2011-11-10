@@ -100,7 +100,7 @@ public class ControladorEstructuraDeProducto {
 
     public void agregarDetalle() {
         DetalleEstructuraDeProducto detalle = new DetalleEstructuraDeProducto();
-        detalle.set(String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem()
+        //detalle.set(String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem()
     }
             
     
