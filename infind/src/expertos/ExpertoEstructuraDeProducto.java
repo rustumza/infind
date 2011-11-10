@@ -58,7 +58,7 @@ public class ExpertoEstructuraDeProducto {
         List listaProdFinal = null;
         Criteria criterioProdFin = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
         listaProdFinal = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProdFin);
-        if(listaProdFinal.isEmpty()){
+        if(!listaProdFinal.isEmpty()){
             estructura.setProductoFinal((ProductoFinal)listaProdFinal.get(0));
         }
         return estructura;
@@ -68,7 +68,7 @@ public class ExpertoEstructuraDeProducto {
         List listaProdIQE = null;
         Criteria criterioProdIQE = Fachada.getInstancia().crearCriterio(ProductoTipoIQE.class);
         listaProdIQE = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdIQE);        
-        if(listaProdIQE.isEmpty()){
+        if(!listaProdIQE.isEmpty()){
             estructura.setProductoTipoIQE((ProductoTipoIQE)listaProdIQE.get(0));
         }
         return estructura;
@@ -79,7 +79,7 @@ public class ExpertoEstructuraDeProducto {
         List listaProdInt = null;
         Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
         listaProdInt = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdInt);        
-        if(listaProdInt.isEmpty()){
+        if(!listaProdInt.isEmpty()){
             estructura.setProductoIntermedio((ProductoIntermedio)listaProdInt.get(0));
         }
         return estructura;
