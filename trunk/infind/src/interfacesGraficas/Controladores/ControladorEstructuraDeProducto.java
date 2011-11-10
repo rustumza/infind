@@ -99,7 +99,12 @@ public class ControladorEstructuraDeProducto {
     }
 
     public void cargarUnidadDeMedida() {
-        pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(((MaestroDeArticulo)pantallaCrearEstructuraDeProducto.getMatPrimProdComp().getSelectedItem()).getUnidadDeMedida());
+        MaestroDeArticulo ma = (MaestroDeArticulo)pantallaCrearEstructuraDeProducto.getMatPrimProdComp().getSelectedItem();
+        if(ma != null){
+            pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(ma.getUnidadDeMedida());
+        }else{
+            pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(" ");
+        }
     }
 
     public void agregarDetalle() {
