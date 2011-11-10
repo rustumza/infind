@@ -61,16 +61,26 @@ public class ControladorEstructuraDeProducto {
         
         }
         
+        if(prodFab == null){
+        JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "No se encontro el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().requestFocus();
+        pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().setText("");
+        return;
         
+        }
         pantallaCrearEstructuraDeProducto.getProductoSeleccionadoTextBox().setText(prodFab.getNombre());        
         //inicializo tabla articulos de prod iqe
         ModeloTablaPantallaEstructuraDeProducto mod = new ModeloTablaPantallaEstructuraDeProducto();
-        mod.setListaElementos(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
+        if(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList() != null){
+            mod.setListaElementos(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
+        }else{
+            mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
+        }
         pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod);
         //inicializo tabla de articulos del producto
         ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
         mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
-        pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod1);
+        pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().setModel(mod1);
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
         
@@ -144,7 +154,7 @@ public class ControladorEstructuraDeProducto {
         //inicializo tabla de articulos del producto
         ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
         mod1.setListaElementos(estructura.getDetalleEstructuraProductoList());
-        pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod1);
+        pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().setModel(mod1);
         
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
