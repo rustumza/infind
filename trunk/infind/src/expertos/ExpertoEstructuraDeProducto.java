@@ -85,5 +85,19 @@ public class ExpertoEstructuraDeProducto {
         return estructura;
         
     }
+
+    public MaestroDeEstructuraDeProducto agregarDetalle(DetalleEstructuraDeProducto detalle) {
+        estructura.addDetalle(detalle);
+        return estructura;
+    }
+
+    public MaestroDeEstructuraDeProducto quitarDetalle(DetalleEstructuraDeProducto detalleEstructuraDeProducto) {
+        estructura.quitarDetalla(detalleEstructuraDeProducto);
+        return estructura;
+    }
+
+    public void guardarEstructura() {
+        Fachada.getInstancia().guardar(estructura);
+    }
     
 }

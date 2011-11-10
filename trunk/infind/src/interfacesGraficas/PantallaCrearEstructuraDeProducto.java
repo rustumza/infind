@@ -66,6 +66,7 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         agregar = new javax.swing.JButton();
         unidadDeMedidaLabel = new javax.swing.JLabel();
         unidadDeMedida = new javax.swing.JLabel();
+        editar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDeMatPrimProdComp = new javax.swing.JTable();
@@ -135,6 +136,11 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         guardarBarraHerramientas.setFocusable(false);
         guardarBarraHerramientas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardarBarraHerramientas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        guardarBarraHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarBarraHerramientasActionPerformed(evt);
+            }
+        });
         barraDeHerramientas.add(guardarBarraHerramientas);
 
         cancelarBarraHerramientas.setText("Cancelar");
@@ -191,6 +197,8 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
 
         unidadDeMedida.setText(" ");
 
+        editar.setText("Editar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -207,12 +215,14 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cantidadTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(43, 43, 43)
                         .addComponent(unidadDeMedidaLabel)
                         .addGap(18, 18, 18)
                         .addComponent(unidadDeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,9 +242,10 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(quitar)
-                    .addComponent(agregar)
                     .addComponent(unidadDeMedidaLabel)
-                    .addComponent(unidadDeMedida))
+                    .addComponent(unidadDeMedida)
+                    .addComponent(agregar)
+                    .addComponent(editar))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -251,6 +262,11 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                 "Tipo", "Nombre", "Cantidad"
             }
         ));
+        tablaDeMatPrimProdComp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaDeMatPrimProdCompMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaDeMatPrimProdComp);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -353,16 +369,27 @@ private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_agregarActionPerformed
 
 private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
-// TODO add your handling code here:
+    controlador.quitar();
 }//GEN-LAST:event_quitarActionPerformed
 
 private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-// TODO add your handling code here:
+    controlador.cancelar();
 }//GEN-LAST:event_cancelarActionPerformed
 
 private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matPrimProdCompActionPerformed
     controlador.cargarUnidadDeMedida();
 }//GEN-LAST:event_matPrimProdCompActionPerformed
+
+private void tablaDeMatPrimProdCompMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDeMatPrimProdCompMouseClicked
+    if(evt.getClickCount()==2){
+        int detalleSeleccionado = getTablaDeMatPrimProdComp().getSelectedRow();
+        controlador.cargarDetalleSeleccionado(detalleSeleccionado);
+    }
+}//GEN-LAST:event_tablaDeMatPrimProdCompMouseClicked
+
+private void guardarBarraHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBarraHerramientasActionPerformed
+    controlador.guardarEstructura();
+}//GEN-LAST:event_guardarBarraHerramientasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,6 +405,7 @@ private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JTextField cantidadTextBox;
     private javax.swing.JLabel codigoLabel;
     private javax.swing.JTextField codigoProductoTextBox;
+    private javax.swing.JButton editar;
     private javax.swing.JButton guardarBarraHerramientas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -620,6 +648,14 @@ private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     public void setUnidadDeMedidaLabel(JLabel unidadDeMedidaLabel) {
         this.unidadDeMedidaLabel = unidadDeMedidaLabel;
+    }
+
+    public JButton getEditar() {
+        return editar;
+    }
+
+    public void setEditar(JButton editar) {
+        this.editar = editar;
     }
 
 

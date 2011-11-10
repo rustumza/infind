@@ -14,6 +14,7 @@ import interfacesGraficas.PantallaCrearEstructuraDeProducto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,17 +25,19 @@ public class ControladorEstructuraDeProducto {
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearEstructuraDeProducto pantallaCrearEstructuraDeProducto;
     ExpertoEstructuraDeProducto experto;
+    int detalleSeleccionado;
     
     public ControladorEstructuraDeProducto(ControladorPantallaMadre cont) {
         
         controladorPantallaMadre = cont;
         experto = new ExpertoEstructuraDeProducto();
-    
+        
     }
     
     public void crearEstructuraDeProducto(){
         pantallaCrearEstructuraDeProducto = new PantallaCrearEstructuraDeProducto(controladorPantallaMadre.getPantalla(), false, this);
         pantallaCrearEstructuraDeProducto.setVisible(true);
+        
     
     }
 
@@ -68,7 +71,8 @@ public class ControladorEstructuraDeProducto {
         ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
         mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
         pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod1);
-        
+        pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
         
         
         
@@ -90,7 +94,7 @@ public class ControladorEstructuraDeProducto {
         
         }
         pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setModel(new DefaultComboBoxModel(productos.toArray()));
-    
+        cargarUnidadDeMedida();
     
     }
 
@@ -99,10 +103,79 @@ public class ControladorEstructuraDeProducto {
     }
 
     public void agregarDetalle() {
-        DetalleEstructuraDeProducto detalle = new DetalleEstructuraDeProducto();
-        //detalle.set(String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem()
+        try{
+            DetalleEstructuraDeProducto detalle = new DetalleEstructuraDeProducto();
+            detalle.setTipo((String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem());
+            detalle.setMaestroArticulo((MaestroDeArticulo)pantallaCrearEstructuraDeProducto.getMatPrimProdComp().getSelectedItem());
+            detalle.setCantidad(Float.valueOf(pantallaCrearEstructuraDeProducto.getCantidadTextBox().getText()));
+            detalle.setEliminado(false);
+            actualizarPantalla(experto.agregarDetalle(detalle));
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "La cantidad ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearEstructuraDeProducto.getCantidadTextBox().requestFocus();
+        }
     }
+        
+    
+    private void actualizarPantalla(MaestroDeEstructuraDeProducto estructura){
+    
+        ProductosFabricables  prodFab = null;
+        if(estructura.getProductoFinal()!=null){
             
+             prodFab = estructura.getProductoFinal();
+             
+        }else if(estructura.getProductoTipoIQE() != null){
+            
+            prodFab = estructura.getProductoTipoIQE();
+            
+        }else if(estructura.getProductoIntermedio() != null){
+            
+            prodFab = estructura.getProductoIntermedio();
+        
+        }
+        
+        
+        pantallaCrearEstructuraDeProducto.getProductoSeleccionadoTextBox().setText(prodFab.getNombre());        
+        //inicializo tabla de articulos del producto
+        ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
+        mod1.setListaElementos(estructura.getDetalleEstructuraProductoList());
+        pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod1);
+        
+        pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
+        
+    
+    }
+
+    public void cargarDetalleSeleccionado(int detalleSeleccionado) {
+        pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(true);
+        pantallaCrearEstructuraDeProducto.getEditar().setEnabled(true);
+        DetalleEstructuraDeProducto detalle = (DetalleEstructuraDeProducto)((ModeloTablaPantallaEstructuraDeProducto)pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().getModel()).getRow(detalleSeleccionado);
+        pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().setSelectedItem(detalle.getTipo());
+        cargarListaDeMatPrimProdComp();
+        pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setSelectedItem(detalle.getMaestroArticulo());
+        cargarUnidadDeMedida();
+        pantallaCrearEstructuraDeProducto.getCantidadTextBox().setText(String.valueOf(detalle.getCantidad()));
+        
+    }
+
+    public void cancelar() {
+        pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getCantidadTextBox().setText("");
+        pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(" ");
+        pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setSelectedItem("Materia prima");
+        cargarListaDeMatPrimProdComp();
+    }
+
+    public void quitar() {
+        MaestroDeEstructuraDeProducto estructura = experto.quitarDetalle((DetalleEstructuraDeProducto)((ModeloTablaPantallaEstructuraDeProducto)pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().getModel()).getRow(detalleSeleccionado));
+        actualizarPantalla(estructura);
+    }
+
+    public void guardarEstructura() {
+        experto.guardarEstructura();
+    }
     
 
 

@@ -114,7 +114,35 @@ public class MaestroDeEstructuraDeProducto extends ObjetoPersitente implements S
     public void setProductoTipoIQE(ProductoTipoIQE productoTipoIQE) {
         this.productoTipoIQE = productoTipoIQE;
     }
+
+     public void addDetalle(DetalleEstructuraDeProducto detalle) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaLista(detalle)) {
+            getDetalleEstructuraProductoList().add(detalle);
+            if (detalle.getMaestroDeEstrucruraDeProducto() != null) {
+                detalle.getMaestroDeEstrucruraDeProducto().getDetalleEstructuraProductoList().remove(detalle);
+            }
+            detalle.setMaestroDeEstrucruraDeProducto(this);
+        }
+    }
     
+    private boolean estaEnLaLista(DetalleEstructuraDeProducto detalle) {
+        for (DetalleEstructuraDeProducto detalleEstructura : detallesEstructuraProductoList) {
+            if(detalle==detalleEstructura)
+                return true;
+        }
+        return false;
+    }
+    
+    public void quitarDetalla(DetalleEstructuraDeProducto detalle){
+        if(detallesEstructuraProductoList.contains(detalle)){
+            detallesEstructuraProductoList.remove(detalle);
+            detalle.setMaestroDeEstrucruraDeProducto(null);
+        
+        }
+        
+    }
+
     
 
     @Override
