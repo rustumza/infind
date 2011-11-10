@@ -11,11 +11,17 @@ import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
 import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.MaestroDeEstructuraDeProducto;
 import Entidades.MaestroDeRutaDeFabricacion;
 import Entidades.MateriaPrima;
+import Entidades.ProductoFinal;
+import Entidades.ProductoIntermedio;
+import Entidades.ProductoTipoIQE;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import excepciones.ExpertoExceptionRutaFabricacion;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import persistencia.Fachada;
@@ -110,17 +116,17 @@ public class ExpertoRutaDeFabricacion extends Experto {
         listaDetallesDeAticulosAGuardar.add(detalleArticulo);
     }
 
-    public MaestroDeArticulo buscarArticulos(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
+    public ProductoFinal buscarProductoFinal(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
 
 
-        List<MaestroDeArticulo> articuloEncontrado = null;
-        MaestroDeArticulo articuloDevuelto = null;
+        List<ProductoFinal> articuloEncontrado = null;
+        ProductoFinal articuloDevuelto = null;
 
         if (dtoArticulo == null) {
 
-            articuloEncontrado = Fachada.getInstancia().buscar(MaestroDeArticulo.class, null);
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoFinal.class, null);
         } else {
-            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
+            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
             if (dtoArticulo.getCodigoArticulo() != null) {
                 criterioArticulo.add(Restrictions.like("codigo", dtoArticulo.getCodigoArticulo()));
             }
@@ -129,7 +135,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
                 criterioArticulo.add(Restrictions.like("nombre", dtoArticulo.getNombreArticulo()));
             }
 
-            articuloEncontrado = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioArticulo);
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoFinal.class, criterioArticulo);
 
 
         }
@@ -161,4 +167,113 @@ public class ExpertoRutaDeFabricacion extends Experto {
         return etapasEncontrado;
 
     }
+
+    public ProductoIntermedio buscarProductoIntermedio(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
+
+
+        List<ProductoIntermedio> articuloEncontrado = null;
+        ProductoIntermedio articuloDevuelto = null;
+
+        if (dtoArticulo == null) {
+
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoIntermedio.class, null);
+        } else {
+            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
+            if (dtoArticulo.getCodigoArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("codigo", dtoArticulo.getCodigoArticulo()));
+            }
+
+            if (dtoArticulo.getNombreArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("nombre", dtoArticulo.getNombreArticulo()));
+            }
+
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioArticulo);
+
+
+        }
+        if (articuloEncontrado.isEmpty()) {
+            throw new ExpertoExceptionRutaFabricacion("No se encontró Productos para los datos ingresados");
+
+        }
+
+        articuloDevuelto = articuloEncontrado.get(0);
+        return articuloDevuelto;
+    }
+
+    public ProductoTipoIQE buscarProductoIQE(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
+
+
+        List<ProductoTipoIQE> articuloEncontrado = null;
+        ProductoTipoIQE articuloDevuelto = null;
+
+        if (dtoArticulo == null) {
+
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoTipoIQE.class, null);
+        } else {
+            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(ProductoTipoIQE.class);
+            if (dtoArticulo.getCodigoArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("codigo", dtoArticulo.getCodigoArticulo()));
+            }
+
+            if (dtoArticulo.getNombreArticulo() != null) {
+                criterioArticulo.add(Restrictions.like("nombre", dtoArticulo.getNombreArticulo()));
+            }
+
+            articuloEncontrado = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioArticulo);
+
+
+        }
+        if (articuloEncontrado.isEmpty()) {
+            throw new ExpertoExceptionRutaFabricacion("No se encontró Productos para los datos ingresados");
+
+        }
+
+        articuloDevuelto = articuloEncontrado.get(0);
+        return articuloDevuelto;
+    }
+
+    public void eliminarEtapa(EtapaDeRutaDeFabricacion etapaSeleccionada) {
+        etapaEnEspera.remove(etapaSeleccionada);
+    }
+
+    public EtapaDeRutaDeFabricacion buscarEtapasAEliminar(Object valorEtapa) {
+            
+        
+        //EtapaDeRutaDeFabricacion etapasEncontrado = null;
+
+
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaEnEspera) {
+            int nroEtapa = etapaDeRutaDeFabricacion.getNroEtapa();
+        
+            if (String.valueOf(nroEtapa) == null ? valorEtapa.toString() == null : String.valueOf(nroEtapa).equals(valorEtapa.toString())) {
+                
+                return etapaDeRutaDeFabricacion;
+            }
+        
+        }
+        
+        
+        return null;
+        
+    }
+
+    public ProductoTipoIQE buscarTipoIQE(ProductoFinal articuloEncontradoFinal) {
+        
+        
+      List<MaestroDeEstructuraDeProducto> esstructuraEncontrado = null;
+        ProductoTipoIQE productoDevuelto = null;
+
+        
+            
+            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeEstructuraDeProducto.class);
+            
+            criterioArticulo.add(Restrictions.eq("ProductoFinal", articuloEncontradoFinal));
+            
+            esstructuraEncontrado = Fachada.getInstancia().buscar(MaestroDeEstructuraDeProducto.class, criterioArticulo);
+            productoDevuelto = esstructuraEncontrado.get(0).getProductoTipoIQE();
+
+
+            return productoDevuelto;
+    }
+
 }

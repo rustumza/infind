@@ -242,8 +242,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel3.add(jLabel3, gridBagConstraints);
-
-        campoCodigoProdFinal.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -301,13 +299,19 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel2.add(comboBoxTipoProducto, gridBagConstraints);
 
+        botonBuscarProdFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         botonBuscarProdFinal.setText("Buscar");
         botonBuscarProdFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarProdFinalActionPerformed(evt);
             }
         });
-        jPanel2.add(botonBuscarProdFinal, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 10);
+        jPanel2.add(botonBuscarProdFinal, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -657,6 +661,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
             }
         ));
         tablaEtapasAgregadas.setPreferredSize(new java.awt.Dimension(300, 100));
+        tablaEtapasAgregadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaEtapasAgregadasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaEtapasAgregadas);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -670,6 +679,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonEliminarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         botonEliminarEtapa.setText("Eliminar Etapa");
+        botonEliminarEtapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarEtapaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -696,7 +710,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(2, 20, 0, 0);
         jPanel4.add(botonGuardarEtapa, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -829,7 +843,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
         jPanel9.add(botonBuscaCentro, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -879,10 +893,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         controlador.sacarMateriaPrima();     }//GEN-LAST:event_botonQuitaMateriaPrimaActionPerformed
 
-    private void botonGuardarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEtapaActionPerformed
-
-        controlador.guardarEtapa();     }//GEN-LAST:event_botonGuardarEtapaActionPerformed
-
     private void radioBotonBuscaCodigoCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBotonBuscaCodigoCentroActionPerformed
 
         if (radioBotonBuscaCodigoCentro.isSelected()) {             campoBuscaCodigoCentro.setEnabled(true);             campoBuscaNombreCentro.setEnabled(false);         }     }//GEN-LAST:event_radioBotonBuscaCodigoCentroActionPerformed
@@ -922,6 +932,29 @@ private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt)
             JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Producto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_botonBuscarProdFinalActionPerformed
+
+private void botonGuardarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEtapaActionPerformed
+        try {
+            controlador.guardarEtapa();
+        } catch (ExpertoExceptionRutaFabricacion ex) {
+            JOptionPane.showMessageDialog(pantalla, "Faltan Completar Campos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+}//GEN-LAST:event_botonGuardarEtapaActionPerformed
+
+private void tablaEtapasAgregadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEtapasAgregadasMouseClicked
+    
+}//GEN-LAST:event_tablaEtapasAgregadasMouseClicked
+
+private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEtapaActionPerformed
+                    //TODO: verificar que se halla seleccionado una fila para poder eliminarla
+
+                    controlador.eliminarEtapa();
+                    
+                
+
+           
+
+}//GEN-LAST:event_botonEliminarEtapaActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1613,4 +1646,6 @@ private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt)
     public void setTablaEtapasAgregadas(JTable tablaEtapasAgregadas) {
         this.tablaEtapasAgregadas = tablaEtapasAgregadas;
     }
+
+    
 }

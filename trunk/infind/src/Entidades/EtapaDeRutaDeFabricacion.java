@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -35,7 +37,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     private int tiempoDeTrabajoTotal;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
-    @OneToMany 
+    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
     private List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList;
     @ManyToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacionList;
@@ -48,13 +50,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
         this.id = id;
     }
 
-    public List<DetalleDeArticuloEnEtapaDeFabricacion> getDetallesArtEnEtapaFabList() {
-        return detallesArtEnEtapaFabList;
-    }
-
-    public void setDetallesArtEnEtapaFabList(List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList) {
-        this.detallesArtEnEtapaFabList = detallesArtEnEtapaFabList;
-    }
+    
 
     public String getNombreEtapa() {
         return nombreEtapa;
@@ -101,6 +97,15 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     public int getNroEtapa() {
         return nroEtapa;
     }
+
+    public List<DetalleDeArticuloEnEtapaDeFabricacion> getDetallesArtEnEtapaFabList() {
+        return detallesArtEnEtapaFabList;
+    }
+
+    public void setDetallesArtEnEtapaFabList(List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList) {
+        this.detallesArtEnEtapaFabList = detallesArtEnEtapaFabList;
+    }
+    
 
     public void setNroEtapa(int nroEtapa) {
         this.nroEtapa = nroEtapa;
