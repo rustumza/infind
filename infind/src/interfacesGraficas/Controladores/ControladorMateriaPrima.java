@@ -48,7 +48,6 @@ public class ControladorMateriaPrima {
         nume = nume + 1;
         num = String.valueOf(nume);
         String nuevoNumero = codifica + num;
-        pantallaCrearMateriPrima.getCategoriaListBox().setModel(new DefaultComboBoxModel((new ArrayList<Object>()).toArray()));
         pantallaCrearMateriPrima.getCodigoTextBox().setText(nuevoNumero);
         
         
