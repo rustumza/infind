@@ -38,7 +38,7 @@ public class ControladorProductoComponente {
         pantallaCrearProductoComponente.setVisible(true);
         List<Numerador> numeroDisponibles = null;
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
-        criterioNumerador.add(Restrictions.eq("codificacion", "2.1."));
+        criterioNumerador.add(Restrictions.eq("codificacion", "2."));
         numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
         String codifica = numeroDisponibles.get(0).getCodificacion();
         String num = numeroDisponibles.get(0).getUltimaClasificacion();
