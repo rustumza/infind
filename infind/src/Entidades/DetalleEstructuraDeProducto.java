@@ -28,8 +28,9 @@ public class DetalleEstructuraDeProducto extends ObjetoPersitente implements Ser
     private MaestroDeArticulo maestroArticulo;
     @ManyToOne
     private MaestroDeEstructuraDeProducto maestroDeEstrucruraDeProducto;
+    private String tipo;
     
-
+    
     public Long getId() {
         return id;
     }
@@ -68,6 +69,14 @@ public class DetalleEstructuraDeProducto extends ObjetoPersitente implements Ser
 
     public void setMaestroDeEstrucruraDeProducto(MaestroDeEstructuraDeProducto maestroDeEstrucruraDeProducto) {
         this.maestroDeEstrucruraDeProducto = maestroDeEstrucruraDeProducto;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

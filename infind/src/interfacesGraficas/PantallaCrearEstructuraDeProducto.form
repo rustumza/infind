@@ -214,9 +214,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="tipoMateriaPrimaProductoComponete" min="-2" pref="169" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="matPrimProdComp" min="-2" pref="181" max="-2" attributes="0"/>
@@ -226,6 +226,11 @@
                           <Component id="cantidadTextBox" pref="146" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="unidadDeMedidaLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="unidadDeMedida" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Component id="agregar" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="quitar" min="-2" pref="77" max="-2" attributes="0"/>
@@ -252,6 +257,8 @@
                       <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="quitar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="agregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="unidadDeMedidaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="unidadDeMedida" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -279,6 +286,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="matPrimProdCompActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadTextBox">
         </Component>
@@ -291,15 +301,34 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="quitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="agregar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="unidadDeMedidaLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Unidad de medida"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="unidadDeMedida">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
         </Component>
       </SubComponents>
@@ -363,7 +392,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Articulos de IQE">
+            <TitledBorder title="Articulos del producto IQE relacionado">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>

@@ -4,12 +4,15 @@
  */
 package expertos;
 
+import Entidades.DetalleEstructuraDeProducto;
+import Entidades.MaestroDeEstructuraDeProducto;
 import Entidades.MateriaPrima;
 import Entidades.ProductoComponente;
 import Entidades.ProductoFinal;
 import Entidades.ProductoIntermedio;
 import Entidades.ProductoTipoIQE;
 import Entidades.ProductosFabricables;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import persistencia.Fachada;
@@ -21,6 +24,14 @@ import persistencia.Fachada;
 public class ExpertoEstructuraDeProducto {
 
     ProductosFabricables prod;
+    MaestroDeEstructuraDeProducto estructura;
+
+    public ExpertoEstructuraDeProducto() {
+        estructura = new MaestroDeEstructuraDeProducto();
+        estructura.setDetalleEstructuraProductoList(new ArrayList<DetalleEstructuraDeProducto>());
+    }
+    
+    
     
     public List buscarMateriasPrimas() {
         List listaMateriaPrima = null;
@@ -43,35 +54,35 @@ public class ExpertoEstructuraDeProducto {
         return listaIntermedio;
     }
 
-    public ProductosFabricables buscarProductoFinal(String codigo) {
+    public MaestroDeEstructuraDeProducto buscarProductoFinal(String codigo) {
         List listaProdFinal = null;
         Criteria criterioProdFin = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
         listaProdFinal = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProdFin);
         if(listaProdFinal.isEmpty()){
-            prod = (ProductoFinal)listaProdFinal.get(0);
+            estructura.setProductoFinal((ProductoFinal)listaProdFinal.get(0));
         }
-        return prod;
+        return estructura;
     }
 
-    public ProductosFabricables buscarProductoIQE(String codigo) {
+    public MaestroDeEstructuraDeProducto buscarProductoIQE(String codigo) {
         List listaProdIQE = null;
         Criteria criterioProdIQE = Fachada.getInstancia().crearCriterio(ProductoTipoIQE.class);
         listaProdIQE = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdIQE);        
         if(listaProdIQE.isEmpty()){
-            prod = (ProductoTipoIQE)listaProdIQE.get(0);
+            estructura.setProductoTipoIQE((ProductoTipoIQE)listaProdIQE.get(0));
         }
-        return prod;
+        return estructura;
     }
 
-    public ProductosFabricables buscarProductoIntermedio(String codigo) {
+    public MaestroDeEstructuraDeProducto buscarProductoIntermedio(String codigo) {
         
         List listaProdInt = null;
         Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
         listaProdInt = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdInt);        
         if(listaProdInt.isEmpty()){
-            prod = (ProductoIntermedio)listaProdInt.get(0);
+            estructura.setProductoIntermedio((ProductoIntermedio)listaProdInt.get(0));
         }
-        return prod;
+        return estructura;
         
     }
     

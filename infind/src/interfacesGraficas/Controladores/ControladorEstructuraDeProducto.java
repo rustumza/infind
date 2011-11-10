@@ -4,8 +4,9 @@
  */
 package interfacesGraficas.Controladores;
 
-import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
 import Entidades.DetalleEstructuraDeProducto;
+import Entidades.MaestroDeArticulo;
+import Entidades.MaestroDeEstructuraDeProducto;
 import Entidades.ProductosFabricables;
 import expertos.ExpertoEstructuraDeProducto;
 import interfacesGraficas.ModeloTablas.ModeloTablaPantallaEstructuraDeProducto;
@@ -40,21 +41,23 @@ public class ControladorEstructuraDeProducto {
     public void buscarProducto() {
         String tipo = (String)(pantallaCrearEstructuraDeProducto.getTipoProductoListBox().getModel().getSelectedItem());
         String codigo = pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().getText();
-        ProductosFabricables prodFab = null;
-        
+        MaestroDeEstructuraDeProducto estructura = null;
+        ProductosFabricables  prodFab = null;
         if(tipo.equals("Producto final")){
             
-            prodFab = experto.buscarProductoFinal(codigo);
-            
+             estructura = experto.buscarProductoFinal(codigo);
+             prodFab = estructura.getProductoFinal();
         }else if(tipo.equals("Producto IQE")){
             
-            prodFab = experto.buscarProductoIQE(codigo);
-            
+            estructura = experto.buscarProductoIQE(codigo);
+            prodFab = estructura.getProductoTipoIQE();
         }else if(tipo.equals("Prodcuto intermedio")){
             
-            prodFab = experto.buscarProductoIntermedio(codigo);
+            estructura = experto.buscarProductoIntermedio(codigo);
+            prodFab = estructura.getProductoIntermedio();
         
         }
+        
         
         pantallaCrearEstructuraDeProducto.getProductoSeleccionadoTextBox().setText(prodFab.getNombre());        
         //inicializo tabla articulos de prod iqe
@@ -89,7 +92,16 @@ public class ControladorEstructuraDeProducto {
         pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setModel(new DefaultComboBoxModel(productos.toArray()));
     
     
-    }   
+    }
+
+    public void cargarUnidadDeMedida() {
+        pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(((MaestroDeArticulo)pantallaCrearEstructuraDeProducto.getMatPrimProdComp().getSelectedItem()).getUnidadDeMedida());
+    }
+
+    public void agregarDetalle() {
+        DetalleEstructuraDeProducto detalle = new DetalleEstructuraDeProducto();
+        detalle.set(String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem()
+    }
             
     
 
