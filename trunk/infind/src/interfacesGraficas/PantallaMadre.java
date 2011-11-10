@@ -45,15 +45,15 @@ public class PantallaMadre extends javax.swing.JFrame {
         articulos = new javax.swing.JMenu();
         crearArticulo = new javax.swing.JMenu();
         crearMateriaPrima = new javax.swing.JMenuItem();
+        crearProductoComponente = new javax.swing.JMenuItem();
         crearProductoIntermedio = new javax.swing.JMenuItem();
         crearProductoIQE = new javax.swing.JMenuItem();
-        crearProductoComponente = new javax.swing.JMenuItem();
         crearProductoFinal = new javax.swing.JMenuItem();
         Listar = new javax.swing.JMenu();
         listarMateriasPrimas = new javax.swing.JMenuItem();
         listarProductosComponentes = new javax.swing.JMenuItem();
-        listarProductosIQE = new javax.swing.JMenuItem();
         listarProductosIntermedios = new javax.swing.JMenuItem();
+        listarProductosIQE = new javax.swing.JMenuItem();
         listarProductosFinales = new javax.swing.JMenuItem();
         estructuraDeProducto = new javax.swing.JMenu();
         crearEstructuraDeProducto = new javax.swing.JMenuItem();
@@ -101,6 +101,14 @@ public class PantallaMadre extends javax.swing.JFrame {
         });
         crearArticulo.add(crearMateriaPrima);
 
+        crearProductoComponente.setText("Producto componente");
+        crearProductoComponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProductoComponenteActionPerformed(evt);
+            }
+        });
+        crearArticulo.add(crearProductoComponente);
+
         crearProductoIntermedio.setText("Producto intermedio");
         crearProductoIntermedio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,14 +124,6 @@ public class PantallaMadre extends javax.swing.JFrame {
             }
         });
         crearArticulo.add(crearProductoIQE);
-
-        crearProductoComponente.setText("Producto componente");
-        crearProductoComponente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearProductoComponenteActionPerformed(evt);
-            }
-        });
-        crearArticulo.add(crearProductoComponente);
 
         crearProductoFinal.setText("Producto final");
         crearProductoFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -153,14 +153,6 @@ public class PantallaMadre extends javax.swing.JFrame {
         });
         Listar.add(listarProductosComponentes);
 
-        listarProductosIQE.setText("Productos IQE");
-        listarProductosIQE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listarProductosIQEActionPerformed(evt);
-            }
-        });
-        Listar.add(listarProductosIQE);
-
         listarProductosIntermedios.setText("Productos intermedios");
         listarProductosIntermedios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +160,14 @@ public class PantallaMadre extends javax.swing.JFrame {
             }
         });
         Listar.add(listarProductosIntermedios);
+
+        listarProductosIQE.setText("Productos IQE");
+        listarProductosIQE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProductosIQEActionPerformed(evt);
+            }
+        });
+        Listar.add(listarProductosIQE);
 
         listarProductosFinales.setText("Productos finales");
         listarProductosFinales.addActionListener(new java.awt.event.ActionListener() {

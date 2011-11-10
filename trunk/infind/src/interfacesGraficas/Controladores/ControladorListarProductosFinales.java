@@ -37,8 +37,7 @@ public class ControladorListarProductosFinales {
 
     public void editarProductosFinales(int pfinalSeleccionado) {
        String codigoProductoFinal = (String) pantalla.getTablaProductosFinalesEncontrados().getModel().getValueAt(pfinalSeleccionado, 0);
-       //TODO: llamar al controlador de edicion de ProductosFinales con el codigo obtenido
-        System.out.println("me hicieron doble clic");
+       new ControladorProductoFinal(controladorPantallaMadre).editarProductoFinal(codigoProductoFinal);
     }
 
     public void recargarTabla() {
