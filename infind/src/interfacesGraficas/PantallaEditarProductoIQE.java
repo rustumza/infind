@@ -11,7 +11,7 @@
 package interfacesGraficas;
 
 import com.toedter.calendar.JDateChooser;
-import interfacesGraficas.Controladores.ControladorProductoFinal;
+import interfacesGraficas.Controladores.ControladorProductoIQE;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -25,15 +25,15 @@ import javax.swing.JToolBar;
  *
  * @author rustu
  */
-public class PantallaCrearProductoFinal extends javax.swing.JDialog {
-
-    ControladorProductoFinal controlador;
-
+public class PantallaEditarProductoIQE extends javax.swing.JDialog {
+    
+    ControladorProductoIQE controlador;
+    
     /** Creates new form NewJDialog */
-    public PantallaCrearProductoFinal(java.awt.Frame parent, boolean modal, ControladorProductoFinal controladorPFinal) {
+    public PantallaEditarProductoIQE(java.awt.Frame parent, boolean modal, ControladorProductoIQE controladorPIQE) {
         super(parent, modal);
         initComponents();
-        controlador = controladorPFinal;
+        controlador = controladorPIQE;
     }
 
     /** This method is called from within the constructor to
@@ -48,6 +48,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         panelPrincipal = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
         guardar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -58,7 +59,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         nombreTextBox = new javax.swing.JTextField();
         ubicacionEnElAlmacenLabel = new javax.swing.JLabel();
         unidadDeMedidaLabel = new javax.swing.JLabel();
-        tamañoLoteEstandarLabel = new javax.swing.JLabel();
+        tamanioLoteEstandarLabel = new javax.swing.JLabel();
         observacionLabel = new javax.swing.JLabel();
         precioBaseLabel = new javax.swing.JLabel();
         categoriaLabel = new javax.swing.JLabel();
@@ -80,10 +81,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         unidadDeMedidaListBox = new javax.swing.JComboBox();
         estadoEntrarEnActividadEnFechaLabel = new javax.swing.JLabel();
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
-        productoIQERelacionadoLabel = new javax.swing.JLabel();
-        productoIQERelacionadoListBox = new javax.swing.JComboBox();
-        tipoLabel = new javax.swing.JLabel();
-        tipoListBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,17 +99,24 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         });
         toolbar.add(guardar);
 
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
+        eliminar.setToolTipText("Eliminar");
+        eliminar.setFocusable(false);
+        eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        toolbar.add(eliminar);
+
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         cancelar.setToolTipText("Cancelar");
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setMargin(new java.awt.Insets(2, 0, 2, 14));
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
-            }
-        });
         toolbar.add(cancelar);
 
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -121,11 +125,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setMargin(new java.awt.Insets(2, 0, 2, 14));
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
         toolbar.add(salir);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
@@ -140,7 +139,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
 
         unidadDeMedidaLabel.setText("Unidad de medida");
 
-        tamañoLoteEstandarLabel.setText("Tamaño lote estandar");
+        tamanioLoteEstandarLabel.setText("Tamaño lote estandar");
 
         observacionLabel.setText("Observación");
 
@@ -179,19 +178,6 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
 
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
 
-        productoIQERelacionadoLabel.setText("Producto IQE relacionado");
-
-        productoIQERelacionadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        tipoLabel.setText("Tipo");
-
-        tipoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Domisanitarios", "Higiene Personal" }));
-        tipoListBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoListBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -202,18 +188,28 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                     .addComponent(estadoLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreLabel)
+                            .addComponent(descripcionLabel))
+                        .addGap(116, 116, 116)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(codigoLabel)
+                        .addGap(146, 146, 146)
+                        .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unidadDeMedidaLabel)
                             .addComponent(categoriaLabel)
                             .addComponent(costoEstandarLabel)
                             .addComponent(costoUnitarioPorOmisionLabel)
                             .addComponent(precioBaseLabel)
-                            .addComponent(tamañoLoteEstandarLabel)
+                            .addComponent(tamanioLoteEstandarLabel)
                             .addComponent(ubicacionEnElAlmacenLabel)
-                            .addComponent(observacionLabel)
-                            .addComponent(productoIQERelacionadoLabel))
+                            .addComponent(observacionLabel))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(precioBaseTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(costoEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -227,23 +223,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                             .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreLabel)
-                            .addComponent(descripcionLabel))
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoLabel)
-                            .addComponent(tipoLabel))
-                        .addGap(146, 146, 146)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,13 +231,9 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel)
                     .addComponent(codigoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLabel)
                     .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -294,7 +270,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                             .addComponent(estadoEntrarEnActividadEnFechaLabel))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tamañoLoteEstandarLabel)
+                            .addComponent(tamanioLoteEstandarLabel)
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,11 +281,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(observacionLabel)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoIQERelacionadoLabel))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(107, 107, 107))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -329,8 +301,7 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,31 +324,25 @@ public class PantallaCrearProductoFinal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
-    if (((String) estadoListBox.getModel().getSelectedItem()).equals("Inactivo")) {
+    if(((String)estadoListBox.getModel().getSelectedItem()).equals("Inactivo")){
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(true);
-    } else {
+    }else{
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
     }
 }//GEN-LAST:event_estadoListBoxActionPerformed
 
 private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-    controlador.guardar();
+    controlador.editar();
 }//GEN-LAST:event_guardarActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        dispose();
-    }//GEN-LAST:event_salirActionPerformed
+private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+    controlador.eliminar();
+}//GEN-LAST:event_eliminarActionPerformed
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_cancelarActionPerformed
-
-private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoListBoxActionPerformed
-    controlador.buscarCodigoSegunTipo();
-}//GEN-LAST:event_tipoListBoxActionPerformed
     /**
      * @param args the command line arguments
      */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel categoriaLabel;
@@ -390,6 +355,7 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JTextField costoUnitarioPorOmisionTextBox;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JTextArea descripcionTextArea;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel estadoEntrarEnActividadEnFechaLabel;
     private com.toedter.calendar.JDateChooser estadoEntrarEnActividadEnFechajDateChooser;
     private javax.swing.JLabel estadoLabel;
@@ -406,13 +372,9 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel precioBaseLabel;
     private javax.swing.JTextField precioBaseTextBox;
-    private javax.swing.JLabel productoIQERelacionadoLabel;
-    private javax.swing.JComboBox productoIQERelacionadoListBox;
     private javax.swing.JButton salir;
+    private javax.swing.JLabel tamanioLoteEstandarLabel;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
-    private javax.swing.JLabel tamañoLoteEstandarLabel;
-    private javax.swing.JLabel tipoLabel;
-    private javax.swing.JComboBox tipoListBox;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
@@ -460,11 +422,11 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.codigoTextBox = codigoTextBox;
     }
 
-    public ControladorProductoFinal getControlador() {
+    public ControladorProductoIQE getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorProductoFinal controlador) {
+    public void setControlador(ControladorProductoIQE controlador) {
         this.controlador = controlador;
     }
 
@@ -644,12 +606,12 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.tamanioLoteEstandarTextBox = tamanioLoteEstandarTextBox;
     }
 
-    public JLabel getTamañoLoteEstandarLabel() {
-        return tamañoLoteEstandarLabel;
+    public JLabel getTamanioLoteEstandarLabel() {
+        return tamanioLoteEstandarLabel;
     }
 
-    public void setTamañoLoteEstandarLabel(JLabel tamañoLoteEstandarLabel) {
-        this.tamañoLoteEstandarLabel = tamañoLoteEstandarLabel;
+    public void setTamanioLoteEstandarLabel(JLabel tamanioLoteEstandarLabel) {
+        this.tamanioLoteEstandarLabel = tamanioLoteEstandarLabel;
     }
 
     public JToolBar getToolbar() {
@@ -708,38 +670,13 @@ private void tipoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.estadoEntrarEnActividadEnFechajDateChooser = estadoEntrarEnActividadEnFechajDateChooser;
     }
 
-    public JLabel getProductoIQERelacionadoLabel() {
-        return productoIQERelacionadoLabel;
+    public JButton getEliminar() {
+        return eliminar;
     }
 
-    public void setProductoIQERelacionadoLabel(JLabel productoIQERelacionadoLabel) {
-        this.productoIQERelacionadoLabel = productoIQERelacionadoLabel;
+    public void setEliminar(JButton eliminar) {
+        this.eliminar = eliminar;
     }
 
-    public JComboBox getProductoIQERelacionadoListBox() {
-        return productoIQERelacionadoListBox;
-    }
-
-    public void setProductoIQERelacionadoListBox(JComboBox productoIQERelacionadoListBox) {
-        this.productoIQERelacionadoListBox = productoIQERelacionadoListBox;
-    }
-
-    public JComboBox getTipoListBox() {
-        return tipoListBox;
-    }
-
-    public void setTipoListBox(JComboBox tipoListBox) {
-        this.tipoListBox = tipoListBox;
-    }
-
-    public JLabel getTipoLabel() {
-        return tipoLabel;
-    }
-
-    public void setTipoLabel(JLabel tipoLabel) {
-        this.tipoLabel = tipoLabel;
-    }
-    
-    
 
 }

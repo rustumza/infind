@@ -37,8 +37,7 @@ public class ControladorListarProductosIntermedios {
 
     public void editarProductosIntermedios(int piSeleccionado) {
        String codigoProductoIntermedio = (String) pantalla.getTablaProductosIntermediosEncontrados().getModel().getValueAt(piSeleccionado, 0);
-       //TODO: llamar al controlador de edicion de ProductosIntermedios con el codigo obtenido
-        System.out.println("me hicieron doble clic");
+       new ControladorProductoIntermedio(controladorPantallaMadre).editarProductoIntermedio(codigoProductoIntermedio);
     }
 
     public void recargarTabla() {

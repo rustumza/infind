@@ -27,8 +27,11 @@ public class ExpertoMateriaPrima extends Experto{
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
         if((matPrim.getTipoMateriaPrima()).equals("Primaria")){
             criterioNumerador.add(Restrictions.eq("codificacion", "1.1."));
+        }else if((matPrim.getTipoMateriaPrima()).equals("Secundaria -  Aromatizantes")){
+            criterioNumerador.add(Restrictions.eq("codificacion", "1.2.1."));
         }else{
-            criterioNumerador.add(Restrictions.eq("codificacion", "1.2."));
+            criterioNumerador.add(Restrictions.eq("codificacion", "1.2.2."));
+        
         }
         numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
         Numerador numerador = numeroDisponibles.get(0);

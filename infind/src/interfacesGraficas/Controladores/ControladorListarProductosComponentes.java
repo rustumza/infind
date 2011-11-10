@@ -37,8 +37,8 @@ public class ControladorListarProductosComponentes {
 
     public void editarProductosComponentes(int pcSeleccionado) {
        String codigoProductoComponente = (String) pantalla.getTablaProductosComponentesEncontrados().getModel().getValueAt(pcSeleccionado, 0);
-       //TODO: llamar al controlador de edicion de ProductosComponentes con el codigo obtenido
-        System.out.println("me hicieron doble clic");
+       new ControladorProductoComponente(controladorPantallaMadre).editarProductoComponente(codigoProductoComponente);
+       System.out.println("me hicieron doble clic");
     }
 
     public void recargarTabla() {

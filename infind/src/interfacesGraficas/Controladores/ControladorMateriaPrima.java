@@ -123,8 +123,10 @@ public class ControladorMateriaPrima {
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
         if(((String)pantallaCrearMateriPrima.getTipoMateriaPrimaListBox().getModel().getSelectedItem()).equals("Primaria")){
             criterioNumerador.add(Restrictions.eq("codificacion", "1.1."));
+        }else if(((String)pantallaCrearMateriPrima.getTipoMateriaPrimaListBox().getModel().getSelectedItem()).equals("Secundaria -  Aromatizantes")){
+            criterioNumerador.add(Restrictions.eq("codificacion", "1.2.1."));
         }else{
-            criterioNumerador.add(Restrictions.eq("codificacion", "1.2."));
+            criterioNumerador.add(Restrictions.eq("codificacion", "1.2.2."));
         }
         numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
         String codifica = numeroDisponibles.get(0).getCodificacion();

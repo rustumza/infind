@@ -110,6 +110,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearArticulo.add(crearProductoIntermedio);
 
         crearProductoIQE.setText("Producto IQE");
+        crearProductoIQE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProductoIQEActionPerformed(evt);
+            }
+        });
         crearArticulo.add(crearProductoIQE);
 
         crearProductoComponente.setText("Producto componente");
@@ -149,6 +154,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         Listar.add(listarProductosComponentes);
 
         listarProductosIQE.setText("Productos IQE");
+        listarProductosIQE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProductosIQEActionPerformed(evt);
+            }
+        });
         Listar.add(listarProductosIQE);
 
         listarProductosIntermedios.setText("Productos intermedios");
@@ -342,6 +352,14 @@ private void crearEstructuraDeProductoActionPerformed(java.awt.event.ActionEvent
     private void crearProductoComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoComponenteActionPerformed
         controlador.crearProductoComponente();
     }//GEN-LAST:event_crearProductoComponenteActionPerformed
+
+private void crearProductoIQEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoIQEActionPerformed
+    controlador.crearProductoIQE();
+}//GEN-LAST:event_crearProductoIQEActionPerformed
+
+private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosIQEActionPerformed
+    controlador.listarProductosIQE();
+}//GEN-LAST:event_listarProductosIQEActionPerformed
     /**
      * @param args the command line arguments
      */

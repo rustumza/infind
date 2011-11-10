@@ -23,18 +23,39 @@ public class ExpertoProductoFinal extends Experto {
 
     public void guardar(ProductoFinal pFinal) {
         Fachada.getInstancia().guardar(pFinal);
-
-        //sumarle uno al numerador
-        List<Numerador> numeroDisponibles = null;
-        Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
-        criterioNumerador.add(Restrictions.eq("codificacion", "4.1.1."));
-        numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
-        Numerador numerador = numeroDisponibles.get(0);
-        String numString = numerador.getUltimaClasificacion();
-        int numInt = Integer.parseInt(numString);
-        numInt++;
-        numerador.setUltimaClasificacion(String.valueOf(numInt));
-        Fachada.getInstancia().guardar(numerador);
+    
+    //Domisanitarios
+    //Higiene Personal
+        
+        if(pFinal.getTipoProductoFinal().equals("Domisanitarios")){
+        
+            
+            List<Numerador> numeroDisponibles = null;
+            Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+            criterioNumerador.add(Restrictions.eq("codificacion", "4.1."));
+            numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+            Numerador numerador = numeroDisponibles.get(0);
+            String numString = numerador.getUltimaClasificacion();
+            int numInt = Integer.parseInt(numString);
+            numInt++;
+            numerador.setUltimaClasificacion(String.valueOf(numInt));
+            Fachada.getInstancia().guardar(numerador);
+            
+        }else{
+            
+            List<Numerador> numeroDisponibles = null;
+            Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);
+            criterioNumerador.add(Restrictions.eq("codificacion", "4.2."));
+            numeroDisponibles = Fachada.getInstancia().buscar(Numerador.class, criterioNumerador);
+            Numerador numerador = numeroDisponibles.get(0);
+            String numString = numerador.getUltimaClasificacion();
+            int numInt = Integer.parseInt(numString);
+            numInt++;
+            numerador.setUltimaClasificacion(String.valueOf(numInt));
+            Fachada.getInstancia().guardar(numerador);
+            
+        
+        }
 
     }
 
