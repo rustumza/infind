@@ -60,7 +60,14 @@ public class ExpertoEstructuraDeProducto {
         Criteria criterioProdFin = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
         listaProdFinal = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProdFin);
         if(!listaProdFinal.isEmpty()){
-            estructura.setProductoFinal((ProductoFinal)listaProdFinal.get(0));
+            prod = (ProductoFinal)listaProdFinal.get(0);
+            if(prod.getMaestroEstructuraDeProducto() != null){
+                estructura = prod.getMaestroEstructuraDeProducto();
+                
+            }else{
+                estructura.setProductoFinal((ProductoFinal)prod);
+            }
+            prod.setMaestroEstructuraDeProducto(estructura);
         }
         return estructura;
     }
@@ -70,7 +77,13 @@ public class ExpertoEstructuraDeProducto {
         Criteria criterioProdIQE = Fachada.getInstancia().crearCriterio(ProductoTipoIQE.class);
         listaProdIQE = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdIQE);        
         if(!listaProdIQE.isEmpty()){
-            estructura.setProductoTipoIQE((ProductoTipoIQE)listaProdIQE.get(0));
+            prod = (ProductoTipoIQE)listaProdIQE.get(0);
+            if(prod.getMaestroEstructuraDeProducto() != null){
+                estructura = prod.getMaestroEstructuraDeProducto();
+            }else{
+                estructura.setProductoTipoIQE((ProductoTipoIQE)prod);
+            }
+            prod.setMaestroEstructuraDeProducto(estructura);
         }
         return estructura;
     }
@@ -81,7 +94,13 @@ public class ExpertoEstructuraDeProducto {
         Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
         listaProdInt = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdInt);        
         if(!listaProdInt.isEmpty()){
-            estructura.setProductoIntermedio((ProductoIntermedio)listaProdInt.get(0));
+            prod = (ProductoIntermedio)listaProdInt.get(0);
+            if(prod.getMaestroEstructuraDeProducto() != null){
+                estructura = prod.getMaestroEstructuraDeProducto();
+            }else{
+                estructura.setProductoIntermedio((ProductoIntermedio)prod);
+            }
+            prod.setMaestroEstructuraDeProducto(estructura);
         }
         return estructura;
         
@@ -104,6 +123,7 @@ public class ExpertoEstructuraDeProducto {
         }
         
         Fachada.getInstancia().guardarSinTranasaccion(estructura);
+        Fachada.getInstancia().guardarSinTranasaccion(prod);
         Conexion.getInstancia().confirmarTx();
     }
 

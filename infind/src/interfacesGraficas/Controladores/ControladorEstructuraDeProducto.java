@@ -198,7 +198,13 @@ public class ControladorEstructuraDeProducto {
     }
 
     public void guardarEstructura() {
-        experto.guardarEstructura();
+        try{
+            experto.guardarEstructura();
+            JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "Estructura de producto guardada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "Error al guardar la estructura de producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }
 
     public void editar() {
