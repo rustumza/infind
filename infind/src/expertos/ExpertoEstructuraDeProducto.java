@@ -15,6 +15,7 @@ import Entidades.ProductosFabricables;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
+import persistencia.Conexion;
 import persistencia.Fachada;
 
 /**
@@ -97,7 +98,20 @@ public class ExpertoEstructuraDeProducto {
     }
 
     public void guardarEstructura() {
-        Fachada.getInstancia().guardar(estructura);
+        Conexion.getInstancia().iniciarTX();
+        for (DetalleEstructuraDeProducto detalle : estructura.getDetalleEstructuraProductoList()) {
+            Fachada.getInstancia().guardarSinTranasaccion(detalle);
+        }
+        
+        Fachada.getInstancia().guardarSinTranasaccion(estructura);
+        Conexion.getInstancia().confirmarTx();
+    }
+
+    public MaestroDeEstructuraDeProducto editar(DetalleEstructuraDeProducto detalle, int detalleSeleccionado) {
+        estructura.getDetalleEstructuraProductoList().get(detalleSeleccionado).setCantidad(detalle.getCantidad());
+        estructura.getDetalleEstructuraProductoList().get(detalleSeleccionado).setMaestroArticulo(detalle.getMaestroArticulo());
+        estructura.getDetalleEstructuraProductoList().get(detalleSeleccionado).setTipo(detalle.getTipo());
+        return estructura;
     }
     
 }

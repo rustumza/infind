@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -32,6 +34,7 @@ public class MaestroDeEstructuraDeProducto extends ObjetoPersitente implements S
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaEnLaQueEntroEnVigencia;
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<DetalleEstructuraDeProducto> detallesEstructuraProductoList;
     @OneToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacion;
