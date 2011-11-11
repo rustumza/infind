@@ -9,9 +9,12 @@
  * Created on 04/11/2011, 09:20:48
  */
 package interfacesGraficas;
+import interfacesGraficas.*;
 
 import excepciones.ExpertoExceptionRutaFabricacion;
 import interfacesGraficas.Controladores.ControladorCrearRutaDeFabricacion;
+import interfacesGraficas.Controladores.ControladorCrearRutaDeFabricacion;
+import interfacesGraficas.Controladores.ControladorEditarRutaDeFabricacion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -32,13 +35,13 @@ import javax.swing.JToolBar;
  *
  * @author eduardo
  */
-public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
+public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
-    ControladorCrearRutaDeFabricacion controlador;
-    private PantCrearRutaDeFabricacion pantalla;
+    ControladorEditarRutaDeFabricacion controlador;
+    private PantallaEditarRutaDeFabricacion pantalla;
 
     /** Creates new form PantCrearRutaDeFabricacion */
-    public PantCrearRutaDeFabricacion(java.awt.Frame parent, boolean modal, ControladorCrearRutaDeFabricacion controlRutaFabr) {
+    public PantallaEditarRutaDeFabricacion(java.awt.Frame parent, boolean modal, ControladorEditarRutaDeFabricacion controlRutaFabr) {
         super(parent, modal);
         initComponents();
         controlador = controlRutaFabr;
@@ -56,7 +59,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        botonGuardarRutaNueva = new javax.swing.JButton();
+        botonGuardarRutaEditada = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         campoBuscaCodigoProdFinal = new javax.swing.JTextField();
@@ -113,7 +116,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEtapasAgregadas = new javax.swing.JTable();
         botonEliminarEtapa = new javax.swing.JButton();
-        botonGuardarEtapa = new javax.swing.JButton();
+        botonGuardarEtapaEditada = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         radioBotonBuscaCodigoCentro = new javax.swing.JRadioButton();
         radioBotonBuscaNombreCentro = new javax.swing.JRadioButton();
@@ -132,22 +135,23 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setEnabled(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(732, 496));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
 
-        botonGuardarRutaNueva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        botonGuardarRutaNueva.setToolTipText("Guardar Ruta de Fabricación");
-        botonGuardarRutaNueva.setFocusable(false);
-        botonGuardarRutaNueva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardarRutaNueva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonGuardarRutaNueva.addActionListener(new java.awt.event.ActionListener() {
+        botonGuardarRutaEditada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        botonGuardarRutaEditada.setToolTipText("Guardar Ruta de Fabricación");
+        botonGuardarRutaEditada.setFocusable(false);
+        botonGuardarRutaEditada.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonGuardarRutaEditada.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardarRutaEditada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarRutaNuevaActionPerformed(evt);
+                botonGuardarRutaEditadaActionPerformed(evt);
             }
         });
-        jToolBar1.add(botonGuardarRutaNueva);
+        jToolBar1.add(botonGuardarRutaEditada);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         jButton1.setToolTipText("Salir");
@@ -251,8 +255,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(16, 5, 0, 0);
         jPanel3.add(campoCodigoProdFinal, gridBagConstraints);
-
-        campoNombreProdFinal.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -340,6 +342,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel4.add(jLabel5, gridBagConstraints);
+
+        campoNombreEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -347,6 +351,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
         jPanel4.add(campoNombreEtapaRuta, gridBagConstraints);
+
+        campoNumeroEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -701,11 +707,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel4.add(jPanel8, gridBagConstraints);
 
-        botonGuardarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonGuardarEtapa.setText("Guardar Etapa");
-        botonGuardarEtapa.addActionListener(new java.awt.event.ActionListener() {
+        botonGuardarEtapaEditada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        botonGuardarEtapaEditada.setText("Guardar Etapa");
+        botonGuardarEtapaEditada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarEtapaActionPerformed(evt);
+                botonGuardarEtapaEditadaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -713,7 +719,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(2, 20, 0, 0);
-        jPanel4.add(botonGuardarEtapa, gridBagConstraints);
+        jPanel4.add(botonGuardarEtapaEditada, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -796,6 +802,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel10.add(jLabel13, gridBagConstraints);
+
+        campoCodigoCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -803,6 +811,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel10.add(campoCodigoCentroEncontrado, gridBagConstraints);
+
+        campoNombreCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -813,6 +823,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         campoDescripcionCentroEncontrado.setColumns(20);
         campoDescripcionCentroEncontrado.setRows(5);
+        campoDescripcionCentroEncontrado.setEnabled(false);
         jScrollPane10.setViewportView(campoDescripcionCentroEncontrado);
 
         jScrollPane9.setViewportView(jScrollPane10);
@@ -861,19 +872,21 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonGuardarRutaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRutaNuevaActionPerformed
+    private void botonGuardarRutaEditadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRutaEditadaActionPerformed
 
-        controlador.guardarRutaDeFabricacion();     }//GEN-LAST:event_botonGuardarRutaNuevaActionPerformed
+        controlador.guardarRutaDeFabricacion();     }//GEN-LAST:event_botonGuardarRutaEditadaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -904,11 +917,9 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         if (radioBotonBuscaNombreCentro.isSelected()) {             campoBuscaNombreCentro.setEnabled(true);             campoBuscaCodigoCentro.setEnabled(false);         }     }//GEN-LAST:event_radioBotonBuscaNombreCentroActionPerformed
 
     private void botonBuscaCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscaCentroActionPerformed
-        try {
+        
             controlador.buscarCentro();
-        } catch (ExpertoExceptionRutaFabricacion ex) {
-            JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Centro de Trabajo", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        }
+        
     }//GEN-LAST:event_botonBuscaCentroActionPerformed
 
     private void botonAgregaMaquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregaMaquinasActionPerformed
@@ -931,17 +942,16 @@ private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt)
         try {
             controlador.buscarProducto();
         } catch (ExpertoExceptionRutaFabricacion ex) {
-            JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Producto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            Logger.getLogger(PantallaEditarRutaDeFabricacion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
 }//GEN-LAST:event_botonBuscarProdFinalActionPerformed
 
-private void botonGuardarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEtapaActionPerformed
-        try {
+private void botonGuardarEtapaEditadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEtapaEditadaActionPerformed
+       
             controlador.guardarEtapa();
-        } catch (ExpertoExceptionRutaFabricacion ex) {
-            JOptionPane.showMessageDialog(pantalla, "Faltan Completar Campos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        }
-}//GEN-LAST:event_botonGuardarEtapaActionPerformed
+       
+}//GEN-LAST:event_botonGuardarEtapaEditadaActionPerformed
 
 private void tablaEtapasAgregadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEtapasAgregadasMouseClicked
     
@@ -967,8 +977,8 @@ private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton botonBuscaCentro;
     private javax.swing.JButton botonBuscarProdFinal;
     private javax.swing.JButton botonEliminarEtapa;
-    private javax.swing.JButton botonGuardarEtapa;
-    private javax.swing.JButton botonGuardarRutaNueva;
+    private javax.swing.JButton botonGuardarEtapaEditada;
+    private javax.swing.JButton botonGuardarRutaEditada;
     private javax.swing.JButton botonQuitaHerramientas;
     private javax.swing.JButton botonQuitaMaquinas;
     private javax.swing.JButton botonQuitaMateriaPrima;
@@ -1088,22 +1098,31 @@ private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {
         this.botonEliminarEtapa = botonEliminarEtapa;
     }
 
-    public JButton getBotonGuardarEtapa() {
-        return botonGuardarEtapa;
+    public JButton getBotonGuardarEtapaEditada() {
+        return botonGuardarEtapaEditada;
     }
 
-    public void setBotonGuardarEtapa(JButton botonGuardarEtapa) {
-        this.botonGuardarEtapa = botonGuardarEtapa;
+    public void setBotonGuardarEtapaEditada(JButton botonGuardarEtapaEditada) {
+        this.botonGuardarEtapaEditada = botonGuardarEtapaEditada;
     }
 
-    public JButton getBotonGuardarRutaNueva() {
-        return botonGuardarRutaNueva;
+    public JButton getBotonGuardarRutaEditada() {
+        return botonGuardarRutaEditada;
     }
 
-    public void setBotonGuardarRutaNueva(JButton botonGuardarRutaNueva) {
-        this.botonGuardarRutaNueva = botonGuardarRutaNueva;
+    public void setBotonGuardarRutaEditada(JButton botonGuardarRutaEditada) {
+        this.botonGuardarRutaEditada = botonGuardarRutaEditada;
     }
 
+    public PantallaEditarRutaDeFabricacion getPantalla() {
+        return pantalla;
+    }
+
+    public void setPantalla(PantallaEditarRutaDeFabricacion pantalla) {
+        this.pantalla = pantalla;
+    }
+
+    
     public JButton getBotonQuitaHerramientas() {
         return botonQuitaHerramientas;
     }
@@ -1264,11 +1283,11 @@ private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {
         this.comboBoxTipoProducto = comboBoxTipoProducto;
     }
 
-    public ControladorCrearRutaDeFabricacion getControlador() {
+    public ControladorEditarRutaDeFabricacion getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorCrearRutaDeFabricacion controlador) {
+    public void setControlador(ControladorEditarRutaDeFabricacion controlador) {
         this.controlador = controlador;
     }
 

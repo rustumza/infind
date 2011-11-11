@@ -291,7 +291,7 @@ public class ControladorCrearRutaDeFabricacion {
 
             modeloTAblaEtapaAgregada.addRow(nuevaEtapa);
 
-            
+
 
             limpiarPantallaEtapa();
 
@@ -429,20 +429,20 @@ public class ControladorCrearRutaDeFabricacion {
             if (pantallaCrearRutaFabricacion.getRadioBotonBuscaCodigoProdFinal().isSelected()) {
                 articuloEncontradoIntermedio = expertoRutaFabricacion.buscarProductoIntermedio(armarDTOArticulo(1));
 
-                if (!articuloEncontradoFinal.getCodigo().isEmpty()) {
-                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
-                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
-                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                if (!articuloEncontradoIntermedio.getCodigo().isEmpty()) {
+                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoIntermedio.getCodigo());
+                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIntermedio.getDescripcion());
+                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIntermedio.getNombre());
 
                 }
 
             } else if (pantallaCrearRutaFabricacion.getRadioBotonBuscaNombreProdFinal().isSelected()) {
                 articuloEncontradoIntermedio = expertoRutaFabricacion.buscarProductoIntermedio(armarDTOArticulo(2));
 
-                if (!articuloEncontradoFinal.getNombre().isEmpty()) {
-                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
-                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
-                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                if (!articuloEncontradoIntermedio.getNombre().isEmpty()) {
+                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoIntermedio.getCodigo());
+                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIntermedio.getDescripcion());
+                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIntermedio.getNombre());
 
                 }
 
@@ -456,10 +456,10 @@ public class ControladorCrearRutaDeFabricacion {
             if (pantallaCrearRutaFabricacion.getRadioBotonBuscaCodigoProdFinal().isSelected()) {
                 articuloEncontradoIQE = expertoRutaFabricacion.buscarProductoIQE(armarDTOArticulo(1));
 
-                if (!articuloEncontradoFinal.getCodigo().isEmpty()) {
-                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
-                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
-                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                if (!articuloEncontradoIQE.getCodigo().isEmpty()) {
+                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoIQE.getCodigo());
+                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIQE.getDescripcion());
+                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIQE.getNombre());
 
                 }
 
@@ -467,9 +467,9 @@ public class ControladorCrearRutaDeFabricacion {
                 articuloEncontradoIQE = expertoRutaFabricacion.buscarProductoIQE(armarDTOArticulo(2));
 
                 if (!articuloEncontradoFinal.getNombre().isEmpty()) {
-                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
-                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
-                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
+                    pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoIQE.getCodigo());
+                    pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIQE.getDescripcion());
+                    pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIQE.getNombre());
 
                 }
 

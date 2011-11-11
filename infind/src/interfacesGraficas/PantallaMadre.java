@@ -232,6 +232,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         rutaDeFabricacion.add(menuEditarRuta);
 
         jMenuItem2.setText("Editar Ruta de Fabricación");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         rutaDeFabricacion.add(jMenuItem2);
 
         jMenuBar1.add(rutaDeFabricacion);
@@ -360,6 +365,10 @@ private void crearProductoIQEActionPerformed(java.awt.event.ActionEvent evt) {//
 private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosIQEActionPerformed
     controlador.listarProductosIQE();
 }//GEN-LAST:event_listarProductosIQEActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        controlador.EditarRutaFabricacion();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     /**
      * @param args the command line arguments
      */
