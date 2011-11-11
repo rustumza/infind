@@ -31,6 +31,7 @@ public class ControladorListarMateriasPrimas {
     public void iniciar(){
     
         pantalla = new PantallaListarMateriaPrima(controladorPantallaMadre.getPantalla(), false, this);
+        pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
         recargarTabla();
     }

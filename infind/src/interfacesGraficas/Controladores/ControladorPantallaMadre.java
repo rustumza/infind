@@ -78,6 +78,10 @@ public class ControladorPantallaMadre {
         new ControladorListarProductosFinales(this).iniciar();
     }
 
+    public void listarProveedores() {
+        new ControladorListarProveedores(this).iniciar();
+    }
+
     public void crearRutaFabricacion() {
         new ControladorCrearRutaDeFabricacion(this).crearRutaFabricacion();
     }

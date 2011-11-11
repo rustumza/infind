@@ -35,6 +35,7 @@ public class ControladorProductoIntermedio {
 
     public void crearProductoIntermedio() {
         pantallaCrearProductoIntermedio = new PantallaCrearProductoIntermedio(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaCrearProductoIntermedio.setLocationRelativeTo(null);
         pantallaCrearProductoIntermedio.setVisible(true);
         
         List<Numerador> numeroDisponibles = null;

@@ -31,6 +31,7 @@ public class ControladorListarProductosComponentes {
     public void iniciar(){
     
         pantalla = new PantallaListarProductosComponentes(controladorPantallaMadre.getPantalla(), false, this);
+        pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
         recargarTabla();
     }

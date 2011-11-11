@@ -26,7 +26,7 @@ import javax.swing.JToolBar;
 public class PantallaCrearProveedor extends javax.swing.JDialog {
 
     ControladorProveedores controlador;
-    
+
     /** Creates new form PantallaCrearProveedor */
     public PantallaCrearProveedor(java.awt.Frame parent, boolean modal, ControladorProveedores controlador) {
         super(parent, modal);
@@ -48,6 +48,7 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
         menu = new javax.swing.JToolBar();
         guardar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         nombreTextBox = new javax.swing.JTextField();
         telefonoLabel = new javax.swing.JLabel();
         telefonoTextBox = new javax.swing.JTextField();
@@ -76,7 +77,7 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
 
         menu.setRollover(true);
 
-        guardar.setText("Guardar");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -87,11 +88,27 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
         });
         menu.add(guardar);
 
-        cancelar.setText("Cancelar");
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
         menu.add(cancelar);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        menu.add(jButton1);
 
         telefonoLabel.setText("Telefono");
 
@@ -202,7 +219,7 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
                     .addComponent(agregarProdCom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,33 +243,32 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonoLabel)
+                            .addComponent(direccionLabel)
+                            .addComponent(correoElectronicoLabel)
+                            .addComponent(nombreLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(telefonoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(direccionTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(correoElectronicoTextbox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefonoLabel)
-                    .addComponent(direccionLabel)
-                    .addComponent(correoElectronicoLabel)
-                    .addComponent(nombreLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombreTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(telefonoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(direccionTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(correoElectronicoTextbox, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
-                .addContainerGap(68, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLabel)
                     .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -272,7 +288,7 @@ public class PantallaCrearProveedor extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         pack();
@@ -298,10 +314,16 @@ private void sarcarProdCompActionPerformed(java.awt.event.ActionEvent evt) {//GE
     controlador.sacarProductoComponente();
 }//GEN-LAST:event_sarcarProdCompActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;
     private javax.swing.JButton agregarProdCom;
@@ -311,6 +333,7 @@ private void sarcarProdCompActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JLabel direccionLabel;
     private javax.swing.JTextField direccionTextBox;
     private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -537,8 +560,4 @@ private void sarcarProdCompActionPerformed(java.awt.event.ActionEvent evt) {//GE
     public void setSarcarProdComp(JButton sarcarProdComp) {
         this.sarcarProdComp = sarcarProdComp;
     }
-
-
-
-
 }
