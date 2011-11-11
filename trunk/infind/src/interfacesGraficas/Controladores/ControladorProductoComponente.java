@@ -35,6 +35,7 @@ public class ControladorProductoComponente {
 
     public void crearProductoComponente() {
         pantallaCrearProductoComponente = new PantallaCrearProductoComponente(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaCrearProductoComponente.setLocationRelativeTo(null);
         pantallaCrearProductoComponente.setVisible(true);
         List<Numerador> numeroDisponibles = null;
         Criteria criterioNumerador = Fachada.getInstancia().crearCriterioSinEliminado(Numerador.class);

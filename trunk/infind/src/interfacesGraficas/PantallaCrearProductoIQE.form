@@ -46,7 +46,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="toolbar" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="toolbar" min="-2" max="-2" attributes="1"/>
                       <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -58,7 +58,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="toolbar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="567" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="527" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -189,7 +189,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="50" max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -262,7 +262,7 @@
                               <Component id="observacionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

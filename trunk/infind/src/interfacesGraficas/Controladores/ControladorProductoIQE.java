@@ -33,6 +33,7 @@ public class ControladorProductoIQE {
 
     public void crearProductoIQE() {
         pantallaCrearProductoIQE = new PantallaCrearProductoIQE(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaCrearProductoIQE.setLocationRelativeTo(null);
         pantallaCrearProductoIQE.setVisible(true);
         
         List<Numerador> numeroDisponibles = null;

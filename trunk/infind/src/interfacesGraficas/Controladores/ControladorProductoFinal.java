@@ -35,6 +35,7 @@ public class ControladorProductoFinal {
 
     public void crearProductoFinal() {
         pantallaCrearProductoFinal = new PantallaCrearProductoFinal(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaCrearProductoFinal.setLocationRelativeTo(null);
         pantallaCrearProductoFinal.setVisible(true);
         
         List<Numerador> numeroDisponibles = null;

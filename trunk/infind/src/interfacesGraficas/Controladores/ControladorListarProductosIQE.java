@@ -31,6 +31,7 @@ public class ControladorListarProductosIQE {
     public void iniciar(){
     
         pantalla = new PantallaListarProductosIQE(controladorPantallaMadre.getPantalla(), false, this);
+        pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
         recargarTabla();
     }

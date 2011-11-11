@@ -36,6 +36,7 @@ public class ControladorMateriaPrima {
 
     public void crearMateriaPrima() {
         pantallaCrearMateriPrima = new PantallaCrearMateriaPrima(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaCrearMateriPrima.setLocationRelativeTo(null);
         pantallaCrearMateriPrima.setVisible(true);
         
         List<Numerador> numeroDisponibles = null;

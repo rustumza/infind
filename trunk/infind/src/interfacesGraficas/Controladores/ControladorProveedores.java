@@ -101,6 +101,10 @@ public class ControladorProveedores {
         System.out.println("sacar producto componente");
         System.out.println("metodo no implementado!!"); 
     }
+
+    void editarProveedores(String nombreProveedor) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     
     
 }

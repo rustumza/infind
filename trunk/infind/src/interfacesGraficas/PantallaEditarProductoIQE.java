@@ -26,9 +26,9 @@ import javax.swing.JToolBar;
  * @author rustu
  */
 public class PantallaEditarProductoIQE extends javax.swing.JDialog {
-    
+
     ControladorProductoIQE controlador;
-    
+
     /** Creates new form NewJDialog */
     public PantallaEditarProductoIQE(java.awt.Frame parent, boolean modal, ControladorProductoIQE controladorPIQE) {
         super(parent, modal);
@@ -125,6 +125,11 @@ public class PantallaEditarProductoIQE extends javax.swing.JDialog {
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setMargin(new java.awt.Insets(2, 0, 2, 14));
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         toolbar.add(salir);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
@@ -224,7 +229,7 @@ public class PantallaEditarProductoIQE extends javax.swing.JDialog {
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,9 +329,9 @@ public class PantallaEditarProductoIQE extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 private void estadoListBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoListBoxActionPerformed
-    if(((String)estadoListBox.getModel().getSelectedItem()).equals("Inactivo")){
+    if (((String) estadoListBox.getModel().getSelectedItem()).equals("Inactivo")) {
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(true);
-    }else{
+    } else {
         estadoEntrarEnActividadEnFechajDateChooser.setEnabled(false);
     }
 }//GEN-LAST:event_estadoListBoxActionPerformed
@@ -339,10 +344,12 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     controlador.eliminar();
 }//GEN-LAST:event_eliminarActionPerformed
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        dispose();
+    }//GEN-LAST:event_salirActionPerformed
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel categoriaLabel;
@@ -677,6 +684,4 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void setEliminar(JButton eliminar) {
         this.eliminar = eliminar;
     }
-
-
 }

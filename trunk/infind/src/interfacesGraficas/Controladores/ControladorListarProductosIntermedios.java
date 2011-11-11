@@ -31,6 +31,7 @@ public class ControladorListarProductosIntermedios {
     public void iniciar(){
     
         pantalla = new PantallaListarProductosIntermedios(controladorPantallaMadre.getPantalla(), false, this);
+        pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
         recargarTabla();
     }

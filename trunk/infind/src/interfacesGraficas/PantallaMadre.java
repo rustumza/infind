@@ -68,6 +68,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuEditarOperarios = new javax.swing.JMenuItem();
         proveedores = new javax.swing.JMenu();
         crearProveedores = new javax.swing.JMenuItem();
+        jMenuListarProveedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -273,6 +274,14 @@ public class PantallaMadre extends javax.swing.JFrame {
         });
         proveedores.add(crearProveedores);
 
+        jMenuListarProveedores.setText("Listar proveedores");
+        jMenuListarProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuListarProveedoresActionPerformed(evt);
+            }
+        });
+        proveedores.add(jMenuListarProveedores);
+
         jMenuBar1.add(proveedores);
 
         setJMenuBar(jMenuBar1);
@@ -281,7 +290,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 793, Short.MAX_VALUE)
+            .addGap(0, 795, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +341,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_listarProductosIntermediosActionPerformed
 
     private void listarProductosFinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosFinalesActionPerformed
-        controlador.listarProductosFinales();
+        controlador.listarProveedores();
     }//GEN-LAST:event_listarProductosFinalesActionPerformed
 
     private void rutaDeFabricacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaDeFabricacionActionPerformed
@@ -369,6 +378,10 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         controlador.EditarRutaFabricacion();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuListarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarProveedoresActionPerformed
+    controlador.listarProveedores();
+    }//GEN-LAST:event_jMenuListarProveedoresActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -421,6 +434,7 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
