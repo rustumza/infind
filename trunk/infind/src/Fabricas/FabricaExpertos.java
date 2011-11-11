@@ -6,6 +6,7 @@ package Fabricas;
 
 import expertos.Experto;
 import expertos.ExpertoCentroDeTrabajo;
+import expertos.ExpertoEditarRutaFabricacion;
 import expertos.ExpertoMateriaPrima;
 import expertos.ExpertoOperarios;
 import expertos.ExpertoRutaDeFabricacion;
@@ -27,7 +28,7 @@ public class FabricaExpertos {
 
     public enum expertos {
 
-        CENTRO_DE_TRABAJO, OPERARIOS, MATERIAPRIMA, RUTA_FABRICACION
+        CENTRO_DE_TRABAJO, OPERARIOS, MATERIAPRIMA, RUTA_FABRICACION, EDITAR_RUTA_FABRICACION
     }
 
     public Experto getExperto(expertos expertoNombre) {
@@ -40,6 +41,8 @@ public class FabricaExpertos {
                 return new ExpertoMateriaPrima();
             case RUTA_FABRICACION:
                 return new ExpertoRutaDeFabricacion();
+            case EDITAR_RUTA_FABRICACION:
+                return new ExpertoEditarRutaFabricacion();
 
             default:
                 return null;

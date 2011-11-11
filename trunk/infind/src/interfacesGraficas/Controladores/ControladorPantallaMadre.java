@@ -97,4 +97,8 @@ public class ControladorPantallaMadre {
     public void listarProductosIQE() {
         new ControladorListarProductosIQE(this).iniciar();
     }
+
+    public void EditarRutaFabricacion() {
+        new ControladorEditarRutaDeFabricacion(this).editarRuta();
+    }
 }
