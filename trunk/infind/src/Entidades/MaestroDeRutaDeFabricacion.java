@@ -98,4 +98,33 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
         return "Entidades.MaestroDeRutaDeFabricacion[ id=" + id + " ]";
     }
     
+    public void addDetalle(EtapaDeRutaDeFabricacion detalle) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaLista(detalle)) {
+            getEtapaRutaFabricacion().add(detalle);
+            if (detalle.getMaestroRutaFabricacionList() != null) {
+                detalle.getMaestroRutaFabricacionList().getEtapaRutaFabricacion().remove(detalle);
+            }
+            detalle.setMaestroRutaFabricacionList(this);
+        }
+    }
+    
+    private boolean estaEnLaLista(EtapaDeRutaDeFabricacion detalle) {
+        for (EtapaDeRutaDeFabricacion etapa : etapasRutaFabricacion) {
+            if(detalle==etapa)
+                return true;
+        }
+        return false;
+    }
+    
+    public void quitarDetalla(EtapaDeRutaDeFabricacion detalle){
+        if(etapasRutaFabricacion.contains(detalle)){
+            etapasRutaFabricacion.remove(detalle);
+            detalle.setMaestroRutaFabricacionList(null);
+        
+        }
+        
+    }
+
+    
 }

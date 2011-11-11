@@ -98,6 +98,7 @@ public class ControladorCrearRutaDeFabricacion {
         }
         rutaNueva.setEliminado(Boolean.FALSE);
         rutaNueva.setNumero("7");
+        
 
 
 
