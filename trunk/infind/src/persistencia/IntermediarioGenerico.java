@@ -53,4 +53,23 @@ public class IntermediarioGenerico {
         Conexion.getInstancia().confirmarTx();
         return lista;
     }
+    
+    public void guardarSinTransaccion(ObjetoPersitente obj) throws Exception {
+        
+        em = Conexion.getInstancia().getEntityManager();
+        try {
+            if (obj.getId() != null) {
+                em.merge(obj);
+            } else {
+                em.persist(obj);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("error");
+        }
+    }
+    
+    
+    
+    
 }

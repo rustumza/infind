@@ -386,7 +386,7 @@ private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_matPrimProdCompActionPerformed
 
 private void tablaDeMatPrimProdCompMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDeMatPrimProdCompMouseClicked
-    if(evt.getClickCount()==2){
+    if(evt.getClickCount()==1){
         int detalleSeleccionado = getTablaDeMatPrimProdComp().getSelectedRow();
         controlador.cargarDetalleSeleccionado(detalleSeleccionado);
     }
@@ -397,7 +397,7 @@ private void guardarBarraHerramientasActionPerformed(java.awt.event.ActionEvent 
 }//GEN-LAST:event_guardarBarraHerramientasActionPerformed
 
 private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-    
+    controlador.editar();
 }//GEN-LAST:event_editarActionPerformed
 
     /**

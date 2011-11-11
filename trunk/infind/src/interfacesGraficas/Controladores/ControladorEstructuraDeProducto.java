@@ -62,10 +62,10 @@ public class ControladorEstructuraDeProducto {
         }
         
         if(prodFab == null){
-        JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "No se encontro el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().requestFocus();
-        pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().setText("");
-        return;
+            JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "No se encontro el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().requestFocus();
+            pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().setText("");
+            return;
         
         }
         pantallaCrearEstructuraDeProducto.getProductoSeleccionadoTextBox().setText(prodFab.getNombre());        
@@ -83,14 +83,15 @@ public class ControladorEstructuraDeProducto {
         pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod);
         //inicializo tabla de articulos del producto
         ModeloTablaPantallaEstructuraDeProducto mod1 = new ModeloTablaPantallaEstructuraDeProducto();
-        mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
+        if(prodFab.getMaestroEstructuraDeProducto() != null){
+            if(prodFab.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList() != null){
+                mod1.setListaElementos(prodFab.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
+            }
+        }
         pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().setModel(mod1);
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
-        
-        
-        
-        
+
     }
 
     public void cargarListaDeMatPrimProdComp() {
@@ -198,6 +199,16 @@ public class ControladorEstructuraDeProducto {
 
     public void guardarEstructura() {
         experto.guardarEstructura();
+    }
+
+    public void editar() {
+        DetalleEstructuraDeProducto detalle = new DetalleEstructuraDeProducto();
+        
+        detalle.setCantidad(Float.valueOf(pantallaCrearEstructuraDeProducto.getCantidadTextBox().getText()));
+        detalle.setMaestroArticulo((MaestroDeArticulo)pantallaCrearEstructuraDeProducto.getMatPrimProdComp().getSelectedItem());
+        detalle.setTipo((String)pantallaCrearEstructuraDeProducto.getTipoMateriaPrimaProductoComponete().getSelectedItem());
+        actualizarPantalla(experto.editar(detalle, detalleSeleccionado));
+        
     }
     
 

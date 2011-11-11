@@ -57,5 +57,14 @@ public class Fachada {
             Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void guardarSinTranasaccion(ObjetoPersitente obj) {
+        try {
+            (new IntermediarioGenerico()).guardarSinTransaccion(obj);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
