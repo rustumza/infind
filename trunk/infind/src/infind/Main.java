@@ -4,11 +4,9 @@
  */
 package infind;
 
+import Entidades.Herramientas;
 import Entidades.MaestroDeArticulo;
-import Entidades.MaestroDeCentroDeTrabajo;
-import Entidades.MateriaPrima;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
-import excepciones.ExpertoCentroDeTrabajoException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.text.ParseException;
 import java.util.Date;
@@ -21,6 +19,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import persistencia.Conexion;
 import persistencia.Fachada;
+import utilidades.ArmarPDF;
 
 /**
  *
@@ -50,14 +49,19 @@ public class Main {
         for (MaestroDeArticulo maestroDeArticulos : articulosDisponibles) {
             if(maestroDeArticulos.getFechaEntrarEnActividad()!=null){
                 if (maestroDeArticulos.getFechaEntrarEnActividad().before(fechaSistema)) {
-               //     System.out.println("Eliminado?: " + maestroDeArticulos.getEliminado() + "  Nombre: " + maestroDeArticulos.getNombre());
                     maestroDeArticulos.setFechaEntrarEnActividad(null);
                     maestroDeArticulos.setEliminado(Boolean.FALSE);
                     Fachada.getInstancia().guardar(maestroDeArticulos);
                 }
             }
         }
-
+        //TODO esto es para probar como genera un PDF de forma muy facil y funciona como trompada
+        //en utilidades hay una clase ArmarPDF para que lo vean
+        List<Herramientas> herramientas = null;
+        Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas.class);
+        herramientas = Fachada.getInstancia().buscar(Herramientas.class, criterioHerramientas);
+        ArmarPDF pdf = new ArmarPDF();
+        pdf.armar(herramientas);
         new ControladorPantallaMadre().iniciar();
     }
 }
