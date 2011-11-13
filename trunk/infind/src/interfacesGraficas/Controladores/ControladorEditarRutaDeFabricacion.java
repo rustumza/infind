@@ -9,8 +9,10 @@ import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
 import Entidades.MaestroDeArticulo;
+import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.Maquina;
 import Entidades.MateriaPrima;
+import Entidades.Operario;
 import Entidades.ProductoFinal;
 import Entidades.ProductoIntermedio;
 import Entidades.ProductoTipoIQE;
@@ -44,6 +46,7 @@ public class ControladorEditarRutaDeFabricacion {
     ProductoTipoIQE articuloEncontradoIQE;
     EtapaDeRutaDeFabricacion etapaSeleccionado;
     EtapaDeRutaDeFabricacion etapaAEliminar;
+    MaestroDeCentroDeTrabajo centroEncontrado;
 
     public ControladorEditarRutaDeFabricacion(ControladorPantallaMadre contPantMadre) {
         controladorPantallaMadre = contPantMadre;
@@ -99,7 +102,49 @@ public class ControladorEditarRutaDeFabricacion {
     }
 
     public void buscarCentro() {
-        throw new UnsupportedOperationException("Not yet implemented");
+       
+
+        if (pantallaEditarRuta.getRadioBotonBuscaCodigoCentro().isSelected()) {
+            //centroEncontrado = expertoEditarRuta.buscarCentros(armarDTOCentro(1));
+
+            if (!centroEncontrado.getCodigo().isEmpty()) {
+                pantallaEditarRuta.getCampoCodigoCentroEncontrado().setText(centroEncontrado.getCodigo());
+                pantallaEditarRuta.getCampoDescripcionCentroEncontrado().setText(centroEncontrado.getDescripcion());
+                pantallaEditarRuta.getCampoNombreCentroEncontrado().setText(centroEncontrado.getNombreCentro());
+                List<Herramientas> herramientas = centroEncontrado.getHerramientas();
+                List<Maquina> maquinas = centroEncontrado.getMaquinas();
+                List<Operario> operario = centroEncontrado.getOperario();
+                List<Herramientas> listaHerramientas = new ArrayList<Herramientas>();
+                for (Herramientas listaherramientas : herramientas) {
+                    listaHerramientas.add(listaherramientas);
+                }
+                pantallaEditarRuta.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(listaHerramientas));
+                pantallaEditarRuta.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(maquinas));
+
+
+
+
+            }
+
+        } else if (pantallaEditarRuta.getRadioBotonBuscaNombreCentro().isSelected()) {
+            //centroEncontrado = expertoRutaFabricacion.buscarCentros(armarDTOCentro(2));
+
+            if (!centroEncontrado.getNombreCentro().isEmpty()) {
+                pantallaEditarRuta.getCampoCodigoCentroEncontrado().setText(centroEncontrado.getCodigo());
+                pantallaEditarRuta.getCampoDescripcionCentroEncontrado().setText(centroEncontrado.getDescripcion());
+                pantallaEditarRuta.getCampoNombreCentroEncontrado().setText(centroEncontrado.getNombreCentro());
+                List<Herramientas> herramientas = centroEncontrado.getHerramientas();
+                List<Maquina> maquinas = centroEncontrado.getMaquinas();
+                List<Operario> operario = centroEncontrado.getOperario();
+                pantallaEditarRuta.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(herramientas));
+                pantallaEditarRuta.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(maquinas));
+
+            }
+
+
+        }
+
+
     }
 
     public void agregarMaquinas() {

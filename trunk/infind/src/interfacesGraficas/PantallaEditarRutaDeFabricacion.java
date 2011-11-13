@@ -877,7 +877,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -942,7 +942,7 @@ private void botonBuscarProdFinalActionPerformed(java.awt.event.ActionEvent evt)
         try {
             controlador.buscarProducto();
         } catch (ExpertoExceptionRutaFabricacion ex) {
-            Logger.getLogger(PantallaEditarRutaDeFabricacion.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(pantalla, "No se encontró ningún Producto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
         
 }//GEN-LAST:event_botonBuscarProdFinalActionPerformed

@@ -32,9 +32,20 @@ import persistencia.Fachada;
  */
 public class ExpertoRutaDeFabricacion extends Experto {
 
-    List<EtapaDeRutaDeFabricacion> etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
-    List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
-    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+    List<EtapaDeRutaDeFabricacion> etapaEnEspera;
+    List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArticuloGuardado;
+    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar;
+    MaestroDeRutaDeFabricacion ruta;
+    
+    public ExpertoRutaDeFabricacion(){
+    
+        etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
+        detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+        listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+        ruta = new MaestroDeRutaDeFabricacion();
+        ruta.setEtapaRutaFabricacion(new ArrayList<EtapaDeRutaDeFabricacion>());
+    
+    }
 
     public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoExceptionRutaFabricacion {
 
@@ -89,16 +100,17 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
     public void persistirRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
 
-        Fachada.getInstancia().guardar(rutaNueva);
+        
+        Fachada.getInstancia().guardarSinTranasaccion(rutaNueva);
 
     }
 
     public void persistirEtapaRutaFabricacion(EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion) {
-        Fachada.getInstancia().guardar(etapaDeRutaDeFabricacion);
+        Fachada.getInstancia().guardarSinTranasaccion(etapaDeRutaDeFabricacion);
     }
 
     public void persistirDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
-        Fachada.getInstancia().guardar(detalleArticulo);
+        Fachada.getInstancia().guardarSinTranasaccion(detalleArticulo);
     }
 
     public DetalleDeArticuloEnEtapaDeFabricacion buscarDetalleArticulo(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
@@ -163,6 +175,28 @@ public class ExpertoRutaDeFabricacion extends Experto {
         criterioEtapa.add(Restrictions.eq("MaestroDeRutaDeFabricacion", rutaNueva));
 //TODO tira error en el id del maestro de ruta, no se como poner el campo relacionado
         etapasEncontrado = Fachada.getInstancia().buscar(EtapaDeRutaDeFabricacion.class, criterioEtapa);
+
+        return etapasEncontrado;
+
+    }
+    
+    
+    
+    public List<EtapaDeRutaDeFabricacion> buscarEtapasSinTx(MaestroDeRutaDeFabricacion rutaNueva) {
+
+        List<MaestroDeRutaDeFabricacion> rutaEncontrada = null;
+
+//        Criteria criterioRuta = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeRutaDeFabricacion.class);
+  //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
+    //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
+
+        List<EtapaDeRutaDeFabricacion> etapasEncontrado = null;
+
+
+        Criteria criterioEtapa = Fachada.getInstancia().crearCriterioSinEliminado(EtapaDeRutaDeFabricacion.class);
+        criterioEtapa.add(Restrictions.eq("MaestroDeRutaDeFabricacion", rutaNueva));
+//TODO tira error en el id del maestro de ruta, no se como poner el campo relacionado
+        etapasEncontrado = Fachada.getInstancia().buscarSinTx(EtapaDeRutaDeFabricacion.class, criterioEtapa);
 
         return etapasEncontrado;
 
@@ -274,6 +308,15 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
 
             return productoDevuelto;
+    }
+
+    
+
+    public void guardarEtapasEnLaRuta(MaestroDeRutaDeFabricacion rutaNueva) {
+        System.out.println(etapaEnEspera.size());
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaEnEspera) {
+            rutaNueva.addDetalle(etapaDeRutaDeFabricacion);
+        }
     }
 
 }

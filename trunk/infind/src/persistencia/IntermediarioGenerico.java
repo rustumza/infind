@@ -70,6 +70,16 @@ public class IntermediarioGenerico {
     }
     
     
+    public List buscarSinTransaccion(Class object, Criteria criterio) {
+        List<ObjetoPersitente> lista = null;
+        try {
+            lista = criterio.list();
+        } catch (SQLGrammarException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lista;
+    }
+    
     
     
 }
