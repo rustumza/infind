@@ -138,7 +138,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         jToolBar1.setRollover(true);
 
         botonGuardarRutaNueva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        botonGuardarRutaNueva.setToolTipText("Guardar Ruta de Fabricación");
         botonGuardarRutaNueva.setFocusable(false);
         botonGuardarRutaNueva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardarRutaNueva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -871,10 +870,6 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonGuardarRutaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRutaNuevaActionPerformed
-
-        controlador.guardarRutaDeFabricacion();     }//GEN-LAST:event_botonGuardarRutaNuevaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         dispose();     }//GEN-LAST:event_jButton1ActionPerformed
@@ -957,6 +952,14 @@ private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {
            
 
 }//GEN-LAST:event_botonEliminarEtapaActionPerformed
+
+private void botonGuardarRutaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRutaNuevaActionPerformed
+        try {
+            controlador.guardarRutaDeFabricacion();
+        } catch (ExpertoExceptionRutaFabricacion ex) {
+            JOptionPane.showMessageDialog(pantalla, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+}//GEN-LAST:event_botonGuardarRutaNuevaActionPerformed
     /**
      * @param args the command line arguments
      */

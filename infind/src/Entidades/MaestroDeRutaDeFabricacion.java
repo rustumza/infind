@@ -37,13 +37,7 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
         this.id = id;
     }
 
-    public List<EtapaDeRutaDeFabricacion> getEtapasRutaFabricacion() {
-        return etapasRutaFabricacion;
-    }
 
-    public void setEtapasRutaFabricacion(List<EtapaDeRutaDeFabricacion> etapasRutaFabricacion) {
-        this.etapasRutaFabricacion = etapasRutaFabricacion;
-    }
 
     public String getNumero() {
         return numero;

@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import persistencia.Conexion;
 import persistencia.Fachada;
 import utilidades.tablas.RenderTablaListaEtapasRutaFabricacion;
 
@@ -89,7 +90,7 @@ public class ControladorCrearRutaDeFabricacion {
 
     }
 
-    public void guardarRutaDeFabricacion() {
+    public void guardarRutaDeFabricacion() throws ExpertoExceptionRutaFabricacion{
 
 
         if (rutaNueva != null) {
@@ -98,16 +99,18 @@ public class ControladorCrearRutaDeFabricacion {
         }
         rutaNueva.setEliminado(Boolean.FALSE);
         rutaNueva.setNumero("7");
+        rutaNueva.setEtapaRutaFabricacion(new ArrayList<EtapaDeRutaDeFabricacion>());
         
 
 
+        Conexion.getInstancia().iniciarTX();
 
-
+        
         expertoRutaFabricacion.persistirRutaDeFabricacion(rutaNueva);
-
+        
         List<EtapaDeRutaDeFabricacion> etapasAGuardar = expertoRutaFabricacion.devolverEtapasAGuardar();
 
-
+        expertoRutaFabricacion.guardarEtapasEnLaRuta(rutaNueva);
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasAGuardar) {
 
 
@@ -117,21 +120,23 @@ public class ControladorCrearRutaDeFabricacion {
             expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleDeArticuloEnEtapaDeFabricacion);
             
             }*/
-            etapaDeRutaDeFabricacion.setMaestroRutaFabricacionList(rutaNueva);
+            
+            //etapaDeRutaDeFabricacion.setMaestroRutaFabricacionList(rutaNueva);
+            
             expertoRutaFabricacion.persistirEtapaRutaFabricacion(etapaDeRutaDeFabricacion);//TODO al persistir la etapa es cuando tire el error
-            List<EtapaDeRutaDeFabricacion> etapasGu = expertoRutaFabricacion.buscarEtapas(rutaNueva);
-            for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion1 : etapasGu) {
-                List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaDeRutaDeFabricacion1.getDetallesArtEnEtapaFabList();
+            //List<EtapaDeRutaDeFabricacion> etapasGu = expertoRutaFabricacion.buscarEtapasSinTx(rutaNueva);
+            //for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion1 : etapasGu) {
+                List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaDeRutaDeFabricacion.getDetallesArtEnEtapaFabList();
                 for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArtEnEtapaFabList) {
                     detalleDeArticuloEnEtapaDeFabricacion.setEtapaRutaFabricacion(etapaDeRutaDeFabricacion);
                     expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion(detalleDeArticuloEnEtapaDeFabricacion);
                 }
-            }
+            //}
 
-
+            
             //expertoRutaFabricacion.persistirDetalleArticuloEnEtapaFabricacion();
         }
-
+        expertoRutaFabricacion.persistirRutaDeFabricacion(rutaNueva);
         /*List<EtapaDeRutaDeFabricacion> etapasGuardadas = expertoRutaFabricacion.buscarEtapas(rutaNueva);
         
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapasGuardadas) {
@@ -148,7 +153,7 @@ public class ControladorCrearRutaDeFabricacion {
 
         //debo asignarle la ruta guardadda al maestro de estructura de producto del producto buscado
         //en pantalla al principio
-
+        Conexion.getInstancia().confirmarTx();
     }
 
     public void buscarCentro() throws ExpertoExceptionRutaFabricacion {

@@ -48,6 +48,14 @@ public class Fachada {
         }
         return (new IntermediarioGenerico()).buscar(tipoObjeto, criterio);
     }
+    
+    
+    public List buscarSinTx(Class tipoObjeto, Criteria criterio) {
+        if (criterio == null) {
+            criterio = crearCriterio(tipoObjeto);
+        }
+        return (new IntermediarioGenerico()).buscarSinTransaccion(tipoObjeto, criterio);
+    }
 
     public void guardar(ObjetoPersitente obj) {
         try {
