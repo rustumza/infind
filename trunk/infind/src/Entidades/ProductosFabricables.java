@@ -9,6 +9,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 /**
  *
@@ -27,9 +31,11 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
      * 
      */
     @ManyToOne
+    @LazyToOne(LazyToOneOption.FALSE)
     private ProductoTipoIQE productoTipoIQE;
     
     @ManyToOne
+    @LazyToOne(LazyToOneOption.FALSE)
     private MaestroDeEstructuraDeProducto maestroEstructuraDeProducto;
 
     /*@Override

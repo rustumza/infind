@@ -65,6 +65,10 @@ public class ControladorEstructuraDeProducto {
             JOptionPane.showMessageDialog(pantallaCrearEstructuraDeProducto, "No se encontro el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().requestFocus();
             pantallaCrearEstructuraDeProducto.getCodigoProductoTextBox().setText("");
+            ModeloTablaPantallaEstructuraDeProducto mod = new ModeloTablaPantallaEstructuraDeProducto();
+            mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
+            pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod);
+            pantallaCrearEstructuraDeProducto.getTablaDeMatPrimProdComp().setModel(mod);
             return;
         
         }
@@ -77,7 +81,7 @@ public class ControladorEstructuraDeProducto {
                     mod.setListaElementos(prodFab.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList());
                 }
             }
-        }else{
+        }else{mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
             mod.setListaElementos(new ArrayList<DetalleEstructuraDeProducto>());
         }
         pantallaCrearEstructuraDeProducto.getTablaArticulosProdIQE().setModel(mod);
@@ -186,6 +190,7 @@ public class ControladorEstructuraDeProducto {
     public void cancelar() {
         pantallaCrearEstructuraDeProducto.getEditar().setEnabled(false);
         pantallaCrearEstructuraDeProducto.getQuitar().setEnabled(false);
+        pantallaCrearEstructuraDeProducto.getAgregar().setEnabled(true);
         pantallaCrearEstructuraDeProducto.getCantidadTextBox().setText("");
         pantallaCrearEstructuraDeProducto.getUnidadDeMedida().setText(" ");
         pantallaCrearEstructuraDeProducto.getMatPrimProdComp().setSelectedItem("Materia prima");

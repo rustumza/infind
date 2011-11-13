@@ -15,6 +15,7 @@ import Entidades.ProductosFabricables;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import persistencia.Conexion;
 import persistencia.Fachada;
 
@@ -58,6 +59,7 @@ public class ExpertoEstructuraDeProducto {
     public MaestroDeEstructuraDeProducto buscarProductoFinal(String codigo) {
         List listaProdFinal = null;
         Criteria criterioProdFin = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
+        criterioProdFin.add(Restrictions.like("codigo", codigo));
         listaProdFinal = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProdFin);
         if(!listaProdFinal.isEmpty()){
             prod = (ProductoFinal)listaProdFinal.get(0);
@@ -65,9 +67,14 @@ public class ExpertoEstructuraDeProducto {
                 estructura = prod.getMaestroEstructuraDeProducto();
                 
             }else{
+                estructura = new MaestroDeEstructuraDeProducto();
+                estructura.setDetalleEstructuraProductoList(new ArrayList<DetalleEstructuraDeProducto>());
                 estructura.setProductoFinal((ProductoFinal)prod);
             }
             prod.setMaestroEstructuraDeProducto(estructura);
+        }else{
+            prod = null;
+            estructura = new MaestroDeEstructuraDeProducto();
         }
         return estructura;
     }
@@ -75,16 +82,23 @@ public class ExpertoEstructuraDeProducto {
     public MaestroDeEstructuraDeProducto buscarProductoIQE(String codigo) {
         List listaProdIQE = null;
         Criteria criterioProdIQE = Fachada.getInstancia().crearCriterio(ProductoTipoIQE.class);
+        criterioProdIQE.add(Restrictions.like("codigo", codigo));
         listaProdIQE = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdIQE);        
         if(!listaProdIQE.isEmpty()){
             prod = (ProductoTipoIQE)listaProdIQE.get(0);
             if(prod.getMaestroEstructuraDeProducto() != null){
                 estructura = prod.getMaestroEstructuraDeProducto();
             }else{
+                estructura = new MaestroDeEstructuraDeProducto();
+                estructura.setDetalleEstructuraProductoList(new ArrayList<DetalleEstructuraDeProducto>());
                 estructura.setProductoTipoIQE((ProductoTipoIQE)prod);
             }
             prod.setMaestroEstructuraDeProducto(estructura);
+        }else{
+            prod = null;
+            estructura = new MaestroDeEstructuraDeProducto();
         }
+        
         return estructura;
     }
 
@@ -92,15 +106,21 @@ public class ExpertoEstructuraDeProducto {
         
         List listaProdInt = null;
         Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
+        criterioProdInt.add(Restrictions.like("codigo", codigo));
         listaProdInt = Fachada.getInstancia().buscar(ProductoTipoIQE.class, criterioProdInt);        
         if(!listaProdInt.isEmpty()){
             prod = (ProductoIntermedio)listaProdInt.get(0);
             if(prod.getMaestroEstructuraDeProducto() != null){
                 estructura = prod.getMaestroEstructuraDeProducto();
             }else{
+                estructura = new MaestroDeEstructuraDeProducto();
+                estructura.setDetalleEstructuraProductoList(new ArrayList<DetalleEstructuraDeProducto>());
                 estructura.setProductoIntermedio((ProductoIntermedio)prod);
             }
             prod.setMaestroEstructuraDeProducto(estructura);
+        }else{
+            prod = null;
+            estructura = new MaestroDeEstructuraDeProducto();
         }
         return estructura;
         
@@ -133,5 +153,5 @@ public class ExpertoEstructuraDeProducto {
         estructura.getDetalleEstructuraProductoList().get(detalleSeleccionado).setTipo(detalle.getTipo());
         return estructura;
     }
-    
+
 }
