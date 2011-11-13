@@ -341,7 +341,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_listarProductosIntermediosActionPerformed
 
     private void listarProductosFinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductosFinalesActionPerformed
-        controlador.listarProveedores();
+        controlador.listarProductosFinales();
     }//GEN-LAST:event_listarProductosFinalesActionPerformed
 
     private void rutaDeFabricacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaDeFabricacionActionPerformed
@@ -380,7 +380,7 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuListarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarProveedoresActionPerformed
-    controlador.listarProveedores();
+        controlador.listarProveedores();
     }//GEN-LAST:event_jMenuListarProveedoresActionPerformed
     /**
      * @param args the command line arguments
