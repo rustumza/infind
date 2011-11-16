@@ -27,7 +27,7 @@ import javax.swing.JToolBar;
 public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
 
     ControladorEstructuraDeProducto controlador;
-    
+
     /** Creates new form PantallaEstructuraDeProducto */
     public PantallaCrearEstructuraDeProducto(java.awt.Frame parent, boolean modal, ControladorEstructuraDeProducto controlador) {
         super(parent, modal);
@@ -132,7 +132,7 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
 
         barraDeHerramientas.setRollover(true);
 
-        guardarBarraHerramientas.setText("Guardar");
+        guardarBarraHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
         guardarBarraHerramientas.setFocusable(false);
         guardarBarraHerramientas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardarBarraHerramientas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -143,16 +143,26 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
         });
         barraDeHerramientas.add(guardarBarraHerramientas);
 
-        cancelarBarraHerramientas.setText("Cancelar");
+        cancelarBarraHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         cancelarBarraHerramientas.setFocusable(false);
         cancelarBarraHerramientas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelarBarraHerramientas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelarBarraHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBarraHerramientasActionPerformed(evt);
+            }
+        });
         barraDeHerramientas.add(cancelarBarraHerramientas);
 
-        salirBarraHerramientas.setText("Salir");
+        salirBarraHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         salirBarraHerramientas.setFocusable(false);
         salirBarraHerramientas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salirBarraHerramientas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salirBarraHerramientas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBarraHerramientasActionPerformed(evt);
+            }
+        });
         barraDeHerramientas.add(salirBarraHerramientas);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Materia prima - Producto componente"));
@@ -227,7 +237,7 @@ public class PantallaCrearEstructuraDeProducto extends javax.swing.JDialog {
                         .addGap(27, 27, 27)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -386,7 +396,7 @@ private void matPrimProdCompActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_matPrimProdCompActionPerformed
 
 private void tablaDeMatPrimProdCompMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDeMatPrimProdCompMouseClicked
-    if(evt.getClickCount()==1){
+    if (evt.getClickCount() == 1) {
         int detalleSeleccionado = getTablaDeMatPrimProdComp().getSelectedRow();
         controlador.cargarDetalleSeleccionado(detalleSeleccionado);
     }
@@ -400,10 +410,16 @@ private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     controlador.editar();
 }//GEN-LAST:event_editarActionPerformed
 
+    private void salirBarraHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBarraHerramientasActionPerformed
+        dispose();
+    }//GEN-LAST:event_salirBarraHerramientasActionPerformed
+
+    private void cancelarBarraHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBarraHerramientasActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelarBarraHerramientasActionPerformed
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;
     private javax.swing.JToolBar barraDeHerramientas;
@@ -666,10 +682,4 @@ private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void setEditar(JButton editar) {
         this.editar = editar;
     }
-
-
-
-
-
-
 }
