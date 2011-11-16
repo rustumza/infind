@@ -22,6 +22,7 @@ import Entidades.ProductoTipoIQE;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoExceptionRutaFabricacion;
 import expertos.ExpertoRutaDeFabricacion;
+import interfacesGraficas.ModeloComboYListas.ModeloJListListaMaestroDeArticulo;
 import interfacesGraficas.ModeloComboYListas.ModeloJListListaMateriaPrima;
 import interfacesGraficas.ModeloComboYListas.ModeloJListaMaquinas;
 import interfacesGraficas.ModeloComboYListas.ModeloJlistaHerramientas;
@@ -85,8 +86,8 @@ public class ControladorCrearRutaDeFabricacion {
 
 
         //pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaDeLosProductos));
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(new ArrayList<MateriaPrima>()));
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima(new ArrayList<MateriaPrima>()));
+        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(new ArrayList<MaestroDeArticulo>()));
+        pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMaestroDeArticulo(new ArrayList<MaestroDeArticulo>()));
         pantallaCrearRutaFabricacion.getListaHerramientasAgregadas().setModel(new ModeloJlistaHerramientas(new ArrayList<Herramientas>()));
         pantallaCrearRutaFabricacion.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(new ArrayList<Herramientas>()));
         pantallaCrearRutaFabricacion.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(new ArrayList<Maquina>()));
@@ -261,7 +262,7 @@ public class ControladorCrearRutaDeFabricacion {
 
             DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo = new DetalleDeArticuloEnEtapaDeFabricacion();
             List<DetalleDeArticuloEnEtapaDeFabricacion> listaDeDetallesArticulos = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
-            List<MateriaPrima> materiasPrimas = new ArrayList<MateriaPrima>();
+            List<MaestroDeArticulo> materiasPrimas = new ArrayList<MaestroDeArticulo>();
             if (nuevaEtapa != null) {
                 nuevaEtapa = new EtapaDeRutaDeFabricacion();
 
@@ -277,11 +278,11 @@ public class ControladorCrearRutaDeFabricacion {
             nuevaEtapa.setTiempoDeTrabajoDeOperarios(Integer.parseInt(pantallaCrearRutaFabricacion.getCampoTpoOperarioEtapaRuta().getText()));
             nuevaEtapa.setTiempoDeTrabajoTotal(Integer.parseInt(pantallaCrearRutaFabricacion.getCampoTpoMaquinaEtapaRuta().getText()) + Integer.parseInt(pantallaCrearRutaFabricacion.getCampoTpoOperarioEtapaRuta().getText()));
 
-            List<MateriaPrima> listaMatPrims = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getMateriasPrimas();
+            List<MaestroDeArticulo> listaMatPrims = ((ModeloJListListaMaestroDeArticulo) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getMaestrosDeArticulo();
 
             for (int i = 0; i < (listaMatPrims.size()); i++) {
 
-                MateriaPrima matPrima = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getElementAt(i);
+                MaestroDeArticulo matPrima = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getElementAt(i);
                 materiasPrimas.add(matPrima);
 
                 detalleArticulo.setCantidad(2);
@@ -319,8 +320,8 @@ public class ControladorCrearRutaDeFabricacion {
 
     public void agregarMatriaPrima() {
         int seleccionado = pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getSelectedIndex();
-        MateriaPrima materiaPrimaSeleccionada = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getModel()).getElementAt(seleccionado);
-        List<MateriaPrima> listaMatPrims = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getMateriasPrimas();
+        MaestroDeArticulo materiaPrimaSeleccionada = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getModel()).getElementAt(seleccionado);
+        List<MaestroDeArticulo> listaMatPrims = ((ModeloJListListaMaestroDeArticulo) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getMaestrosDeArticulo();
 
         if (!listaMatPrims.contains(materiaPrimaSeleccionada)) {
             listaMatPrims.add(materiaPrimaSeleccionada);
@@ -328,7 +329,7 @@ public class ControladorCrearRutaDeFabricacion {
 
 
 
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima(listaMatPrims));
+        pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMaestroDeArticulo(listaMatPrims));
 
     }
 
@@ -402,7 +403,9 @@ public class ControladorCrearRutaDeFabricacion {
         pantallaCrearRutaFabricacion.getListaMaquinasAgregadas().setModel(new ModeloJListaMaquinas());
         pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima());
         List<MateriaPrima> listaMatPrim = expertoRutaFabricacion.buscarMateriasPrimas();
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaMatPrim));
+        List<MaestroDeArticulo> mater = new ArrayList<MaestroDeArticulo>();
+        mater.addAll(listaMatPrim);
+        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(mater));
 
 
 
@@ -410,7 +413,7 @@ public class ControladorCrearRutaDeFabricacion {
 
     public void buscarProducto() throws ExpertoExceptionRutaFabricacion {
         Object selectedItem = pantallaCrearRutaFabricacion.getComboBoxTipoProducto().getSelectedItem();
-        List<MateriaPrima> listaDeLosProductos = new ArrayList<MateriaPrima>();
+        List<MaestroDeArticulo> listaDeLosProductos = new ArrayList<MaestroDeArticulo>();
 
 
 
@@ -432,12 +435,12 @@ public class ControladorCrearRutaDeFabricacion {
                         listaDeLosProductos.add(materia);
                     }
                     //busco las materias del prod IQE del producto final encontrado
-                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
-                        MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                        MaestroDeArticulo materiaDelProFinal = detalleEstructuraDeProducto.getMaestroArticulo();//no lo puede castear
                         listaDeLosProductos.add(materiaDelProFinal);
                     }
-                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                     if (etapaRutaFabricacion != null) {
                         modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacion);
                     }
@@ -456,20 +459,20 @@ public class ControladorCrearRutaDeFabricacion {
                         MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materia);
                     }
-                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
                         MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materiaDelProFinal);
                     }
-                    
-                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+
+                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                     if (etapaRutaFabricacion != null) {
                         modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacion);
                     }
-                    
+
                 }
             }
-            pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaDeLosProductos));
+            pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(listaDeLosProductos));
 
         } else if (selectedItem.toString() == "Producto Intermedio") {
 
@@ -487,19 +490,19 @@ public class ControladorCrearRutaDeFabricacion {
                         MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materia);
                     }
-                    
-                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+
+                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
                         MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materiaDelProFinal);
                     }
-                    
-                    
-                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+
+
+                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                     if (etapaRutaFabricacion != null) {
                         modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacion);
                     }
-                    
+
 
                 }
 
@@ -517,23 +520,24 @@ public class ControladorCrearRutaDeFabricacion {
                         MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materia);
                     }
-                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+                    List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
                         MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
                         listaDeLosProductos.add(materiaDelProFinal);
                     }
-                    
-                    
-                     List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+
+
+                    List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                     if (etapaRutaFabricacion != null) {
                         modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacion);
                     }
 
                 }
-
+                
+            
             }
 
-            pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaDeLosProductos));
+            pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(listaDeLosProductos));
 
         } else if (selectedItem.toString() == "Producto Tipo IQE") {
 
@@ -573,7 +577,7 @@ public class ControladorCrearRutaDeFabricacion {
             }
 
         }
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaDeLosProductos));
+        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(listaDeLosProductos));
     }
 
     public DTOArticulo armarDTOArticulo(Integer caso) {
