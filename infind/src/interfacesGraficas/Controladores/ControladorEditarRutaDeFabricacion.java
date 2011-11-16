@@ -19,6 +19,7 @@ import Entidades.ProductoTipoIQE;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoExceptionRutaFabricacion;
 import expertos.ExpertoEditarRutaFabricacion;
+import interfacesGraficas.ModeloComboYListas.ModeloJListListaMaestroDeArticulo;
 import interfacesGraficas.ModeloComboYListas.ModeloJListListaMateriaPrima;
 import interfacesGraficas.ModeloComboYListas.ModeloJListaMaquinas;
 import interfacesGraficas.ModeloComboYListas.ModeloJlistaHerramientas;
@@ -61,11 +62,13 @@ public class ControladorEditarRutaDeFabricacion {
         pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
         //pantallaCrearRutaFabricacion.getTablaEtapasAgregadas().setDefaultRenderer(Object.class, new RenderTablaListaEtapasRutaFabricacion());
         List<MateriaPrima> listaMatPrim = expertoEditarRuta.buscarMateriasPrimas();
+        List<MaestroDeArticulo> mater = new ArrayList<MaestroDeArticulo>();
+        mater.addAll(listaMatPrim);
         List<Herramientas> listaHerramientas = expertoEditarRuta.buscarHerramientas();
         List<Maquina> listaMaquinas = expertoEditarRuta.buscarMaquinas();
 
-        pantallaEditarRuta.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMateriaPrima(listaMatPrim));
-        pantallaEditarRuta.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima(new ArrayList<MateriaPrima>()));
+        pantallaEditarRuta.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(mater));
+        pantallaEditarRuta.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMaestroDeArticulo(new ArrayList<MaestroDeArticulo>()));
         pantallaEditarRuta.getListaHerramientasAgregadas().setModel(new ModeloJlistaHerramientas(new ArrayList<Herramientas>()));
         pantallaEditarRuta.getListaHerramientasCargadas().setModel(new ModeloJlistaHerramientas(listaHerramientas));
         pantallaEditarRuta.getListaMaquiansCargadas().setModel(new ModeloJListaMaquinas(listaMaquinas));
@@ -319,14 +322,14 @@ public class ControladorEditarRutaDeFabricacion {
         pantallaEditarRuta.getCampoTpoMaquinaEtapaRuta().setText(String.valueOf(etapaSeleccionado.getTiempoDeTrabajoDeMaquinas()));
         pantallaEditarRuta.getCampoNroOperariosEtapaRuta().setText(String.valueOf(etapaSeleccionado.getCantidadDeOperarios()));
         List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaSeleccionado.getDetallesArtEnEtapaFabList();
-        List<MateriaPrima> listaAAgregar = null;
+        List<MaestroDeArticulo> listaAAgregar = null;
         
         for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArtEnEtapaFabList) {
             MateriaPrima maestroArticulo = (MateriaPrima) detalleDeArticuloEnEtapaDeFabricacion.getMaestroArticulo();
             listaAAgregar.add(maestroArticulo);
         }
         
-        pantallaEditarRuta.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMateriaPrima(listaAAgregar));
+        pantallaEditarRuta.getListaMateriasPrimasAgregadas().setModel(new ModeloJListListaMaestroDeArticulo(listaAAgregar));
         
     }
     
