@@ -61,7 +61,7 @@ public class Main {
         Criteria criterioHerramientas = Fachada.getInstancia().crearCriterio(Herramientas.class);
         herramientas = Fachada.getInstancia().buscar(Herramientas.class, criterioHerramientas);
         ArmarPDF pdf = new ArmarPDF();
-        pdf.armar(herramientas);
+       // pdf.armar(herramientas);
         new ControladorPantallaMadre().iniciar();
     }
 }
