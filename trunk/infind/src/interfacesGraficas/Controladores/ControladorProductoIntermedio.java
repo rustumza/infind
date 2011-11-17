@@ -107,6 +107,13 @@ public class ControladorProductoIntermedio {
             pantallaCrearProductoIntermedio.getTamanioLoteEstandarTextBox().requestFocus();
             return;       
         }
+        try{
+            proInter.setTiempoDeObtenecion(Integer.valueOf(pantallaCrearProductoIntermedio.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearProductoIntermedio, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearProductoIntermedio.getTiempoDeObtencionTextBox().requestFocus();
+            return;       
+        }
         proInter.setUbicacionEnAlmacen(pantallaCrearProductoIntermedio.getUbicacionAlamcenTextBox().getText());
         proInter.setObservacion(pantallaCrearProductoIntermedio.getObservacionTextArea().getText());
         proInter.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoIntermedio.getProductoIQERelacionadoListBox().getSelectedItem());
@@ -148,6 +155,7 @@ public class ControladorProductoIntermedio {
         }
         pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().setText(String.valueOf(proInter.getTamanioLoteEstandar()));
         pantallaEditarProductoIntermedio.getUbicacionAlamcenTextBox().setText(proInter.getUbicacionEnAlmacen());
+        pantallaEditarProductoIntermedio.getTiempoDeObtencionTextBox().setText(String.valueOf(proInter.getTiempoDeObtenecion()));
         pantallaEditarProductoIntermedio.getObservacionTextArea().setText(proInter.getObservacion());
         pantallaEditarProductoIntermedio.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(experto.buscarProductosIQE().toArray()));
         pantallaEditarProductoIntermedio.getProductoIQERelacionadoListBox().setSelectedItem(proInter.getProductoTipoIQE());
@@ -202,6 +210,13 @@ public class ControladorProductoIntermedio {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoIntermedio, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().requestFocus();
+            return;       
+        }
+        try{
+            proInter.setTiempoDeObtenecion(Integer.valueOf(pantallaEditarProductoIntermedio.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarProductoIntermedio, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarProductoIntermedio.getTiempoDeObtencionTextBox().requestFocus();
             return;       
         }
         proInter.setUbicacionEnAlmacen(pantallaEditarProductoIntermedio.getUbicacionAlamcenTextBox().getText());

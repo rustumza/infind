@@ -44,12 +44,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="toolbar" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -58,7 +58,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="toolbar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="652" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="666" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -209,8 +210,13 @@
                                       <Component id="codigoTextBox" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="tiempoDeObtencionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="tiempoDeObtencionTextBox" min="-2" pref="117" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -274,6 +280,11 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="tamanioLoteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tamanioLoteEstandarTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tiempoDeObtencionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tiempoDeObtencionTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -484,6 +495,13 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="tiempoDeObtencionLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tiempo de obtenci&#xf3;n (d&#xed;as)"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tiempoDeObtencionTextBox">
                 </Component>
               </SubComponents>
             </Container>

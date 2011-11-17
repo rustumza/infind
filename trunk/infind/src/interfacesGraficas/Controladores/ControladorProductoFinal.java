@@ -110,6 +110,13 @@ public class ControladorProductoFinal {
             pantallaCrearProductoFinal.getTamanioLoteEstandarTextBox().requestFocus();
             return;       
         }
+        try{
+            proFinal.setTiempoDeObtenecion(Integer.valueOf(pantallaCrearProductoFinal.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearProductoFinal, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearProductoFinal.getTiempoDeObtencionTextBox().requestFocus();
+            return;       
+        }
         proFinal.setUbicacionEnAlmacen(pantallaCrearProductoFinal.getUbicacionAlamcenTextBox().getText());
         proFinal.setObservacion(pantallaCrearProductoFinal.getObservacionTextArea().getText());
         proFinal.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoFinal.getProductoIQERelacionadoListBox().getSelectedItem());
@@ -152,6 +159,7 @@ public class ControladorProductoFinal {
         }
         pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().setText(String.valueOf(pFinal.getTamanioLoteEstandar()));
         pantallaEditarProductoFinal.getUbicacionAlamcenTextBox().setText(pFinal.getUbicacionEnAlmacen());
+        pantallaEditarProductoFinal.getTiempoDeObtencionTextBox().setText(String.valueOf(pFinal.getTiempoDeObtenecion()));
         pantallaEditarProductoFinal.getObservacionTextArea().setText(pFinal.getObservacion());
         pantallaEditarProductoFinal.getProductoIQERelacionadoListBox().setModel(new DefaultComboBoxModel(experto.buscarProductosIQE().toArray()));
         pantallaEditarProductoFinal.getProductoIQERelacionadoListBox().getModel().setSelectedItem(pFinal.getProductoTipoIQE());
@@ -207,6 +215,13 @@ public class ControladorProductoFinal {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoFinal, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().requestFocus();
+            return;       
+        }
+        try{
+            pFinal.setTiempoDeObtenecion(Integer.valueOf(pantallaEditarProductoFinal.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarProductoFinal, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarProductoFinal.getTiempoDeObtencionTextBox().requestFocus();
             return;       
         }
         pFinal.setUbicacionEnAlmacen(pantallaEditarProductoFinal.getUbicacionAlamcenTextBox().getText());

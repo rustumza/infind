@@ -108,6 +108,13 @@ public class ControladorMateriaPrima {
             pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
             return;       
         }
+        try{
+            matPrim.setTiempoDeObtenecion(Integer.valueOf(pantallaCrearMateriPrima.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaCrearMateriPrima.getTiempoDeObtencionTextBox().requestFocus();
+            return;       
+        }
         matPrim.setUbicacionEnAlmacen(pantallaCrearMateriPrima.getUbicacionAlamcenTextBox().getText());
         matPrim.setObservacion(pantallaCrearMateriPrima.getObservacionTextArea().getText());
         
@@ -170,6 +177,7 @@ public class ControladorMateriaPrima {
         }
         pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().setText(String.valueOf(matPrim.getTamanioLoteEstandar()));
         pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().setText(matPrim.getUbicacionEnAlmacen());
+        pantallaEditarMateriPrima.getTiempoDeObtencionTextBox().setText(String.valueOf(matPrim.getTiempoDeObtenecion()));
         pantallaEditarMateriPrima.getObservacionTextArea().setText(matPrim.getObservacion());
         pantallaEditarMateriPrima.getProveedorPredeterminadoListBox().setModel(new DefaultComboBoxModel(matPrim.getProveedores().toArray()));
         if(matPrim.getProveedorPredeterminado() != null){
@@ -226,6 +234,13 @@ public class ControladorMateriaPrima {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
+            return;       
+        }
+        try{
+            matPrim.setTiempoDeObtenecion(Integer.valueOf(pantallaEditarMateriPrima.getTiempoDeObtencionTextBox().getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un tiempo de obtención incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditarMateriPrima.getTiempoDeObtencionTextBox().requestFocus();
             return;       
         }
         matPrim.setUbicacionEnAlmacen(pantallaEditarMateriPrima.getUbicacionAlamcenTextBox().getText());
