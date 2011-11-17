@@ -58,7 +58,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="toolbar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="574" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="631" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -138,6 +139,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="tiempoDeObtencionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="tiempoDeObtencionTextBox" min="-2" pref="156" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="estadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -188,7 +194,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="36" max="32767" attributes="0"/>
+                          <EmptySpace pref="38" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -250,6 +256,11 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tiempoDeObtencionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tiempoDeObtencionTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="ubicacionEnElAlmacenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="ubicacionAlamcenTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -266,7 +277,7 @@
                               <Component id="productoIQERelacionadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="productoIQERelacionadoListBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -441,6 +452,13 @@
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
                     </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tiempoDeObtencionTextBox">
+                </Component>
+                <Component class="javax.swing.JLabel" name="tiempoDeObtencionLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tiempo de obtenci&#xf3;n (d&#xed;as)"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -23,10 +23,9 @@ public class Stock extends ObjetoPersitente implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
-    private float cantidadADisponerAFuturo;
-    private float cantidadNecesaria;
+    private float cantidadRealFisica;
+    private float cantidadPorEntrar;
     private float cantidadReservada;
-    private float cantidadTotal;
 
     public Long getId() {
         return id;
@@ -36,20 +35,20 @@ public class Stock extends ObjetoPersitente implements Serializable {
         this.id = id;
     }
 
-    public float getCantidadADisponerAFuturo() {
-        return cantidadADisponerAFuturo;
+    public float getCantidadFisicaReal() {
+        return cantidadRealFisica;
     }
 
-    public void setCantidadADisponerAFuturo(float cantidadADisponerAFuturo) {
-        this.cantidadADisponerAFuturo = cantidadADisponerAFuturo;
+    public void setCantidadFisicaReal(float cantidad) {
+        this.cantidadRealFisica = cantidad;
     }
 
-    public float getCantidadNecesaria() {
-        return cantidadNecesaria;
+    public float getCantidadPorEntrar() {
+        return cantidadPorEntrar;
     }
 
-    public void setCantidadNecesaria(float cantidadNecesaria) {
-        this.cantidadNecesaria = cantidadNecesaria;
+    public void setCantidadPorEntrar(float cantidad) {
+        this.cantidadPorEntrar = cantidad;
     }
 
     public float getCantidadReservada() {
@@ -58,14 +57,6 @@ public class Stock extends ObjetoPersitente implements Serializable {
 
     public void setCantidadReservada(float cantidadReservada) {
         this.cantidadReservada = cantidadReservada;
-    }
-
-    public float getCantidadTotal() {
-        return cantidadTotal;
-    }
-
-    public void setCantidadTotal(float cantidadTotal) {
-        this.cantidadTotal = cantidadTotal;
     }
 
     public Boolean getEliminado() {

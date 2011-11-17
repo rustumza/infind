@@ -44,12 +44,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="toolbar" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="jScrollPane2" alignment="0" pref="724" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -58,7 +58,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="toolbar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="570" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="627" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -144,36 +145,6 @@
                               <Component id="estadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="unidadDeMedidaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="categoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="costoEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="costoUnitarioPorOmisionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="precioBaseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tamañoLoteEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ubicacionEnElAlmacenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="observacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="precioBaseTextBox" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <Component id="costoEstandarTextBox" min="-2" pref="127" max="-2" attributes="1"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="estadoListBox" min="-2" pref="131" max="-2" attributes="1"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="estadoEntrarEnActividadEnFechaLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="estadoEntrarEnActividadEnFechajDateChooser" min="-2" pref="136" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="categoriaListBox" min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="unidadDeMedidaListBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="costoUnitarioPorOmisionTextBox" alignment="0" min="-2" pref="109" max="-2" attributes="1"/>
-                                      <Component id="tamanioLoteEstandarTextBox" min="-2" pref="98" max="-2" attributes="1"/>
-                                      <Component id="ubicacionAlamcenTextBox" min="-2" pref="165" max="-2" attributes="1"/>
-                                      <Component id="jScrollPane3" min="-2" pref="352" max="-2" attributes="1"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="nombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="descripcionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -194,15 +165,47 @@
                                       <Component id="codigoTextBox" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="unidadDeMedidaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="categoriaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="costoEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="costoUnitarioPorOmisionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="precioBaseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tamañoLoteEstandarLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tiempoDeObtencionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ubicacionEnElAlmacenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="observacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ubicacionAlamcenTextBox" min="-2" pref="165" max="-2" attributes="1"/>
+                                      <Component id="jScrollPane3" min="-2" pref="352" max="-2" attributes="1"/>
+                                      <Component id="precioBaseTextBox" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <Component id="costoEstandarTextBox" min="-2" pref="127" max="-2" attributes="1"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="estadoListBox" min="-2" pref="131" max="-2" attributes="1"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="estadoEntrarEnActividadEnFechaLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="estadoEntrarEnActividadEnFechajDateChooser" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="categoriaListBox" min="-2" pref="58" max="-2" attributes="0"/>
+                                      <Component id="unidadDeMedidaListBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="costoUnitarioPorOmisionTextBox" alignment="0" min="-2" pref="109" max="-2" attributes="1"/>
+                                      <Component id="tamanioLoteEstandarTextBox" min="-2" pref="98" max="-2" attributes="1"/>
+                                      <Component id="tiempoDeObtencionTextBox" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="44" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="tipoMateriaPrimaListBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tipoMateriaPrimaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -260,20 +263,29 @@
                                       <Component id="tamañoLoteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tamanioLoteEstandarTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="ubicacionEnElAlmacenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ubicacionAlamcenTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <Component id="estadoEntrarEnActividadEnFechajDateChooser" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="observacionLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tiempoDeObtencionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tiempoDeObtencionTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="ubicacionEnElAlmacenLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="observacionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ubicacionAlamcenTextBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane3" min="-2" pref="64" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -451,6 +463,13 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoMateriaPrimaListBoxActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="tiempoDeObtencionLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tiempo de obtenci&#xf3;n (d&#xed;as)"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tiempoDeObtencionTextBox">
                 </Component>
               </SubComponents>
             </Container>

@@ -85,6 +85,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         preoveedorPredeterminadoLabel = new javax.swing.JLabel();
         proveedorPredeterminadoListBox = new javax.swing.JComboBox();
         tipoMateriaPrimaTextBox = new javax.swing.JTextField();
+        tiempoDeObtencionTextBox = new javax.swing.JTextField();
+        tiempoDeObtencionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -195,6 +197,8 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
 
         tipoMateriaPrimaTextBox.setEnabled(false);
 
+        tiempoDeObtencionLabel.setText("Tiempo de obtención (días)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,8 +252,12 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(preoveedorPredeterminadoLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(proveedorPredeterminadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tiempoDeObtencionLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(tiempoDeObtencionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,6 +311,10 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tiempoDeObtencionLabel)
+                            .addComponent(tiempoDeObtencionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ubicacionEnElAlmacenLabel)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -324,17 +336,18 @@ public class PantallaEditarMateriaPrima extends javax.swing.JDialog {
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
-                    .addComponent(toolbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -412,6 +425,8 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton salir;
     private javax.swing.JLabel tamanioLoteEstandarLabel;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
+    private javax.swing.JLabel tiempoDeObtencionLabel;
+    private javax.swing.JTextField tiempoDeObtencionTextBox;
     private javax.swing.JLabel tipoMateriaPrimaLabel;
     private javax.swing.JTextField tipoMateriaPrimaTextBox;
     private javax.swing.JToolBar toolbar;
@@ -748,4 +763,22 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void setTipoMateriaPrimaTextBox(JTextField tipoMateriaPrimaTextBox) {
         this.tipoMateriaPrimaTextBox = tipoMateriaPrimaTextBox;
     }
+
+    public JLabel getTiempoDeObtencionLabel() {
+        return tiempoDeObtencionLabel;
+    }
+
+    public void setTiempoDeObtencionLabel(JLabel tiempoDeObtencionLabel) {
+        this.tiempoDeObtencionLabel = tiempoDeObtencionLabel;
+    }
+
+    public JTextField getTiempoDeObtencionTextBox() {
+        return tiempoDeObtencionTextBox;
+    }
+
+    public void setTiempoDeObtencionTextBox(JTextField tiempoDeObtencionTextBox) {
+        this.tiempoDeObtencionTextBox = tiempoDeObtencionTextBox;
+    }
+
+
 }

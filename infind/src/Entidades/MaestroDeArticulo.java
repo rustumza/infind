@@ -47,6 +47,8 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String tipo;
     private String ubicacionEnAlmacen;
     private String unidadDeMedida;
+    private int tiempoDeObtenecion;
+
     @OneToOne
     private Stock stock;
 
@@ -184,6 +186,15 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
 
     public void setUnidadDeMedida(String unidadDeMedida) {
         this.unidadDeMedida = unidadDeMedida;
+    }
+    
+    
+    public int getTiempoDeObtenecion() {
+        return tiempoDeObtenecion;
+    }
+
+    public void setTiempoDeObtenecion(int tiempoDeObtenecion) {
+        this.tiempoDeObtenecion = tiempoDeObtenecion;
     }
     
     

@@ -105,4 +105,8 @@ public class ControladorPantallaMadre {
     public void EditarRutaFabricacion() {
         new ControladorEditarRutaDeFabricacion(this).editarRuta();
     }
+
+    public void crearPedidoAProveedor() {
+        
+    }
 }

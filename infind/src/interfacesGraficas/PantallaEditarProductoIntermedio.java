@@ -84,6 +84,8 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
         estadoEntrarEnActividadEnFechajDateChooser = new com.toedter.calendar.JDateChooser();
         productoIQERelacionadoLabel = new javax.swing.JLabel();
         productoIQERelacionadoListBox = new javax.swing.JComboBox();
+        tiempoDeObtencionLabel = new javax.swing.JLabel();
+        tiempoDeObtencionTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -190,6 +192,8 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
 
         productoIQERelacionadoListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        tiempoDeObtencionLabel.setText("Tiempo de obtención (días)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -237,8 +241,12 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                             .addComponent(costoUnitarioPorOmisionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tiempoDeObtencionLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(tiempoDeObtencionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,6 +296,10 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                             .addComponent(tamanioLoteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tiempoDeObtencionLabel)
+                            .addComponent(tiempoDeObtencionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ubicacionEnElAlmacenLabel)
                             .addComponent(ubicacionAlamcenTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(estadoEntrarEnActividadEnFechajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,7 +311,7 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productoIQERelacionadoLabel)
                     .addComponent(productoIQERelacionadoListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -319,7 +331,7 @@ public class PantallaEditarProductoIntermedio extends javax.swing.JDialog {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -397,6 +409,8 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton salir;
     private javax.swing.JLabel tamanioLoteEstandarLabel;
     private javax.swing.JTextField tamanioLoteEstandarTextBox;
+    private javax.swing.JLabel tiempoDeObtencionLabel;
+    private javax.swing.JTextField tiempoDeObtencionTextBox;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField ubicacionAlamcenTextBox;
     private javax.swing.JLabel ubicacionEnElAlmacenLabel;
@@ -714,6 +728,22 @@ private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     public void setProductoIQERelacionadoListBox(JComboBox ProductoIQERelacionadoListBox) {
         this.productoIQERelacionadoListBox = ProductoIQERelacionadoListBox;
+    }
+
+    public JLabel getTiempoDeObtencionLabel() {
+        return tiempoDeObtencionLabel;
+    }
+
+    public void setTiempoDeObtencionLabel(JLabel tiempoDeObtencionLabel) {
+        this.tiempoDeObtencionLabel = tiempoDeObtencionLabel;
+    }
+
+    public JTextField getTiempoDeObtencionTextBox() {
+        return tiempoDeObtencionTextBox;
+    }
+
+    public void setTiempoDeObtencionTextBox(JTextField tiempoDeObtencionTextBox) {
+        this.tiempoDeObtencionTextBox = tiempoDeObtencionTextBox;
     }
 
 }
