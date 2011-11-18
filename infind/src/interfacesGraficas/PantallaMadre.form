@@ -254,20 +254,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuListarProveedoresActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listarPedidoAProvedores">
+            <MenuItem class="javax.swing.JMenuItem" name="crearPedidosAProveedores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Crear pedido a provedor"/>
+                <Property name="text" type="java.lang.String" value="Crear pedidos a proveedores"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarPedidoAProvedoresActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearPedidosAProveedoresActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="crearPredidoAProveedor">
+            <MenuItem class="javax.swing.JMenuItem" name="listarPedidosAProveedores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar pedidos a proveedores"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearPredidoAProveedorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarPedidosAProveedoresActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

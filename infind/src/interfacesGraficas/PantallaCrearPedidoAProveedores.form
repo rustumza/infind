@@ -134,10 +134,16 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="cantidadDeLotesLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="cantidadDeLotesTextBox" min="-2" pref="89" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="proveedorLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="agregar" min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="proveedorListBox" pref="208" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                          <Component id="agregar" min="-2" pref="76" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="editar" pref="68" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -175,13 +181,17 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cantidadDeLotesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="proveedorListBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cantidadDeLotesTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="proveedorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cancelarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="editar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="quitar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -282,6 +292,23 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarCantidadActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="proveedorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Proveedor"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="proveedorListBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
