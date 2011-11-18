@@ -67,6 +67,8 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
         editar = new javax.swing.JButton();
         quitar = new javax.swing.JButton();
         cancelarCantidad = new javax.swing.JButton();
+        proveedorLabel = new javax.swing.JLabel();
+        proveedorListBox = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDePedidos = new javax.swing.JTable();
@@ -153,6 +155,10 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
             }
         });
 
+        proveedorLabel.setText("Proveedor");
+
+        proveedorListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,10 +189,15 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                         .addComponent(tiempoDeDemoraTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cantidadDeLotesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(4, 4, 4)
                         .addComponent(cantidadDeLotesTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(proveedorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(proveedorListBox, 0, 208, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,12 +228,15 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadDeLotesLabel)
+                    .addComponent(proveedorListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadDeLotesTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(proveedorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarCantidad)
                     .addComponent(agregar)
                     .addComponent(editar)
-                    .addComponent(quitar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(quitar)))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pedidos"));
@@ -342,6 +356,8 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JTextField loteEstandarTextBox;
     private javax.swing.JLabel productoSeleccionadoLabel;
     private javax.swing.JTextField productoSeleccionadoTextBox;
+    private javax.swing.JLabel proveedorLabel;
+    private javax.swing.JComboBox proveedorListBox;
     private javax.swing.JButton quitar;
     private javax.swing.JButton salir;
     private javax.swing.JTable tablaDePedidos;
@@ -558,4 +574,22 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void setQuitar(JButton quitar) {
         this.quitar = quitar;
     }
+
+    public JLabel getProveedorLabel() {
+        return proveedorLabel;
+    }
+
+    public void setProveedorLabel(JLabel proveedorLabel) {
+        this.proveedorLabel = proveedorLabel;
+    }
+
+    public JComboBox getProveedorListBox() {
+        return proveedorListBox;
+    }
+
+    public void setProveedorListBox(JComboBox proveedorListBox) {
+        this.proveedorListBox = proveedorListBox;
+    }
+    
+    
 }

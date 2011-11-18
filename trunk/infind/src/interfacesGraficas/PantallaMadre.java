@@ -69,8 +69,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         proveedores = new javax.swing.JMenu();
         crearProveedores = new javax.swing.JMenuItem();
         jMenuListarProveedores = new javax.swing.JMenuItem();
-        listarPedidoAProvedores = new javax.swing.JMenuItem();
-        crearPredidoAProveedor = new javax.swing.JMenuItem();
+        crearPedidosAProveedores = new javax.swing.JMenuItem();
+        listarPedidosAProveedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -284,21 +284,21 @@ public class PantallaMadre extends javax.swing.JFrame {
         });
         proveedores.add(jMenuListarProveedores);
 
-        listarPedidoAProvedores.setText("Crear pedido a provedor");
-        listarPedidoAProvedores.addActionListener(new java.awt.event.ActionListener() {
+        crearPedidosAProveedores.setText("Crear pedidos a proveedores");
+        crearPedidosAProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listarPedidoAProvedoresActionPerformed(evt);
+                crearPedidosAProveedoresActionPerformed(evt);
             }
         });
-        proveedores.add(listarPedidoAProvedores);
+        proveedores.add(crearPedidosAProveedores);
 
-        crearPredidoAProveedor.setText("Listar pedidos a proveedores");
-        crearPredidoAProveedor.addActionListener(new java.awt.event.ActionListener() {
+        listarPedidosAProveedores.setText("Listar pedidos a proveedores");
+        listarPedidosAProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearPredidoAProveedorActionPerformed(evt);
+                listarPedidosAProveedoresActionPerformed(evt);
             }
         });
-        proveedores.add(crearPredidoAProveedor);
+        proveedores.add(listarPedidosAProveedores);
 
         jMenuBar1.add(proveedores);
 
@@ -369,10 +369,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         controlador.crearRutaFabricacion();
     }//GEN-LAST:event_menuEditarRutaActionPerformed
 
-private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProveedoresActionPerformed
-    controlador.crearProveedor();
-}//GEN-LAST:event_crearProveedoresActionPerformed
-
 private void crearEstructuraDeProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEstructuraDeProductoActionPerformed
     controlador.crearEstructuraDeProducto();
 }//GEN-LAST:event_crearEstructuraDeProductoActionPerformed
@@ -397,17 +393,21 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
         controlador.EditarRutaFabricacion();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuListarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarProveedoresActionPerformed
+private void jMenuListarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarProveedoresActionPerformed
         controlador.listarProveedores();
-    }//GEN-LAST:event_jMenuListarProveedoresActionPerformed
+}//GEN-LAST:event_jMenuListarProveedoresActionPerformed
 
-private void crearPredidoAProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPredidoAProveedorActionPerformed
+private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProveedoresActionPerformed
+    controlador.crearProveedor();
+}//GEN-LAST:event_crearProveedoresActionPerformed
+
+private void crearPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPedidosAProveedoresActionPerformed
     controlador.crearPedidoAProveedor();
-}//GEN-LAST:event_crearPredidoAProveedorActionPerformed
+}//GEN-LAST:event_crearPedidosAProveedoresActionPerformed
 
-private void listarPedidoAProvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPedidoAProvedoresActionPerformed
+private void listarPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPedidosAProveedoresActionPerformed
     controlador.listarPedidosAProveedores();
-}//GEN-LAST:event_listarPedidoAProvedoresActionPerformed
+}//GEN-LAST:event_listarPedidosAProveedoresActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -450,7 +450,7 @@ private void listarPedidoAProvedoresActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JMenuItem crearCentro;
     private javax.swing.JMenuItem crearEstructuraDeProducto;
     private javax.swing.JMenuItem crearMateriaPrima;
-    private javax.swing.JMenuItem crearPredidoAProveedor;
+    private javax.swing.JMenuItem crearPedidosAProveedores;
     private javax.swing.JMenuItem crearProductoComponente;
     private javax.swing.JMenuItem crearProductoFinal;
     private javax.swing.JMenuItem crearProductoIQE;
@@ -463,7 +463,7 @@ private void listarPedidoAProvedoresActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
-    private javax.swing.JMenuItem listarPedidoAProvedores;
+    private javax.swing.JMenuItem listarPedidosAProveedores;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
     private javax.swing.JMenuItem listarProductosIQE;

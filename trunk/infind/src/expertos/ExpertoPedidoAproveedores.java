@@ -8,6 +8,7 @@ import Entidades.MaestroDeArticulo;
 import Entidades.MateriaPrima;
 import Entidades.PedidoAProveedor;
 import Entidades.ProductoComponente;
+import Entidades.Proveedor;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -28,7 +29,7 @@ public class ExpertoPedidoAproveedores {
     
     }
     
-    public List<PedidoAProveedor> generarPedidoAProveedores(String codigo, int cantidadDeLostesOptimos){
+    public List<PedidoAProveedor> generarPedidoAProveedores(String codigo, int cantidadDeLostesOptimos, Proveedor prov){
         
         Criteria criterio = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
         criterio.add(Restrictions.like("codigo", codigo));
@@ -38,6 +39,7 @@ public class ExpertoPedidoAproveedores {
         pedido.setArticulo(articulo);
         pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
         pedido.setEstaConcretado(false);
+        pedido.setProveedor(prov);
         listaDePedidos.add(pedido);
         return listaDePedidos;
 
@@ -109,14 +111,39 @@ public List<PedidoAProveedor> getListaDePedidos(){
         
     }
 
-    public List<PedidoAProveedor> editar(int seleccionado, int cantidad) {
+    public List<PedidoAProveedor> editar(int seleccionado, int cantidad, Proveedor prov) {
         listaDePedidos.get(seleccionado).setCantidad(cantidad);
+        listaDePedidos.get(seleccionado).setProveedor(prov);
         return listaDePedidos;
     }
 
     public List<PedidoAProveedor> quitar(int seleccionado) {
         listaDePedidos.remove(seleccionado);
         return listaDePedidos;
+    }
+
+    public List<Proveedor> buscarProveedoresMateriaPrima(MateriaPrima materiaPrima) {
+        Criteria criterio = Fachada.getInstancia().crearCriterio(Proveedor.class);
+        criterio.add(Restrictions.eq("Materia prima", materiaPrima));
+        List<Proveedor> listaProveedores = Fachada.getInstancia().buscar(Proveedor.class, criterio);
+        if(!listaProveedores.isEmpty()){
+            return listaProveedores;
+        }else{
+            return null;
+        }        
+    }
+
+
+    public List<Proveedor> buscarProveedoresProductoComponente(ProductoComponente productoComponente) {
+        Criteria criterio = Fachada.getInstancia().crearCriterio(Proveedor.class);
+        criterio.add(Restrictions.eq("Producto componente", productoComponente));
+        List<Proveedor> listaProveedores = Fachada.getInstancia().buscar(Proveedor.class, criterio);
+        if(!listaProveedores.isEmpty()){
+            return listaProveedores;
+        }else{
+            return null;
+        }        
+        
     }
     
 }
