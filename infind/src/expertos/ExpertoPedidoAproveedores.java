@@ -22,20 +22,24 @@ import persistencia.Fachada;
 public class ExpertoPedidoAproveedores {
     
     List<PedidoAProveedor> listaDePedidos;
-    MaestroDeArticulo articulo;
     
     public ExpertoPedidoAproveedores(){
         listaDePedidos = new ArrayList<PedidoAProveedor>();
     
     }
     
-    public void generarPedidoAProveedores(MaestroDeArticulo articulo, int cantidadDeLostesOptimos){
+    public List<PedidoAProveedor> generarPedidoAProveedores(String codigo, int cantidadDeLostesOptimos){
         
+        Criteria criterio = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
+        criterio.add(Restrictions.like("codigo", codigo));
+        List<MateriaPrima> listaArticulos = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterio);        
+        MaestroDeArticulo articulo = listaArticulos.get(0);
         PedidoAProveedor pedido = new PedidoAProveedor();
         pedido.setArticulo(articulo);
         pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
         pedido.setEstaConcretado(false);
         listaDePedidos.add(pedido);
+        return listaDePedidos;
 
     }
     
@@ -58,6 +62,9 @@ public class ExpertoPedidoAproveedores {
         
     }
 
+public List<PedidoAProveedor> getListaDePedidos(){
+    return listaDePedidos;
+}
     
 /*
     public List<MaestroDeArticulo> buscarArticulos() {
@@ -83,9 +90,10 @@ public class ExpertoPedidoAproveedores {
         criterio.add(Restrictions.like("codigo", codigo));
         List<MateriaPrima> listaMateriaPrima = Fachada.getInstancia().buscar(MateriaPrima.class, criterio);
         if(!listaMateriaPrima.isEmpty()){
-            articulo = listaMateriaPrima.get(0);
+            return listaMateriaPrima.get(0);
+        }else{
+            return null;
         }
-        return articulo;
     }
 
     public MaestroDeArticulo buscarProductoComponente(String codigo) {
@@ -94,10 +102,21 @@ public class ExpertoPedidoAproveedores {
         criterio.add(Restrictions.like("codigo", codigo));
         List<ProductoComponente> listaProductoComponente = Fachada.getInstancia().buscar(ProductoComponente.class, criterio);
         if(!listaProductoComponente.isEmpty()){
-            articulo = listaProductoComponente.get(0);
+            return listaProductoComponente.get(0);
+        }else{
+            return null;
         }
-        return articulo;
         
+    }
+
+    public List<PedidoAProveedor> editar(int seleccionado, int cantidad) {
+        listaDePedidos.get(seleccionado).setCantidad(cantidad);
+        return listaDePedidos;
+    }
+
+    public List<PedidoAProveedor> quitar(int seleccionado) {
+        listaDePedidos.remove(seleccionado);
+        return listaDePedidos;
     }
     
 }
