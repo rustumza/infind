@@ -107,6 +107,10 @@ public class ControladorPantallaMadre {
     }
 
     public void crearPedidoAProveedor() {
+        new ControladorPedidoAProveedor(this).iniciar();
+    }
+
+    public void listarPedidosAProveedores() {
         
     }
 }

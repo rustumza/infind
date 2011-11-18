@@ -285,6 +285,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         proveedores.add(jMenuListarProveedores);
 
         listarPedidoAProvedores.setText("Crear pedido a provedor");
+        listarPedidoAProvedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarPedidoAProvedoresActionPerformed(evt);
+            }
+        });
         proveedores.add(listarPedidoAProvedores);
 
         crearPredidoAProveedor.setText("Listar pedidos a proveedores");
@@ -399,6 +404,10 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
 private void crearPredidoAProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPredidoAProveedorActionPerformed
     controlador.crearPedidoAProveedor();
 }//GEN-LAST:event_crearPredidoAProveedorActionPerformed
+
+private void listarPedidoAProvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPedidoAProvedoresActionPerformed
+    controlador.listarPedidosAProveedores();
+}//GEN-LAST:event_listarPedidoAProvedoresActionPerformed
     /**
      * @param args the command line arguments
      */

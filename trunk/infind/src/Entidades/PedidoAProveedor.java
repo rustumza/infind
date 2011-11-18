@@ -23,6 +23,7 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     private Long id;
     private Boolean eliminado;
     MaestroDeArticulo articulo;
+    Proveedor proveedor;
     float cantidad;
     private boolean estaConcretado;
 
@@ -49,6 +50,16 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     public void setEliminado(Boolean eliminado) {
         this.eliminado = eliminado;
     }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+    
+    
 
     @Override
     public Long getId() {
