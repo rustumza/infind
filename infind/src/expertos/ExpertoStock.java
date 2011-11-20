@@ -16,41 +16,37 @@ import persistencia.Fachada;
  */
 public class ExpertoStock {
     
-    private boolean inicioDeManejoDeStock;
+    
     
     public ExpertoStock(){
-        inicioDeManejoDeStock = false;
+    
     }
     
     public void iniciarManejoDeStock(){
         Conexion.getInstancia().iniciarTX();
-        inicioDeManejoDeStock = true;
+    
     }
     
     public void finalizarManejoDeStock(){
         Conexion.getInstancia().confirmarTx();
-        inicioDeManejoDeStock = false;
+    
     }
     
     public void cancelarManejoDeStock(){
         Conexion.getInstancia().deshacerTx();
-        inicioDeManejoDeStock = false;
+    
     }
     
-    public void agregarStockReal(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
-        if(!inicioDeManejoDeStock){
-            throw new StockExcepcion(4);
-        }
+    public void agregarStockReal(MaestroDeArticulo articulo, float cantidad){
+    
         Stock stock = articulo.getStock();
         stock.setCantidadFisicaReal(stock.getCantidadFisicaReal() + cantidad);
         Fachada.getInstancia().guardarSinTranasaccion(stock);
     }
     
-    public void agregarStockPorLlegar(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
+    public void agregarStockPorLlegar(MaestroDeArticulo articulo, float cantidad){
     
-        if(!inicioDeManejoDeStock){
-            throw new StockExcepcion(4);
-        }
+    
         Stock stock = articulo.getStock();
         stock.setCantidadPorEntrar(stock.getCantidadPorEntrar() + cantidad);
         Fachada.getInstancia().guardarSinTranasaccion(stock);
@@ -59,9 +55,7 @@ public class ExpertoStock {
     
     public void reservarStock(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
     
-        if(!inicioDeManejoDeStock){
-            throw new StockExcepcion(4);
-        }
+    
         Stock stock = articulo.getStock();
         if(((stock.getCantidadFisicaReal() + stock.getCantidadPorEntrar())-stock.getCantidadReservada()) < cantidad){
             throw new StockExcepcion(3);
@@ -73,9 +67,7 @@ public class ExpertoStock {
     
     public void restarStock(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
     
-        if(!inicioDeManejoDeStock){
-            throw new StockExcepcion(4);
-        }
+    
         Stock stock = articulo.getStock();
         if(stock.getCantidadFisicaReal() < cantidad){
             throw new StockExcepcion(2);
@@ -87,9 +79,7 @@ public class ExpertoStock {
     
     public void cambiarStockPorLlegarPorStockReal(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
         
-        if(!inicioDeManejoDeStock){
-            throw new StockExcepcion(4);
-        }
+    
         Stock stock = articulo.getStock();
         if(stock.getCantidadPorEntrar()< cantidad){
             throw new StockExcepcion(1);
