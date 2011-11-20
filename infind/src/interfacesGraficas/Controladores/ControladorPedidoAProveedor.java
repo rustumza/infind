@@ -52,17 +52,23 @@ public class ControladorPedidoAProveedor {
             
             if(((String)pantallaCrearPedidoAProveedor.getTipoProductoListBox().getSelectedItem()).equals("Materia prima")){
                 articulo = experto.buscarMateriaPrima(codigo);
-                listaDeProveedores= experto.buscarProveedoresMateriaPrima((MateriaPrima)articulo);
+                if(articulo == null){
+                    JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No se ha encontrado ningún producto con ese código", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
+                    return;
+                }
+                listaDeProveedores= ((MateriaPrima)articulo).getProveedores();
 
             }else{
                 articulo = experto.buscarProductoComponente(codigo);
-                listaDeProveedores= experto.buscarProveedoresProductoComponente((ProductoComponente)articulo);
+                if(articulo == null){
+                    JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No se ha encontrado ningún producto con ese código", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
+                    return;
+                }
+                listaDeProveedores= ((ProductoComponente)articulo).getProveedores();
             }
-            if(articulo == null){
-                JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No se ha encontrado ningún producto con ese código", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
-                return;
-            }
+            
             if(listaDeProveedores == null){
                 JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "El articulo no tiene proveedores", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
@@ -95,12 +101,12 @@ public class ControladorPedidoAProveedor {
         PedidoAProveedor pedido = experto.getListaDePedidos().get(detalleSeleccionado);
         if(pedido.getArticulo().getTipo().equals("Materia prima")){
             pantallaCrearPedidoAProveedor.getTipoProductoListBox().setSelectedItem("Materia prima");
-            List<Proveedor> listaProveedor = experto.buscarProveedoresMateriaPrima((MateriaPrima)pedido.getArticulo());
+            List<Proveedor> listaProveedor = ((MateriaPrima)pedido.getArticulo()).getProveedores();
             pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(listaProveedor.toArray()));
             pantallaCrearPedidoAProveedor.getProveedorListBox().setSelectedItem(((MateriaPrima)pedido.getArticulo()).getProveedorPredeterminado());
         }else{
             pantallaCrearPedidoAProveedor.getTipoProductoListBox().setSelectedItem("Producto componente");
-            List<Proveedor> listaProveedor = experto.buscarProveedoresProductoComponente((ProductoComponente)pedido.getArticulo());
+            List<Proveedor> listaProveedor = ((ProductoComponente)pedido.getArticulo()).getProveedores();
             pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(listaProveedor.toArray()));
             pantallaCrearPedidoAProveedor.getProveedorListBox().setSelectedItem(((ProductoComponente)pedido.getArticulo()).getProveedor());
             pantallaCrearPedidoAProveedor.getProveedorListBox().setSelectedItem(((ProductoComponente)pedido.getArticulo()).getProveedor());
@@ -119,22 +125,28 @@ public class ControladorPedidoAProveedor {
     public void agregar() {
         try{
             String cantidadString = pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().getText();
-            List<PedidoAProveedor> lista = experto.generarPedidoAProveedores(pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().getText(), Integer.parseInt(cantidadString),(Proveedor)pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem());
-            ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
-            mod.setListaElementos(lista);
-            pantallaCrearPedidoAProveedor.getTablaDePedidos().setModel(mod);
-            pantallaCrearPedidoAProveedor.getQuitar().setEnabled(false);
-            pantallaCrearPedidoAProveedor.getEditar().setEnabled(false);
-            pantallaCrearPedidoAProveedor.getAgregar().setEnabled(true);
-            pantallaCrearPedidoAProveedor.getBucarProducto().setEnabled(true);
-            pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().setEnabled(true);
-            pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().setText("");
-            pantallaCrearPedidoAProveedor.getProductoSeleccionadoTextBox().setText("");
-            pantallaCrearPedidoAProveedor.getLoteEstandarTextBox().setText("");
-            pantallaCrearPedidoAProveedor.getTiempoDeDemoraTextBox().setText("");
-            pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
-            pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
-            pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+            if(!pantallaCrearPedidoAProveedor.getProductoSeleccionadoTextBox().getText().equals("")){
+                List<PedidoAProveedor> lista = experto.generarPedidoAProveedores(pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().getText(), Integer.parseInt(cantidadString),(Proveedor)pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem());
+                ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+                mod.setListaElementos(lista);
+                pantallaCrearPedidoAProveedor.getTablaDePedidos().setModel(mod);
+                pantallaCrearPedidoAProveedor.getQuitar().setEnabled(false);
+                pantallaCrearPedidoAProveedor.getEditar().setEnabled(false);
+                pantallaCrearPedidoAProveedor.getAgregar().setEnabled(true);
+                pantallaCrearPedidoAProveedor.getBucarProducto().setEnabled(true);
+                pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().setEnabled(true);
+                pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().setText("");
+                pantallaCrearPedidoAProveedor.getProductoSeleccionadoTextBox().setText("");
+                pantallaCrearPedidoAProveedor.getLoteEstandarTextBox().setText("");
+                pantallaCrearPedidoAProveedor.getTiempoDeDemoraTextBox().setText("");
+                pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
+                pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
+                pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+            }else{
+                JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No ha seleccionado un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
+            
+            }
         
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "La cantidad ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);

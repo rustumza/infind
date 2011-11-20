@@ -121,29 +121,4 @@ public List<PedidoAProveedor> getListaDePedidos(){
         listaDePedidos.remove(seleccionado);
         return listaDePedidos;
     }
-
-    public List<Proveedor> buscarProveedoresMateriaPrima(MateriaPrima materiaPrima) {
-        Criteria criterio = Fachada.getInstancia().crearCriterio(Proveedor.class);
-        criterio.add(Restrictions.eq("Materia prima", materiaPrima));
-        List<Proveedor> listaProveedores = Fachada.getInstancia().buscar(Proveedor.class, criterio);
-        if(!listaProveedores.isEmpty()){
-            return listaProveedores;
-        }else{
-            return null;
-        }        
-    }
-
-
-    public List<Proveedor> buscarProveedoresProductoComponente(ProductoComponente productoComponente) {
-        Criteria criterio = Fachada.getInstancia().crearCriterio(Proveedor.class);
-        criterio.add(Restrictions.eq("Producto componente", productoComponente));
-        List<Proveedor> listaProveedores = Fachada.getInstancia().buscar(Proveedor.class, criterio);
-        if(!listaProveedores.isEmpty()){
-            return listaProveedores;
-        }else{
-            return null;
-        }        
-        
-    }
-    
 }
