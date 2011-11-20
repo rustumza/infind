@@ -9,6 +9,7 @@ import Entidades.MateriaPrima;
 import Entidades.PedidoAProveedor;
 import Entidades.ProductoComponente;
 import Entidades.Proveedor;
+import excepciones.StockExcepcion;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -47,18 +48,22 @@ public class ExpertoPedidoAproveedores {
     
     public void asentarPedidos(){
         Conexion.getInstancia().iniciarTX();
+        ExpertoStock exp = new ExpertoStock();
         for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
+            exp.agregarStockPorLlegar(pedidoAProveedor.getArticulo(),pedidoAProveedor.getCantidad());
         }
         Conexion.getInstancia().confirmarTx();
     }
     
-    public void confirmarPedido(List<PedidoAProveedor> lista){
+    public void confirmarPedido(List<PedidoAProveedor> lista) throws StockExcepcion{
     
         Conexion.getInstancia().iniciarTX();
+        ExpertoStock exp = new ExpertoStock();
         for (PedidoAProveedor pedidoAProveedor : lista) {
             pedidoAProveedor.setEstaConcretado(true);
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
+            exp.cambiarStockPorLlegarPorStockReal(pedidoAProveedor.getArticulo(), pedidoAProveedor.getCantidad());
         }
         Conexion.getInstancia().confirmarTx();
         
