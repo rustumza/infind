@@ -111,6 +111,6 @@ public class ControladorPantallaMadre {
     }
 
     public void listarPedidosAProveedores() {
-        
+        new ControladorEditarPedidoAProveedor(this).iniciar();
     }
 }
