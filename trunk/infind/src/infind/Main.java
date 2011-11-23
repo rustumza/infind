@@ -6,6 +6,7 @@ package infind;
 
 import Entidades.Herramientas;
 import Entidades.MaestroDeArticulo;
+import Entidades.Stock;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.text.ParseException;
@@ -17,6 +18,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.tool.hbm2x.ArtifactCollector;
 import persistencia.Conexion;
 import persistencia.Fachada;
 import utilidades.ArmarPDF;

@@ -6,6 +6,7 @@ package expertos;
 
 import Entidades.ProductoComponente;
 import Entidades.Numerador;
+import Entidades.Stock;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -20,6 +21,12 @@ public class ExpertoProductoComponente extends Experto{
     ProductoComponente productoComponenteExperto;
     
     public void guardar(ProductoComponente proComp) {
+        Stock stock = new Stock();
+        stock.setCantidadFisicaReal(0);
+        stock.setCantidadPorEntrar(0);
+        stock.setCantidadReservada(0);
+        stock.setEliminado(Boolean.TRUE);
+        proComp.setStock(stock);
         Fachada.getInstancia().guardar(proComp);
         
         //sumarle uno al numerador
