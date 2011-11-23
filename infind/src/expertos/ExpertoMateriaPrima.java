@@ -6,6 +6,7 @@ package expertos;
 
 import Entidades.MateriaPrima;
 import Entidades.Numerador;
+import Entidades.Stock;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -20,7 +21,14 @@ public class ExpertoMateriaPrima extends Experto{
     MateriaPrima materiaPrimaExperto;
     
     public void guardar(MateriaPrima matPrim) {
+        Stock stock = new Stock();
+        stock.setCantidadFisicaReal(0);
+        stock.setCantidadPorEntrar(0);
+        stock.setCantidadReservada(0);
+        stock.setEliminado(Boolean.TRUE);
+        matPrim.setStock(stock);
         Fachada.getInstancia().guardar(matPrim);
+        
         
         //sumarle uno al numerador
         List<Numerador> numeroDisponibles = null;

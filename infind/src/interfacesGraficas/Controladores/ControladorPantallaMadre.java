@@ -4,8 +4,12 @@
  */
 package interfacesGraficas.Controladores;
 
+import Entidades.MaestroDeArticulo;
+import Entidades.Stock;
 import interfacesGraficas.PantallaMadre;
+import java.util.List;
 import javax.swing.JFrame;
+import persistencia.Fachada;
 
 /**
  *
@@ -27,6 +31,17 @@ public class ControladorPantallaMadre {
     public void iniciar() {
         pantalla.setVisible(true);
         pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        List<MaestroDeArticulo> lista = Fachada.getInstancia().buscar(MaestroDeArticulo.class, null);
+        for (MaestroDeArticulo maestroDeArticulo : lista) {
+            Stock stock = new Stock();
+            stock.setCantidadFisicaReal((float)0);
+            stock.setCantidadPorEntrar((float)0);
+            stock.setCantidadReservada((float)0);
+            stock.setEliminado(Boolean.TRUE);
+            maestroDeArticulo.setStock(stock);
+            Fachada.getInstancia().guardar(stock);
+        }
     }
 
     public void crearCentro() {

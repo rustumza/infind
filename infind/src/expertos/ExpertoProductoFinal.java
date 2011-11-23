@@ -7,6 +7,7 @@ package expertos;
 import Entidades.ProductoFinal;
 import Entidades.Numerador;
 import Entidades.ProductoTipoIQE;
+import Entidades.Stock;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -22,6 +23,12 @@ public class ExpertoProductoFinal extends Experto {
     ProductoFinal pFinalExperto;
 
     public void guardar(ProductoFinal pFinal) {
+        Stock stock = new Stock();
+        stock.setCantidadFisicaReal(0);
+        stock.setCantidadPorEntrar(0);
+        stock.setCantidadReservada(0);
+        stock.setEliminado(Boolean.TRUE);
+        pFinal.setStock(stock);
         Fachada.getInstancia().guardar(pFinal);
     
     //Domisanitarios
