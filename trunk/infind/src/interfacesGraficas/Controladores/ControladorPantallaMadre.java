@@ -41,6 +41,7 @@ public class ControladorPantallaMadre {
             stock.setEliminado(Boolean.TRUE);
             maestroDeArticulo.setStock(stock);
             Fachada.getInstancia().guardar(stock);
+            Fachada.getInstancia().guardar(maestroDeArticulo);
         }
     }
 
