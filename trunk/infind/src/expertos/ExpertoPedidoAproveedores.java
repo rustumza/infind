@@ -56,14 +56,16 @@ public class ExpertoPedidoAproveedores {
         Conexion.getInstancia().confirmarTx();
     }
     
-    public void confirmarPedido(List<PedidoAProveedor> lista) throws StockExcepcion{
+    public void confirmarPedido() throws StockExcepcion{
     
         Conexion.getInstancia().iniciarTX();
         ExpertoStock exp = new ExpertoStock();
-        for (PedidoAProveedor pedidoAProveedor : lista) {
+        for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
             pedidoAProveedor.setEstaConcretado(true);
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
-            exp.cambiarStockPorLlegarPorStockReal(pedidoAProveedor.getArticulo(), pedidoAProveedor.getCantidad());
+            if(pedidoAProveedor.isEstaConcretado()){
+                exp.cambiarStockPorLlegarPorStockReal(pedidoAProveedor.getArticulo(), pedidoAProveedor.getCantidad());
+            }
         }
         Conexion.getInstancia().confirmarTx();
         
@@ -116,7 +118,7 @@ public List<PedidoAProveedor> getListaDePedidos(){
         
     }
 
-    public List<PedidoAProveedor> editar(int seleccionado, int cantidad, Proveedor prov) {
+    public List<PedidoAProveedor> editar(int seleccionado, int cantidad, Proveedor prov, boolean concretado) {
         listaDePedidos.get(seleccionado).setCantidad(cantidad);
         listaDePedidos.get(seleccionado).setProveedor(prov);
         return listaDePedidos;
@@ -126,4 +128,17 @@ public List<PedidoAProveedor> getListaDePedidos(){
         listaDePedidos.remove(seleccionado);
         return listaDePedidos;
     }
+    
+    
+    public List<PedidoAProveedor> buscarPedidos(boolean soloSinConfirmar){
+    
+        Criteria criterio = Fachada.getInstancia().crearCriterio(PedidoAProveedor.class);
+        criterio.add(Restrictions.like("estaConcretado", !soloSinConfirmar));
+        List<PedidoAProveedor> listaPedidoAProveedors = Fachada.getInstancia().buscar(PedidoAProveedor.class, criterio);
+        listaDePedidos = listaPedidoAProveedors;
+        return listaPedidoAProveedors;
+    
+    }
+    
+    
 }

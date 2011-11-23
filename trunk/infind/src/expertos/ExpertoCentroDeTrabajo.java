@@ -245,6 +245,9 @@ public class ExpertoCentroDeTrabajo extends Experto {
 
             try {
                 Fachada.getInstancia().guardar(centroDeTrabajo);
+                for (Operario operario : centroDeTrabajo.getOperario()) {
+                    Fachada.getInstancia().guardar(operario);
+                }
             } catch (Exception ex) {
                 throw new ExpertoCentroDeTrabajoException("Error al guardar el Centro de Trabajo");
             }
