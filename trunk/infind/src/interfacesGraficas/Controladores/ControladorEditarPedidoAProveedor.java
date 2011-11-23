@@ -41,11 +41,13 @@ public class ControladorEditarPedidoAProveedor {
         ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
         pantallaEditarPedidoAProveedor.getSoloSinConfirmar().setSelected(true);
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
+        pantallaEditarPedidoAProveedor.getGuardar().setEnabled(false);
         List<PedidoAProveedor> Lista = experto.buscarPedidos(false);
         mod.setListaElementos(Lista);
         pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
         pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
         pantallaEditarPedidoAProveedor.setVisible(true);
+        
        
     }
 
@@ -268,8 +270,10 @@ public class ControladorEditarPedidoAProveedor {
         mod.setListaElementos(lista);
         if(soloSinConfirmar){
             pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getGuardar().setEnabled(true);
         }else{
             pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(false);
+            pantallaEditarPedidoAProveedor.getGuardar().setEnabled(false);
         }
         pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
         pantallaEditarPedidoAProveedor.getEditar().setEnabled(false); 
