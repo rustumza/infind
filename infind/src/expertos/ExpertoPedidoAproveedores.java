@@ -40,6 +40,7 @@ public class ExpertoPedidoAproveedores {
         pedido.setArticulo(articulo);
         pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
         pedido.setEstaConcretado(false);
+        pedido.setEliminado(false);
         pedido.setProveedor(prov);
         listaDePedidos.add(pedido);
         return listaDePedidos;
@@ -61,7 +62,6 @@ public class ExpertoPedidoAproveedores {
         Conexion.getInstancia().iniciarTX();
         ExpertoStock exp = new ExpertoStock();
         for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
-            pedidoAProveedor.setEstaConcretado(true);
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
             if(pedidoAProveedor.isEstaConcretado()){
                 exp.cambiarStockPorLlegarPorStockReal(pedidoAProveedor.getArticulo(), pedidoAProveedor.getCantidad());
@@ -118,12 +118,13 @@ public List<PedidoAProveedor> getListaDePedidos(){
         
     }
 
-    public List<PedidoAProveedor> editar(int seleccionado, int cantidad, Proveedor prov, boolean concretado) {
-        listaDePedidos.get(seleccionado).setCantidad(cantidad);
+    public List<PedidoAProveedor> editar(int seleccionado, int cantidadLotesOptimos, Proveedor prov, boolean concretado) {
+        listaDePedidos.get(seleccionado).setCantidad(cantidadLotesOptimos * listaDePedidos.get(seleccionado).getArticulo().getTamanioLoteEstandar());
         listaDePedidos.get(seleccionado).setProveedor(prov);
+        listaDePedidos.get(seleccionado).setEstaConcretado(concretado);
         return listaDePedidos;
     }
-
+    
     public List<PedidoAProveedor> quitar(int seleccionado) {
         listaDePedidos.remove(seleccionado);
         return listaDePedidos;
@@ -133,7 +134,9 @@ public List<PedidoAProveedor> getListaDePedidos(){
     public List<PedidoAProveedor> buscarPedidos(boolean soloSinConfirmar){
     
         Criteria criterio = Fachada.getInstancia().crearCriterio(PedidoAProveedor.class);
-        criterio.add(Restrictions.like("estaConcretado", !soloSinConfirmar));
+        if(soloSinConfirmar){
+            criterio.add(Restrictions.eq("estaConcretado", Boolean.FALSE));
+        }
         List<PedidoAProveedor> listaPedidoAProveedors = Fachada.getInstancia().buscar(PedidoAProveedor.class, criterio);
         listaDePedidos = listaPedidoAProveedors;
         return listaPedidoAProveedors;
