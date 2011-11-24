@@ -14,8 +14,6 @@ import interfacesGraficas.ModeloTablas.ModeloTablaPedidoAProveedores;
 import interfacesGraficas.PantallaEditarPedidoAProveedores;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -40,9 +38,11 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor = new PantallaEditarPedidoAProveedores(controladorPantallaMadre.getPantalla(), false, this);
         ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
         pantallaEditarPedidoAProveedor.getSoloSinConfirmar().setSelected(true);
-        pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
+        pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(true);
         pantallaEditarPedidoAProveedor.getGuardar().setEnabled(false);
-        List<PedidoAProveedor> Lista = experto.buscarPedidos(false);
+        pantallaEditarPedidoAProveedor.getEditar().setEnabled(false);
+        pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
+        List<PedidoAProveedor> Lista = experto.buscarPedidos(true);
         mod.setListaElementos(Lista);
         pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
         pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
@@ -109,31 +109,35 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor.getQuitar().setEnabled(true);
         if(pantallaEditarPedidoAProveedor.getSoloSinConfirmar().isSelected()){
             pantallaEditarPedidoAProveedor.getEditar().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getQuitar().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
         }else{
-            pantallaEditarPedidoAProveedor.getEditar().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getEditar().setEnabled(false);
+            pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
+            pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(false);
         }
         
         PedidoAProveedor pedido = experto.getListaDePedidos().get(detalleSeleccionado);
-        if(pedido.getArticulo().getTipo().equals("Materia prima")){
+        if(pedido.getArticulo().getClass().equals(MateriaPrima.class)){
             pantallaEditarPedidoAProveedor.getTipoProductoListBox().setSelectedItem("Materia prima");
             List<Proveedor> listaProveedor = ((MateriaPrima)pedido.getArticulo()).getProveedores();
             pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(listaProveedor.toArray()));
-            pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(((MateriaPrima)pedido.getArticulo()).getProveedorPredeterminado());
+            pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(pedido.getProveedor());
         }else{
             pantallaEditarPedidoAProveedor.getTipoProductoListBox().setSelectedItem("Producto componente");
             List<Proveedor> listaProveedor = ((ProductoComponente)pedido.getArticulo()).getProveedores();
             pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(listaProveedor.toArray()));
             pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(((ProductoComponente)pedido.getArticulo()).getProveedor());
-            pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(((ProductoComponente)pedido.getArticulo()).getProveedor());
+            pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(pedido.getProveedor());
         }
         pantallaEditarPedidoAProveedor.getCodigoProductoTextBox().setText(pedido.getArticulo().getCodigo());
-        pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText(String.valueOf(pedido.getCantidad()));
+        pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText(String.valueOf((int)pedido.getCantidad()/pedido.getArticulo().getTamanioLoteEstandar()));
         pantallaEditarPedidoAProveedor.getProductoSeleccionadoTextBox().setText(pedido.getArticulo().getNombre());
         pantallaEditarPedidoAProveedor.getLoteEstandarTextBox().setText(String.valueOf(pedido.getArticulo().getTamanioLoteEstandar()));
-        pantallaEditarPedidoAProveedor.getTiempoDeDemoraLabel().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
+        pantallaEditarPedidoAProveedor.getTiempoDeDemoraTextBox().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
         pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText(pedido.getArticulo().getUnidadDeMedida());
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(pedido.isEstaConcretado());
-        pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(false);
+        
         
     }
 
@@ -285,7 +289,6 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
         pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText("");
         pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
-        pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
         
     }
     

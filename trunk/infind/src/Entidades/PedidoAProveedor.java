@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -24,8 +25,10 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Boolean eliminado;
-    MaestroDeArticulo articulo;
-    Proveedor proveedor;
+    @ManyToOne
+    private MaestroDeArticulo articulo;
+    @ManyToOne
+    private Proveedor proveedor;
     float cantidad;
     private boolean estaConcretado;
 

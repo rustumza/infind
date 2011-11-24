@@ -126,6 +126,11 @@ public class ControladorPedidoAProveedor {
         try{
             String cantidadString = pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().getText();
             if(!pantallaCrearPedidoAProveedor.getProductoSeleccionadoTextBox().getText().equals("")){
+                if(pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem() == null){
+                    JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No ha seleccionado un proveedor", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantallaCrearPedidoAProveedor.getProveedorListBox().requestFocus();
+                    return;
+                }
                 List<PedidoAProveedor> lista = experto.generarPedidoAProveedores(pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().getText(), Integer.parseInt(cantidadString),(Proveedor)pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem());
                 ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
                 mod.setListaElementos(lista);
