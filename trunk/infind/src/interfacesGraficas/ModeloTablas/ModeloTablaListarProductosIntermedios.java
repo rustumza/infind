@@ -19,7 +19,7 @@ public class ModeloTablaListarProductosIntermedios extends ModeloTabla{
 
     public ModeloTablaListarProductosIntermedios() {
 
-        super("Código", "Nombre", "Categoria", "Ubicacion en almacén");
+        super("Código", "Nombre", "Categoria", "Ubicacion en almacén","Eliminado");
     }
 
     @Override
@@ -38,6 +38,12 @@ public class ModeloTablaListarProductosIntermedios extends ModeloTabla{
                 return productoIntermedio.getCategoria();
             case 3:
                 return productoIntermedio.getUbicacionEnAlmacen();
+            case 4:
+                if(productoIntermedio.getEliminado()){
+                    return "Sí";
+                }else{
+                    return "No";
+                }
             default:
                 return "";
         }

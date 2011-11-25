@@ -19,7 +19,7 @@ public class ModeloTablaListarProductosFinales extends ModeloTabla{
 
     public ModeloTablaListarProductosFinales() {
 
-        super("Código", "Nombre", "Categoria", "Ubicacion en almacén");
+        super("Código", "Nombre", "Categoria", "Ubicacion en almacén","Eliminado");
     }
 
     @Override
@@ -38,6 +38,12 @@ public class ModeloTablaListarProductosFinales extends ModeloTabla{
                 return productoFinal.getCategoria();
             case 3:
                 return productoFinal.getUbicacionEnAlmacen();
+            case 4:
+                if(productoFinal.getEliminado()){
+                    return "Sí";
+                }else{
+                    return "No";
+                }
             default:
                 return "";
         }

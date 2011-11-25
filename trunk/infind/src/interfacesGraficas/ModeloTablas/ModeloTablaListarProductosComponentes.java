@@ -10,7 +10,7 @@ public class ModeloTablaListarProductosComponentes extends ModeloTabla {
 
     public ModeloTablaListarProductosComponentes() {
 
-        super("Código", "Nombre", "Categoria", "Ubicacion en almacén");
+        super("Código", "Nombre", "Categoria", "Ubicacion en almacén", "Eliminado");
     }
 
     @Override
@@ -29,6 +29,12 @@ public class ModeloTablaListarProductosComponentes extends ModeloTabla {
                 return pc.getCategoria();
             case 3:
                 return pc.getUbicacionEnAlmacen();
+            case 4:
+                if(pc.getEliminado()){
+                    return "Sí";
+                }else{
+                    return "No";
+                }
             default:
                 return "";
         }

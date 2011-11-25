@@ -19,7 +19,7 @@ public class ModeloTablaListarProductosIQE extends ModeloTabla{
 
     public ModeloTablaListarProductosIQE() {
 
-        super("Código", "Nombre");
+        super("Código", "Nombre","Eliminado");
     }
 
     @Override
@@ -34,6 +34,12 @@ public class ModeloTablaListarProductosIQE extends ModeloTabla{
                 return productoIQE.getCodigo();
             case 1:
                 return productoIQE.getNombre();
+            case 2:
+                if(productoIQE.getEliminado()){
+                    return "Sí";
+                }else{
+                    return "No";
+                }
             default:
                 return "";
         }
