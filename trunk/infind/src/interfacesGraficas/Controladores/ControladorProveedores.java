@@ -103,7 +103,7 @@ public class ControladorProveedores {
     }
 
     void editarProveedores(String nombreProveedor) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        
     }
     
     
