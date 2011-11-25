@@ -35,6 +35,7 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     private int tiempoDeTrabajoDeMaquinas;
     private int tiempoDeTrabajoDeOperarios;
     private int tiempoDeTrabajoTotal;
+    private boolean tipoIQE;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
     @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
@@ -134,6 +135,16 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     public void setTiempoDeTrabajoTotal(int tiempoDeTrabajoTotal) {
         this.tiempoDeTrabajoTotal = tiempoDeTrabajoTotal;
     }
+
+    public boolean isTipoIQE() {
+        return tipoIQE;
+    }
+
+    public void setTipoIQE(boolean tipoIQE) {
+        this.tipoIQE = tipoIQE;
+    }
+    
+    
     
     
     public void addDetalle(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
