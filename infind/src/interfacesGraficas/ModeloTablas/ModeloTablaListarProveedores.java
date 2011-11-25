@@ -20,7 +20,7 @@ public class ModeloTablaListarProveedores extends ModeloTabla{
 
     public ModeloTablaListarProveedores() {
 
-        super("Nombre", "Direccion", "Correo", "Telefono");
+        super("Nombre", "Direccion", "Correo", "Telefono","Eliminado");
     }
 
     @Override
@@ -39,6 +39,12 @@ public class ModeloTablaListarProveedores extends ModeloTabla{
                 return proveedor.getCorreoElectronico();
             case 3:
                 return proveedor.getTelefono();
+            case 4:
+                if(proveedor.getEliminado()){
+                    return "Sí";
+                }else{
+                    return "No";
+                }
             default:
                 return "";
         }

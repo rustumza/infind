@@ -17,7 +17,7 @@ public class ModeloTablaPedidoAProveedores extends ModeloTabla{
 
     public ModeloTablaPedidoAProveedores() {
 
-        super("Código Producto", "Nombre Producto","Cantidad","Proveedor" );
+        super("Código Producto", "Nombre Producto","Cantidad","Proveedor", "Confirmado" );
     }
 
     @Override
@@ -36,6 +36,13 @@ public class ModeloTablaPedidoAProveedores extends ModeloTabla{
                 return pedido.getCantidad();
             case 3:
                 return pedido.getProveedor().getNombre();    
+            case 4:
+                if(pedido.isEstaConcretado()){
+                    return "Sí";    
+                }else{
+                    return "No";    
+                }
+                
             default:
                 return "";
         }

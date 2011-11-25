@@ -48,7 +48,6 @@ public class PantallaEditarPedidoAProveedores extends javax.swing.JDialog {
 
         jToolBar1 = new javax.swing.JToolBar();
         guardar = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         tipoProductoListBox = new javax.swing.JComboBox();
@@ -89,13 +88,6 @@ public class PantallaEditarPedidoAProveedores extends javax.swing.JDialog {
             }
         });
         jToolBar1.add(guardar);
-
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        cancelar.setToolTipText("Cancelar");
-        cancelar.setFocusable(false);
-        cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(cancelar);
 
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         salir.setToolTipText("Salir");
@@ -337,17 +329,15 @@ private void soloSinConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//
     controlador.soloSinConfirmar();
 }//GEN-LAST:event_soloSinConfirmarActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salirActionPerformed
+private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+    dispose();
+}//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelar;
     private javax.swing.JButton cancelarCantidad;
     private javax.swing.JLabel cantidadDeLotesLabel;
     private javax.swing.JTextField cantidadDeLotesTextBox;
@@ -376,15 +366,6 @@ dispose();
     private javax.swing.JLabel unidadDeMedida;
     // End of variables declaration//GEN-END:variables
 
-
-
-    public JButton getCancelar() {
-        return cancelar;
-    }
-
-    public void setCancelar(JButton cancelar) {
-        this.cancelar = cancelar;
-    }
 
     public JButton getCancelarCantidad() {
         return cancelarCantidad;

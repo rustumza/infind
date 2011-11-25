@@ -71,6 +71,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuListarProveedores = new javax.swing.JMenuItem();
         crearPedidosAProveedores = new javax.swing.JMenuItem();
         listarPedidosAProveedores = new javax.swing.JMenuItem();
+        ordenesDeProduccion = new javax.swing.JMenu();
+        crearOrdenDeProduccion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -302,13 +304,26 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(proveedores);
 
+        ordenesDeProduccion.setText("Ordenes de producción");
+        ordenesDeProduccion.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        crearOrdenDeProduccion.setText("Crear orden de producción");
+        crearOrdenDeProduccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearOrdenDeProduccionActionPerformed(evt);
+            }
+        });
+        ordenesDeProduccion.add(crearOrdenDeProduccion);
+
+        jMenuBar1.add(ordenesDeProduccion);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
+            .addGap(0, 1011, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,6 +423,10 @@ private void crearPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent 
 private void listarPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPedidosAProveedoresActionPerformed
     controlador.listarPedidosAProveedores();
 }//GEN-LAST:event_listarPedidosAProveedoresActionPerformed
+
+private void crearOrdenDeProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearOrdenDeProduccionActionPerformed
+    controlador.crearOrdeDeProduccion();
+}//GEN-LAST:event_crearOrdenDeProduccionActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -450,6 +469,7 @@ private void listarPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent
     private javax.swing.JMenuItem crearCentro;
     private javax.swing.JMenuItem crearEstructuraDeProducto;
     private javax.swing.JMenuItem crearMateriaPrima;
+    private javax.swing.JMenuItem crearOrdenDeProduccion;
     private javax.swing.JMenuItem crearPedidosAProveedores;
     private javax.swing.JMenuItem crearProductoComponente;
     private javax.swing.JMenuItem crearProductoFinal;
@@ -472,6 +492,7 @@ private void listarPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent
     private javax.swing.JMenuItem menuEditarRuta;
     private javax.swing.JMenuItem menuIngresarOperarios;
     private javax.swing.JMenu operarios;
+    private javax.swing.JMenu ordenesDeProduccion;
     private javax.swing.JMenu proveedores;
     private javax.swing.JMenu rutaDeFabricacion;
     // End of variables declaration//GEN-END:variables
