@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import Entidades.EtapaDeRutaDeFabricacion;
 import excepciones.ExpertoExceptionRutaFabricacion;
 import interfacesGraficas.Controladores.ControladorCrearRutaDeFabricacion;
 import java.util.logging.Level;
@@ -36,6 +37,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
     ControladorCrearRutaDeFabricacion controlador;
     private PantCrearRutaDeFabricacion pantalla;
+    private EtapaDeRutaDeFabricacion etapaSeleccionada;
 
     /** Creates new form PantCrearRutaDeFabricacion */
     public PantCrearRutaDeFabricacion(java.awt.Frame parent, boolean modal, ControladorCrearRutaDeFabricacion controlRutaFabr) {
@@ -939,6 +941,11 @@ private void botonGuardarEtapaActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_botonGuardarEtapaActionPerformed
 
 private void tablaEtapasAgregadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEtapasAgregadasMouseClicked
+    
+    int fila = getTablaEtapasAgregadas().rowAtPoint(evt.getPoint());
+    int click = evt.getClickCount();
+
+    controlador.tabla(fila, click);
     
 }//GEN-LAST:event_tablaEtapasAgregadasMouseClicked
 
