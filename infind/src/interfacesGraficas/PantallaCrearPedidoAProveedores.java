@@ -25,9 +25,9 @@ import javax.swing.JToolBar;
  * @author rustu
  */
 public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
-    
+
     ControladorPedidoAProveedor controlador;
-    
+
     /** Creates new form PantallaCrearPedidoAProveedores */
     public PantallaCrearPedidoAProveedores(java.awt.Frame parent, boolean modal, ControladorPedidoAProveedor contr) {
         super(parent, modal);
@@ -77,7 +77,8 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        guardar.setText("Guardar");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        guardar.setToolTipText("Guardar");
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -88,16 +89,23 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
         });
         jToolBar1.add(guardar);
 
-        cancelar.setText("Cancelar");
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        cancelar.setToolTipText("Cancelar");
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(cancelar);
 
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
+        salir.setToolTipText("Salir");
         salir.setFocusable(false);
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         jToolBar1.add(salir);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Producto")));
@@ -176,13 +184,13 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(productoSeleccionadoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoSeleccionadoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
+                        .addComponent(productoSeleccionadoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(loteEstandarLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(unidadDeMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addComponent(unidadDeMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(tiempoDeDemoraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
@@ -199,7 +207,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                         .addGap(207, 207, 207)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,7 +273,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -279,7 +287,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +316,7 @@ private void bucarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_bucarProductoActionPerformed
 
 private void tablaDePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDePedidosMouseClicked
-if (evt.getClickCount() == 1) {
+    if (evt.getClickCount() == 1) {
         controlador.cargarPedidoSeleccionado();
     }
 }//GEN-LAST:event_tablaDePedidosMouseClicked
@@ -333,10 +341,13 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     controlador.guardar();
 }//GEN-LAST:event_guardarActionPerformed
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salirActionPerformed
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;
     private javax.swing.JButton bucarProducto;
@@ -590,6 +601,4 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void setProveedorListBox(JComboBox proveedorListBox) {
         this.proveedorListBox = proveedorListBox;
     }
-    
-    
 }
