@@ -39,7 +39,7 @@ public class ControladorEditarPedidoAProveedor {
         ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
         pantallaEditarPedidoAProveedor.getSoloSinConfirmar().setSelected(true);
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(true);
-        pantallaEditarPedidoAProveedor.getGuardar().setEnabled(false);
+        pantallaEditarPedidoAProveedor.getGuardar().setEnabled(true);
         pantallaEditarPedidoAProveedor.getEditar().setEnabled(false);
         pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
         List<PedidoAProveedor> Lista = experto.buscarPedidos(true);
