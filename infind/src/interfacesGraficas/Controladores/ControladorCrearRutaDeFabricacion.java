@@ -336,7 +336,7 @@ public class ControladorCrearRutaDeFabricacion {
 
             for (int i = 0; i < (listaMatPrims.size()); i++) {
 
-                MaestroDeArticulo matPrima = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getElementAt(i);
+                MaestroDeArticulo matPrima = ((ModeloJListListaMaestroDeArticulo) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getElementAt(i);
                 materiasPrimas.add(matPrima);
 
                 detalleArticulo.setCantidad(2);
@@ -372,7 +372,7 @@ public class ControladorCrearRutaDeFabricacion {
 
     public void agregarMatriaPrima() {
         int seleccionado = pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getSelectedIndex();
-        MaestroDeArticulo materiaPrimaSeleccionada = ((ModeloJListListaMateriaPrima) pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getModel()).getElementAt(seleccionado);
+        MaestroDeArticulo materiaPrimaSeleccionada = ((ModeloJListListaMaestroDeArticulo) pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().getModel()).getElementAt(seleccionado);
         List<MaestroDeArticulo> listaMatPrims = ((ModeloJListListaMaestroDeArticulo) pantallaCrearRutaFabricacion.getListaMateriasPrimasAgregadas().getModel()).getMaestrosDeArticulo();
 
         if (!listaMatPrims.contains(materiaPrimaSeleccionada)) {
@@ -455,7 +455,7 @@ public class ControladorCrearRutaDeFabricacion {
         List<MateriaPrima> listaMatPrim = expertoRutaFabricacion.buscarMateriasPrimas();
         List<MaestroDeArticulo> mater = new ArrayList<MaestroDeArticulo>();
         mater.addAll(listaMatPrim);
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(mater));
+       // pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(mater));
 
 
 
@@ -471,12 +471,8 @@ public class ControladorCrearRutaDeFabricacion {
 
             if (pantallaCrearRutaFabricacion.getRadioBotonBuscaCodigoProdFinal().isSelected()) {
                 articuloEncontradoFinal = expertoRutaFabricacion.buscarProductoFinal(armarDTOArticulo(1));
-
-
-
-
                 if (!articuloEncontradoFinal.getCodigo().isEmpty()) {
-                    if (articuloEncontradoFinal.getProductoTipoIQE() == null) {
+                    if (articuloEncontradoFinal.getProductoTipoIQE() != null) {
                         pantallaCrearRutaFabricacion.getCampoCodigoProdFinal().setText(articuloEncontradoFinal.getCodigo());
                         pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoFinal.getDescripcion());
                         pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoFinal.getNombre());
@@ -484,14 +480,14 @@ public class ControladorCrearRutaDeFabricacion {
                         List<DetalleEstructuraDeProducto> materiasPrimasProdFinal = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                         for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdFinal) {
 
-                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materia);
-                        }
-                        //busco las materias del prod IQE del producto final encontrado
-                        List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
-                            MaestroDeArticulo materiaDelProFinal = detalleEstructuraDeProducto.getMaestroArticulo();//no lo puede castear
-                            listaDeLosProductos.add(materiaDelProFinal);
+                            //si es materia prima
+                            if (detalleEstructuraDeProducto.getTipo().equals("Materia Prima")) {
+                                MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            } else {// si es producto componente
+                                ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            }
                         }
                         //busco las etapas del producto TIpoIQE relacionado
                         List<EtapaDeRutaDeFabricacion> etapaRutaFabricacionTipoIQE = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
@@ -509,8 +505,8 @@ public class ControladorCrearRutaDeFabricacion {
 
 
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Final: " +" '" +articuloEncontradoFinal.getNombre() + "' "+" no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Final: " + " '" + articuloEncontradoFinal.getNombre() + "' " + " no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                         //lanzar excepcion
                     }
 
@@ -527,15 +523,15 @@ public class ControladorCrearRutaDeFabricacion {
                         List<DetalleEstructuraDeProducto> materiasPrimasProdFinal = articuloEncontradoFinal.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                         for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdFinal) {
 
-                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materia);
+                            //si es materia prima
+                            if (detalleEstructuraDeProducto.getTipo().equals("Materia Prima")) {
+                                MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            } else {// si es producto componente
+                                ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            }
                         }
-                        List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
-                            MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materiaDelProFinal);
-                        }
-
                         List<EtapaDeRutaDeFabricacion> etapaRutaFabricacionTipoIQE = articuloEncontradoFinal.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                         if (etapaRutaFabricacionTipoIQE != null) {
                             for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacionTipoIQE) {
@@ -548,8 +544,8 @@ public class ControladorCrearRutaDeFabricacion {
                             }
 
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Final: " + " '"+ articuloEncontradoFinal.getNombre() +" '" +" no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Final: " + " '" + articuloEncontradoFinal.getNombre() + " '" + " no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                         //lanzar excepcion
                     }
                 }
@@ -569,15 +565,15 @@ public class ControladorCrearRutaDeFabricacion {
 
                         List<DetalleEstructuraDeProducto> materiasPrimasProdIntermedio = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                         for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdIntermedio) {
-                            detalleEstructuraDeProducto.getMaestroArticulo();
-                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materia);
-                        }
 
-                        List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
-                            MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materiaDelProFinal);
+                            //si es materia prima
+                            if (detalleEstructuraDeProducto.getTipo().equals("Materia Prima")) {
+                                MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            } else {// si es producto componente
+                                ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            }
                         }
 
 
@@ -592,9 +588,9 @@ public class ControladorCrearRutaDeFabricacion {
 
                             }
                         }
-                    }else{
-                       JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Intermedio: " +" '" +articuloEncontradoIntermedio.getNombre() + "' "+" no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                        //lanzar excepcion
+                    } else {
+                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Intermedio: " + " '" + articuloEncontradoIntermedio.getNombre() + "' " + " no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
                     }
 
 
@@ -610,17 +606,18 @@ public class ControladorCrearRutaDeFabricacion {
                         pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIntermedio.getNombre());
 
                         List<DetalleEstructuraDeProducto> materiasPrimasProdIntermedio = articuloEncontradoIntermedio.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdIntermedio) {
-                            detalleEstructuraDeProducto.getMaestroArticulo();
-                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materia);
-                        }
-                        List<DetalleEstructuraDeProducto> materiasDelProductoFinal = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasDelProductoFinal) {
-                            MateriaPrima materiaDelProFinal = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                            listaDeLosProductos.add(materiaDelProFinal);
-                        }
 
+                        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdIntermedio) {
+
+                            //si es materia prima
+                            if (detalleEstructuraDeProducto.getTipo().equals("Materia Prima")) {
+                                MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            } else {// si es producto componente
+                                ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                                listaDeLosProductos.add(materia);
+                            }
+                        }
 
                         List<EtapaDeRutaDeFabricacion> etapaRutaFabricacionTipoIQE = articuloEncontradoIntermedio.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
                         if (etapaRutaFabricacionTipoIQE != null) {
@@ -634,9 +631,9 @@ public class ControladorCrearRutaDeFabricacion {
                             }
 
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Intermedio: " +" '" +articuloEncontradoIntermedio.getNombre() + "' "+" no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                        //lanzar excepcion
+                    } else {
+                        JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Intermedio: " + " '" + articuloEncontradoIntermedio.getNombre() + "' " + " no tiene un Producto TipoIQE asociado", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
                     }
 
                 }
@@ -656,15 +653,25 @@ public class ControladorCrearRutaDeFabricacion {
                     pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIQE.getDescripcion());
                     pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIQE.getNombre());
 
+
+
                     List<DetalleEstructuraDeProducto> materiasPrimasProdIQE = articuloEncontradoIQE.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdIQE) {
-                        detalleEstructuraDeProducto.getMaestroArticulo();
-                        MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                        listaDeLosProductos.add(materia);
+
+                        //si es materia prima
+                        if (detalleEstructuraDeProducto.getTipo().equals("Materia prima")) {
+                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                            listaDeLosProductos.add(materia);
+                        } else {// si es producto componente
+                            ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                            listaDeLosProductos.add(materia);
+                        }
+
+
                     }
 
                 }
-
             } else if (pantallaCrearRutaFabricacion.getRadioBotonBuscaNombreProdFinal().isSelected()) {
                 articuloEncontradoIQE = expertoRutaFabricacion.buscarProductoIQE(armarDTOArticulo(2));
 
@@ -673,18 +680,25 @@ public class ControladorCrearRutaDeFabricacion {
                     pantallaCrearRutaFabricacion.getCampoDescripProdFInal().setText(articuloEncontradoIQE.getDescripcion());
                     pantallaCrearRutaFabricacion.getCampoNombreProdFinal().setText(articuloEncontradoIQE.getNombre());
 
-                    List<DetalleEstructuraDeProducto> materiasPrimasProdIQE = articuloEncontradoIQE.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+                    List< DetalleEstructuraDeProducto> materiasPrimasProdIQE = articuloEncontradoIQE.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
                     for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : materiasPrimasProdIQE) {
-                        detalleEstructuraDeProducto.getMaestroArticulo();
-                        MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
-                        listaDeLosProductos.add(materia);
+
+                        //si es materia prima
+                        if (detalleEstructuraDeProducto.getTipo().equals("Materia Prima")) {
+                            MateriaPrima materia = (MateriaPrima) detalleEstructuraDeProducto.getMaestroArticulo();
+                            listaDeLosProductos.add(materia);
+                        } else {// si es producto componente
+                            ProductoIntermedio materia = (ProductoIntermedio) detalleEstructuraDeProducto.getMaestroArticulo();
+                            listaDeLosProductos.add(materia);
+                        }
                     }
+
                 }
 
             }
 
+            pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(listaDeLosProductos));
         }
-        pantallaCrearRutaFabricacion.getListaMateriasPrimasCargadas().setModel(new ModeloJListListaMaestroDeArticulo(listaDeLosProductos));
     }
 
     public DTOArticulo armarDTOArticulo(Integer caso) {
