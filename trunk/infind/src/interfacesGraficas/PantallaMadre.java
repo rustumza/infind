@@ -73,6 +73,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         listarPedidosAProveedores = new javax.swing.JMenuItem();
         ordenesDeProduccion = new javax.swing.JMenu();
         crearOrdenDeProduccion = new javax.swing.JMenuItem();
+        inventarios = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -317,13 +318,17 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(ordenesDeProduccion);
 
+        inventarios.setText("Inventarios");
+        inventarios.setMargin(new java.awt.Insets(0, 5, 0, 5));
+        jMenuBar1.add(inventarios);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGap(0, 1182, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,6 +483,7 @@ private void crearOrdenDeProduccionActionPerformed(java.awt.event.ActionEvent ev
     private javax.swing.JMenuItem crearProveedores;
     private javax.swing.JMenuItem editarCentro;
     private javax.swing.JMenu estructuraDeProducto;
+    private javax.swing.JMenu inventarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
