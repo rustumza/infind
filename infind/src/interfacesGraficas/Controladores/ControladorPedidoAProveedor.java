@@ -99,7 +99,7 @@ public class ControladorPedidoAProveedor {
         pantallaCrearPedidoAProveedor.getEditar().setEnabled(true);
         pantallaCrearPedidoAProveedor.getAgregar().setEnabled(false);
         PedidoAProveedor pedido = experto.getListaDePedidos().get(detalleSeleccionado);
-        if(pedido.getArticulo().getTipo().equals("Materia prima")){
+        if(pedido.getArticulo().getClass().equals(MateriaPrima.class)){
             pantallaCrearPedidoAProveedor.getTipoProductoListBox().setSelectedItem("Materia prima");
             List<Proveedor> listaProveedor = ((MateriaPrima)pedido.getArticulo()).getProveedores();
             pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(listaProveedor.toArray()));
@@ -117,7 +117,7 @@ public class ControladorPedidoAProveedor {
         pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText(String.valueOf(pedido.getCantidad()));
         pantallaCrearPedidoAProveedor.getProductoSeleccionadoTextBox().setText(pedido.getArticulo().getNombre());
         pantallaCrearPedidoAProveedor.getLoteEstandarTextBox().setText(String.valueOf(pedido.getArticulo().getTamanioLoteEstandar()));
-        pantallaCrearPedidoAProveedor.getTiempoDeDemoraLabel().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
+        pantallaCrearPedidoAProveedor.getTiempoDeDemoraTextBox().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
         pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText(pedido.getArticulo().getUnidadDeMedida());
         
     }
