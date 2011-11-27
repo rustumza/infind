@@ -7,6 +7,7 @@ package expertos;
 import DTOs.DTOArticulo;
 import DTOs.DTOCentro;
 import Entidades.DetalleDeArticuloEnEtapaDeFabricacion;
+import Entidades.DetalleEstructuraDeProducto;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.Herramientas;
 import Entidades.MaestroDeArticulo;
@@ -17,7 +18,7 @@ import Entidades.MateriaPrima;
 import Entidades.ProductoFinal;
 import Entidades.ProductoIntermedio;
 import Entidades.ProductoTipoIQE;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import excepciones.ExpertoExceptionRutaFabricacion;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +35,20 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
     List<EtapaDeRutaDeFabricacion> etapaEnEspera;
     List<DetalleDeArticuloEnEtapaDeFabricacion> detalleArticuloGuardado;
-    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar;
+    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+    List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosADevolver;
+    List<DetalleEstructuraDeProducto> listaDetallesEstructuraDeProductosCantidad ;
     MaestroDeRutaDeFabricacion ruta;
-    
-    public ExpertoRutaDeFabricacion(){
-    
+
+    public ExpertoRutaDeFabricacion() {
+
         etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
         detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
-        listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+        listaDetallesEstructuraDeProductosCantidad = new ArrayList<DetalleEstructuraDeProducto>();
+        listaDetallesDeAticulosADevolver = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
         ruta = new MaestroDeRutaDeFabricacion();
         ruta.setEtapaRutaFabricacion(new ArrayList<EtapaDeRutaDeFabricacion>());
-    
+
     }
 
     public MaestroDeCentroDeTrabajo buscarCentros(DTOCentro dtoCentro) throws ExpertoExceptionRutaFabricacion {
@@ -91,16 +95,25 @@ public class ExpertoRutaDeFabricacion extends Experto {
         etapaEnEspera.add(nuevaEtapa);
 
     }
+    
+    public void guardarDetallesEstructuraProductosCAntidades(DetalleEstructuraDeProducto detalle){
+        
+        listaDetallesEstructuraDeProductosCantidad.add(detalle);
+    }
 
     public List<EtapaDeRutaDeFabricacion> devolverEtapasAGuardar() {
 
         return etapaEnEspera;
 
     }
+    
+    public void persistirEstructuraDeProducto(MaestroDeEstructuraDeProducto maestroEstructuraDeProducto) {
+        Fachada.getInstancia().guardarSinTranasaccion(maestroEstructuraDeProducto);
+    }
 
     public void persistirRutaDeFabricacion(MaestroDeRutaDeFabricacion rutaNueva) {
 
-        
+
         Fachada.getInstancia().guardarSinTranasaccion(rutaNueva);
 
     }
@@ -126,6 +139,24 @@ public class ExpertoRutaDeFabricacion extends Experto {
 
     public void guardarDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
         listaDetallesDeAticulosAGuardar.add(detalleArticulo);
+    }
+
+    public List<DetalleDeArticuloEnEtapaDeFabricacion> devolverDetalleDeLaEtapa(EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion) {
+        listaDetallesDeAticulosADevolver = null;
+        if (listaDetallesDeAticulosADevolver == null) {
+            listaDetallesDeAticulosADevolver = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+
+        }
+
+        for (int i = 0; i < listaDetallesDeAticulosAGuardar.size(); i++) {
+            if (listaDetallesDeAticulosAGuardar.get(i).getEtapaRutaFabricacion().getNroEtapa() == etapaDeRutaDeFabricacion.getNroEtapa()) {
+                listaDetallesDeAticulosADevolver.add(listaDetallesDeAticulosAGuardar.get(i));
+
+            }
+
+        }
+        return listaDetallesDeAticulosADevolver;
+        
     }
 
     public ProductoFinal buscarProductoFinal(DTOArticulo dtoArticulo) throws ExpertoExceptionRutaFabricacion {
@@ -165,8 +196,8 @@ public class ExpertoRutaDeFabricacion extends Experto {
         List<MaestroDeRutaDeFabricacion> rutaEncontrada = null;
 
 //        Criteria criterioRuta = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeRutaDeFabricacion.class);
-  //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
-    //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
+        //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
+        //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
 
         List<EtapaDeRutaDeFabricacion> etapasEncontrado = null;
 
@@ -179,16 +210,14 @@ public class ExpertoRutaDeFabricacion extends Experto {
         return etapasEncontrado;
 
     }
-    
-    
-    
+
     public List<EtapaDeRutaDeFabricacion> buscarEtapasSinTx(MaestroDeRutaDeFabricacion rutaNueva) {
 
         List<MaestroDeRutaDeFabricacion> rutaEncontrada = null;
 
 //        Criteria criterioRuta = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeRutaDeFabricacion.class);
-  //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
-    //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
+        //      criterioRuta.add(Restrictions.eq("numero", rutaNueva.getNumero()));
+        //    rutaEncontrada = Fachada.getInstancia().buscar(MaestroDeRutaDeFabricacion.class, criterioRuta);
 
         List<EtapaDeRutaDeFabricacion> etapasEncontrado = null;
 
@@ -271,52 +300,58 @@ public class ExpertoRutaDeFabricacion extends Experto {
     }
 
     public EtapaDeRutaDeFabricacion buscarEtapasAEliminar(Object valorEtapa) {
-            
-        
+
+
         //EtapaDeRutaDeFabricacion etapasEncontrado = null;
 
 
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaEnEspera) {
             int nroEtapa = etapaDeRutaDeFabricacion.getNroEtapa();
-        
+
             if (String.valueOf(nroEtapa) == null ? valorEtapa.toString() == null : String.valueOf(nroEtapa).equals(valorEtapa.toString())) {
-                
+
                 return etapaDeRutaDeFabricacion;
             }
-        
+
         }
-        
-        
+
+
         return null;
-        
+
     }
 
     public ProductoTipoIQE buscarTipoIQE(ProductoFinal articuloEncontradoFinal) {
-        
-        
-      List<MaestroDeEstructuraDeProducto> esstructuraEncontrado = null;
+
+
+        List<MaestroDeEstructuraDeProducto> esstructuraEncontrado = null;
         ProductoTipoIQE productoDevuelto = null;
 
-        
-            
-            Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeEstructuraDeProducto.class);
-            
-            criterioArticulo.add(Restrictions.eq("ProductoFinal", articuloEncontradoFinal));
-            
-            esstructuraEncontrado = Fachada.getInstancia().buscar(MaestroDeEstructuraDeProducto.class, criterioArticulo);
-            productoDevuelto = esstructuraEncontrado.get(0).getProductoTipoIQE();
 
 
-            return productoDevuelto;
+        Criteria criterioArticulo = Fachada.getInstancia().crearCriterio(MaestroDeEstructuraDeProducto.class);
+
+        criterioArticulo.add(Restrictions.eq("ProductoFinal", articuloEncontradoFinal));
+
+        esstructuraEncontrado = Fachada.getInstancia().buscar(MaestroDeEstructuraDeProducto.class, criterioArticulo);
+        productoDevuelto = esstructuraEncontrado.get(0).getProductoTipoIQE();
+
+
+        return productoDevuelto;
     }
 
-    
-
     public void guardarEtapasEnLaRuta(MaestroDeRutaDeFabricacion rutaNueva) {
-        System.out.println(etapaEnEspera.size());
+       // System.out.println(etapaEnEspera.size());
         for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaEnEspera) {
             rutaNueva.addDetalle(etapaDeRutaDeFabricacion);
         }
     }
+    
+    public void guardarDetallesEnLaEtapa(EtapaDeRutaDeFabricacion etapa) {
+     //   System.out.println(etapaEnEspera.size());
+        for (DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo : listaDetallesDeAticulosADevolver) {
+            etapa.addDetalle(detalleArticulo);
+        }
+    }
 
+    
 }
