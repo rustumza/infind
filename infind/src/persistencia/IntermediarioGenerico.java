@@ -41,18 +41,7 @@ public class IntermediarioGenerico {
             System.out.println("error");
         }
     }
-
-    public List buscar(Class object, Criteria criterio) {
-        Conexion.getInstancia().iniciarTX();
-        List<ObjetoPersitente> lista = null;
-        try {
-            lista = criterio.list();
-        } catch (SQLGrammarException ex) {
-            System.out.println(ex.getMessage());
-        }
-        Conexion.getInstancia().confirmarTx();
-        return lista;
-    }
+    
     
     public void guardarSinTransaccion(ObjetoPersitente obj) throws Exception {
         
@@ -68,6 +57,20 @@ public class IntermediarioGenerico {
             System.out.println("error");
         }
     }
+
+    public List buscar(Class object, Criteria criterio) {
+        Conexion.getInstancia().iniciarTX();
+        List<ObjetoPersitente> lista = null;
+        try {
+            lista = criterio.list();
+        } catch (SQLGrammarException ex) {
+            System.out.println(ex.getMessage());
+        }
+        Conexion.getInstancia().confirmarTx();
+        return lista;
+    }
+    
+    
     
     
     public List buscarSinTransaccion(Class object, Criteria criterio) {

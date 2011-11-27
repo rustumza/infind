@@ -657,6 +657,11 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -674,8 +679,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 100;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.ipady = 200;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel8.add(jScrollPane2, gridBagConstraints);
@@ -704,6 +709,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         botonGuardarEtapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
         botonGuardarEtapa.setText("Guardar Etapa");
+        botonGuardarEtapa.setEnabled(false);
         botonGuardarEtapa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarEtapaActionPerformed(evt);

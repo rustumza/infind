@@ -38,8 +38,10 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     private boolean tipoIQE;
     @ManyToOne
     private MaestroDeCentroDeTrabajo maestroCentroTrabajo;
+    
     @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
     private List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList;
+    
     @ManyToOne
     private MaestroDeRutaDeFabricacion maestroRutaFabricacionList;
 
@@ -147,15 +149,15 @@ public class EtapaDeRutaDeFabricacion extends ObjetoPersitente implements Serial
     
     
     
-    public void addDetalle(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
+        public void addDetalle(DetalleDeArticuloEnEtapaDeFabricacion detalle) {
         //if (!getDetallesDeFactura().contains(detalle)) {
-        if (!estaEnLaLista(detalle)) {
+    //    if (!estaEnLaLista(detalle)) {
             getDetallesArtEnEtapaFabList().add(detalle);
             if (detalle.getEtapaRutaFabricacion() != null) {
                 detalle.getEtapaRutaFabricacion().getDetallesArtEnEtapaFabList().remove(detalle);
             }
             detalle.setEtapaRutaFabricacion(this);
-        }
+      //  }
     }
 
 
