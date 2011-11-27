@@ -5,6 +5,7 @@
 package interfacesGraficas.ModeloTablas;
 
 import Entidades.PedidoAProveedor;
+import utilidades.formateadorfechas;
 
 /**
  *
@@ -17,7 +18,7 @@ public class ModeloTablaPedidoAProveedores extends ModeloTabla{
 
     public ModeloTablaPedidoAProveedores() {
 
-        super("Código Producto", "Nombre Producto","Cantidad","Proveedor", "Confirmado" );
+        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realiazar","Proveedor", "Confirmado" );
     }
 
     @Override
@@ -35,8 +36,10 @@ public class ModeloTablaPedidoAProveedores extends ModeloTabla{
             case 2:
                 return pedido.getCantidad();
             case 3:
-                return pedido.getProveedor().getNombre();    
+                return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
             case 4:
+                return pedido.getProveedor().getNombre();    
+            case 5:
                 if(pedido.isEstaConcretado()){
                     return "Sí";    
                 }else{

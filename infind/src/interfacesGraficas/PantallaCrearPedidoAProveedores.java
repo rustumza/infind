@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import com.toedter.calendar.JDateChooser;
 import interfacesGraficas.Controladores.ControladorPedidoAProveedor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -68,6 +69,8 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
         cancelarCantidad = new javax.swing.JButton();
         proveedorLabel = new javax.swing.JLabel();
         proveedorListBox = new javax.swing.JComboBox();
+        fechaEnLaQueHayQueRealizarloLabel = new javax.swing.JLabel();
+        fechaEnLaQueHayQueRealizarloDateChooser = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDePedidos = new javax.swing.JTable();
@@ -123,7 +126,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
 
         tiempoDeDemoraTextBox.setEnabled(false);
 
-        tiempoDeDemoraLabel.setText("Tiempo de demora");
+        tiempoDeDemoraLabel.setText("Tiempo de demora (dias)");
 
         cantidadDeLotesLabel.setText("Cantidad de lotes");
 
@@ -159,6 +162,8 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
 
         proveedorListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        fechaEnLaQueHayQueRealizarloLabel.setText("Fecha en la que hay que realizarlo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -176,17 +181,17 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(productoSeleccionadoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoSeleccionadoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+                        .addComponent(productoSeleccionadoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(loteEstandarLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(unidadDeMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tiempoDeDemoraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(tiempoDeDemoraTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(unidadDeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tiempoDeDemoraLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tiempoDeDemoraTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cantidadDeLotesLabel)
                         .addGap(4, 4, 4)
@@ -194,12 +199,15 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addComponent(proveedorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(proveedorListBox, 0, 208, Short.MAX_VALUE))
+                        .addComponent(proveedorListBox, 0, 404, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
+                        .addComponent(fechaEnLaQueHayQueRealizarloLabel)
+                        .addGap(3, 3, 3)
+                        .addComponent(fechaEnLaQueHayQueRealizarloDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                        .addComponent(editar, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,8 +231,8 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                     .addComponent(loteEstandarLabel)
                     .addComponent(loteEstandarTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tiempoDeDemoraTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoDeDemoraLabel)
-                    .addComponent(unidadDeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(unidadDeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiempoDeDemoraLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadDeLotesLabel)
@@ -232,11 +240,15 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
                     .addComponent(cantidadDeLotesTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(proveedorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelarCantidad)
-                    .addComponent(agregar)
-                    .addComponent(editar)
-                    .addComponent(quitar)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cancelarCantidad)
+                        .addComponent(agregar)
+                        .addComponent(editar)
+                        .addComponent(quitar)
+                        .addComponent(fechaEnLaQueHayQueRealizarloLabel))
+                    .addComponent(fechaEnLaQueHayQueRealizarloDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pedidos"));
@@ -265,7 +277,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -279,7 +291,7 @@ public class PantallaCrearPedidoAProveedores extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,6 +361,8 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private javax.swing.JLabel codigoLabel;
     private javax.swing.JTextField codigoProductoTextBox;
     private javax.swing.JButton editar;
+    private com.toedter.calendar.JDateChooser fechaEnLaQueHayQueRealizarloDateChooser;
+    private javax.swing.JLabel fechaEnLaQueHayQueRealizarloLabel;
     private javax.swing.JButton guardar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -584,4 +598,21 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     public void setProveedorListBox(JComboBox proveedorListBox) {
         this.proveedorListBox = proveedorListBox;
     }
+
+    public JDateChooser getFechaEnLaQueHayQueRealizarloDateChooser() {
+        return fechaEnLaQueHayQueRealizarloDateChooser;
+    }
+
+    public void setFechaEnLaQueHayQueRealizarloDateChooser(JDateChooser fechaEnLaQueHayQueRealizarloDateChooser) {
+        this.fechaEnLaQueHayQueRealizarloDateChooser = fechaEnLaQueHayQueRealizarloDateChooser;
+    }
+
+    public JLabel getFechaEnLaQueHayQueRealizarloLabel() {
+        return fechaEnLaQueHayQueRealizarloLabel;
+    }
+
+    public void setFechaEnLaQueHayQueRealizarloLabel(JLabel fechaEnLaQueHayQueRealizarloLabel) {
+        this.fechaEnLaQueHayQueRealizarloLabel = fechaEnLaQueHayQueRealizarloLabel;
+    }
+    
 }

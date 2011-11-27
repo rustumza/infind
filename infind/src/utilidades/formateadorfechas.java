@@ -103,6 +103,14 @@ public class formateadorfechas {
         }
         return resultado;
     }
+    
+    
+    public static String fechaAStringDDMMAAAA(Date fecha){
+        if(fecha == null)
+            return "";
+        else
+            return format_dd_MM_yyyy.format(fecha);
+    }
 }
 
 
