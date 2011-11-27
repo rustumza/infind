@@ -137,6 +137,7 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor.getTiempoDeDemoraTextBox().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
         pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText(pedido.getArticulo().getUnidadDeMedida());
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(pedido.isEstaConcretado());
+        pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(pedido.getFechaARealizarElPedido());
         
         
     }
@@ -185,12 +186,13 @@ public class ControladorEditarPedidoAProveedor {
             pantallaEditarPedidoAProveedor.getLoteEstandarTextBox().setText("");
             pantallaEditarPedidoAProveedor.getTiempoDeDemoraTextBox().setText("");
             pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
-            pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText("");
+            pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText("");            
             pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
             pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
             pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
             pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
             pantallaEditarPedidoAProveedor.getEditar().setEnabled(false);
+            pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
         
     }
 
@@ -212,6 +214,7 @@ public class ControladorEditarPedidoAProveedor {
             pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
             pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
             pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
             
             
         }catch(NumberFormatException ex){
@@ -240,6 +243,7 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
         pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
+        pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
             
     }
 
@@ -262,6 +266,7 @@ public class ControladorEditarPedidoAProveedor {
             pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
             pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(false);
             pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
+            pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
         } catch (StockExcepcion ex) {
             JOptionPane.showMessageDialog(pantallaEditarPedidoAProveedor, "Error al confirmar el pedido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -289,6 +294,7 @@ public class ControladorEditarPedidoAProveedor {
         pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
         pantallaEditarPedidoAProveedor.getUnidadDeMedida().setText("");
         pantallaEditarPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+        pantallaEditarPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
         
     }
     

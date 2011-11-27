@@ -119,7 +119,7 @@ public class ControladorPedidoAProveedor {
         pantallaCrearPedidoAProveedor.getLoteEstandarTextBox().setText(String.valueOf(pedido.getArticulo().getTamanioLoteEstandar()));
         pantallaCrearPedidoAProveedor.getTiempoDeDemoraTextBox().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
         pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText(pedido.getArticulo().getUnidadDeMedida());
-        
+        pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(pedido.getFechaARealizarElPedido());
     }
 
     public void agregar() {
@@ -131,7 +131,12 @@ public class ControladorPedidoAProveedor {
                     pantallaCrearPedidoAProveedor.getProveedorListBox().requestFocus();
                     return;
                 }
-                List<PedidoAProveedor> lista = experto.generarPedidoAProveedores(pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().getText(), Integer.parseInt(cantidadString),(Proveedor)pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem());
+                if(pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser() == null){
+                    JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No se ha ingresado una fecha correcta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().requestFocus();
+                    return;
+                }
+                List<PedidoAProveedor> lista = experto.generarPedidoAProveedores(pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().getText(), Integer.parseInt(cantidadString),(Proveedor)pantallaCrearPedidoAProveedor.getProveedorListBox().getSelectedItem(), pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().getDate());
                 ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
                 mod.setListaElementos(lista);
                 pantallaCrearPedidoAProveedor.getTablaDePedidos().setModel(mod);
@@ -147,6 +152,7 @@ public class ControladorPedidoAProveedor {
                 pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
                 pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
                 pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+                pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
             }else{
                 JOptionPane.showMessageDialog(pantallaCrearPedidoAProveedor, "No ha seleccionado un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantallaCrearPedidoAProveedor.getCodigoProductoTextBox().requestFocus();
@@ -176,6 +182,7 @@ public class ControladorPedidoAProveedor {
             pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
             pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
             pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+            pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
         
     }
 
@@ -198,6 +205,7 @@ public class ControladorPedidoAProveedor {
             pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
             pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
             pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+            pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
             
             
         }catch(NumberFormatException ex){
@@ -227,6 +235,7 @@ public class ControladorPedidoAProveedor {
         pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
         pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
         pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+        pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
             
     }
 
@@ -249,6 +258,7 @@ public class ControladorPedidoAProveedor {
         pantallaCrearPedidoAProveedor.getCantidadDeLotesTextBox().setText("");
         pantallaCrearPedidoAProveedor.getUnidadDeMedida().setText("");
         pantallaCrearPedidoAProveedor.getProveedorListBox().setModel(new DefaultComboBoxModel(new ArrayList().toArray()));
+        pantallaCrearPedidoAProveedor.getFechaEnLaQueHayQueRealizarloDateChooser().setDate(null);
     }
     
 }

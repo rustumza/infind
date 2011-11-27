@@ -5,11 +5,13 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -29,7 +31,9 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     private MaestroDeArticulo articulo;
     @ManyToOne
     private Proveedor proveedor;
-    float cantidad;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fechaARealizarElPedido;
+    private float cantidad;
     private boolean estaConcretado;
 
     public MaestroDeArticulo getArticulo() {
@@ -63,9 +67,15 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
-    
-    
 
+    public Date getFechaARealizarElPedido() {
+        return fechaARealizarElPedido;
+    }
+
+    public void setFechaARealizarElPedido(Date fechaARealizarElPedido) {
+        this.fechaARealizarElPedido = fechaARealizarElPedido;
+    }
+    
     @Override
     public Long getId() {
         return id;

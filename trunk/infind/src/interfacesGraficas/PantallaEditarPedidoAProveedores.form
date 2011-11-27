@@ -22,16 +22,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="613" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="703" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="1"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jPanel3" alignment="0" min="0" pref="679" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" max="32767" attributes="1"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,53 +104,58 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="tipoProductoListBox" min="-2" pref="202" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="codigoProductoTextBox" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="soloSinConfirmar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="1">
                           <Component id="productoSeleccionadoLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="productoSeleccionadoTextBox" pref="378" max="32767" attributes="0"/>
+                          <Component id="productoSeleccionadoTextBox" pref="441" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="1">
                           <Component id="loteEstandarLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="loteEstandarTextBox" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="unidadDeMedida" pref="148" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="tiempoDeDemoraLabel" min="-2" pref="121" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Component id="tiempoDeDemoraTextBox" min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="unidadDeMedida" min="-2" pref="124" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="tiempoDeDemoraLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tiempoDeDemoraTextBox" pref="88" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="1">
                           <Component id="cantidadDeLotesLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="cantidadDeLotesTextBox" min="-2" pref="89" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="proveedorLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="proveedorListBox" pref="252" max="32767" attributes="0"/>
+                          <Component id="proveedorListBox" pref="317" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="seConcreto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="fechaEnLaQueHayQueRealizarloLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="fechaEnLaQueHayQueRealizarloDateChooser" min="-2" pref="147" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="editar" min="-2" pref="64" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="quitar" min="-2" pref="61" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="quitar" min="-2" pref="69" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="cancelarCantidad" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="tipoProductoListBox" pref="152" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="codigoProductoTextBox" min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="soloSinConfirmar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="seConcreto" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -164,6 +167,7 @@
                       <Component id="codigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="codigoProductoTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="soloSinConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="seConcreto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -174,9 +178,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="loteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="loteEstandarTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tiempoDeDemoraTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tiempoDeDemoraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="unidadDeMedida" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="tiempoDeDemoraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tiempoDeDemoraTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -185,13 +189,19 @@
                       <Component id="cantidadDeLotesTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="proveedorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cancelarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="editar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="quitar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="seConcreto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="fechaEnLaQueHayQueRealizarloLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="quitar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cancelarCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="fechaEnLaQueHayQueRealizarloDateChooser" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -245,7 +255,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="tiempoDeDemoraLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tiempo de demora"/>
+            <Property name="text" type="java.lang.String" value="Tiempo de demora (d&#xed;as)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="unidadDeMedida">
@@ -314,6 +324,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soloSinConfirmarActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="fechaEnLaQueHayQueRealizarloLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fecha en la que hay que realizarlo"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="fechaEnLaQueHayQueRealizarloDateChooser">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -334,15 +354,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="555" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="647" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane1" pref="325" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="313" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

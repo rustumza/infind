@@ -11,6 +11,7 @@ import Entidades.ProductoComponente;
 import Entidades.Proveedor;
 import excepciones.StockExcepcion;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -30,7 +31,7 @@ public class ExpertoPedidoAproveedores {
     
     }
     
-    public List<PedidoAProveedor> generarPedidoAProveedores(String codigo, int cantidadDeLostesOptimos, Proveedor prov){
+    public List<PedidoAProveedor> generarPedidoAProveedores(String codigo, int cantidadDeLostesOptimos, Proveedor prov, Date fecha){
         
         Criteria criterio = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
         criterio.add(Restrictions.like("codigo", codigo));
@@ -38,6 +39,7 @@ public class ExpertoPedidoAproveedores {
         MaestroDeArticulo articulo = listaArticulos.get(0);
         PedidoAProveedor pedido = new PedidoAProveedor();
         pedido.setArticulo(articulo);
+        pedido.setFechaARealizarElPedido(fecha);
         pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
         pedido.setEstaConcretado(false);
         pedido.setEliminado(false);
