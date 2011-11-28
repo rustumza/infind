@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -29,9 +31,9 @@ public class Proveedor extends ObjetoPersitente implements Serializable {
     private int telefono;
     private String direccion;
     private String correoElectronico;
-    @ManyToMany
+    @ManyToMany @LazyCollection(LazyCollectionOption.FALSE)
     List<MateriaPrima> materiasPrimas; 
-    @ManyToMany
+    @ManyToMany @LazyCollection(LazyCollectionOption.FALSE)
     List<ProductoComponente> productosComponentes; 
 
     public Long getId() {

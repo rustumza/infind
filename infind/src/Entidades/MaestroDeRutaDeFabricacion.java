@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -25,7 +27,7 @@ public class MaestroDeRutaDeFabricacion extends ObjetoPersitente implements Seri
     private Long id;
     private Boolean eliminado;
     private String numero;
-    @OneToMany
+    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
     private List<EtapaDeRutaDeFabricacion> etapasRutaFabricacion;
     
 

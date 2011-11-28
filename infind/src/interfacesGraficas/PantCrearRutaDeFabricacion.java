@@ -803,6 +803,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel10.add(jLabel13, gridBagConstraints);
+
+        campoCodigoCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -810,6 +812,8 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 5, 0, 0);
         jPanel10.add(campoCodigoCentroEncontrado, gridBagConstraints);
+
+        campoNombreCentroEncontrado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -820,6 +824,7 @@ public class PantCrearRutaDeFabricacion extends javax.swing.JDialog {
 
         campoDescripcionCentroEncontrado.setColumns(20);
         campoDescripcionCentroEncontrado.setRows(5);
+        campoDescripcionCentroEncontrado.setEnabled(false);
         jScrollPane10.setViewportView(campoDescripcionCentroEncontrado);
 
         jScrollPane9.setViewportView(jScrollPane10);

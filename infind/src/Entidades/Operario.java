@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -34,7 +36,7 @@ public class Operario extends ObjetoPersitente implements Serializable {
     private String direccion;
     private String correoElectronico;
     private Boolean eliminado = false;
-    @ManyToMany 
+    @ManyToMany @LazyCollection(LazyCollectionOption.FALSE)
     private List<MaestroDeCentroDeTrabajo> centroDeTrabajo;
     @ManyToOne
     private TipoOperario tipoOperario;

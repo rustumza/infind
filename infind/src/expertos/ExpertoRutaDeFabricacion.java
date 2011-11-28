@@ -38,6 +38,8 @@ public class ExpertoRutaDeFabricacion extends Experto {
     List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
     List<DetalleDeArticuloEnEtapaDeFabricacion> listaDetallesDeAticulosADevolver;
     List<DetalleEstructuraDeProducto> listaDetallesEstructuraDeProductosCantidad ;
+    
+    
     MaestroDeRutaDeFabricacion ruta;
 
     public ExpertoRutaDeFabricacion() {
@@ -46,6 +48,7 @@ public class ExpertoRutaDeFabricacion extends Experto {
         detalleArticuloGuardado = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
         listaDetallesEstructuraDeProductosCantidad = new ArrayList<DetalleEstructuraDeProducto>();
         listaDetallesDeAticulosADevolver = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+        listaDetallesDeAticulosAGuardar  = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
         ruta = new MaestroDeRutaDeFabricacion();
         ruta.setEtapaRutaFabricacion(new ArrayList<EtapaDeRutaDeFabricacion>());
 
@@ -92,6 +95,10 @@ public class ExpertoRutaDeFabricacion extends Experto {
     }
 
     public void guardarEtapaRutaFabricacion(EtapaDeRutaDeFabricacion nuevaEtapa) {
+        if (etapaEnEspera == null) {
+            etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
+                    
+        }
         etapaEnEspera.add(nuevaEtapa);
 
     }
@@ -138,6 +145,11 @@ public class ExpertoRutaDeFabricacion extends Experto {
     }
 
     public void guardarDetalleArticuloEnEtapaFabricacion(DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo) {
+        if (listaDetallesDeAticulosAGuardar == null) {
+            listaDetallesDeAticulosAGuardar = new ArrayList<DetalleDeArticuloEnEtapaDeFabricacion>();
+            
+        }
+        
         listaDetallesDeAticulosAGuardar.add(detalleArticulo);
     }
 
@@ -296,6 +308,10 @@ public class ExpertoRutaDeFabricacion extends Experto {
     }
 
     public void eliminarEtapa(EtapaDeRutaDeFabricacion etapaSeleccionada) {
+        if (etapaEnEspera == null) {
+            etapaEnEspera = new ArrayList<EtapaDeRutaDeFabricacion>();
+        }
+        
         etapaEnEspera.remove(etapaSeleccionada);
     }
 
@@ -351,6 +367,16 @@ public class ExpertoRutaDeFabricacion extends Experto {
         for (DetalleDeArticuloEnEtapaDeFabricacion detalleArticulo : listaDetallesDeAticulosADevolver) {
             etapa.addDetalle(detalleArticulo);
         }
+    }
+
+    public void limpiarExperto() {
+        listaDetallesDeAticulosADevolver = null;
+        listaDetallesDeAticulosAGuardar = null;
+        listaDetallesEstructuraDeProductosCantidad = null;
+        etapaEnEspera = null;
+        detalleArticuloGuardado = null;
+        ruta = null;
+        
     }
 
     

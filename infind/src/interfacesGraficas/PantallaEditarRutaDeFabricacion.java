@@ -386,6 +386,8 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel4.add(jLabel9, gridBagConstraints);
+
+        campoTpoMaquinaEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -393,6 +395,8 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 10);
         jPanel4.add(campoTpoMaquinaEtapaRuta, gridBagConstraints);
+
+        campoTpoOperarioEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -400,6 +404,8 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 10);
         jPanel4.add(campoTpoOperarioEtapaRuta, gridBagConstraints);
+
+        campoTpoTotalEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -440,6 +446,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonAgregaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaMateriaPrima.setText("Agregar");
+        botonAgregaMateriaPrima.setEnabled(false);
         botonAgregaMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregaMateriaPrimaActionPerformed(evt);
@@ -453,6 +460,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonQuitaMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaMateriaPrima.setText("Quitar");
+        botonQuitaMateriaPrima.setEnabled(false);
         botonQuitaMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonQuitaMateriaPrimaActionPerformed(evt);
@@ -530,6 +538,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonAgregaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaMaquinas.setText("Agregar");
+        botonAgregaMaquinas.setEnabled(false);
         botonAgregaMaquinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregaMaquinasActionPerformed(evt);
@@ -543,6 +552,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonQuitaMaquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaMaquinas.setText("Quitar");
+        botonQuitaMaquinas.setEnabled(false);
         botonQuitaMaquinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonQuitaMaquinasActionPerformed(evt);
@@ -603,6 +613,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonAgregaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-next.png"))); // NOI18N
         botonAgregaHerramientas.setText("Agregar");
+        botonAgregaHerramientas.setEnabled(false);
         botonAgregaHerramientas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregaHerramientasActionPerformed(evt);
@@ -616,6 +627,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonQuitaHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/go-previous.png"))); // NOI18N
         botonQuitaHerramientas.setText("Quitar");
+        botonQuitaHerramientas.setEnabled(false);
         botonQuitaHerramientas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonQuitaHerramientasActionPerformed(evt);
@@ -644,6 +656,8 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel4.add(jLabel10, gridBagConstraints);
+
+        campoNroOperariosEtapaRuta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -672,6 +686,15 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
         tablaEtapasAgregadas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaEtapasAgregadasMouseClicked(evt);
+            }
+        });
+        tablaEtapasAgregadas.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tablaEtapasAgregadasAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(tablaEtapasAgregadas);
@@ -956,6 +979,11 @@ private void botonGuardarEtapaEditadaActionPerformed(java.awt.event.ActionEvent 
 
 private void tablaEtapasAgregadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEtapasAgregadasMouseClicked
     
+    int fila = getTablaEtapasAgregadas().rowAtPoint(evt.getPoint());
+    int click = evt.getClickCount();
+
+    controlador.tabla(fila, click);
+    
 }//GEN-LAST:event_tablaEtapasAgregadasMouseClicked
 
 private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEtapaActionPerformed
@@ -968,6 +996,10 @@ private void botonEliminarEtapaActionPerformed(java.awt.event.ActionEvent evt) {
            
 
 }//GEN-LAST:event_botonEliminarEtapaActionPerformed
+
+private void tablaEtapasAgregadasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaEtapasAgregadasAncestorAdded
+    // TODO add your handling code here:
+}//GEN-LAST:event_tablaEtapasAgregadasAncestorAdded
     /**
      * @param args the command line arguments
      */

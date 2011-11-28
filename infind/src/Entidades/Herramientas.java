@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -31,6 +33,7 @@ public class Herramientas extends ObjetoPersitente implements Serializable {
     private String nombreHerramientas;
     private String descripcion;
     @ManyToMany 
+    
     private List<MaestroDeCentroDeTrabajo> maestroCentroTrabajo;
 
     public Long getId() {
