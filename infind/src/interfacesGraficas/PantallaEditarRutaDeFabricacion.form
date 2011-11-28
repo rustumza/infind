@@ -787,6 +787,7 @@
                   <Image iconType="3" name="/utilidades/imagenes/iconos/save-20.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar Etapa"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGuardarEtapaEditadaActionPerformed"/>

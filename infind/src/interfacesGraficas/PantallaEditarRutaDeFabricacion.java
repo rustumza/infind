@@ -709,6 +709,7 @@ public class PantallaEditarRutaDeFabricacion extends javax.swing.JDialog {
 
         botonGuardarEtapaEditada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
         botonGuardarEtapaEditada.setText("Guardar Etapa");
+        botonGuardarEtapaEditada.setEnabled(false);
         botonGuardarEtapaEditada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarEtapaEditadaActionPerformed(evt);
