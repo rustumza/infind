@@ -4,7 +4,10 @@
  */
 package interfacesGraficas.Controladores;
 
+import excepciones.ExpertoCostosFijosException;
 import interfacesGraficas.PantallaMadre;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -130,5 +133,13 @@ public class ControladorPantallaMadre {
 
     public void crearOrdeDeProduccion() {
         new ControladorCrearOrdenDeFabricacion(this).iniciar();
+    }
+    
+    public void abmCostosFijos(){
+        try {
+            new ControladorABMCostosFijos(this).iniciar();
+        } catch (ExpertoCostosFijosException ex) {
+            Logger.getLogger(ControladorPantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
