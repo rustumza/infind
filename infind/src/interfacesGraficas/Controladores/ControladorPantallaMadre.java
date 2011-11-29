@@ -5,6 +5,7 @@
 package interfacesGraficas.Controladores;
 
 import excepciones.ExpertoCostosFijosException;
+import excepciones.ExpertoCostosVariablesException;
 import interfacesGraficas.PantallaMadre;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -139,6 +140,14 @@ public class ControladorPantallaMadre {
         try {
             new ControladorABMCostosFijos(this).iniciar();
         } catch (ExpertoCostosFijosException ex) {
+            Logger.getLogger(ControladorPantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abmCostosVAriables() {
+        try {
+            new ControladorABMCostosVariables(this).iniciar();
+        } catch (ExpertoCostosVariablesException ex) {
             Logger.getLogger(ControladorPantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -39,12 +39,17 @@ public class ControladorABMCostosFijos {
         pantallaABMCostosFijos.getTablaCostosFijos().setModel(modeloTablaCostosFijos);
         pantallaABMCostosFijos.getTablaCostosFijos().getColumnModel().getColumn(0).setPreferredWidth(1);
         modeloTablaCostosFijos.addAllRow(expertoABMCostosFijos.buscarCostosFijos());
-        for (int i = 0; i < modeloTablaCostosFijos.getListaElementos().size(); i++) {
-            modeloTablaCostosFijos.getListaElementos().get(i).toString();
-        }
         pantallaABMCostosFijos.setLocationRelativeTo(null);
-        pantallaABMCostosFijos.setVisible(true);
 
+        double costoTotal = 0.0;
+        for (int i = 0; i < modeloTablaCostosFijos.getListaElementos().size(); i++) {
+            String costoString = modeloTablaCostosFijos.getListaElementos().get(i).toString();
+            Double costo = Double.valueOf(costoString);
+            costoTotal = costoTotal + costo;
+
+        }
+        pantallaABMCostosFijos.getCampoTotal().setText(String.valueOf(costoTotal));
+        pantallaABMCostosFijos.setVisible(true);
 
 
 
@@ -57,7 +62,27 @@ public class ControladorABMCostosFijos {
     }
 
     public void eliminarCosto() {
-        throw new UnsupportedOperationException("Not yet implemented");
+          costoSeleccionado.setEliminado(true);
+            expertoABMCostosFijos.guardarNuevoCosto(costoSeleccionado);
+            JOptionPane.showMessageDialog(pantallaABMCostosFijos, "Costo Fijo Eliminado Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+            //modeloTablaCostosFijos.addRow(costoSeleccionado);
+            modeloTablaCostosFijos.removeElement(costoSeleccionado);
+            modeloTablaCostosFijos.fireTableDataChanged();
+            pantallaABMCostosFijos.getCampoNombreCosto().setText("");
+            pantallaABMCostosFijos.getCampoValorCosto().setText("");
+            pantallaABMCostosFijos.getCampoNombreCosto().setEnabled(false);
+            pantallaABMCostosFijos.getCampoValorCosto().setEnabled(false);
+            pantallaABMCostosFijos.getBotonActualizar().setEnabled(false);
+            pantallaABMCostosFijos.getBotonGuardar().setEnabled(true);
+            double costoTotal = 0.0;
+            for (int i = 0; i < modeloTablaCostosFijos.getListaElementos().size(); i++) {
+                String costoString = modeloTablaCostosFijos.getListaElementos().get(i).toString();
+                Double costo = Double.valueOf(costoString);
+                costoTotal = costoTotal + costo;
+
+            }
+            pantallaABMCostosFijos.getCampoTotal().setText(String.valueOf(costoTotal));
     }
 
     public void editarCosto() {
@@ -83,6 +108,15 @@ public class ControladorABMCostosFijos {
             pantallaABMCostosFijos.getCampoValorCosto().setText("");
             pantallaABMCostosFijos.getCampoNombreCosto().setEnabled(false);
             pantallaABMCostosFijos.getCampoValorCosto().setEnabled(false);
+            double costoTotal = 0.0;
+            for (int i = 0; i < modeloTablaCostosFijos.getListaElementos().size(); i++) {
+                String costoString = modeloTablaCostosFijos.getListaElementos().get(i).toString();
+                Double costo = Double.valueOf(costoString);
+                costoTotal = costoTotal + costo;
+
+            }
+            pantallaABMCostosFijos.getCampoTotal().setText(String.valueOf(costoTotal));
+
             nuevoCosto = null;
 
 
@@ -110,7 +144,12 @@ public class ControladorABMCostosFijos {
             pantallaABMCostosFijos.getCampoValorCosto().setText(String.valueOf(costoSeleccionado.getCosto()));
             pantallaABMCostosFijos.getBotonActualizar().setEnabled(true);
             pantallaABMCostosFijos.getBotonGuardar().setEnabled(false);
-            
+
+
+        } else {
+
+          
+
 
         }
 
@@ -130,6 +169,14 @@ public class ControladorABMCostosFijos {
         pantallaABMCostosFijos.getCampoValorCosto().setEnabled(false);
         pantallaABMCostosFijos.getBotonActualizar().setEnabled(false);
         pantallaABMCostosFijos.getBotonGuardar().setEnabled(true);
-        
+        double costoTotal = 0.0;
+        for (int i = 0; i < modeloTablaCostosFijos.getListaElementos().size(); i++) {
+            String costoString = modeloTablaCostosFijos.getListaElementos().get(i).toString();
+            Double costo = Double.valueOf(costoString);
+            costoTotal = costoTotal + costo;
+
+        }
+        pantallaABMCostosFijos.getCampoTotal().setText(String.valueOf(costoTotal));
+
     }
 }
