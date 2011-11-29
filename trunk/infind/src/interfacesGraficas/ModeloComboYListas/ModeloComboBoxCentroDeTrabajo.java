@@ -19,13 +19,13 @@ public class ModeloComboBoxCentroDeTrabajo extends DefaultComboBoxModel{
 
 
     public ModeloComboBoxCentroDeTrabajo() {
-        addElement("Seleccione un Puesto");
+        addElement("Seleccione un Centro de Trabajo");
     }
 
     public ModeloComboBoxCentroDeTrabajo(List<MaestroDeCentroDeTrabajo> nuevalista) {
 
         listaPuesto = nuevalista;
-        addElement("Seleccione Un Puesto");
+        addElement("Seleccione Un Centro de Trabajo");
         for (MaestroDeCentroDeTrabajo tipo : nuevalista) {
             addElement(tipo.getNombreCentro());
 

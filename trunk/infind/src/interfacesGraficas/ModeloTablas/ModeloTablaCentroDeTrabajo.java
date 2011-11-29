@@ -29,18 +29,13 @@ public class ModeloTablaCentroDeTrabajo extends ModeloTabla{
         switch (columnIndex) {
             case 0:
                 return centros.getNombreCentro();
-         //   case 1:
-           //     return centros.getcostos.getCantidad();
-            //case 2:
-              //  return (Double.valueOf(costos.getCantidad()) * Double.valueOf(costos.getCostoUnitario()));
-            
+            case 1:
+                return centros.getCostoCentroDeTrabajo();
             default:
                 return "";
         }
 
     }
-
-
 
      public void quitarCostosVariablesLista(MaestroDeCentroDeTrabajo costos) {
         for (int i = 0; i < getListaElementos().size(); i++) {
