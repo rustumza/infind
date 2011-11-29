@@ -7,6 +7,7 @@ package interfacesGraficas.Controladores;
 import Entidades.MaestroDeArticulo;
 import expertos.ExpertoOrdenDeFabricacion;
 import interfacesGraficas.PantallaCrearOrdenDeFabricacion;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,7 +61,13 @@ public class ControladorCrearOrdenDeFabricacion {
     }
 
     public void probarOrden() {
-        JOptionPane.showMessageDialog(pantalla, "Esta funcionalidad le tocaba a Dios, si el no la hizo, no es culpa mia", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        Date fecha = pantalla.getFechaDeInicioDateChooser().getDate();
+        if(fecha != null){
+            JOptionPane.showMessageDialog(pantalla, "No se ha ingresado una fecha incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getFechaDeInicioDateChooser().requestFocus();
+            return;
+        }
+        experto.probarGeneracionDeOrdenDeFabricacion(fecha);
     }
 
     public void generarOrden() {

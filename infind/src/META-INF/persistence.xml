@@ -22,6 +22,7 @@
     <class>Entidades.Proveedor</class>
     <class>Entidades.Stock</class>
     <class>Entidades.TipoOperario</class>
+    <class>Entidades.OrdenDeFabricacion</class>
     <properties>
       <property name="hibernate.connection.username" value="inf"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
