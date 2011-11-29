@@ -6,6 +6,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -14,8 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -48,12 +52,22 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String ubicacionEnAlmacen;
     private String unidadDeMedida;
     private int tiempoDeObtenecion;
+    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Demanda> demanda;
 
     @OneToOne
     private Stock stock;
 
     public Long getId() {
         return id;
+    }
+
+    public List<Demanda> getDemanda() {
+        return demanda;
+    }
+
+    public void setDemanda(List<Demanda> demanda) {
+        this.demanda = demanda;
     }
 
     public void setId(Long id) {
