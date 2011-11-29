@@ -11,6 +11,13 @@
 package interfacesGraficas;
 
 import interfacesGraficas.Controladores.ControladorABMCostosFijos;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -19,6 +26,7 @@ import interfacesGraficas.Controladores.ControladorABMCostosFijos;
 public class PantallaABMCostosFijos extends javax.swing.JDialog {
 
     ControladorABMCostosFijos controlador;
+
     /** Creates new form PantallaABMCostosFijos */
     public PantallaABMCostosFijos(java.awt.Frame parent, boolean modal, ControladorABMCostosFijos control) {
         super(parent, modal);
@@ -38,18 +46,22 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
+        botonGuardar = new javax.swing.JButton();
+        botonNuevoCosto = new javax.swing.JButton();
+        botonEliminarCosto = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaCostosFijos = new javax.swing.JTable();
+        campoTotal = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        campoNombreCosto = new javax.swing.JTextField();
+        campoValorCosto = new javax.swing.JTextField();
+        botonActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,33 +69,65 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
-        jButton1.setToolTipText("Alta Costos");
+        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        botonGuardar.setToolTipText("Guardar");
+        botonGuardar.setFocusable(false);
+        botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonGuardar);
+
+        botonNuevoCosto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
+        botonNuevoCosto.setToolTipText("Alta Costos");
+        botonNuevoCosto.setFocusable(false);
+        botonNuevoCosto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonNuevoCosto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonNuevoCosto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoCostoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonNuevoCosto);
+
+        botonEliminarCosto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
+        botonEliminarCosto.setToolTipText("Eliminar");
+        botonEliminarCosto.setFocusable(false);
+        botonEliminarCosto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonEliminarCosto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonEliminarCosto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarCostoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonEliminarCosto);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Printer-30.png"))); // NOI18N
+        jButton1.setToolTipText("Imprimir");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/office3_256.png"))); // NOI18N
-        jButton4.setToolTipText("Editar Costo Fijo");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
-        jButton3.setToolTipText("Eliminar");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
-        jButton2.setToolTipText("Salir");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
+        botonSalir.setToolTipText("Salir");
+        botonSalir.setFocusable(false);
+        botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonSalir);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -95,7 +139,7 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de Costos Fijos"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCostosFijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,19 +150,41 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaCostosFijos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaCostosFijosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaCostosFijos);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 401;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.ipady = 200;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(33, 18, 18, 18);
         jPanel2.add(jScrollPane1, gridBagConstraints);
+
+        campoTotal.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 15);
+        jPanel2.add(campoTotal, gridBagConstraints);
+
+        jLabel3.setText("Total:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 140);
+        jPanel2.add(jLabel3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -138,7 +204,7 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
         jPanel3.add(jLabel1, gridBagConstraints);
 
-        jLabel2.setText("Valor:");
+        jLabel2.setText("Costo $:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -146,23 +212,38 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jPanel3.add(jLabel2, gridBagConstraints);
 
-        jTextField1.setEnabled(false);
+        campoNombreCosto.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 0);
-        jPanel3.add(jTextField1, gridBagConstraints);
+        jPanel3.add(campoNombreCosto, gridBagConstraints);
 
-        jTextField2.setEnabled(false);
+        campoValorCosto.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 0);
-        jPanel3.add(jTextField2, gridBagConstraints);
+        jPanel3.add(campoValorCosto, gridBagConstraints);
+
+        botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/office3_256.png"))); // NOI18N
+        botonActualizar.setToolTipText("Actualizar");
+        botonActualizar.setEnabled(false);
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 0);
+        jPanel3.add(botonActualizar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -177,37 +258,214 @@ public class PantallaABMCostosFijos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonNuevoCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoCostoActionPerformed
+        controlador.nuevoCostoFijo();
+    }//GEN-LAST:event_botonNuevoCostoActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonEliminarCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarCostoActionPerformed
+        controlador.eliminarCosto();
+
+
+    }//GEN-LAST:event_botonEliminarCostoActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        controlador.guardarCostoFijo();
+
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.imprimirCostos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tablaCostosFijosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCostosFijosMouseClicked
+        int fila = getTablaCostosFijos().rowAtPoint(evt.getPoint());
+        int click = evt.getClickCount();
+
+        controlador.tabla(fila, click);
+    }//GEN-LAST:event_tablaCostosFijosMouseClicked
+
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
+        controlador.actualizarCostos();
+    }//GEN-LAST:event_botonActualizarActionPerformed
     /**
      * @param args the command line arguments
      */
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonEliminarCosto;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonNuevoCosto;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField campoNombreCosto;
+    private javax.swing.JTextField campoTotal;
+    private javax.swing.JTextField campoValorCosto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tablaCostosFijos;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    public JButton getBotonGuardar() {
+        return botonGuardar;
+    }
+
+    public void setBotonGuardar(JButton botonGuardar) {
+        this.botonGuardar = botonGuardar;
+    }
+
+    public JTextField getCampoTotal() {
+        return campoTotal;
+    }
+
+    public void setCampoTotal(JTextField campoTotal) {
+        this.campoTotal = campoTotal;
+    }
+    
+    
+
+    public JButton getBotonEliminarCosto() {
+        return botonEliminarCosto;
+    }
+
+    public void setBotonEliminarCosto(JButton botonEliminarCosto) {
+        this.botonEliminarCosto = botonEliminarCosto;
+    }
+
+    public JButton getBotonNuevoCosto() {
+        return botonNuevoCosto;
+    }
+
+    public void setBotonNuevoCosto(JButton botonNuevoCosto) {
+        this.botonNuevoCosto = botonNuevoCosto;
+    }
+
+    public JButton getBotonActualizar() {
+        return botonActualizar;
+    }
+
+    public void setBotonActualizar(JButton botonActualizar) {
+        this.botonActualizar = botonActualizar;
+    }
+    
+
+    public JButton getBotonSalir() {
+        return botonSalir;
+    }
+
+    public void setBotonSalir(JButton botonSalir) {
+        this.botonSalir = botonSalir;
+    }
+
+    public JTextField getCampoValorCosto() {
+        return campoValorCosto;
+    }
+
+    public void setCampoValorCosto(JTextField campoValorCosto) {
+        this.campoValorCosto = campoValorCosto;
+    }
+
+    public ControladorABMCostosFijos getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorABMCostosFijos controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTextField getCampoNombreCosto() {
+        return campoNombreCosto;
+    }
+
+    public void setCampoNombreCosto(JTextField campoNombreCosto) {
+        this.campoNombreCosto = campoNombreCosto;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    public JTable getTablaCostosFijos() {
+        return tablaCostosFijos;
+    }
+
+    public void setTablaCostosFijos(JTable tablaCostosFijos) {
+        this.tablaCostosFijos = tablaCostosFijos;
+    }
 }

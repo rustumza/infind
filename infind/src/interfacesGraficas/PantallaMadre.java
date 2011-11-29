@@ -74,6 +74,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         ordenesDeProduccion = new javax.swing.JMenu();
         crearOrdenDeProduccion = new javax.swing.JMenuItem();
         inventarios = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -322,6 +324,19 @@ public class PantallaMadre extends javax.swing.JFrame {
         inventarios.setMargin(new java.awt.Insets(0, 5, 0, 5));
         jMenuBar1.add(inventarios);
 
+        jMenu2.setText("Costos");
+        jMenu2.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem1.setText("ABM Costos Fijos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -432,6 +447,10 @@ private void listarPedidosAProveedoresActionPerformed(java.awt.event.ActionEvent
 private void crearOrdenDeProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearOrdenDeProduccionActionPerformed
     controlador.crearOrdeDeProduccion();
 }//GEN-LAST:event_crearOrdenDeProduccionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        controlador.abmCostosFijos();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -485,7 +504,9 @@ private void crearOrdenDeProduccionActionPerformed(java.awt.event.ActionEvent ev
     private javax.swing.JMenu estructuraDeProducto;
     private javax.swing.JMenu inventarios;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
