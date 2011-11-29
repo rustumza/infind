@@ -5,8 +5,13 @@
 package expertos;
 
 import Entidades.MaestroDeArticulo;
+import Entidades.PedidoAProveedor;
 import Entidades.Stock;
 import excepciones.StockExcepcion;
+import java.util.Date;
+import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import persistencia.Conexion;
 import persistencia.Fachada;
 
@@ -89,4 +94,28 @@ public class ExpertoStock {
         Fachada.getInstancia().guardarSinTranasaccion(stock);
     }
     
+    
+    public boolean getDisponiblilidadDeStockParaFechaDeterminada(MaestroDeArticulo articulo, float cantidad, Date fecha){
+    
+        float cantidadRealDisponible = articulo.getStock().getCantidadFisicaReal() - articulo.getStock().getCantidadReservada();
+        if(cantidadRealDisponible >= cantidad){
+            return true;
+        }
+        List<PedidoAProveedor> pedidos = null;        
+        Criteria criterioPedidosDelArticulo = Fachada.getInstancia().crearCriterio(PedidoAProveedor.class);
+        criterioPedidosDelArticulo.add(Restrictions.eq("articulo", articulo));
+        criterioPedidosDelArticulo.add(Restrictions.eq("estaConcretado", Boolean.FALSE));
+        pedidos = Fachada.getInstancia().buscar(PedidoAProveedor.class, criterioPedidosDelArticulo);
+        float cantidadAux = 0;
+        
+        for (PedidoAProveedor pedidoAProveedor : pedidos) {
+            if(fecha.before(pedidoAProveedor.getFechaARealizarElPedido())){
+                cantidadAux += pedidoAProveedor.getCantidad();
+            }
+        }
+        if(cantidadAux + cantidadRealDisponible - articulo.getStock().getCantidadReservada() >= cantidad){
+            return true;
+        }
+        return false;
+    }
 }
