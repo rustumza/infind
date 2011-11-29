@@ -77,6 +77,10 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        menuDemanda = new javax.swing.JMenu();
+        menuCalcularDemanda = new javax.swing.JMenuItem();
+        menuParametros = new javax.swing.JMenuItem();
+        menuABMDemandasHistoricas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -346,13 +350,26 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        menuDemanda.setText("Demanda");
+
+        menuCalcularDemanda.setText("Calcular");
+        menuDemanda.add(menuCalcularDemanda);
+
+        menuParametros.setText("Parametros");
+        menuDemanda.add(menuParametros);
+
+        menuABMDemandasHistoricas.setText("ABM Demandas Historicas");
+        menuDemanda.add(menuABMDemandasHistoricas);
+
+        jMenuBar1.add(menuDemanda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1232, Short.MAX_VALUE)
+            .addGap(0, 1289, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,9 +546,13 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem listarProductosFinales;
     private javax.swing.JMenuItem listarProductosIQE;
     private javax.swing.JMenuItem listarProductosIntermedios;
+    private javax.swing.JMenuItem menuABMDemandasHistoricas;
+    private javax.swing.JMenuItem menuCalcularDemanda;
+    private javax.swing.JMenu menuDemanda;
     private javax.swing.JMenuItem menuEditarOperarios;
     private javax.swing.JMenuItem menuEditarRuta;
     private javax.swing.JMenuItem menuIngresarOperarios;
+    private javax.swing.JMenuItem menuParametros;
     private javax.swing.JMenu operarios;
     private javax.swing.JMenu ordenesDeProduccion;
     private javax.swing.JMenu proveedores;
