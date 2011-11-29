@@ -43,6 +43,15 @@ public class MaestroDeCentroDeTrabajo extends ObjetoPersitente implements Serial
     @ManyToMany //(fetch = FetchType.LAZY)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Maquina> maquinas;
+    private double costoCentroDeTrabajo;
+
+    public double getCostoCentroDeTrabajo() {
+        return costoCentroDeTrabajo;
+    }
+
+    public void setCostoCentroDeTrabajo(double costoCentroDeTrabajo) {
+        this.costoCentroDeTrabajo = costoCentroDeTrabajo;
+    }
 
     public void addHerramientas(Herramientas herramientas) {
         //if (!getDetallesDeFactura().contains(detalle)) {
