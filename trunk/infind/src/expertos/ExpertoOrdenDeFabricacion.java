@@ -49,6 +49,7 @@ public class ExpertoOrdenDeFabricacion extends Experto{
 
         ProductoTipoIQE iqe = ((ProductosFabricables)articulo).getProductoTipoIQE();        
         MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();                
+        //aramar metodo para uqe te devuleva la estructura completa de un producto fabricable (estructura propia + iqe)
         MaestroDeEstructuraDeProducto estructura = null;
         if(articulo.getClass().equals(ProductoFinal.class)){
             estructura = ((ProductoFinal)articulo).getMaestroEstructuraDeProducto();
