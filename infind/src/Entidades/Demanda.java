@@ -33,11 +33,20 @@ public class Demanda extends ObjetoPersitente implements Serializable {
     private Date fechaFin;
     private int periodo = 1;
     private double errorPromedio;
+    private double demandaHistorica;
     @ManyToOne
     private MaestroDeArticulo articulo;
 
     public Long getId() {
         return id;
+    }
+
+    public double getDemandaHistorica() {
+        return demandaHistorica;
+    }
+
+    public void setDemandaHistorica(double demandaHistorica) {
+        this.demandaHistorica = demandaHistorica;
     }
 
     public double getDemandaPronosticada() {
