@@ -5,7 +5,7 @@
 package interfacesGraficas.ModeloTablas;
 
 import DTOs.DTOCostosVariables;
-import Entidades.CostoVAriable;
+import Entidades.CostoVariable;
 import Entidades.MaestroDeArticulo;
 
 /**
