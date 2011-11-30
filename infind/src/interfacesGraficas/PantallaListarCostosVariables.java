@@ -4,18 +4,14 @@
  */
 
 /*
- * PantallaABMCostosVariables.java
+ * PantallaListarCostosVariables.java
  *
- * Created on 29/11/2011, 16:59:24
+ * Created on 30/11/2011, 09:23:30
  */
 package interfacesGraficas;
 
-import excepciones.ExpertoCostosVariablesException;
 import interfacesGraficas.Controladores.ControladorABMCostosVariables;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,18 +22,16 @@ import javax.swing.JToolBar;
 
 /**
  *
- * @author edu
+ * @author eduardo
  */
-public class PantallaABMCostosVariables extends javax.swing.JDialog {
+public class PantallaListarCostosVariables extends javax.swing.JDialog {
 ControladorABMCostosVariables controlador;
-
-    /** Creates new form PantallaABMCostosVariables */
-    public PantallaABMCostosVariables(java.awt.Frame parent, boolean modal, ControladorABMCostosVariables contr) {
+    /** Creates new form PantallaListarCostosVariables */
+    public PantallaListarCostosVariables(java.awt.Frame parent, boolean modal, ControladorABMCostosVariables contr) {
         super(parent, modal);
         initComponents();
         controlador = contr;
     }
-    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -52,14 +46,7 @@ ControladorABMCostosVariables controlador;
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         botonGuardar = new javax.swing.JButton();
-        botonNuevoCostoVariable = new javax.swing.JButton();
-        botonEditarProductos = new javax.swing.JButton();
-        botonImprimir = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        comboBoxProducto = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         comboBoxMateriaPrima = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
@@ -67,17 +54,22 @@ ControladorABMCostosVariables controlador;
         campoCAntidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMateriaPrima = new javax.swing.JTable();
-        botonAgregarMateriaPrima = new javax.swing.JButton();
-        botonEliminarMateriaPrima = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         comboBoxCentroTrabajo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         campoCostoCentro = new javax.swing.JTextField();
-        botonAgregarCentro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCentroTrabajo = new javax.swing.JTable();
-        botonEliminarCentro = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        comboBoxProducto = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        botonBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,58 +78,17 @@ ControladorABMCostosVariables controlador;
         jToolBar1.setRollover(true);
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        botonGuardar.setToolTipText("Guardar Costo Variable");
+        botonGuardar.setToolTipText("Guardar");
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarActionPerformed(evt);
-            }
-        });
         jToolBar1.add(botonGuardar);
-
-        botonNuevoCostoVariable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
-        botonNuevoCostoVariable.setToolTipText("Nuevo Costo");
-        botonNuevoCostoVariable.setFocusable(false);
-        botonNuevoCostoVariable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonNuevoCostoVariable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonNuevoCostoVariable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNuevoCostoVariableActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonNuevoCostoVariable);
-
-        botonEditarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/office3_256.png"))); // NOI18N
-        botonEditarProductos.setToolTipText("Listar Productos");
-        botonEditarProductos.setFocusable(false);
-        botonEditarProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonEditarProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonEditarProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEditarProductosActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonEditarProductos);
-
-        botonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Printer-30.png"))); // NOI18N
-        botonImprimir.setToolTipText("Imprimir");
-        botonImprimir.setFocusable(false);
-        botonImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(botonImprimir);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         botonSalir.setToolTipText("Salir");
         botonSalir.setFocusable(false);
         botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
-            }
-        });
         jToolBar1.add(botonSalir);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -145,43 +96,8 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jToolBar1, gridBagConstraints);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto"));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para piso de lavanda", "Detergente de limón", "Enjuage para ropa imitación vivere" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(comboBoxProducto, gridBagConstraints);
-
-        jLabel6.setText("Lote de Producción: 500 Litros");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 15, 20, 20);
-        jPanel2.add(jLabel6, gridBagConstraints);
-
-        jLabel7.setText("Producto:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel2.add(jLabel7, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel1.add(jPanel2, gridBagConstraints);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Materia Prima"));
         jPanel3.setLayout(new java.awt.GridBagLayout());
@@ -241,30 +157,25 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel3.add(jScrollPane1, gridBagConstraints);
 
-        botonAgregarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonAgregarMateriaPrima.setText("Agregar");
-        botonAgregarMateriaPrima.setEnabled(false);
-        botonAgregarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarMateriaPrimaActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 40);
-        jPanel3.add(botonAgregarMateriaPrima, gridBagConstraints);
-
-        botonEliminarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        botonEliminarMateriaPrima.setText("Eliminar");
-        botonEliminarMateriaPrima.setEnabled(false);
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        jButton4.setText("Eliminar");
+        jButton4.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 20, 10, 40);
-        jPanel3.add(botonEliminarMateriaPrima, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 30);
+        jPanel3.add(jButton4, gridBagConstraints);
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        jButton5.setText("Agregar");
+        jButton5.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 0);
+        jPanel3.add(jButton5, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -309,21 +220,6 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel4.add(campoCostoCentro, gridBagConstraints);
 
-        botonAgregarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonAgregarCentro.setText("Agregar");
-        botonAgregarCentro.setEnabled(false);
-        botonAgregarCentro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarCentroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 40);
-        jPanel4.add(botonAgregarCentro, gridBagConstraints);
-
         tablaCentroTrabajo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -348,15 +244,25 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
-        botonEliminarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        botonEliminarCentro.setText("Eliminar");
-        botonEliminarCentro.setEnabled(false);
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        jButton6.setText("Eliminar");
+        jButton6.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 20, 10, 40);
-        jPanel4.add(botonEliminarCentro, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 30);
+        jPanel4.add(jButton6, gridBagConstraints);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        jButton7.setText("Agregar");
+        jButton7.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 30);
+        jPanel4.add(jButton7, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -365,73 +271,96 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel1.add(jPanel4, gridBagConstraints);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto"));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para piso de lavanda", "Detergente de limón", "Enjuage para ropa imitación vivere" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
+        jPanel2.add(comboBoxProducto, gridBagConstraints);
+
+        jLabel6.setText("Lote de Producción: 500 Litros");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 20, 20);
+        jPanel2.add(jLabel6, gridBagConstraints);
+
+        jLabel7.setText("Producto:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabel7, gridBagConstraints);
+
+        botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 0, 0, 0);
+        jPanel2.add(botonBuscar, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel1.add(jPanel2, gridBagConstraints);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-    dispose();
-}//GEN-LAST:event_botonSalirActionPerformed
-
-    private void botonNuevoCostoVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoCostoVariableActionPerformed
-        try {
-            controlador.crearCostoVariable();
-        } catch (ExpertoCostosVariablesException ex) {
-            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botonNuevoCostoVariableActionPerformed
-
-    private void botonAgregarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMateriaPrimaActionPerformed
-        controlador.cargarTablaMateriasPrimas();
-    }//GEN-LAST:event_botonAgregarMateriaPrimaActionPerformed
-
-    private void botonAgregarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCentroActionPerformed
-        controlador.cargarTablaCentroDeTrabajo();
-    }//GEN-LAST:event_botonAgregarCentroActionPerformed
-
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        controlador.guardarCostosVariables();
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
-    private void botonEditarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarProductosActionPerformed
-        try {
-            controlador.listarCostosVariables();
-        } catch (ExpertoCostosVariablesException ex) {
-            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botonEditarProductosActionPerformed
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        controlador.buscarCostoVariableDelProducto();
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregarCentro;
-    private javax.swing.JButton botonAgregarMateriaPrima;
-    private javax.swing.JButton botonEditarProductos;
-    private javax.swing.JButton botonEliminarCentro;
-    private javax.swing.JButton botonEliminarMateriaPrima;
+    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonGuardar;
-    private javax.swing.JButton botonImprimir;
-    private javax.swing.JButton botonNuevoCostoVariable;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoCAntidad;
     private javax.swing.JTextField campoCostoCentro;
     private javax.swing.JComboBox comboBoxCentroTrabajo;
     private javax.swing.JComboBox comboBoxMateriaPrima;
     private javax.swing.JComboBox comboBoxProducto;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -449,22 +378,13 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTable tablaMateriaPrima;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBotonAgregarCentro() {
-        return botonAgregarCentro;
+    public JButton getBotonBuscar() {
+        return botonBuscar;
     }
 
-    public void setBotonAgregarCentro(JButton botonAgregarCentro) {
-        this.botonAgregarCentro = botonAgregarCentro;
+    public void setBotonBuscar(JButton botonBuscar) {
+        this.botonBuscar = botonBuscar;
     }
-
-    public JButton getBotonAgregarMateriaPrima() {
-        return botonAgregarMateriaPrima;
-    }
-
-    public void setBotonAgregarMateriaPrima(JButton botonAgregarMateriaPrima) {
-        this.botonAgregarMateriaPrima = botonAgregarMateriaPrima;
-    }
-
 
     public JButton getBotonGuardar() {
         return botonGuardar;
@@ -472,22 +392,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     public void setBotonGuardar(JButton botonGuardar) {
         this.botonGuardar = botonGuardar;
-    }
-
-    public JButton getBotonImprimir() {
-        return botonImprimir;
-    }
-
-    public void setBotonImprimir(JButton botonImprimir) {
-        this.botonImprimir = botonImprimir;
-    }
-
-    public JButton getBotonNuevoCostoVariable() {
-        return botonNuevoCostoVariable;
-    }
-
-    public void setBotonNuevoCostoVariable(JButton botonNuevoCostoVariable) {
-        this.botonNuevoCostoVariable = botonNuevoCostoVariable;
     }
 
     public JButton getBotonSalir() {
@@ -505,7 +409,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setCampoCAntidad(JTextField campoCAntidad) {
         this.campoCAntidad = campoCAntidad;
     }
-
 
     public JTextField getCampoCostoCentro() {
         return campoCostoCentro;
@@ -547,6 +450,38 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.controlador = controlador;
     }
 
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public JButton getjButton7() {
+        return jButton7;
+    }
+
+    public void setjButton7(JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
     public JLabel getjLabel1() {
         return jLabel1;
     }
@@ -562,8 +497,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setjLabel2(JLabel jLabel2) {
         this.jLabel2 = jLabel2;
     }
-
-   
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -669,32 +602,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.tablaMateriaPrima = tablaMateriaPrima;
     }
 
-    
-    public JButton getBotonEditarProductos() {
-        return botonEditarProductos;
-    }
-
-    public void setBotonEditarProductos(JButton botonEditarProductos) {
-        this.botonEditarProductos = botonEditarProductos;
-    }
-
-    public JButton getBotonEliminarCentro() {
-        return botonEliminarCentro;
-    }
-
-    public void setBotonEliminarCentro(JButton botonEliminarCentro) {
-        this.botonEliminarCentro = botonEliminarCentro;
-    }
-
-    public JButton getBotonEliminarMateriaPrima() {
-        return botonEliminarMateriaPrima;
-    }
-
-    public void setBotonEliminarMateriaPrima(JButton botonEliminarMateriaPrima) {
-        this.botonEliminarMateriaPrima = botonEliminarMateriaPrima;
-    }
-
-    
     
     
 }
