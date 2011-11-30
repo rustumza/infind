@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import persistencia.ObjetoPersitente;
 
 /**
@@ -24,6 +25,8 @@ public class CostoVariable extends ObjetoPersitente implements Serializable {
     private String nombre;
     private double cantidad;
     private double costo;
+    @ManyToOne
+    private MaestroDeArticulo articulo;
 
     public Long getId() {
         return id;
@@ -32,6 +35,15 @@ public class CostoVariable extends ObjetoPersitente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public MaestroDeArticulo getArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(MaestroDeArticulo articulo) {
+        this.articulo = articulo;
+    }
+    
 
     public double getCantidad() {
         return cantidad;

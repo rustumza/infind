@@ -4,6 +4,7 @@
  */
 package expertos;
 
+import Entidades.CostoVariable;
 import Entidades.CostosFijos;
 import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
@@ -39,5 +40,27 @@ public class ExpertoABMCostosVariables extends Experto {
         maestroCentroTrabajoEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioMaestroCentroTrabajo);
 
         return maestroCentroTrabajoEncontrados;
+    }
+
+    
+    
+    public List<CostoVariable> buscarCostosVariables(MaestroDeArticulo productoIntermedioBase) throws ExpertoCostosVariablesException{
+        
+        List<CostoVariable> costosEncontrados = null;
+        Criteria criterioCostosVariables = Fachada.getInstancia().crearCriterioSinEliminado(CostoVariable.class);
+        criterioCostosVariables.add(Restrictions.eq("eliminado", false));
+        costosEncontrados = Fachada.getInstancia().buscar(CostoVariable.class, criterioCostosVariables);
+
+        return costosEncontrados;
+    }
+
+    public MaestroDeArticulo buscarProductoIntermedioBase() {
+        List<MaestroDeArticulo> productoIntermedioEncontrados = null;
+        Criteria criterioProductoIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeArticulo.class);
+        criterioProductoIntermedio.add(Restrictions.eq("eliminado", false));
+        criterioProductoIntermedio.add(Restrictions.eq("codigo", "3.1.1"));
+        productoIntermedioEncontrados = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioProductoIntermedio);
+
+        return productoIntermedioEncontrados.get(0);
     }
 }

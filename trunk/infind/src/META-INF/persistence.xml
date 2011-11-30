@@ -24,14 +24,14 @@
     <class>Entidades.TipoOperario</class>
     <class>Entidades.CostosFijos</class>
     <class>Entidades.Demanda</class>
-    <class>Entidades.CostoVAriable</class>
     <class>Entidades.OrdenDeFabricacion</class>
     <class>Entidades.PedidoAProveedor</class>
     <class>Entidades.Parametros</class>
+    <class>Entidades.CostoVariable</class>
     <properties>
-      <property name="hibernate.connection.username" value="inf"/>
+      <property name="hibernate.connection.username" value="root"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-      <property name="hibernate.connection.password" value="ind"/>
+      <property name="hibernate.connection.password" value="informatica"/>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bd_infind"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
