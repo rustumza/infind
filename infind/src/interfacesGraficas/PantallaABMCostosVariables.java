@@ -10,7 +10,10 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoCostosVariablesException;
 import interfacesGraficas.Controladores.ControladorABMCostosVariables;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -62,13 +65,10 @@ ControladorABMCostosVariables controlador;
         comboBoxMateriaPrima = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        campoCostoCantidad = new javax.swing.JTextField();
         campoCAntidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMateriaPrima = new javax.swing.JTable();
         botonAgregarMateriaPrima = new javax.swing.JButton();
-        checkProductoIntermedioBase = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         comboBoxCentroTrabajo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -96,6 +96,11 @@ ControladorABMCostosVariables controlador;
         botonNuevoCostoVariable.setFocusable(false);
         botonNuevoCostoVariable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonNuevoCostoVariable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonNuevoCostoVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoCostoVariableActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonNuevoCostoVariable);
 
         botonEliminarCostoVariable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
@@ -182,7 +187,7 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 18);
+        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 18);
         jPanel3.add(comboBoxMateriaPrima, gridBagConstraints);
 
         jLabel1.setText("Nombre:");
@@ -190,7 +195,7 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
         jPanel3.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Cantidad:");
@@ -200,23 +205,6 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel3.add(jLabel2, gridBagConstraints);
-
-        jLabel3.setText("Costo/Cantidad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel3.add(jLabel3, gridBagConstraints);
-
-        campoCostoCantidad.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(campoCostoCantidad, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -244,28 +232,25 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 70;
+        gridBagConstraints.ipady = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel3.add(jScrollPane1, gridBagConstraints);
 
         botonAgregarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
         botonAgregarMateriaPrima.setText("Agregar");
+        botonAgregarMateriaPrima.setEnabled(false);
+        botonAgregarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 20, 10, 40);
         jPanel3.add(botonAgregarMateriaPrima, gridBagConstraints);
-
-        checkProductoIntermedioBase.setText("Producto Intermedio Base");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel3.add(checkProductoIntermedioBase, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -312,6 +297,12 @@ ControladorABMCostosVariables controlador;
 
         botonAgregarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
         botonAgregarCentro.setText("Agregar");
+        botonAgregarCentro.setEnabled(false);
+        botonAgregarCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarCentroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -370,6 +361,22 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
 
+    private void botonNuevoCostoVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoCostoVariableActionPerformed
+        try {
+            controlador.crearCostoVariable();
+        } catch (ExpertoCostosVariablesException ex) {
+            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonNuevoCostoVariableActionPerformed
+
+    private void botonAgregarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMateriaPrimaActionPerformed
+        controlador.cargarTablaMateriasPrimas();
+    }//GEN-LAST:event_botonAgregarMateriaPrimaActionPerformed
+
+    private void botonAgregarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCentroActionPerformed
+        controlador.cargarTablaCentroDeTrabajo();
+    }//GEN-LAST:event_botonAgregarCentroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -384,15 +391,12 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton botonNuevoCostoVariable;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoCAntidad;
-    private javax.swing.JTextField campoCostoCantidad;
     private javax.swing.JTextField campoCostoCentro;
-    private javax.swing.JCheckBox checkProductoIntermedioBase;
     private javax.swing.JComboBox comboBoxCentroTrabajo;
     private javax.swing.JComboBox comboBoxMateriaPrima;
     private javax.swing.JComboBox comboBoxProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -472,13 +476,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.campoCAntidad = campoCAntidad;
     }
 
-    public JTextField getCampoCostoCantidad() {
-        return campoCostoCantidad;
-    }
-
-    public void setCampoCostoCantidad(JTextField campoCostoCantidad) {
-        this.campoCostoCantidad = campoCostoCantidad;
-    }
 
     public JTextField getCampoCostoCentro() {
         return campoCostoCentro;
@@ -486,14 +483,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     public void setCampoCostoCentro(JTextField campoCostoCentro) {
         this.campoCostoCentro = campoCostoCentro;
-    }
-
-    public JCheckBox getCheckProductoIntermedioBase() {
-        return checkProductoIntermedioBase;
-    }
-
-    public void setCheckProductoIntermedioBase(JCheckBox checkProductoIntermedioBase) {
-        this.checkProductoIntermedioBase = checkProductoIntermedioBase;
     }
 
     public JComboBox getComboBoxCentroTrabajo() {
@@ -544,13 +533,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jLabel2 = jLabel2;
     }
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
+   
 
     public JLabel getjLabel4() {
         return jLabel4;

@@ -54,10 +54,12 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private int tiempoDeObtenecion;
     @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
     private List<Demanda> demanda;
-
     @OneToOne
     private Stock stock;
+    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
+    private List<CostoVariable> costosVariables;
 
+    
     public Long getId() {
         return id;
     }
@@ -65,6 +67,15 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public List<Demanda> getDemanda() {
         return demanda;
     }
+
+    public List<CostoVariable> getCostosVariables() {
+        return costosVariables;
+    }
+
+    public void setCostosVariables(List<CostoVariable> costosVariables) {
+        this.costosVariables = costosVariables;
+    }
+    
 
     public void setDemanda(List<Demanda> demanda) {
         this.demanda = demanda;
