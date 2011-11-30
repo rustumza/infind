@@ -6,6 +6,7 @@ package expertos;
 
 import Entidades.CostosFijos;
 import Entidades.MaestroDeArticulo;
+import Entidades.MaestroDeCentroDeTrabajo;
 import excepciones.ExpertoCostosVariablesException;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -28,5 +29,15 @@ public class ExpertoABMCostosVariables extends Experto {
 
         return maestroArticuloEncontrados;
     }
-    
+
+    public List<MaestroDeCentroDeTrabajo> buscarCentroDeTrabajo()  throws ExpertoCostosVariablesException{
+
+        List<MaestroDeCentroDeTrabajo> maestroCentroTrabajoEncontrados = null;
+
+        Criteria criterioMaestroCentroTrabajo = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeCentroDeTrabajo.class);
+        criterioMaestroCentroTrabajo.add(Restrictions.eq("eliminado", false));
+        maestroCentroTrabajoEncontrados = Fachada.getInstancia().buscar(MaestroDeCentroDeTrabajo.class, criterioMaestroCentroTrabajo);
+
+        return maestroCentroTrabajoEncontrados;
+    }
 }
