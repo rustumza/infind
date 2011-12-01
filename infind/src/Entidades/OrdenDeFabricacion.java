@@ -34,6 +34,7 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Boolean eliminado;
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
@@ -56,6 +57,14 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(Boolean eliminado) {
+        this.eliminado = eliminado;
     }
 
     public int getCantidadDeLotesOptimos() {
@@ -106,6 +115,7 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
         if (!estaEnLaListaPedido(pedido)) {
             getListaDePedido().add(pedido);
         }
+        //6pedido.setOrdenDeFabricacion(this);
     }
 
     private boolean estaEnLaListaPedido(PedidoAProveedor pedido) {
@@ -118,6 +128,9 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
     }
     
     public void addOrden(OrdenDeFabricacion orden) {
+        /*if(getListaDeOrdenes() == null){
+            setListaDeOrdenes(new ArrayList<OrdenDeFabricacion>());
+        }*/
         //if (!getDetallesDeFactura().contains(detalle)) {
         if (!estaEnLaListaOrden(orden)) {
             getListaDeOrdenes().add(orden);

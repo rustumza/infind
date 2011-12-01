@@ -6,6 +6,7 @@ package expertos;
 
 import Entidades.MaestroDeArticulo;
 import Entidades.MateriaPrima;
+import Entidades.OrdenDeFabricacion;
 import Entidades.PedidoAProveedor;
 import Entidades.ProductoComponente;
 import Entidades.Proveedor;
@@ -60,6 +61,7 @@ public class ExpertoPedidoAproveedores {
         pedido.setFechaARealizarElPedido(fecha);
         pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
         pedido.setEstaConcretado(false);
+        //pedido.setOrdenDeFabricacion(null);
         pedido.setEliminado(false);
         if(articulo.getClass().equals(MateriaPrima.class)){
             pedido.setProveedor(((MateriaPrima)articulo).getProveedorPredeterminado());
@@ -71,6 +73,29 @@ public class ExpertoPedidoAproveedores {
 
     }
     
+        
+        
+        public List<PedidoAProveedor> generarPedidoAProveedorPredeterminadoDesdeOrden(String codigo, int cantidadDeLostesOptimos, Date fecha, OrdenDeFabricacion orden){
+        
+            Criteria criterio = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
+            criterio.add(Restrictions.like("codigo", codigo));
+            List<MaestroDeArticulo> listaArticulos = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterio);        
+            MaestroDeArticulo articulo = listaArticulos.get(0);
+            PedidoAProveedor pedido = new PedidoAProveedor();
+            pedido.setArticulo(articulo);
+            pedido.setFechaARealizarElPedido(fecha);
+            pedido.setCantidad(cantidadDeLostesOptimos*articulo.getTamanioLoteEstandar());
+            pedido.setEstaConcretado(false);
+            pedido.setEliminado(false);
+            //orden.addPedido(pedido);
+            if(articulo.getClass().equals(MateriaPrima.class)){
+                pedido.setProveedor(((MateriaPrima)articulo).getProveedorPredeterminado());
+            }else{
+                pedido.setProveedor(((ProductoComponente)articulo).getProveedor());
+            }
+            listaDePedidos.add(pedido);
+            return listaDePedidos;
+        }
     
     public void asentarPedidos(){
         Conexion.getInstancia().iniciarTX();
@@ -86,7 +111,7 @@ public class ExpertoPedidoAproveedores {
         ExpertoStock exp = new ExpertoStock();
         for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
-            exp.agregarStockPorLlegar(pedidoAProveedor.getArticulo(),pedidoAProveedor.getCantidad());
+            exp.agregarStockPorLlegar((MaestroDeArticulo)pedidoAProveedor.getArticulo(),pedidoAProveedor.getCantidad());
         }
     }
     
