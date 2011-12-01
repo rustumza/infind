@@ -71,7 +71,9 @@ public class PantallaCrearOrdenDeFabricacion extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaOrdenesDeCompraYProduccion = new javax.swing.JTable();
         fechaPosibleRealizacionLabel = new javax.swing.JLabel();
-        fechaPosibleRealizacionTextBox = new javax.swing.JTextField();
+        fechaPosibleRealizacionDataChooser = new com.toedter.calendar.JDateChooser();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaOrdenesDeProduccion = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -231,7 +233,29 @@ public class PantallaCrearOrdenDeFabricacion extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Información generada"));
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenes de compra"));
+
         tablaOrdenesDeCompraYProduccion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaOrdenesDeCompraYProduccion);
+
+        fechaPosibleRealizacionLabel.setText("Fecha de realizacion posible");
+
+        fechaPosibleRealizacionDataChooser.setEnabled(false);
+
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenes de produccion"));
+
+        tablaOrdenesDeProduccion.setBorder(null);
+        tablaOrdenesDeProduccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -239,14 +263,10 @@ public class PantallaCrearOrdenDeFabricacion extends javax.swing.JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Cantidad", "Fecha estimada de ralizacion de pedido"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tablaOrdenesDeCompraYProduccion);
-
-        fechaPosibleRealizacionLabel.setText("Fecha de realizacion posible");
-
-        fechaPosibleRealizacionTextBox.setEnabled(false);
+        jScrollPane3.setViewportView(tablaOrdenesDeProduccion);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -254,23 +274,23 @@ public class PantallaCrearOrdenDeFabricacion extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(fechaPosibleRealizacionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaPosibleRealizacionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addComponent(fechaPosibleRealizacionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fechaPosibleRealizacionDataChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(273, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaPosibleRealizacionLabel)
-                    .addComponent(fechaPosibleRealizacionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(fechaPosibleRealizacionDataChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,19 +298,24 @@ public class PantallaCrearOrdenDeFabricacion extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,14 +352,15 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private javax.swing.JTextField codigoTextBox;
     private com.toedter.calendar.JDateChooser fechaDeInicioDateChooser;
     private javax.swing.JLabel fechaDeInicioLabel;
+    private com.toedter.calendar.JDateChooser fechaPosibleRealizacionDataChooser;
     private javax.swing.JLabel fechaPosibleRealizacionLabel;
-    private javax.swing.JTextField fechaPosibleRealizacionTextBox;
     private javax.swing.JButton generar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel loteEstandarLabel;
@@ -344,6 +370,7 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private javax.swing.JTextField productoSeleccionadoTextBox;
     private javax.swing.JButton salir;
     private javax.swing.JTable tablaOrdenesDeCompraYProduccion;
+    private javax.swing.JTable tablaOrdenesDeProduccion;
     private javax.swing.JComboBox tipoProducto;
     private javax.swing.JLabel unidadDeMedida;
     // End of variables declaration//GEN-END:variables
@@ -412,20 +439,20 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         this.fechaDeInicioLabel = fechaDeInicioLabel;
     }
 
+    public JDateChooser getFechaPosibleRealizacionDataChooser() {
+        return fechaPosibleRealizacionDataChooser;
+    }
+
+    public void setFechaPosibleRealizacionDataChooser(JDateChooser fechaPosibleRealizacionDataChooser) {
+        this.fechaPosibleRealizacionDataChooser = fechaPosibleRealizacionDataChooser;
+    }
+
     public JLabel getFechaPosibleRealizacionLabel() {
         return fechaPosibleRealizacionLabel;
     }
 
     public void setFechaPosibleRealizacionLabel(JLabel fechaPosibleRealizacionLabel) {
         this.fechaPosibleRealizacionLabel = fechaPosibleRealizacionLabel;
-    }
-
-    public JTextField getFechaPosibleRealizacionTextBox() {
-        return fechaPosibleRealizacionTextBox;
-    }
-
-    public void setFechaPosibleRealizacionTextBox(JTextField fechaPosibleRealizacionTextBox) {
-        this.fechaPosibleRealizacionTextBox = fechaPosibleRealizacionTextBox;
     }
 
     public JButton getGenerar() {
@@ -563,4 +590,22 @@ private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     public void setUnidadDeMedida(JLabel unidadDeMedida) {
         this.unidadDeMedida = unidadDeMedida;
     }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JTable getTablaOrdenesDeProduccion() {
+        return tablaOrdenesDeProduccion;
+    }
+
+    public void setTablaOrdenesDeProduccion(JTable tablaOrdenesDeProduccion) {
+        this.tablaOrdenesDeProduccion = tablaOrdenesDeProduccion;
+    }
+
+
 }
