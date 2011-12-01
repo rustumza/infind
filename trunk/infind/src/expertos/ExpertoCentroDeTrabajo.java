@@ -183,61 +183,7 @@ public class ExpertoCentroDeTrabajo extends Experto {
         return herramientaEncontrados;
     }
 
-    public List<Herramientas> buscarHerramientaAgregadas(Long idCentroTrabajo) throws ExpertoCentroDeTrabajoException, NoSuchFieldException {
-
-        List<Herramientas> herramientaEncontrados = null;
-
-        Criteria criterioHerramientas = Fachada.getInstancia().crearCriterioSinEliminado(Herramientas.class);
-        criterioHerramientas.add(Restrictions.eq("id", idCentroTrabajo));
-        herramientaEncontrados = Fachada.getInstancia().buscar(Herramientas.class, criterioHerramientas);
-
-        /*if (herramientaEncontrados.isEmpty()) {
-            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
-
-        }*/
-
-        return herramientaEncontrados;
-    }
-    
-    
-    
-    public List<Maquina> buscarMaquinaAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException {
-
-        List<Maquina> maquinaEncontrados = null;
-
-        Criteria criterioMaquina = Fachada.getInstancia().crearCriterio(Maquina.class);
-        criterioMaquina.add(Restrictions.eq("maestroCentroTrabajo_id ", codigoCentroTrabajo));
-
-        maquinaEncontrados = Fachada.getInstancia().buscar(Maquina.class, criterioMaquina);
-
-        if (maquinaEncontrados.isEmpty()) {
-            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
-
-        }
-
-        return maquinaEncontrados;
-    }
-    
-    public List<Operario> buscarOperariosAgregadas(String codigoCentroTrabajo) throws ExpertoCentroDeTrabajoException {
-
-        List<Operario> operariosEncontrados = null;
-
-        Criteria criterioOperarios = Fachada.getInstancia().crearCriterio(Operario.class);
-        criterioOperarios.add(Restrictions.eq("maestroCentroTrabajo_id ", codigoCentroTrabajo));
-
-        operariosEncontrados = Fachada.getInstancia().buscar(Operario.class, criterioOperarios);
-
-        if (operariosEncontrados.isEmpty()) {
-            throw new ExpertoCentroDeTrabajoException("No se encontraron Herramientas para los datos ingresados");
-
-        }
-
-        return operariosEncontrados;
-    }
-    
-    
-    
-
+   
     public void guardar(MaestroDeCentroDeTrabajo centroDeTrabajo) throws ExpertoCentroDeTrabajoException {
         if (centroInvalido(centroDeTrabajo)) {
             throw new ExpertoCentroDeTrabajoException("Faltan completar Campos");

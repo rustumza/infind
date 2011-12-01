@@ -57,8 +57,8 @@ ControladorABMCostosVariables controlador;
         campoCAntidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMateriaPrima = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botonEliminarMateriaPrima = new javax.swing.JButton();
+        botonAgregarMateriaPrima = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         comboBoxCentroTrabajo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -66,8 +66,8 @@ ControladorABMCostosVariables controlador;
         campoCostoCentro = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCentroTrabajo = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        botonEliminarCentroTrabajo = new javax.swing.JButton();
+        botonAgregarCentroTrabajo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         comboBoxProducto = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
@@ -170,25 +170,35 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel3.add(jScrollPane1, gridBagConstraints);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        jButton4.setText("Eliminar");
-        jButton4.setEnabled(false);
+        botonEliminarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarMateriaPrima.setText("Eliminar");
+        botonEliminarMateriaPrima.setEnabled(false);
+        botonEliminarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 30);
-        jPanel3.add(jButton4, gridBagConstraints);
+        jPanel3.add(botonEliminarMateriaPrima, gridBagConstraints);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        jButton5.setText("Agregar");
-        jButton5.setEnabled(false);
+        botonAgregarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        botonAgregarMateriaPrima.setText("Agregar");
+        botonAgregarMateriaPrima.setEnabled(false);
+        botonAgregarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 0);
-        jPanel3.add(jButton5, gridBagConstraints);
+        jPanel3.add(botonAgregarMateriaPrima, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -257,25 +267,35 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        jButton6.setText("Eliminar");
-        jButton6.setEnabled(false);
+        botonEliminarCentroTrabajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
+        botonEliminarCentroTrabajo.setText("Eliminar");
+        botonEliminarCentroTrabajo.setEnabled(false);
+        botonEliminarCentroTrabajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarCentroTrabajoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 30);
-        jPanel4.add(jButton6, gridBagConstraints);
+        jPanel4.add(botonEliminarCentroTrabajo, gridBagConstraints);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        jButton7.setText("Agregar");
-        jButton7.setEnabled(false);
+        botonAgregarCentroTrabajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
+        botonAgregarCentroTrabajo.setText("Agregar");
+        botonAgregarCentroTrabajo.setEnabled(false);
+        botonAgregarCentroTrabajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarCentroTrabajoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(25, 20, 0, 30);
-        jPanel4.add(jButton7, gridBagConstraints);
+        jPanel4.add(botonAgregarCentroTrabajo, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -369,12 +389,36 @@ ControladorABMCostosVariables controlador;
         controlador.guardarCostosVariablesEditados();
     }//GEN-LAST:event_botonGuardarActionPerformed
 
+    private void botonAgregarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMateriaPrimaActionPerformed
+        try {
+            controlador.cargarTablaMateriasPrimasEditar();
+        } catch (ExpertoCostosVariablesException ex) {
+            Logger.getLogger(PantallaListarCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonAgregarMateriaPrimaActionPerformed
+
+    private void botonEliminarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMateriaPrimaActionPerformed
+        controlador.eliminarMateriaPrimaDeTablaEditar();
+    }//GEN-LAST:event_botonEliminarMateriaPrimaActionPerformed
+
+    private void botonAgregarCentroTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCentroTrabajoActionPerformed
+        controlador.cargarTablaCentroDeTrabajoEditar();
+    }//GEN-LAST:event_botonAgregarCentroTrabajoActionPerformed
+
+    private void botonEliminarCentroTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarCentroTrabajoActionPerformed
+        controlador.eliminarCentroTrabajoDeTablaEditar();
+    }//GEN-LAST:event_botonEliminarCentroTrabajoActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregarCentroTrabajo;
+    private javax.swing.JButton botonAgregarMateriaPrima;
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonEliminarCentroTrabajo;
+    private javax.swing.JButton botonEliminarMateriaPrima;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoCAntidad;
@@ -382,10 +426,6 @@ ControladorABMCostosVariables controlador;
     private javax.swing.JComboBox comboBoxCentroTrabajo;
     private javax.swing.JComboBox comboBoxMateriaPrima;
     private javax.swing.JComboBox comboBoxProducto;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -475,36 +515,36 @@ ControladorABMCostosVariables controlador;
         this.controlador = controlador;
     }
 
-    public JButton getjButton4() {
-        return jButton4;
+    public JButton getBotonAgregarCentroTrabajo() {
+        return botonAgregarCentroTrabajo;
     }
 
-    public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
+    public void setBotonAgregarCentroTrabajo(JButton botonAgregarCentroTrabajo) {
+        this.botonAgregarCentroTrabajo = botonAgregarCentroTrabajo;
     }
 
-    public JButton getjButton5() {
-        return jButton5;
+    public JButton getBotonAgregarMateriaPrima() {
+        return botonAgregarMateriaPrima;
     }
 
-    public void setjButton5(JButton jButton5) {
-        this.jButton5 = jButton5;
+    public void setBotonAgregarMateriaPrima(JButton botonAgregarMateriaPrima) {
+        this.botonAgregarMateriaPrima = botonAgregarMateriaPrima;
     }
 
-    public JButton getjButton6() {
-        return jButton6;
+    public JButton getBotonEliminarCentroTrabajo() {
+        return botonEliminarCentroTrabajo;
     }
 
-    public void setjButton6(JButton jButton6) {
-        this.jButton6 = jButton6;
+    public void setBotonEliminarCentroTrabajo(JButton botonEliminarCentroTrabajo) {
+        this.botonEliminarCentroTrabajo = botonEliminarCentroTrabajo;
     }
 
-    public JButton getjButton7() {
-        return jButton7;
+    public JButton getBotonEliminarMateriaPrima() {
+        return botonEliminarMateriaPrima;
     }
 
-    public void setjButton7(JButton jButton7) {
-        this.jButton7 = jButton7;
+    public void setBotonEliminarMateriaPrima(JButton botonEliminarMateriaPrima) {
+        this.botonEliminarMateriaPrima = botonEliminarMateriaPrima;
     }
 
     public JLabel getjLabel1() {

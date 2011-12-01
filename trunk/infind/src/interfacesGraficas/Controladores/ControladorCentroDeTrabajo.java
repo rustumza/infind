@@ -543,7 +543,7 @@ public class ControladorCentroDeTrabajo {
 
     public void eliminarOperarioNuevo() {
 
-        //TODO: verificar que se halla seleccionado una fila
+    
 
         int r = pantallacrearcentro.getTablaAgregaOperariosNuevo().getSelectedRow();
 
@@ -654,12 +654,14 @@ public class ControladorCentroDeTrabajo {
                 pantallaEditarCentro.getCampoCodigoCentro().setText(centroEncontrado.getCodigo());
                 pantallaEditarCentro.getCampoDescripcionCentro().setText(centroEncontrado.getDescripcion());
                 pantallaEditarCentro.getCampoNombreCentro().setText(centroEncontrado.getNombreCentro());
-                // List<Herramientas> herramientas = expertoCentroDeTrabajo.buscarHerramientaAgregadas(centroEncontrado.getCodigo());
-                List<Maquina> maquinas = expertoCentroDeTrabajo.buscarMaquinaAgregadas(centroEncontrado.getCodigo());
-                List<Operario> operarios = expertoCentroDeTrabajo.buscarOperariosAgregadas(centroEncontrado.getCodigo());
-                // modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
+                List<Herramientas> herramientas = centroEncontrado.getHerramientas();
+                List<Maquina> maquinas = centroEncontrado.getMaquinas();
+                List<Operario> operario = centroEncontrado.getOperario();
+
+
+                modeloTablaAgregaHerramientasNuevo.addAllRow(herramientas);
                 modeloTablaAgregaMaquinasNuevo.addAllRow(maquinas);
-                modeloTablaAgregaOperarioNuevo.addAllRow(operarios);
+                modeloTablaAgregaOperarioNuevo.addAllRow(operario);
             }
 
 
