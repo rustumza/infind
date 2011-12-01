@@ -95,7 +95,6 @@ public class PedidoAProveedor extends ObjetoPersitente implements Serializable{
     }
 
     
-    
      @Override
     public int hashCode() {
         int hash = 0;

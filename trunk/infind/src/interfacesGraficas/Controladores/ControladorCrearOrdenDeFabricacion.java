@@ -7,6 +7,7 @@ package interfacesGraficas.Controladores;
 import Entidades.MaestroDeArticulo;
 import Entidades.OrdenDeFabricacion;
 import Entidades.PedidoAProveedor;
+import excepciones.StockExcepcion;
 import expertos.ExpertoOrdenDeFabricacion;
 import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion;
 import interfacesGraficas.ModeloTablas.ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion;
@@ -125,7 +126,17 @@ public class ControladorCrearOrdenDeFabricacion {
             pantalla.getGenerar().setEnabled(false);
             pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion());
             pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion());
+            pantalla.getCantidadDeLotesTextBox().setText("");
+            pantalla.getFechaDeInicioDateChooser().setDate(null);
+            pantalla.getCodigoTextBox().setText("");
+            pantalla.getProductoSeleccionadoTextBox().setText("");
+            pantalla.getLoteEstandarTextBox().setText("");
+            pantalla.getUnidadDeMedida().setText("");
             experto = new ExpertoOrdenDeFabricacion();
+            
+        }catch(StockExcepcion e){
+            JOptionPane.showMessageDialog(pantalla, "Error al reservar el stock para generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            return;
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(pantalla, "Error al generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
