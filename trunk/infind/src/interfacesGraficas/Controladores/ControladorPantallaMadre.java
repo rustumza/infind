@@ -151,4 +151,8 @@ public class ControladorPantallaMadre {
             Logger.getLogger(ControladorPantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void puntoEquilibrio() {
+        new ControladorPuntoEquilibrio(this).iniciar();
+    }
 }
