@@ -150,7 +150,7 @@ ControladorABMCostosVariables controlador;
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para piso de lavanda", "Detergente de limón", "Enjuage para ropa imitación vivere" }));
+        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para pisos lavanda", "Detergente de limon", "Enjuage para ropa imitacion vivere" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -187,6 +187,7 @@ ControladorABMCostosVariables controlador;
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         comboBoxMateriaPrima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxMateriaPrima.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -259,6 +260,11 @@ ControladorABMCostosVariables controlador;
         botonEliminarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         botonEliminarMateriaPrima.setText("Eliminar");
         botonEliminarMateriaPrima.setEnabled(false);
+        botonEliminarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarMateriaPrimaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -277,6 +283,7 @@ ControladorABMCostosVariables controlador;
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         comboBoxCentroTrabajo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCentroTrabajo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -351,6 +358,11 @@ ControladorABMCostosVariables controlador;
         botonEliminarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
         botonEliminarCentro.setText("Eliminar");
         botonEliminarCentro.setEnabled(false);
+        botonEliminarCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarCentroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -394,7 +406,11 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_botonNuevoCostoVariableActionPerformed
 
     private void botonAgregarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMateriaPrimaActionPerformed
-        controlador.cargarTablaMateriasPrimas();
+        try {
+            controlador.cargarTablaMateriasPrimas();
+        } catch (ExpertoCostosVariablesException ex) {
+            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonAgregarMateriaPrimaActionPerformed
 
     private void botonAgregarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCentroActionPerformed
@@ -412,6 +428,14 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonEditarProductosActionPerformed
+
+    private void botonEliminarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMateriaPrimaActionPerformed
+        controlador.eliminarMateriaPrimaDeTabla();
+    }//GEN-LAST:event_botonEliminarMateriaPrimaActionPerformed
+
+    private void botonEliminarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarCentroActionPerformed
+        controlador.eliminarCentroTrabajoDeTabla();
+    }//GEN-LAST:event_botonEliminarCentroActionPerformed
 
     /**
      * @param args the command line arguments

@@ -64,6 +64,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGuardarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonSalir">
               <Properties>
@@ -75,6 +78,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSalirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -334,9 +340,9 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
                     <StringItem index="0" value="Producto Intermedio Base"/>
-                    <StringItem index="1" value="Desodorante para piso de lavanda"/>
-                    <StringItem index="2" value="Detergente de lim&#xf3;n"/>
-                    <StringItem index="3" value="Enjuage para ropa imitaci&#xf3;n vivere"/>
+                    <StringItem index="1" value="Desodorante para pisos lavanda"/>
+                    <StringItem index="2" value="Detergente de limon"/>
+                    <StringItem index="3" value="Enjuage para ropa imitacion vivere"/>
                   </StringArray>
                 </Property>
               </Properties>

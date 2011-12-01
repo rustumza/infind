@@ -16,7 +16,7 @@ public class ModeloTablaMateriasPrimasEditar extends ModeloTabla{
 
     public ModeloTablaMateriasPrimasEditar() {
 
-        super("Componente", "Cantidad", "Costo/Cantidad");
+        super("Componente", "Cantidad", "Costo/Cantidad ($)");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ModeloTablaMateriasPrimasEditar extends ModeloTabla{
             case 1:
                 return costos.getCantidad();
             case 2:
-                return (Double.valueOf(costos.getCantidad()) * Double.valueOf(costos.getCostoUnitario()));
+                return costos.getCostoTotal();
             
             default:
                 return "";

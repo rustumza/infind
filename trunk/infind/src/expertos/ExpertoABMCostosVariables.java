@@ -8,6 +8,7 @@ import Entidades.CostoVariable;
 import Entidades.CostosFijos;
 import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
+import Entidades.ProductoFinal;
 import excepciones.ExpertoCostosVariablesException;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -49,6 +50,7 @@ public class ExpertoABMCostosVariables extends Experto {
         List<CostoVariable> costosEncontrados = null;
         Criteria criterioCostosVariables = Fachada.getInstancia().crearCriterioSinEliminado(CostoVariable.class);
         criterioCostosVariables.add(Restrictions.eq("eliminado", false));
+        criterioCostosVariables.add(Restrictions.eq("MaestroDeArticulo", productoIntermedioBase));
         costosEncontrados = Fachada.getInstancia().buscar(CostoVariable.class, criterioCostosVariables);
 
         return costosEncontrados;
@@ -63,4 +65,20 @@ public class ExpertoABMCostosVariables extends Experto {
 
         return productoIntermedioEncontrados.get(0);
     }
+    
+    public List<MaestroDeArticulo> buscarProductoFinal(){
+        List<MaestroDeArticulo> productoFinalEncontrados = null;
+        Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
+        criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
+        productoFinalEncontrados = Fachada.getInstancia().buscar(ProductoFinal.class, criterioFinalIntermedio);
+
+        return productoFinalEncontrados;
+        
+        
+    }
+
+    public void guardarCostoVariable(CostoVariable nuevoCosto) {
+         Fachada.getInstancia().guardar(nuevoCosto);
+    }
 }
+
