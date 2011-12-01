@@ -507,12 +507,7 @@ public class ControladorABMCostosVariables {
         pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(false);
     }
     
-    
-    
-    
-    
-    ////////////////////////
-
+  
     public void guardarCostosVariablesEditados() {
         //se elimina todo lo que tenia y se carga lo que salga en la tabla
         
@@ -521,16 +516,12 @@ public class ControladorABMCostosVariables {
         Object Item = pantallaListarCostosVariables.getComboBoxProducto().getSelectedItem();
 
         
-        //////
         for (int i = 0; i < costosVariablesAEditar.size(); i++) {
             costosVariablesAEditar.get(i).setEliminado(true);
             expertoABMCostosVariables.guardarCostoVariable(costosVariablesAEditar.get(i));
             
         }
-        
-        
-        
-        //////
+ 
         for (int i = 0; i < modeloTablaMateriasPrimasEditar.getListaElementos().size(); i++) {
             if (nuevoCosto == null) {
                 nuevoCosto = new CostoVariable();
@@ -595,11 +586,6 @@ public class ControladorABMCostosVariables {
         
     }
 
-    
-  ///////////////////////////  
-    
-    
-    
     public void cargarTablaMateriasPrimasEditar() throws ExpertoCostosVariablesException {
         Object Item = pantallaListarCostosVariables.getComboBoxProducto().getSelectedItem();
         DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();

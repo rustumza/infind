@@ -81,6 +81,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuCalcularDemanda = new javax.swing.JMenuItem();
         menuParametros = new javax.swing.JMenuItem();
         menuABMDemandasHistoricas = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -351,6 +353,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         menuDemanda.setText("Demanda");
+        menuDemanda.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
         menuCalcularDemanda.setText("Calcular");
         menuDemanda.add(menuCalcularDemanda);
@@ -363,13 +366,26 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(menuDemanda);
 
+        jMenu3.setText("Punto Equilibrio");
+        jMenu3.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem4.setText("Punto Equilibrio");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1289, Short.MAX_VALUE)
+            .addGap(0, 1380, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,6 +497,10 @@ private void crearOrdenDeProduccionActionPerformed(java.awt.event.ActionEvent ev
 private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
     controlador.abmCostosVAriables();
 }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        controlador.puntoEquilibrio();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -535,10 +555,12 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenu inventarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarPedidosAProveedores;
