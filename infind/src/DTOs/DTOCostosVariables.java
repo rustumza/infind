@@ -15,15 +15,17 @@ public class DTOCostosVariables {
     private String nombreProducto;
     private String cantidad;
     private String costoUnitario;
+    private String costoTotal;
     
     public DTOCostosVariables() {
     }
 
 
-    public DTOCostosVariables(String nombre, String cant, String cost) {
+    public DTOCostosVariables(String nombre, String cant, String cost, String costoTot) {
         this.nombreProducto = nombre;
         this.cantidad = cant;
         this.costoUnitario = cost;
+        this.costoTotal = costoTot;
         
 
     }
@@ -35,6 +37,16 @@ public class DTOCostosVariables {
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
+
+    public String getCostoTotal() {
+        return costoTotal;
+    }
+
+    public void setCostoTotal(String costoTotal) {
+        this.costoTotal = costoTotal;
+    }
+    
+    
 
     public String getCostoUnitario() {
         return costoUnitario;

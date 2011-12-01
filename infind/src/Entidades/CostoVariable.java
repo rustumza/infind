@@ -25,6 +25,8 @@ public class CostoVariable extends ObjetoPersitente implements Serializable {
     private String nombre;
     private double cantidad;
     private double costo;
+    private boolean eliminado = false;
+    private boolean esCentro;
     @ManyToOne
     private MaestroDeArticulo articulo;
 
@@ -32,9 +34,28 @@ public class CostoVariable extends ObjetoPersitente implements Serializable {
         return id;
     }
 
+    public boolean isEsCentro() {
+        return esCentro;
+    }
+
+    public void setEsCentro(boolean esCentro) {
+        this.esCentro = esCentro;
+    }
+    
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+    
+    
 
     public MaestroDeArticulo getArticulo() {
         return articulo;

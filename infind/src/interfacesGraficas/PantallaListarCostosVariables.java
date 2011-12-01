@@ -10,7 +10,10 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoCostosVariablesException;
 import interfacesGraficas.Controladores.ControladorABMCostosVariables;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -82,6 +85,11 @@ ControladorABMCostosVariables controlador;
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardar);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -89,6 +97,11 @@ ControladorABMCostosVariables controlador;
         botonSalir.setFocusable(false);
         botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonSalir);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -274,7 +287,7 @@ ControladorABMCostosVariables controlador;
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para piso de lavanda", "Detergente de limón", "Enjuage para ropa imitación vivere" }));
+        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para pisos lavanda", "Detergente de limon", "Enjuage para ropa imitacion vivere" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -341,8 +354,20 @@ ControladorABMCostosVariables controlador;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-        controlador.buscarCostoVariableDelProducto();
+        try {
+            controlador.buscarCostoVariableDelProducto();
+        } catch (ExpertoCostosVariablesException ex) {
+            Logger.getLogger(PantallaListarCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        controlador.guardarCostosVariablesEditados();
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
     /**
      * @param args the command line arguments

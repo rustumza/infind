@@ -4,6 +4,7 @@
  */
 package interfacesGraficas.ModeloTablas;
 
+import DTOs.DTOCentro;
 import Entidades.MaestroDeCentroDeTrabajo;
 
 /**
@@ -16,7 +17,7 @@ public class ModeloTablaCentroDeTrabajoEditar extends ModeloTabla{
 
     public ModeloTablaCentroDeTrabajoEditar() {
 
-        super("Componente", "Cantidad", "Costo/Cantidad");
+        super("Componente", "Cantidad", "Costo/Cantidad ($)");
     }
 
     @Override
@@ -24,13 +25,15 @@ public class ModeloTablaCentroDeTrabajoEditar extends ModeloTabla{
         if(getListaElementos() == null){
             return  null;
         }
-        MaestroDeCentroDeTrabajo centros =  (MaestroDeCentroDeTrabajo) getListaElementos().get(rowIndex);
-        
+        DTOCentro centros = (DTOCentro) getListaElementos().get(rowIndex);
+
         switch (columnIndex) {
             case 0:
                 return centros.getNombreCentro();
             case 1:
-                return centros.getCostoCentroDeTrabajo();
+                return "1";
+            case 2:
+                return centros.getCosto();
             default:
                 return "";
         }
