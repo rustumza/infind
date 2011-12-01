@@ -5,9 +5,11 @@
 package Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -38,6 +40,10 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     @LazyToOne(LazyToOneOption.FALSE)
     private MaestroDeEstructuraDeProducto maestroEstructuraDeProducto;
 
+    @OneToMany 
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<OrdenDeFabricacion> ordenDeFabricacion;
+    
     /*@Override
     public Long getId() {
         return id;
@@ -76,8 +82,35 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
     public void setMaestroEstructuraDeProducto(MaestroDeEstructuraDeProducto maestroEstructuraDeProducto) {
         this.maestroEstructuraDeProducto = maestroEstructuraDeProducto;
     }
+
+    public List<OrdenDeFabricacion> getOrdenDeFabricacion() {
+        return ordenDeFabricacion;
+    }
+
+    public void setOrdenDeFabricacion(List<OrdenDeFabricacion> ordenDeFabricacion) {
+        this.ordenDeFabricacion = ordenDeFabricacion;
+    }
     
+    public void addOrden(OrdenDeFabricacion orden) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaListaOrden(orden)) {
+            getOrdenDeFabricacion().add(orden);
+            if(orden.getProductoFabricable() != null){
+                orden.getProductoFabricable().getOrdenDeFabricacion().remove(orden);
+            }
+            orden.setProductoFabricable(this);
+        }
+    }
     
+
+    private boolean estaEnLaListaOrden(OrdenDeFabricacion orden) {
+        for (OrdenDeFabricacion ord : ordenDeFabricacion) {
+            if (orden == ord) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public int hashCode() {
