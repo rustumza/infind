@@ -25,6 +25,7 @@ import interfacesGraficas.ModeloTablas.ModeloTablaMateriasPrimasEditar;
 import interfacesGraficas.PantallaABMCostosVariables;
 import interfacesGraficas.PantallaListarCostosVariables;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -40,13 +41,16 @@ public class ControladorABMCostosVariables {
     ExpertoABMCostosVariables expertoABMCostosVariables;
     ModeloTablaMateriasPrimas modeloTablaMateriasPrimas;
     ModeloTablaMateriasPrimasEditar modeloTablaMateriasPrimasEditar;
+    ModeloTablaMateriasPrimasEditar modeloTablaMateriasPrimasEditarEnMemoria;
     ModeloTablaCentroDeTrabajo modeloTablaCentroTrabajo;
     ModeloTablaCentroDeTrabajoEditar modeloTablaCentroTrabajoEditar;
+    ModeloTablaCentroDeTrabajoEditar modeloTablaCentroTrabajoEditarEnMemoria;
     ModeloComboBoxCentroDeTrabajo modeloComboBoxCentroTrabajo;
     ModeloComboBoxCentroDeTrabajoEditar modeloComboBoxCentroTrabajoEditar;
     ModeloComboBoxMateriaPrima modeloComboBoxMateriaPrima;
     ModeloComboBoxMateriaPrimaEditar modeloComboBoxMateriaPrimaEditar;
     CostoVariable nuevoCosto = null;
+    List<CostoVariable> costosVariablesAEditar = new ArrayList<CostoVariable>();
     private MaestroDeArticulo productoIntermedioBase;
     private List<MaestroDeArticulo> productoFinal;
 
@@ -59,9 +63,10 @@ public class ControladorABMCostosVariables {
 
     public void iniciar() throws ExpertoCostosVariablesException {
         pantallaABMCostosVariables = new PantallaABMCostosVariables(controladorPantMadre.getPantalla(), true, this);
-        modeloComboBoxCentroTrabajo = new ModeloComboBoxCentroDeTrabajo();
+
         modeloComboBoxMateriaPrima = new ModeloComboBoxMateriaPrima();
         modeloComboBoxMateriaPrima = new ModeloComboBoxMateriaPrima(expertoABMCostosVariables.buscarMaestroArticulo());
+        modeloComboBoxCentroTrabajo = new ModeloComboBoxCentroDeTrabajo();
         modeloComboBoxCentroTrabajo = new ModeloComboBoxCentroDeTrabajo(expertoABMCostosVariables.buscarCentroDeTrabajo());
         modeloTablaCentroTrabajo = new ModeloTablaCentroDeTrabajo();
         modeloTablaMateriasPrimas = new ModeloTablaMateriasPrimas();
@@ -74,13 +79,7 @@ public class ControladorABMCostosVariables {
     }
 
     public void crearCostoVariable() throws ExpertoCostosVariablesException {
-//        pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
-//        pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
-//        pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
-//        pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
-//        pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
-//        pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
-//
+//        
 
         Object Item = pantallaABMCostosVariables.getComboBoxProducto().getSelectedItem();
 
@@ -88,8 +87,16 @@ public class ControladorABMCostosVariables {
         if (Item.toString() == "Producto Intermedio Base") {
             productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
             List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(productoIntermedioBase);
-            if (costosVariablesEncontrados != null) {
+            if (costosVariablesEncontrados.size() != 0) {
                 JOptionPane.showMessageDialog(pantallaABMCostosVariables, "El Producto Intermedio Base ya tiene costos variables ingresados", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
+                pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
+                pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
+                pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
+                pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
 
             }
         } else {
@@ -111,6 +118,25 @@ public class ControladorABMCostosVariables {
                 pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
                 pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
 
+//                for (CostoVariable costoVariable : costosVariablesEncontrados) {
+//                    DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
+//                    DTOCentro dtocentrosACargar = new DTOCentro();
+//                    
+//                    if (costoVariable.isEsCentro()) {
+//                        dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
+//                        dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+//                        dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
+//                        modeloTablaMateriasPrimas.addRow(dtocentrosACargar);
+//                        //cargo tabla centros
+//                        
+//                    }else{
+//                        dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
+//                        dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+//                        dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
+//                        modeloTablaMateriasPrimas.addRow(dtoCostosACargar);
+//                        //cargo tabla materias primas
+//                    }
+//                }
 
             }
 
@@ -240,20 +266,14 @@ public class ControladorABMCostosVariables {
 
     public void listarCostosVariables() throws ExpertoCostosVariablesException {
         pantallaListarCostosVariables = new PantallaListarCostosVariables(controladorPantMadre.getPantalla(), true, this);
-        modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar();
         modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar();
-        List<MaestroDeArticulo> maestroArticuloEncontrados = expertoABMCostosVariables.buscarMaestroArticulo();
-        for (MaestroDeArticulo maestroDeArticulo : maestroArticuloEncontrados) {
-            modeloComboBoxMateriaPrimaEditar.addElement(maestroDeArticulo);
-        }
-
-        List<MaestroDeCentroDeTrabajo> centrosEncontrados = expertoABMCostosVariables.buscarCentroDeTrabajo();
-        for (MaestroDeCentroDeTrabajo maestroDeCentroDeTrabajo : centrosEncontrados) {
-            modeloComboBoxCentroTrabajoEditar.addElement(maestroDeCentroDeTrabajo);
-        }
-
+        modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar(expertoABMCostosVariables.buscarMaestroArticulo());
+        modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar();
+        modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar(expertoABMCostosVariables.buscarCentroDeTrabajo());
         modeloTablaCentroTrabajoEditar = new ModeloTablaCentroDeTrabajoEditar();
         modeloTablaMateriasPrimasEditar = new ModeloTablaMateriasPrimasEditar();
+        modeloTablaCentroTrabajoEditarEnMemoria = new ModeloTablaCentroDeTrabajoEditar();
+        modeloTablaMateriasPrimasEditarEnMemoria = new ModeloTablaMateriasPrimasEditar();
         pantallaListarCostosVariables.getTablaCentroTrabajo().setModel(modeloTablaCentroTrabajoEditar);
         pantallaListarCostosVariables.getTablaMateriaPrima().setModel(modeloTablaMateriasPrimasEditar);
         pantallaListarCostosVariables.getComboBoxCentroTrabajo().setModel(modeloComboBoxCentroTrabajoEditar);
@@ -271,10 +291,13 @@ public class ControladorABMCostosVariables {
 
             productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
 
-            List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(productoIntermedioBase);
-
+            List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariablesProdIntermedio(productoIntermedioBase);
+            
             if (costosVariablesEncontrados != null) {
                 for (CostoVariable costoVariable : costosVariablesEncontrados) {
+                    
+                    costosVariablesAEditar.add(costoVariable);
+                    
                     if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
                         DTOCentro dtocentrosACargar = new DTOCentro();
 
@@ -282,18 +305,24 @@ public class ControladorABMCostosVariables {
                         dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
                         dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
                         modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                        modeloTablaCentroTrabajoEditarEnMemoria.addRow(dtocentrosACargar);
 
                     } else {//cargo tabla materias primas
                         DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-                        
+
                         dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
                         dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
                         dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
                         modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
-
+                        modeloTablaMateriasPrimasEditarEnMemoria.addRow(dtoCostosACargar);
                     }
 
                 }
+
+                pantallaListarCostosVariables.getBotonAgregarCentroTrabajo().setEnabled(true);
+                pantallaListarCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                pantallaListarCostosVariables.getBotonEliminarCentroTrabajo().setEnabled(true);
+                pantallaListarCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(pantallaABMCostosVariables, "No se han ingresado Costos Variables. No se puede Editar", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -308,25 +337,33 @@ public class ControladorABMCostosVariables {
                     List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(maestroDeArticulo);
                     if (costosVariablesEncontrados != null) {
                         for (CostoVariable costoVariable : costosVariablesEncontrados) {
-                    if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
-                        DTOCentro dtocentrosACargar = new DTOCentro();
+                            costosVariablesAEditar.add(costoVariable);
+                            if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
+                                DTOCentro dtocentrosACargar = new DTOCentro();
 
-                        dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
-                        dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
-                        modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
+                                dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
+                                modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                modeloTablaCentroTrabajoEditarEnMemoria.addRow(dtocentrosACargar);
 
-                    } else {//cargo tabla materias primas
-                        DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-                        
-                        dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
-                        dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
-                        modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                            } else {//cargo tabla materias primas
+                                DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
 
-                    }
+                                dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
+                                dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
+                                modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                                modeloTablaMateriasPrimasEditarEnMemoria.addRow(dtoCostosACargar);
 
-                }
+                            }
+
+                        }
+
+                        pantallaListarCostosVariables.getBotonAgregarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(pantallaABMCostosVariables, "No se han ingresado Costos Variables. No se puede Editar", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -343,25 +380,33 @@ public class ControladorABMCostosVariables {
                     List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(maestroDeArticulo);
                     if (costosVariablesEncontrados != null) {
                         for (CostoVariable costoVariable : costosVariablesEncontrados) {
-                    if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
-                        DTOCentro dtocentrosACargar = new DTOCentro();
+                            costosVariablesAEditar.add(costoVariable);
+                            if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
+                                DTOCentro dtocentrosACargar = new DTOCentro();
 
-                        dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
-                        dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
-                        modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
+                                dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
+                                modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                modeloTablaCentroTrabajoEditarEnMemoria.addRow(dtocentrosACargar);
 
-                    } else {//cargo tabla materias primas
-                        DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-                        
-                        dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
-                        dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
-                        modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                            } else {//cargo tabla materias primas
+                                DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
 
-                    }
+                                dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
+                                dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
+                                modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                                modeloTablaMateriasPrimasEditarEnMemoria.addRow(dtoCostosACargar);
 
-                }
+                            }
+
+                        }
+
+                        pantallaListarCostosVariables.getBotonAgregarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(pantallaABMCostosVariables, "No se han ingresado Costos Variables. No se puede Editar", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -379,25 +424,33 @@ public class ControladorABMCostosVariables {
                     List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(maestroDeArticulo);
                     if (costosVariablesEncontrados != null) {
                         for (CostoVariable costoVariable : costosVariablesEncontrados) {
-                    if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
-                        DTOCentro dtocentrosACargar = new DTOCentro();
+                            costosVariablesAEditar.add(costoVariable);
+                            if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
+                                DTOCentro dtocentrosACargar = new DTOCentro();
 
-                        dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
-                        dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
-                        modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
+                                dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
+                                modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+                                modeloTablaCentroTrabajoEditarEnMemoria.addRow(dtocentrosACargar);
 
-                    } else {//cargo tabla materias primas
-                        DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-                        
-                        dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
-                        dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-                        dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
-                        modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                            } else {//cargo tabla materias primas
+                                DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
 
-                    }
+                                dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
+                                dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
+                                dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
+                                modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+                                modeloTablaMateriasPrimasEditarEnMemoria.addRow(dtoCostosACargar);
 
-                }
+                            }
+
+                        }
+
+                        pantallaListarCostosVariables.getBotonAgregarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarCentroTrabajo().setEnabled(true);
+                        pantallaListarCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(pantallaABMCostosVariables, "No se han ingresado Costos Variables. No se puede Editar", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -453,8 +506,171 @@ public class ControladorABMCostosVariables {
         pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(false);
         pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(false);
     }
+    
+    
+    
+    
+    
+    ////////////////////////
 
     public void guardarCostosVariablesEditados() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        //se elimina todo lo que tenia y se carga lo que salga en la tabla
+        
+         List<MaestroDeArticulo> productoFinal = expertoABMCostosVariables.buscarProductoFinal();
+
+        Object Item = pantallaListarCostosVariables.getComboBoxProducto().getSelectedItem();
+
+        
+        //////
+        for (int i = 0; i < costosVariablesAEditar.size(); i++) {
+            costosVariablesAEditar.get(i).setEliminado(true);
+            expertoABMCostosVariables.guardarCostoVariable(costosVariablesAEditar.get(i));
+            
+        }
+        
+        
+        
+        //////
+        for (int i = 0; i < modeloTablaMateriasPrimasEditar.getListaElementos().size(); i++) {
+            if (nuevoCosto == null) {
+                nuevoCosto = new CostoVariable();
+            }
+
+            Object nombreComponente = modeloTablaMateriasPrimasEditar.getValueAt(i, 0);
+            Object cantidad = modeloTablaMateriasPrimasEditar.getValueAt(i, 1);
+            Object costoCantidad = modeloTablaMateriasPrimasEditar.getValueAt(i, 2);
+            nuevoCosto.setNombre(nombreComponente.toString());
+            nuevoCosto.setCantidad(Double.valueOf(cantidad.toString()));
+            nuevoCosto.setCosto(Double.valueOf(costoCantidad.toString()));
+            nuevoCosto.setEsCentro(false);
+
+            if (Item.toString() == "Producto Intermedio Base") {
+                nuevoCosto.setArticulo(productoIntermedioBase);
+            } else {
+                for (MaestroDeArticulo productoFinal1 : productoFinal) {
+
+                    if (productoFinal1.getNombre().equals(Item.toString())) {
+                        nuevoCosto.setArticulo(productoFinal1);
+                    }
+
+                }
+            }
+
+            expertoABMCostosVariables.guardarCostoVariable(nuevoCosto);
+            nuevoCosto = null;
+
+        }
+
+        for (int i = 0; i < modeloTablaCentroTrabajoEditar.getListaElementos().size(); i++) {
+            if (nuevoCosto == null) {
+                nuevoCosto = new CostoVariable();
+            }
+
+            Object nombreCentro = modeloTablaCentroTrabajoEditar.getValueAt(i, 0);
+            Object cantidad = modeloTablaCentroTrabajoEditar.getValueAt(i, 1);
+            Object costoCantidad = modeloTablaCentroTrabajoEditar.getValueAt(i, 2);
+            nuevoCosto.setNombre(nombreCentro.toString());
+            nuevoCosto.setCantidad(Double.valueOf(cantidad.toString()));
+            nuevoCosto.setCosto(Double.valueOf(costoCantidad.toString()));
+            nuevoCosto.setEsCentro(true);
+
+            if (Item.toString() == "Producto Intermedio Base") {
+                nuevoCosto.setArticulo(productoIntermedioBase);
+            } else {
+                for (MaestroDeArticulo productoFinal1 : productoFinal) {
+
+                    if (productoFinal1.getNombre().equals(Item.toString())) {
+                        nuevoCosto.setArticulo(productoFinal1);
+                    }
+
+                }
+            }
+
+            expertoABMCostosVariables.guardarCostoVariable(nuevoCosto);
+            nuevoCosto = null;
+
+        }
+        limpiarPantalla();
+        JOptionPane.showMessageDialog(pantallaABMCostosVariables, "Costos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+
+    
+  ///////////////////////////  
+    
+    
+    
+    public void cargarTablaMateriasPrimasEditar() throws ExpertoCostosVariablesException {
+        Object Item = pantallaListarCostosVariables.getComboBoxProducto().getSelectedItem();
+        DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
+
+        String nombreArticulo = "Producto Intermedio Base";
+        if (Item.toString() == "Producto Intermedio Base") {
+        }
+        MaestroDeArticulo maestroArtSelecc = modeloComboBoxMateriaPrimaEditar.getMaestroArtSeleccionado();
+        if (maestroArtSelecc.getNombre().equals(nombreArticulo)) {
+
+            productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
+            List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(productoIntermedioBase);
+            double costo = 0.0;
+            for (CostoVariable costoVariable : costosVariablesEncontrados) {
+                costo = costo + costoVariable.getCosto();
+
+            }
+            double cantidadpr = Double.valueOf(pantallaListarCostosVariables.getCampoCAntidad().getText());
+            double cossssto = (cantidadpr * costo) / 500;
+            dtoCostosACargar.setNombreProducto("Producto Intermedio Base");
+            dtoCostosACargar.setCantidad(pantallaListarCostosVariables.getCampoCAntidad().getText());
+            dtoCostosACargar.setCostoUnitario(String.valueOf(cossssto));
+            dtoCostosACargar.setCostoTotal(String.valueOf(cossssto));
+            modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+
+        } else {
+            dtoCostosACargar.setNombreProducto(maestroArtSelecc.getNombre());
+            dtoCostosACargar.setCantidad(pantallaListarCostosVariables.getCampoCAntidad().getText());
+            dtoCostosACargar.setCostoUnitario(String.valueOf(maestroArtSelecc.getCostoUnitarioPorOmision()));
+            dtoCostosACargar.setCostoTotal(String.valueOf((maestroArtSelecc.getCostoUnitarioPorOmision() * Double.valueOf(pantallaListarCostosVariables.getCampoCAntidad().getText()))));
+            modeloTablaMateriasPrimasEditar.addRow(dtoCostosACargar);
+        }
+
+    }
+
+    public void eliminarMateriaPrimaDeTablaEditar() {
+        int r = pantallaListarCostosVariables.getTablaMateriaPrima().getSelectedRow();
+        if (r == -1) {
+
+            JOptionPane.showMessageDialog(pantallaListarCostosVariables, "Debe seleccionar un Artículo a Eliminar", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+
+        } else {
+            modeloTablaMateriasPrimasEditar.removeRow(r);
+            modeloTablaMateriasPrimasEditar.fireTableDataChanged();
+
+        }
+    }
+
+    public void cargarTablaCentroDeTrabajoEditar() {
+        DTOCentro dtocentrosACargar = new DTOCentro();
+
+        MaestroDeCentroDeTrabajo centrosACargar = modeloComboBoxCentroTrabajoEditar.getCentroTrabajoSeleccionado();
+        dtocentrosACargar.setCantidad("1");
+        dtocentrosACargar.setCosto(String.valueOf(centrosACargar.getCostoCentroDeTrabajo()));
+        dtocentrosACargar.setNombreCentro(centrosACargar.getNombreCentro());
+
+        modeloTablaCentroTrabajoEditar.addRow(dtocentrosACargar);
+    }
+
+    public void eliminarCentroTrabajoDeTablaEditar() {
+        int r = pantallaListarCostosVariables.getTablaCentroTrabajo().getSelectedRow();
+        if (r == -1) {
+
+            JOptionPane.showMessageDialog(pantallaListarCostosVariables, "Debe seleccionar un Centro de Trabajo", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+
+        } else {
+            modeloTablaCentroTrabajoEditar.removeRow(r);
+            modeloTablaCentroTrabajoEditar.fireTableDataChanged();
+
+        }
     }
 }

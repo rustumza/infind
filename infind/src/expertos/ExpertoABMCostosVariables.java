@@ -49,11 +49,25 @@ public class ExpertoABMCostosVariables extends Experto {
         
         List<CostoVariable> costosEncontrados = null;
         Criteria criterioCostosVariables = Fachada.getInstancia().crearCriterioSinEliminado(CostoVariable.class);
-        criterioCostosVariables.add(Restrictions.eq("eliminado", false));
-        criterioCostosVariables.add(Restrictions.eq("MaestroDeArticulo", productoIntermedioBase));
+        criterioCostosVariables.add(Restrictions.eq("articulo", productoIntermedioBase));
+        
+       // criterioCostosVariables.add(Restrictions.sqlRestriction("");
+        //criterioCostosVariables.add(Restrictions.eq("MaestroDeArticulo", productoIntermedioBase));
         costosEncontrados = Fachada.getInstancia().buscar(CostoVariable.class, criterioCostosVariables);
 
         return costosEncontrados;
+    }
+    
+    public List<CostoVariable> buscarCostosVariablesProdIntermedio(MaestroDeArticulo productoIntermedioBase)  throws ExpertoCostosVariablesException{
+        List<CostoVariable> costosEncontrados = null;
+        Criteria criterioCostosVariables = Fachada.getInstancia().crearCriterioSinEliminado(CostoVariable.class);
+        criterioCostosVariables.add(Restrictions.eq("eliminado", false));
+        criterioCostosVariables.add(Restrictions.eq("articulo", productoIntermedioBase));
+        //criterioCostosVariables.add(Restrictions.eq("MaestroDeArticulo", productoIntermedioBase));
+        costosEncontrados = Fachada.getInstancia().buscar(CostoVariable.class, criterioCostosVariables);
+
+        return costosEncontrados;
+    
     }
 
     public MaestroDeArticulo buscarProductoIntermedioBase() {
@@ -80,5 +94,11 @@ public class ExpertoABMCostosVariables extends Experto {
     public void guardarCostoVariable(CostoVariable nuevoCosto) {
          Fachada.getInstancia().guardar(nuevoCosto);
     }
+
+    
+    
+        
+    
+    
 }
 
