@@ -7,6 +7,7 @@ package interfacesGraficas.Controladores;
 import Entidades.MaestroDeArticulo;
 import Entidades.OrdenDeFabricacion;
 import Entidades.PedidoAProveedor;
+import Entidades.ProductosFabricables;
 import excepciones.StockExcepcion;
 import expertos.ExpertoOrdenDeFabricacion;
 import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion;
@@ -92,7 +93,7 @@ public class ControladorCrearOrdenDeFabricacion {
             orden = experto.probarGeneracionDeOrdenDeFabricacion(fecha, cantidadInt);
             
             pantalla.getFechaPosibleRealizacionDataChooser().setDate(orden.getFecha());
-            
+            ((ProductosFabricables)experto.getArticulo()).removeOrden(orden);
             ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion();
             List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
             listaDePedidos = listaDePedidos(orden);
@@ -120,9 +121,27 @@ public class ControladorCrearOrdenDeFabricacion {
     
     
     
-    public void generarOrden() {
+    public void generarOrden() throws StockExcepcion {
         try{
-            experto.generarOrdenes(orden);
+            Date fecha = pantalla.getFechaDeInicioDateChooser().getDate();
+            if(fecha == null){
+                JOptionPane.showMessageDialog(pantalla, "No se ha ingresado una fecha incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getFechaDeInicioDateChooser().requestFocus();
+                return;
+            }
+            String cantidadString = pantalla.getCantidadDeLotesTextBox().getText();
+            int cantidadInt = 0;
+            if(!cantidadString.equals("")){
+                cantidadInt = Integer.valueOf(cantidadString);
+            }else{
+                JOptionPane.showMessageDialog(pantalla, "No se ha ingresado una cantidad incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getCantidadDeLotesTextBox().requestFocus();
+                return;
+            }            
+            OrdenDeFabricacion ordenFab = experto.generarOrdenesPrimero(fecha, cantidadInt);
+            if(ordenFab == null ){
+                //throw new Exception();
+            }
             pantalla.getGenerar().setEnabled(false);
             pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion());
             pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion());
@@ -138,9 +157,9 @@ public class ControladorCrearOrdenDeFabricacion {
             JOptionPane.showMessageDialog(pantalla, "Error al reservar el stock para generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             return;
             
-        }catch(Exception e){
+        /*}catch(Exception e){
             JOptionPane.showMessageDialog(pantalla, "Error al generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            return;
+            return;*/
         }
     }
     

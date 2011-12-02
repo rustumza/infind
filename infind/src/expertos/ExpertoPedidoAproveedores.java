@@ -75,12 +75,8 @@ public class ExpertoPedidoAproveedores {
     
         
         
-        public List<PedidoAProveedor> generarPedidoAProveedorPredeterminadoDesdeOrden(String codigo, int cantidadDeLostesOptimos, Date fecha, OrdenDeFabricacion orden){
+        public List<PedidoAProveedor> generarPedidoAProveedorPredeterminadoDesdeOrden(MaestroDeArticulo articulo, int cantidadDeLostesOptimos, Date fecha, OrdenDeFabricacion orden){
         
-            Criteria criterio = Fachada.getInstancia().crearCriterio(MaestroDeArticulo.class);
-            criterio.add(Restrictions.like("codigo", codigo));
-            List<MaestroDeArticulo> listaArticulos = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterio);        
-            MaestroDeArticulo articulo = listaArticulos.get(0);
             PedidoAProveedor pedido = new PedidoAProveedor();
             pedido.setArticulo(articulo);
             pedido.setFechaARealizarElPedido(fecha);

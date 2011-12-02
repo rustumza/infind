@@ -98,10 +98,9 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
             if(orden.getProductoFabricable() != null){
                 orden.getProductoFabricable().getOrdenDeFabricacion().remove(orden);
             }
-            orden.setProductoFabricable(this);
+        orden.setProductoFabricable(this);
         }
-    }
-    
+    }    
 
     private boolean estaEnLaListaOrden(OrdenDeFabricacion orden) {
         for (OrdenDeFabricacion ord : ordenDeFabricacion) {
@@ -110,6 +109,15 @@ public class ProductosFabricables extends MaestroDeArticulo implements Serializa
             }
         }
         return false;
+    }
+    public void removeOrden(OrdenDeFabricacion orden){
+        if (estaEnLaListaOrden(orden)) {
+            ordenDeFabricacion.remove(orden);
+            orden.setProductoFabricable(null);
+        
+        }
+    
+        
     }
 
     @Override
