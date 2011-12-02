@@ -122,4 +122,33 @@ public class ExpertoStock {
         }
         return false;
     }
+    
+    
+    public boolean getDisponiblilidadDeStockParaFechaDeterminadaSinTx(MaestroDeArticulo articulo, float cantidad, Date fecha){
+    
+        float cantidadRealDisponible = articulo.getStock().getCantidadFisicaReal() - articulo.getStock().getCantidadReservada();
+        System.out.println("cantidad fisica");
+        System.out.println(articulo.getStock().getCantidadFisicaReal());
+        if(cantidadRealDisponible >= cantidad){
+            return true;
+        }
+        List<PedidoAProveedor> pedidos = null;        
+        Criteria criterioPedidosDelArticulo = Fachada.getInstancia().crearCriterio(PedidoAProveedor.class);
+        criterioPedidosDelArticulo.add(Restrictions.eq("articulo", articulo));
+        criterioPedidosDelArticulo.add(Restrictions.eq("estaConcretado", Boolean.FALSE));
+        pedidos = Fachada.getInstancia().buscarSinTx(PedidoAProveedor.class, criterioPedidosDelArticulo);
+        float cantidadAux = 0;
+        
+        for (PedidoAProveedor pedidoAProveedor : pedidos) {
+            if(fecha.before(pedidoAProveedor.getFechaARealizarElPedido())){
+                cantidadAux += pedidoAProveedor.getCantidad();
+            }
+        }
+        System.out.println("cantidad disponible");
+        System.out.println(cantidadAux + cantidadRealDisponible);
+        if(cantidadAux + cantidadRealDisponible - articulo.getStock().getCantidadReservada() >= cantidad){
+            return true;
+        }
+        return false;
+    }
 }

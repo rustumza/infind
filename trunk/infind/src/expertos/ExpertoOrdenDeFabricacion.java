@@ -28,8 +28,8 @@ import persistencia.Fachada;
  *
  * @author rustu
  */
-public class ExpertoOrdenDeFabricacion extends Experto{
-    
+public class ExpertoOrdenDeFabricacion extends Experto {
+
     MaestroDeArticulo articulo;
 
     public MaestroDeArticulo buscarProductoFinal(String codigo) {
@@ -50,193 +50,356 @@ public class ExpertoOrdenDeFabricacion extends Experto{
         return articulo;
     }
     
+    public void setArticulo(MaestroDeArticulo art){
+        articulo = art;
+    }
+    public MaestroDeArticulo getArticulo(){
+        return articulo;
+    }
+
+    public MaestroDeArticulo buscarProductoIntermedioSinTx(String codigo) {
+        List<ProductoIntermedio> listaIntermedio = null;
+        Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
+        criterioProdInt.add(Restrictions.eq("codigo", codigo));
+        listaIntermedio = Fachada.getInstancia().buscarSinTx(ProductoIntermedio.class, criterioProdInt);
+        articulo = listaIntermedio.get(0);
+        return articulo;
+    }
     
-    public OrdenDeFabricacion probarGeneracionDeOrdenDeFabricacion(Date fecha, int cantidadDeLotesAFabricar){
+    public OrdenDeFabricacion probarGeneracionDeOrdenDeFabricacion(Date fecha, int cantidadDeLotesAFabricar) {
         OrdenDeFabricacion orden = new OrdenDeFabricacion();
         orden.setEliminado(false);
-        ((ProductosFabricables)articulo).addOrden(orden);
-        ProductoTipoIQE iqe = ((ProductosFabricables)articulo).getProductoTipoIQE();        
-        MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();                
+        ((ProductosFabricables) articulo).addOrden(orden);
+        ProductoTipoIQE iqe = ((ProductosFabricables) articulo).getProductoTipoIQE();
+        MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();
         //aramar metodo para uqe te devuleva la estructura completa de un producto fabricable (estructura propia + iqe)
         MaestroDeEstructuraDeProducto estructura = null;
-        if(articulo.getClass().equals(ProductoFinal.class)){
-            estructura = ((ProductoFinal)articulo).getMaestroEstructuraDeProducto();
-        }else{
-            estructura = ((ProductoIntermedio)articulo).getMaestroEstructuraDeProducto();        
+        if (articulo.getClass().equals(ProductoFinal.class)) {
+            estructura = ((ProductoFinal) articulo).getMaestroEstructuraDeProducto();
+        } else {
+            estructura = ((ProductoIntermedio) articulo).getMaestroEstructuraDeProducto();
         }
         ExpertoPedidoAproveedores expertoPedidoAProveedores = new ExpertoPedidoAproveedores();
         ExpertoStock expertoStock = new ExpertoStock();
-        for (DetalleEstructuraDeProducto  detalle : estructura.getDetalleEstructuraProductoList()) {
+        for (DetalleEstructuraDeProducto detalle : estructura.getDetalleEstructuraProductoList()) {
             System.out.println("------------------------------");
             System.out.println(detalle.getMaestroArticulo().getNombre());
-            if(!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)){
-                int cantidadLotesAUsarDeUnProducto = (int)((detalle.getCantidad()*cantidadDeLotesAFabricar)/detalle.getMaestroArticulo().getTamanioLoteEstandar());
-                if((detalle.getCantidad()*cantidadDeLotesAFabricar)%detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0){
+            if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
+                if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                     cantidadLotesAUsarDeUnProducto++;
                 }
                 System.out.println("cantidad de lotes " + detalle.getMaestroArticulo().getTamanioLoteEstandar());
                 System.out.println(cantidadLotesAUsarDeUnProducto);
                 System.out.println("cantidad a usar");
                 System.out.println(detalle.getCantidad() * cantidadDeLotesAFabricar);
-                Calendar calendar = new  GregorianCalendar(fecha.getYear()+1900, fecha.getMonth(), fecha.getDate());
-                calendar.add(Calendar.DATE, - detalle.getMaestroArticulo().getTiempoDeObtenecion());
-                
-                if(detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)){
+                Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+                calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
+
+                if (detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)) {
                     ExpertoOrdenDeFabricacion expertoAux = new ExpertoOrdenDeFabricacion();
                     expertoAux.buscarProductoIntermedio(detalle.getMaestroArticulo().getCodigo());
                     orden.addOrden(expertoAux.probarGeneracionDeOrdenDeFabricacion(calendar.getTime(), cantidadLotesAUsarDeUnProducto));
-                }else{
+                } else {
                     expertoPedidoAProveedores.generarPedidoAProveedorPredeterminado(detalle.getMaestroArticulo().getCodigo(), cantidadLotesAUsarDeUnProducto, calendar.getTime());
                 }
             }
         }
-        for (DetalleEstructuraDeProducto  detalle : estructuraIQE.getDetalleEstructuraProductoList()) {
+        for (DetalleEstructuraDeProducto detalle : estructuraIQE.getDetalleEstructuraProductoList()) {
             System.out.println("------------------------------");
             System.out.println(detalle.getMaestroArticulo().getNombre());
-            if(!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)){
-                int cantidadLotesAUsarDeUnProducto = (int)((detalle.getCantidad()*cantidadDeLotesAFabricar)/detalle.getMaestroArticulo().getTamanioLoteEstandar());
-                if((detalle.getCantidad()*cantidadDeLotesAFabricar)%detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0){
+            if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
+                if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                     cantidadLotesAUsarDeUnProducto++;
                 }
-                
+
                 System.out.println("cantidad de lotes " + detalle.getMaestroArticulo().getTamanioLoteEstandar());
                 System.out.println(cantidadLotesAUsarDeUnProducto);
                 System.out.println("cantidad a usar");
                 System.out.println(detalle.getCantidad() * cantidadDeLotesAFabricar);
-                
-                Calendar calendar = new  GregorianCalendar(fecha.getYear()+1900, fecha.getMonth(), fecha.getDate());
-                calendar.add(Calendar.DATE, - detalle.getMaestroArticulo().getTiempoDeObtenecion());
-                if(detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)){
+
+                Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+                calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
+                if (detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)) {
                     ExpertoOrdenDeFabricacion expertoAux = new ExpertoOrdenDeFabricacion();
                     expertoAux.buscarProductoIntermedio(detalle.getMaestroArticulo().getCodigo());
                     orden.addOrden(expertoAux.probarGeneracionDeOrdenDeFabricacion(calendar.getTime(), cantidadLotesAUsarDeUnProducto));
-                }else{
+                } else {
                     expertoPedidoAProveedores.generarPedidoAProveedorPredeterminado(detalle.getMaestroArticulo().getCodigo(), cantidadLotesAUsarDeUnProducto, calendar.getTime());
                 }
-                
-                
+
+
             }
         }
-        
-        
+
+
         Date fechaQueMasDemoraEnTerminar = new Date();
         for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
             Calendar calendarFechaQueMasDemoraEnTerminar = new GregorianCalendar(ord.getFecha().getYear() + 1900, ord.getFecha().getMonth(), ord.getFecha().getDate());
             calendarFechaQueMasDemoraEnTerminar.add(Calendar.DATE, ord.getProductoFabricable().getTiempoDeObtenecion());
             Date fechaAux = calendarFechaQueMasDemoraEnTerminar.getTime();
-            if(fechaAux.after(fechaQueMasDemoraEnTerminar)){
+            if (fechaAux.after(fechaQueMasDemoraEnTerminar)) {
                 fechaQueMasDemoraEnTerminar = fechaAux;
             }
         }
-        
+
         int numeroMasGrande = 0;
         for (PedidoAProveedor pedido : expertoPedidoAProveedores.getListaDePedidos()) {
-            if(numeroMasGrande < pedido.getArticulo().getTiempoDeObtenecion()){
+            if (numeroMasGrande < pedido.getArticulo().getTiempoDeObtenecion()) {
                 numeroMasGrande = pedido.getArticulo().getTiempoDeObtenecion();
             }
         }
-        
-        Calendar calendar = new  GregorianCalendar(fecha.getYear()+1900, fecha.getMonth(), fecha.getDate());
-        calendar.add(Calendar.DATE, - (numeroMasGrande+2));
-        
-        if(new Date().after(calendar.getTime())){
-            Calendar calendarAux = new  GregorianCalendar();
-            calendarAux.add(Calendar.DATE, numeroMasGrande+2);
+
+        Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+        calendar.add(Calendar.DATE, -(numeroMasGrande + 2));
+
+        if (new Date().after(calendar.getTime())) {
+            Calendar calendarAux = new GregorianCalendar();
+            calendarAux.add(Calendar.DATE, numeroMasGrande + 2);
             orden.setFecha(calendarAux.getTime());
             for (PedidoAProveedor pedido : expertoPedidoAProveedores.getListaDePedidos()) {
                 int intAux = numeroMasGrande + 1 - pedido.getArticulo().getTiempoDeObtenecion();
-                Calendar calendarAuxPedido = new  GregorianCalendar();
+                Calendar calendarAuxPedido = new GregorianCalendar();
                 calendarAuxPedido.add(Calendar.DATE, intAux);
                 pedido.setFechaARealizarElPedido(calendarAuxPedido.getTime());
                 orden.addPedido(pedido);
             }
-        }else{
+        } else {
             orden.setFecha(fecha);
             for (PedidoAProveedor pedi : expertoPedidoAProveedores.getListaDePedidos()) {
                 orden.addPedido(pedi);
             }
         }
-        
-        if(fechaQueMasDemoraEnTerminar.after(orden.getFecha())){
+
+        if (fechaQueMasDemoraEnTerminar.after(orden.getFecha())) {
             orden.setFecha(fechaQueMasDemoraEnTerminar);
         }
-        
+
         orden.setCantidadDeLotesOptimos(cantidadDeLotesAFabricar);
         
         return orden;
     }
 
+    /*public void generarOrdenes(OrdenDeFabricacion orden) throws StockExcepcion{
+    //Conexion.getInstancia().iniciarTX();        
+    metodoAux(orden);
+    //Conexion.getInstancia().confirmarTx();
+    }*/
+    private void metodoAux(OrdenDeFabricacion orden) throws StockExcepcion {
+        try {
+            for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
+                metodoAux(ord);
+            }
+            Conexion.getInstancia().iniciarTX();
+            ExpertoPedidoAproveedores expPedido = new ExpertoPedidoAproveedores();
 
-    
-    public void generarOrdenes(OrdenDeFabricacion orden) throws StockExcepcion{
-        //Conexion.getInstancia().iniciarTX();        
-        metodoAux(orden);
-        //Conexion.getInstancia().confirmarTx();
-    }
-    
-    private void metodoAux(OrdenDeFabricacion orden) throws StockExcepcion{
-        try{
-        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {            
-            metodoAux(ord);
-        }
-        ExpertoPedidoAproveedores expPedido = new ExpertoPedidoAproveedores();
-        
-        
-        //Conexion.getInstancia().iniciarTX();        
-        for (PedidoAProveedor pedido : orden.getListaDePedido()) {
-            expPedido.generarPedidoAProveedorPredeterminadoDesdeOrden(pedido.getArticulo().getCodigo(), pedido.getArticulo().getTamanioLoteEstandar(), pedido.getFechaARealizarElPedido(),orden);
-        }
-        orden.setListaDePedido(new ArrayList<PedidoAProveedor>());
-        for (PedidoAProveedor ped : expPedido.getListaDePedidos()) {
-            orden.addPedido(ped);
-        }
-        
-        
-        
-        ExpertoStock expStock = new ExpertoStock();
-        List<PedidoAProveedor> listaDePedidos = expPedido.getListaDePedidos();
-        Conexion.getInstancia().iniciarTX();
-        for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
+
+            //Conexion.getInstancia().iniciarTX();        
+            for (PedidoAProveedor pedido : orden.getListaDePedido()) {
+                expPedido.generarPedidoAProveedorPredeterminadoDesdeOrden(pedido.getArticulo(), ((int) pedido.getCantidad() / pedido.getArticulo().getTamanioLoteEstandar()), pedido.getFechaARealizarElPedido(), orden);
+            }
+            orden.setListaDePedido(new ArrayList<PedidoAProveedor>());
+            for (PedidoAProveedor ped : expPedido.getListaDePedidos()) {
+                orden.addPedido(ped);
+            }
+
+
+
+            ExpertoStock expStock = new ExpertoStock();
+            expPedido.asentarPedidosSinTx();
+            Conexion.getInstancia().confirmarTx();
+            //List<PedidoAProveedor> listaDePedidos = expPedido.getListaDePedidos();
+
+
+            //Conexion.getInstancia().iniciarTXTx()();
+        /*for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
             expStock.agregarStockPorLlegar((MaestroDeArticulo)pedidoAProveedor.getArticulo(),pedidoAProveedor.getCantidad());
-        }
-        Conexion.getInstancia().confirmarTx();
-        //expPedido.asentarPedidos();
-        
-        //reserva de stock
-        ProductoTipoIQE iqe = orden.getProductoFabricable().getProductoTipoIQE();        
-        MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();                
-        //aramar metodo para uqe te devuleva la estructura completa de un producto fabricable (estructura propia + iqe)
-        MaestroDeEstructuraDeProducto estructura = null;
-        if(orden.getProductoFabricable().getClass().equals(ProductoFinal.class)){
-            estructura = ((ProductoFinal)orden.getProductoFabricable()).getMaestroEstructuraDeProducto();
-        }else{
-            estructura = ((ProductoIntermedio)orden.getProductoFabricable()).getMaestroEstructuraDeProducto();        
-        }
-        expStock.iniciarManejoDeStock();
-        for (DetalleEstructuraDeProducto detalleEstruc : estructura.getDetalleEstructuraProductoList()) {
-            float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
-            expStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
-        }
-        for (DetalleEstructuraDeProducto detalleEstruc : estructuraIQE.getDetalleEstructuraProductoList()) {
-            float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
-            expStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
-        }
-        expStock.finalizarManejoDeStock();
-        
-        Fachada.getInstancia().guardar(orden);
-        Fachada.getInstancia().guardar(orden.getProductoFabricable());
-        //Conexion.getInstancia().confirmarTx();
-        
-        expStock.iniciarManejoDeStock();
-        expStock.agregarStockPorLlegar(orden.getProductoFabricable(), orden.getCantidadDeLotesOptimos()*orden.getProductoFabricable().getTamanioLoteEstandar());
-        expStock.finalizarManejoDeStock();
-        //expPedido.asentarPedidosSinTx();
-        
-        
-        }catch(StockExcepcion e){
+            }*/
+            //Conexion.getInstancia().confirmarTx();
+            //expPedido.asentarPedidos();
+
+            //reserva de stock
+            Conexion.getInstancia().iniciarTX();
+            ProductoTipoIQE iqe = orden.getProductoFabricable().getProductoTipoIQE();
+            MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();
+            //aramar metodo para uqe te devuleva la estructura completa de un producto fabricable (estructura propia + iqe)
+            MaestroDeEstructuraDeProducto estructura = null;
+            if (orden.getProductoFabricable().getClass().equals(ProductoFinal.class)) {
+                estructura = ((ProductoFinal) orden.getProductoFabricable()).getMaestroEstructuraDeProducto();
+            } else {
+                estructura = ((ProductoIntermedio) orden.getProductoFabricable()).getMaestroEstructuraDeProducto();
+            }
+            //expStock.iniciarManejoDeStock();
+            for (DetalleEstructuraDeProducto detalleEstruc : estructura.getDetalleEstructuraProductoList()) {
+                float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
+                expStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
+            }
+            for (DetalleEstructuraDeProducto detalleEstruc : estructuraIQE.getDetalleEstructuraProductoList()) {
+                float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
+                expStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
+            }
+            //expStock.finalizarManejoDeStock();
+
+            Fachada.getInstancia().guardarSinTranasaccion(orden);
+            Fachada.getInstancia().guardarSinTranasaccion(orden.getProductoFabricable());
+            //Conexion.getInstancia().confirmarTx();
+
+            //expStock.iniciarManejoDeStock();
+            expStock.agregarStockPorLlegar(orden.getProductoFabricable(), orden.getCantidadDeLotesOptimos() * orden.getProductoFabricable().getTamanioLoteEstandar());
+            //expStock.finalizarManejoDeStock();
+            //expPedido.asentarPedidosSinTx();
+
+            Conexion.getInstancia().confirmarTx();
+        } catch (StockExcepcion e) {
             throw e;
         }
+
+    }
+
+    public OrdenDeFabricacion generarOrdenesPrimero(Date fecha, int cantidadDeLotesAFabricar) throws StockExcepcion {
+        try{
+            Conexion.getInstancia().iniciarTX();
+            OrdenDeFabricacion orden = generarOrdenes(articulo, fecha, cantidadDeLotesAFabricar);
+            Conexion.getInstancia().confirmarTx();
+            return orden;
+        }catch(StockExcepcion e){
+            Conexion.getInstancia().deshacerTx();
+            throw e;
+            
+        }
+        /*catch(Exception e){
+            Conexion.getInstancia().deshacerTx();
+            return null;
+        }*/
+        
+    }
     
+    
+    public OrdenDeFabricacion generarOrdenes(MaestroDeArticulo artic, Date fecha, int cantidadDeLotesAFabricar) throws StockExcepcion {
+        try {
+            OrdenDeFabricacion orden = new OrdenDeFabricacion();
+            orden.setEliminado(false);
+            ((ProductosFabricables) artic).addOrden(orden);
+            ProductoTipoIQE iqe = ((ProductosFabricables) artic).getProductoTipoIQE();
+            MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();
+            //aramar metodo para uqe te devuleva la estructura completa de un producto fabricable (estructura propia + iqe)
+            MaestroDeEstructuraDeProducto estructura = null;
+            if (artic.getClass().equals(ProductoFinal.class)) {
+                estructura = ((ProductoFinal) artic).getMaestroEstructuraDeProducto();
+            } else {
+                estructura = ((ProductoIntermedio) artic).getMaestroEstructuraDeProducto();
+            }
+            ExpertoPedidoAproveedores expertoPedidoAProveedores = new ExpertoPedidoAproveedores();
+            ExpertoStock expertoStock = new ExpertoStock();
+            for (DetalleEstructuraDeProducto detalle : estructura.getDetalleEstructuraProductoList()) {
+                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminadaSinTx(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                    int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
+                    if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
+                        cantidadLotesAUsarDeUnProducto++;
+                    }
+                    Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+                    calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
+
+                    if (detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)) {
+                        ExpertoOrdenDeFabricacion expertoAux = new ExpertoOrdenDeFabricacion();
+                        //expertoAux.buscarProductoIntermedioSinTx(detalle.getMaestroArticulo().getCodigo());
+                        expertoAux.setArticulo(detalle.getMaestroArticulo());
+                        orden.addOrden(expertoAux.generarOrdenes(detalle.getMaestroArticulo(),calendar.getTime(), cantidadLotesAUsarDeUnProducto));
+                    } else {
+                        expertoPedidoAProveedores.generarPedidoAProveedorPredeterminadoDesdeOrden(detalle.getMaestroArticulo(), cantidadLotesAUsarDeUnProducto, calendar.getTime(),orden);
+                    }
+                }
+            }
+            for (DetalleEstructuraDeProducto detalle : estructuraIQE.getDetalleEstructuraProductoList()) {
+                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminadaSinTx(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                    int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
+                    if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
+                        cantidadLotesAUsarDeUnProducto++;
+                    }
+
+                    Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+                    calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
+                    if (detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)) {
+                        ExpertoOrdenDeFabricacion expertoAux = new ExpertoOrdenDeFabricacion();
+                        //expertoAux.buscarProductoIntermedioSinTx(detalle.getMaestroArticulo().getCodigo());
+                        expertoAux.setArticulo(detalle.getMaestroArticulo());
+                        orden.addOrden(expertoAux.generarOrdenes(detalle.getMaestroArticulo(), calendar.getTime(), cantidadLotesAUsarDeUnProducto));
+                    } else {
+                        expertoPedidoAProveedores.generarPedidoAProveedorPredeterminadoDesdeOrden(detalle.getMaestroArticulo(), cantidadLotesAUsarDeUnProducto, calendar.getTime(),orden);
+                    }
+
+
+                }
+            }
+
+
+            Date fechaQueMasDemoraEnTerminar = new Date();
+            for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
+                Calendar calendarFechaQueMasDemoraEnTerminar = new GregorianCalendar(ord.getFecha().getYear() + 1900, ord.getFecha().getMonth(), ord.getFecha().getDate());
+                calendarFechaQueMasDemoraEnTerminar.add(Calendar.DATE, ord.getProductoFabricable().getTiempoDeObtenecion());
+                Date fechaAux = calendarFechaQueMasDemoraEnTerminar.getTime();
+                if (fechaAux.after(fechaQueMasDemoraEnTerminar)) {
+                    fechaQueMasDemoraEnTerminar = fechaAux;
+                }
+            }
+
+            int numeroMasGrande = 0;
+            for (PedidoAProveedor pedido : expertoPedidoAProveedores.getListaDePedidos()) {
+                if (numeroMasGrande < pedido.getArticulo().getTiempoDeObtenecion()) {
+                    numeroMasGrande = pedido.getArticulo().getTiempoDeObtenecion();
+                }
+            }
+
+            Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
+            calendar.add(Calendar.DATE, -(numeroMasGrande + 2));
+
+            if (new Date().after(calendar.getTime())) {
+                Calendar calendarAux = new GregorianCalendar();
+                calendarAux.add(Calendar.DATE, numeroMasGrande + 2);
+                orden.setFecha(calendarAux.getTime());
+                for (PedidoAProveedor pedido : expertoPedidoAProveedores.getListaDePedidos()) {
+                    int intAux = numeroMasGrande + 1 - pedido.getArticulo().getTiempoDeObtenecion();
+                    Calendar calendarAuxPedido = new GregorianCalendar();
+                    calendarAuxPedido.add(Calendar.DATE, intAux);
+                    pedido.setFechaARealizarElPedido(calendarAuxPedido.getTime());
+                    orden.addPedido(pedido);
+                }
+            } else {
+                orden.setFecha(fecha);
+                for (PedidoAProveedor pedi : expertoPedidoAProveedores.getListaDePedidos()) {
+                    orden.addPedido(pedi);
+                }
+            }
+
+            if (fechaQueMasDemoraEnTerminar.after(orden.getFecha())) {
+                orden.setFecha(fechaQueMasDemoraEnTerminar);
+            }
+
+            orden.setCantidadDeLotesOptimos(cantidadDeLotesAFabricar);
+
+            expertoPedidoAProveedores.asentarPedidosSinTx();
+
+            for (DetalleEstructuraDeProducto detalleEstruc : estructura.getDetalleEstructuraProductoList()) {
+                float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
+                expertoStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
+            }
+            for (DetalleEstructuraDeProducto detalleEstruc : estructuraIQE.getDetalleEstructuraProductoList()) {
+                float cant = detalleEstruc.getCantidad() * orden.getCantidadDeLotesOptimos();
+                expertoStock.reservarStock(detalleEstruc.getMaestroArticulo(), cant);
+            }
+            //expStock.finalizarManejoDeStock();
+
+            Fachada.getInstancia().guardarSinTranasaccion(orden);
+            Fachada.getInstancia().guardarSinTranasaccion(orden.getProductoFabricable());
+            //Conexion.getInstancia().confirmarTx();
+
+            //expStock.iniciarManejoDeStock();
+            expertoStock.agregarStockPorLlegar(orden.getProductoFabricable(), orden.getCantidadDeLotesOptimos() * orden.getProductoFabricable().getTamanioLoteEstandar());
+            return orden;
+        } catch (StockExcepcion e) {
+            throw e;
+        }
     }
 }
