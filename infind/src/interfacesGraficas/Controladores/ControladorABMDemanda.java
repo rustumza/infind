@@ -5,11 +5,16 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.Demanda;
+import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoCostosFijosException;
 import expertos.ExpertoABMDemanda;
 import interfacesGraficas.ModeloTablas.ModeloTablaDemandas;
 import interfacesGraficas.PantallaABMDemanda;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +26,7 @@ public class ControladorABMDemanda {
     PantallaABMDemanda pantallaABMDemanda;
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMDemanda expertoABMDemanda;
-    ModeloTablaDemandas modeloTablaDemandas;
+    //ModeloTablaDemandas modeloTablaDemandas;
     Demanda nuevaDemanda = null;
     Demanda demandaSeleccionada;
 
@@ -34,11 +39,11 @@ public class ControladorABMDemanda {
 
     public void iniciar() throws ExpertoCostosFijosException {
         pantallaABMDemanda = new PantallaABMDemanda(controladorPantMadre.getPantalla(), true, this);
-        modeloTablaDemandas = new ModeloTablaDemandas();
+        ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
-        pantallaABMDemanda.getTablaDemandas().getColumnModel().getColumn(0).setPreferredWidth(1);
-        modeloTablaDemandas.addAllRow(expertoABMDemanda.buscarDemandas());
         pantallaABMDemanda.setLocationRelativeTo(null);
+        List<ProductoFinal> listaproductos = expertoABMDemanda.buscarProductoFinal();
+        pantallaABMDemanda.getComboListaProducto().setModel(new DefaultComboBoxModel(listaproductos.toArray()));
         pantallaABMDemanda.setVisible(true);
     }
 
@@ -51,6 +56,7 @@ public class ControladorABMDemanda {
         demandaSeleccionada.setEliminado(true);
         expertoABMDemanda.guardarDemanda(demandaSeleccionada);
         JOptionPane.showMessageDialog(pantallaABMDemanda, "Demanda eliminada Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        ModeloTablaDemandas modeloTablaDemandas = (ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel();
         modeloTablaDemandas.removeElement(demandaSeleccionada);
         modeloTablaDemandas.fireTableDataChanged();
         pantallaABMDemanda.getCampoValorDemanda().setText("");
@@ -62,19 +68,19 @@ public class ControladorABMDemanda {
     }
 
     public void guardarDemanda() {
-
-        if (pantallaABMDemanda.getCampoValorDemanda().isEnabled()) {
-            if (nuevaDemanda == null) {
-                nuevaDemanda = new Demanda();
+        try {
+            if (pantallaABMDemanda.getCampoValorDemanda().isEnabled()) {
+                nuevaDemanda.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
+                expertoABMDemanda.guardarDemanda(nuevaDemanda);
+                JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                ModeloTablaDemandas modeloTablaDemandas = (ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel();
+                modeloTablaDemandas.addRow(nuevaDemanda);
+                pantallaABMDemanda.getCampoValorDemanda().setText("");
+            } else {
+                JOptionPane.showMessageDialog(pantallaABMDemanda, "Debe Ingresar Datos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
             }
-            nuevaDemanda.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
-            nuevaDemanda.setPeriodo(Integer.valueOf(pantallaABMDemanda.getjComboBoxPeriodo().getSelectedItem().toString()));
-            expertoABMDemanda.guardarDemanda(nuevaDemanda);
-            JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-            modeloTablaDemandas.addRow(nuevaDemanda);
-            pantallaABMDemanda.getCampoValorDemanda().setText("");
-        } else {
-            JOptionPane.showMessageDialog(pantallaABMDemanda, "Debe Ingresar Datos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(pantallaABMDemanda, "El valor ingresado es incorrecto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -83,23 +89,32 @@ public class ControladorABMDemanda {
     }
 
     public void tabla(int fila, int click) {
-        Object periodo = pantallaABMDemanda.getTablaDemandas().getModel().getValueAt(fila, 1);
-        
-        demandaSeleccionada = modeloTablaDemandas.buscarDemandas(Integer.valueOf(periodo.toString()));
-
+        demandaSeleccionada = (Demanda) ((ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel()).getRow(fila);
         if (click == 2) {
             pantallaABMDemanda.getCampoValorDemanda().setEnabled(true);
-            pantallaABMDemanda.getBotonGuardar().setEnabled(false);
+            Demanda dem = ((Demanda) ((ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel()).getRow(fila));
+            pantallaABMDemanda.getCampoValorDemanda().setText(String.valueOf(dem.getDemandaHistorica()));
+            pantallaABMDemanda.getBotonGuardar().setEnabled(true);
         }
     }
 
     public void actualizarDemandas() {
         demandaSeleccionada.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
-        demandaSeleccionada.setPeriodo(Integer.valueOf(pantallaABMDemanda.getjComboBoxPeriodo().getSelectedItem().toString()));
         expertoABMDemanda.guardarDemanda(demandaSeleccionada);
         JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        modeloTablaDemandas.fireTableDataChanged();
+        List<Demanda> dem = ((ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).getDemanda();
+        ModeloTablaDemandas mod = new ModeloTablaDemandas();
+        mod.setListaElementos(dem);
+        pantallaABMDemanda.getTablaDemandas().setModel(mod);
         pantallaABMDemanda.getCampoValorDemanda().setText("");
         pantallaABMDemanda.getBotonGuardar().setEnabled(true);
+    }
+
+    public void buscarDemandas() {
+        ProductoFinal prod = (ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
+        ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
+        modeloTablaDemandas.setListaElementos(prod.getDemanda());
+        pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
+        pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
     }
 }
