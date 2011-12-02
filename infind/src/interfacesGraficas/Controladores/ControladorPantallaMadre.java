@@ -156,4 +156,8 @@ public class ControladorPantallaMadre {
     public void puntoEquilibrio() throws ExpertoPuntoEquilibrioException {
         new ControladorPuntoEquilibrio(this).iniciar();
     }
+
+    public void abmDemandas() throws ExpertoCostosFijosException {
+        new ControladorABMDemanda(this).iniciar();
+    }
 }

@@ -346,6 +346,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ABM Demandas Historicas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuABMDemandasHistoricasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -393,7 +396,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1380" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1430" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

@@ -34,6 +34,7 @@ public class Demanda extends ObjetoPersitente implements Serializable {
     private int periodo = 1;
     private double errorPromedio;
     private double demandaHistorica;
+    private boolean eliminado = false;
     @ManyToOne
     private MaestroDeArticulo articulo;
 
@@ -95,6 +96,14 @@ public class Demanda extends ObjetoPersitente implements Serializable {
 
     public void setPeriodo(int periodo) {
         this.periodo = periodo;
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
     }
 
     public MaestroDeArticulo getArticulo() {
