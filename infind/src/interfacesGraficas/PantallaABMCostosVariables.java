@@ -51,75 +51,22 @@ ControladorABMCostosVariables controlador;
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        botonGuardar = new javax.swing.JButton();
-        botonNuevoCostoVariable = new javax.swing.JButton();
-        botonEditarProductos = new javax.swing.JButton();
         botonImprimir = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         comboBoxProducto = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        botonBuscarProducto = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        comboBoxMateriaPrima = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        campoCAntidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMateriaPrima = new javax.swing.JTable();
-        botonAgregarMateriaPrima = new javax.swing.JButton();
-        botonEliminarMateriaPrima = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        comboBoxCentroTrabajo = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        campoCostoCentro = new javax.swing.JTextField();
-        botonAgregarCentro = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaCentroTrabajo = new javax.swing.JTable();
-        botonEliminarCentro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
-
-        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        botonGuardar.setToolTipText("Guardar Costo Variable");
-        botonGuardar.setFocusable(false);
-        botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonGuardar);
-
-        botonNuevoCostoVariable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
-        botonNuevoCostoVariable.setToolTipText("Nuevo Costo");
-        botonNuevoCostoVariable.setFocusable(false);
-        botonNuevoCostoVariable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonNuevoCostoVariable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonNuevoCostoVariable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNuevoCostoVariableActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonNuevoCostoVariable);
-
-        botonEditarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/office3_256.png"))); // NOI18N
-        botonEditarProductos.setToolTipText("Listar Productos");
-        botonEditarProductos.setFocusable(false);
-        botonEditarProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonEditarProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonEditarProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEditarProductosActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonEditarProductos);
 
         botonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Printer-30.png"))); // NOI18N
         botonImprimir.setToolTipText("Imprimir");
@@ -150,7 +97,7 @@ ControladorABMCostosVariables controlador;
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Producto"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para pisos lavanda", "Detergente de limon", "Enjuage para ropa imitacion vivere" }));
+        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -175,6 +122,20 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabel7, gridBagConstraints);
 
+        botonBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
+        botonBuscarProducto.setText("Buscar");
+        botonBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarProductoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 0);
+        jPanel2.add(botonBuscarProducto, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -183,40 +144,8 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel1.add(jPanel2, gridBagConstraints);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Materia Prima"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Costos Variables"));
         jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        comboBoxMateriaPrima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxMateriaPrima.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 18);
-        jPanel3.add(comboBoxMateriaPrima, gridBagConstraints);
-
-        jLabel1.setText("Nombre:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
-        jPanel3.add(jLabel1, gridBagConstraints);
-
-        jLabel2.setText("Cantidad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel3.add(jLabel2, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(campoCAntidad, gridBagConstraints);
 
         tablaMateriaPrima.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,41 +165,11 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 300;
         gridBagConstraints.ipady = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
         jPanel3.add(jScrollPane1, gridBagConstraints);
-
-        botonAgregarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonAgregarMateriaPrima.setText("Agregar");
-        botonAgregarMateriaPrima.setEnabled(false);
-        botonAgregarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarMateriaPrimaActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 40);
-        jPanel3.add(botonAgregarMateriaPrima, gridBagConstraints);
-
-        botonEliminarMateriaPrima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        botonEliminarMateriaPrima.setText("Eliminar");
-        botonEliminarMateriaPrima.setEnabled(false);
-        botonEliminarMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminarMateriaPrimaActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 20, 10, 40);
-        jPanel3.add(botonEliminarMateriaPrima, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -279,115 +178,19 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel1.add(jPanel3, gridBagConstraints);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Mano de Obra y Gastos de Fabricación"));
-        jPanel4.setLayout(new java.awt.GridBagLayout());
-
-        comboBoxCentroTrabajo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxCentroTrabajo.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 0);
-        jPanel4.add(comboBoxCentroTrabajo, gridBagConstraints);
-
-        jLabel4.setText("Centro de Trabajo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
-        jPanel4.add(jLabel4, gridBagConstraints);
-
-        jLabel5.setText("Costo $:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel4.add(jLabel5, gridBagConstraints);
-
-        campoCostoCentro.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel4.add(campoCostoCentro, gridBagConstraints);
-
-        botonAgregarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonAgregarCentro.setText("Agregar");
-        botonAgregarCentro.setEnabled(false);
-        botonAgregarCentro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarCentroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 40);
-        jPanel4.add(botonAgregarCentro, gridBagConstraints);
-
-        tablaCentroTrabajo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tablaCentroTrabajo);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 10);
-        jPanel4.add(jScrollPane2, gridBagConstraints);
-
-        botonEliminarCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Cancel2-20.png"))); // NOI18N
-        botonEliminarCentro.setText("Eliminar");
-        botonEliminarCentro.setEnabled(false);
-        botonEliminarCentro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminarCentroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 20, 10, 40);
-        jPanel4.add(botonEliminarCentro, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
-        jPanel1.add(jPanel4, gridBagConstraints);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -397,106 +200,36 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void botonNuevoCostoVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoCostoVariableActionPerformed
+private void botonBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProductoActionPerformed
         try {
-            controlador.crearCostoVariable();
+            controlador.buscarCostoVariableDelProducto();
         } catch (ExpertoCostosVariablesException ex) {
             Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_botonNuevoCostoVariableActionPerformed
-
-    private void botonAgregarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarMateriaPrimaActionPerformed
-        try {
-            controlador.cargarTablaMateriasPrimas();
-        } catch (ExpertoCostosVariablesException ex) {
-            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botonAgregarMateriaPrimaActionPerformed
-
-    private void botonAgregarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCentroActionPerformed
-        controlador.cargarTablaCentroDeTrabajo();
-    }//GEN-LAST:event_botonAgregarCentroActionPerformed
-
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        controlador.guardarCostosVariables();
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
-    private void botonEditarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarProductosActionPerformed
-        try {
-            controlador.listarCostosVariables();
-        } catch (ExpertoCostosVariablesException ex) {
-            Logger.getLogger(PantallaABMCostosVariables.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botonEditarProductosActionPerformed
-
-    private void botonEliminarMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarMateriaPrimaActionPerformed
-        controlador.eliminarMateriaPrimaDeTabla();
-    }//GEN-LAST:event_botonEliminarMateriaPrimaActionPerformed
-
-    private void botonEliminarCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarCentroActionPerformed
-        controlador.eliminarCentroTrabajoDeTabla();
-    }//GEN-LAST:event_botonEliminarCentroActionPerformed
+}//GEN-LAST:event_botonBuscarProductoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregarCentro;
-    private javax.swing.JButton botonAgregarMateriaPrima;
-    private javax.swing.JButton botonEditarProductos;
-    private javax.swing.JButton botonEliminarCentro;
-    private javax.swing.JButton botonEliminarMateriaPrima;
-    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonBuscarProducto;
     private javax.swing.JButton botonImprimir;
-    private javax.swing.JButton botonNuevoCostoVariable;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoCAntidad;
-    private javax.swing.JTextField campoCostoCentro;
-    private javax.swing.JComboBox comboBoxCentroTrabajo;
-    private javax.swing.JComboBox comboBoxMateriaPrima;
     private javax.swing.JComboBox comboBoxProducto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable tablaCentroTrabajo;
     private javax.swing.JTable tablaMateriaPrima;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBotonAgregarCentro() {
-        return botonAgregarCentro;
-    }
+    
 
-    public void setBotonAgregarCentro(JButton botonAgregarCentro) {
-        this.botonAgregarCentro = botonAgregarCentro;
-    }
-
-    public JButton getBotonAgregarMateriaPrima() {
-        return botonAgregarMateriaPrima;
-    }
-
-    public void setBotonAgregarMateriaPrima(JButton botonAgregarMateriaPrima) {
-        this.botonAgregarMateriaPrima = botonAgregarMateriaPrima;
-    }
-
-
-    public JButton getBotonGuardar() {
-        return botonGuardar;
-    }
-
-    public void setBotonGuardar(JButton botonGuardar) {
-        this.botonGuardar = botonGuardar;
-    }
+   
 
     public JButton getBotonImprimir() {
         return botonImprimir;
@@ -506,13 +239,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.botonImprimir = botonImprimir;
     }
 
-    public JButton getBotonNuevoCostoVariable() {
-        return botonNuevoCostoVariable;
-    }
-
-    public void setBotonNuevoCostoVariable(JButton botonNuevoCostoVariable) {
-        this.botonNuevoCostoVariable = botonNuevoCostoVariable;
-    }
+    
 
     public JButton getBotonSalir() {
         return botonSalir;
@@ -522,39 +249,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.botonSalir = botonSalir;
     }
 
-    public JTextField getCampoCAntidad() {
-        return campoCAntidad;
-    }
-
-    public void setCampoCAntidad(JTextField campoCAntidad) {
-        this.campoCAntidad = campoCAntidad;
-    }
-
-
-    public JTextField getCampoCostoCentro() {
-        return campoCostoCentro;
-    }
-
-    public void setCampoCostoCentro(JTextField campoCostoCentro) {
-        this.campoCostoCentro = campoCostoCentro;
-    }
-
-    public JComboBox getComboBoxCentroTrabajo() {
-        return comboBoxCentroTrabajo;
-    }
-
-    public void setComboBoxCentroTrabajo(JComboBox comboBoxCentroTrabajo) {
-        this.comboBoxCentroTrabajo = comboBoxCentroTrabajo;
-    }
-
-    public JComboBox getComboBoxMateriaPrima() {
-        return comboBoxMateriaPrima;
-    }
-
-    public void setComboBoxMateriaPrima(JComboBox comboBoxMateriaPrima) {
-        this.comboBoxMateriaPrima = comboBoxMateriaPrima;
-    }
-
+    
     public JComboBox getComboBoxProducto() {
         return comboBoxProducto;
     }
@@ -571,40 +266,9 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.controlador = controlador;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
+    
 
    
-
-    public JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
-
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
-
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
-
     public JLabel getjLabel6() {
         return jLabel6;
     }
@@ -645,13 +309,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jPanel3 = jPanel3;
     }
 
-    public JPanel getjPanel4() {
-        return jPanel4;
-    }
-
-    public void setjPanel4(JPanel jPanel4) {
-        this.jPanel4 = jPanel4;
-    }
+   
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
@@ -661,13 +319,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jScrollPane1 = jScrollPane1;
     }
 
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    public void setjScrollPane2(JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
+    
 
     public JToolBar getjToolBar1() {
         return jToolBar1;
@@ -677,13 +329,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jToolBar1 = jToolBar1;
     }
 
-    public JTable getTablaCentroTrabajo() {
-        return tablaCentroTrabajo;
-    }
-
-    public void setTablaCentroTrabajo(JTable tablaCentroTrabajo) {
-        this.tablaCentroTrabajo = tablaCentroTrabajo;
-    }
+   
 
     public JTable getTablaMateriaPrima() {
         return tablaMateriaPrima;
@@ -694,30 +340,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     
-    public JButton getBotonEditarProductos() {
-        return botonEditarProductos;
-    }
-
-    public void setBotonEditarProductos(JButton botonEditarProductos) {
-        this.botonEditarProductos = botonEditarProductos;
-    }
-
-    public JButton getBotonEliminarCentro() {
-        return botonEliminarCentro;
-    }
-
-    public void setBotonEliminarCentro(JButton botonEliminarCentro) {
-        this.botonEliminarCentro = botonEliminarCentro;
-    }
-
-    public JButton getBotonEliminarMateriaPrima() {
-        return botonEliminarMateriaPrima;
-    }
-
-    public void setBotonEliminarMateriaPrima(JButton botonEliminarMateriaPrima) {
-        this.botonEliminarMateriaPrima = botonEliminarMateriaPrima;
-    }
-
+    
     
     
     

@@ -63,7 +63,7 @@ ControladorABMCostosVariables controlador;
         comboBoxCentroTrabajo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        campoCostoCentro = new javax.swing.JTextField();
+        campoCantidadCentro = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCentroTrabajo = new javax.swing.JTable();
         botonEliminarCentroTrabajo = new javax.swing.JButton();
@@ -226,22 +226,20 @@ ControladorABMCostosVariables controlador;
         gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
         jPanel4.add(jLabel4, gridBagConstraints);
 
-        jLabel5.setText("Costo $:");
+        jLabel5.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel4.add(jLabel5, gridBagConstraints);
-
-        campoCostoCentro.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel4.add(campoCostoCentro, gridBagConstraints);
+        jPanel4.add(campoCantidadCentro, gridBagConstraints);
 
         tablaCentroTrabajo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -422,7 +420,7 @@ ControladorABMCostosVariables controlador;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoCAntidad;
-    private javax.swing.JTextField campoCostoCentro;
+    private javax.swing.JTextField campoCantidadCentro;
     private javax.swing.JComboBox comboBoxCentroTrabajo;
     private javax.swing.JComboBox comboBoxMateriaPrima;
     private javax.swing.JComboBox comboBoxProducto;
@@ -475,13 +473,14 @@ ControladorABMCostosVariables controlador;
         this.campoCAntidad = campoCAntidad;
     }
 
-    public JTextField getCampoCostoCentro() {
-        return campoCostoCentro;
+    public JTextField getCampoCantidadCentro() {
+        return campoCantidadCentro;
     }
 
-    public void setCampoCostoCentro(JTextField campoCostoCentro) {
-        this.campoCostoCentro = campoCostoCentro;
+    public void setCampoCantidadCentro(JTextField campoCantidadCentro) {
+        this.campoCantidadCentro = campoCantidadCentro;
     }
+
 
     public JComboBox getComboBoxCentroTrabajo() {
         return comboBoxCentroTrabajo;

@@ -29,7 +29,7 @@ public class ModeloTablaCentroDeTrabajo extends ModeloTabla {
             case 0:
                 return centros.getNombreCentro();
             case 1:
-                return "1";
+                return centros.getCantidad();
             case 2:
                 return centros.getCosto();
             default:
