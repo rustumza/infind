@@ -10,7 +10,10 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -499,7 +502,11 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        controlador.puntoEquilibrio();
+        try {
+            controlador.puntoEquilibrio();
+        } catch (ExpertoPuntoEquilibrioException ex) {
+            Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@ package interfacesGraficas.Controladores;
 
 import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoCostosVariablesException;
+import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.PantallaMadre;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -152,7 +153,7 @@ public class ControladorPantallaMadre {
         }
     }
 
-    public void puntoEquilibrio() {
+    public void puntoEquilibrio() throws ExpertoPuntoEquilibrioException {
         new ControladorPuntoEquilibrio(this).iniciar();
     }
 }
