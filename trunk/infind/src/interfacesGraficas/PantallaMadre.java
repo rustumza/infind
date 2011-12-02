@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.util.logging.Level;
@@ -365,6 +366,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuDemanda.add(menuParametros);
 
         menuABMDemandasHistoricas.setText("ABM Demandas Historicas");
+        menuABMDemandasHistoricas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuABMDemandasHistoricasActionPerformed(evt);
+            }
+        });
         menuDemanda.add(menuABMDemandasHistoricas);
 
         jMenuBar1.add(menuDemanda);
@@ -388,7 +394,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1380, Short.MAX_VALUE)
+            .addGap(0, 1430, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,7 +480,7 @@ private void listarProductosIQEActionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
 private void jMenuListarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarProveedoresActionPerformed
-        controlador.listarProveedores();
+    controlador.listarProveedores();
 }//GEN-LAST:event_jMenuListarProveedoresActionPerformed
 
 private void crearProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProveedoresActionPerformed
@@ -508,6 +514,14 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void menuABMDemandasHistoricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuABMDemandasHistoricasActionPerformed
+        try {
+            controlador.abmDemandas();
+        } catch (ExpertoCostosFijosException ex) {
+            Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuABMDemandasHistoricasActionPerformed
     /**
      * @param args the command line arguments
      */

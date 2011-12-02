@@ -7,6 +7,7 @@ package Fabricas;
 import expertos.Experto;
 import expertos.ExpertoABMCostosFijos;
 import expertos.ExpertoABMCostosVariables;
+import expertos.ExpertoABMDemanda;
 import expertos.ExpertoCentroDeTrabajo;
 import expertos.ExpertoEditarRutaFabricacion;
 import expertos.ExpertoMateriaPrima;
@@ -32,7 +33,7 @@ public class FabricaExpertos {
     public enum expertos {
 
         CENTRO_DE_TRABAJO, OPERARIOS, MATERIAPRIMA, RUTA_FABRICACION, EDITAR_RUTA_FABRICACION, ABM_COSTOS_FIJOS,
-        ABM_COSTOS_VARIABLES, PUNTO_EQUILIBRIO
+        ABM_COSTOS_VARIABLES, PUNTO_EQUILIBRIO, ABM_DEMANDA
     }
 
     public Experto getExperto(expertos expertoNombre) {
@@ -53,8 +54,8 @@ public class FabricaExpertos {
                 return new ExpertoABMCostosVariables();
             case PUNTO_EQUILIBRIO:
                 return new ExpertoPuntoEquillibrio();
-
-                
+            case ABM_DEMANDA:
+                return new ExpertoABMDemanda();
             default:
                 return null;
 
