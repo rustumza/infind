@@ -10,6 +10,7 @@ import Entidades.MaestroDeArticulo;
 import Entidades.MaestroDeCentroDeTrabajo;
 import Entidades.ProductoFinal;
 import excepciones.ExpertoCostosVariablesException;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -80,7 +81,18 @@ public class ExpertoABMCostosVariables extends Experto {
         return productoIntermedioEncontrados.get(0);
     }
     
-    public List<MaestroDeArticulo> buscarProductoFinal(){
+    public List<ProductoFinal> buscarProductoFinal(){
+        List<ProductoFinal> productoFinalEncontrados = null;
+        Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
+        criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
+        productoFinalEncontrados = Fachada.getInstancia().buscar(ProductoFinal.class, criterioFinalIntermedio);
+
+        return productoFinalEncontrados;
+        
+        
+    }
+    
+    public List<MaestroDeArticulo> buscarProducto(){
         List<MaestroDeArticulo> productoFinalEncontrados = null;
         Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
         criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
