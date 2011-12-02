@@ -99,52 +99,82 @@ public class ControladorABMCostosVariables {
                 pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
 
             }
-        } else {
-            //busco el producto intermedio base
+        } else if (Item.toString() == "Desodorante para pisos lavanda") {
 
-            productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
+            productoFinal = expertoABMCostosVariables.buscarProductoFinal();
+            for (MaestroDeArticulo prodFinal : productoFinal) {
+                if (prodFinal.getNombre().equals("Desodorante para pisos lavanda")) {
+                    List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(prodFinal);
+                    if (!costosVariablesEncontrados.isEmpty()) {
+                        JOptionPane.showMessageDialog(pantallaABMCostosVariables, "El Producto Final " + prodFinal.getNombre() + " ya tiene costos variables ingresados", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
 
-            //busco los costos variables del producto intermedio bas
-            List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(productoIntermedioBase);
+                    } else {
+                        pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
 
-            if (costosVariablesEncontrados.isEmpty()) {
-                JOptionPane.showMessageDialog(pantallaABMCostosVariables, "El Producto Intermedio Base no tiene costos variables ingresados", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    }
 
-            } else {
-                pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
-                pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
-                pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
-                pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
-                pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
-                pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
-
-//                for (CostoVariable costoVariable : costosVariablesEncontrados) {
-//                    DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-//                    DTOCentro dtocentrosACargar = new DTOCentro();
-//                    
-//                    if (costoVariable.isEsCentro()) {
-//                        dtocentrosACargar.setNombreCentro(costoVariable.getNombre());
-//                        dtocentrosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-//                        dtocentrosACargar.setCosto(String.valueOf(costoVariable.getCosto()));
-//                        modeloTablaMateriasPrimas.addRow(dtocentrosACargar);
-//                        //cargo tabla centros
-//                        
-//                    }else{
-//                        dtoCostosACargar.setNombreProducto(costoVariable.getNombre());
-//                        dtoCostosACargar.setCantidad(String.valueOf(costoVariable.getCantidad()));
-//                        dtoCostosACargar.setCostoTotal(String.valueOf(costoVariable.getCosto()));
-//                        modeloTablaMateriasPrimas.addRow(dtoCostosACargar);
-//                        //cargo tabla materias primas
-//                    }
-//                }
+                }
 
             }
 
+        } else if (Item.toString() == "Detergente de limon") {
+
+            ///////////
+            productoFinal = expertoABMCostosVariables.buscarProductoFinal();
+            for (MaestroDeArticulo prodFinal : productoFinal) {
+                if (prodFinal.getNombre().equals("Detergente de limon")) {
+                    List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(prodFinal);
+                    if (!costosVariablesEncontrados.isEmpty()) {
+                        JOptionPane.showMessageDialog(pantallaABMCostosVariables, "El Producto Final " + prodFinal.getNombre() + " ya tiene costos variables ingresados", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
+
+                    }
+
+
+                }
+
+
+            }
+        } else if (Item.toString() == "Enjuage para ropa imitacion vivere") {
+            ///
+            productoFinal = expertoABMCostosVariables.buscarProductoFinal();
+            for (MaestroDeArticulo prodFinal : productoFinal) {
+
+                if (prodFinal.getNombre().equals("Enjuague para ropa imitacion vivere")) {
+                    List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(prodFinal);
+                    if (!costosVariablesEncontrados.isEmpty()) {
+                        JOptionPane.showMessageDialog(pantallaABMCostosVariables, "El Producto Final " + prodFinal.getNombre() + " ya tiene costos variables ingresados", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        pantallaABMCostosVariables.getBotonAgregarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonAgregarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarCentro().setEnabled(true);
+                        pantallaABMCostosVariables.getBotonEliminarMateriaPrima().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(true);
+                        pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(true);
+
+                    }
+
+
+                }
+                
+            }
 
         }
-
+    
     }
-
     public void cargarTablaMateriasPrimas() throws ExpertoCostosVariablesException {
 
         Object Item = pantallaABMCostosVariables.getComboBoxProducto().getSelectedItem();
@@ -292,12 +322,12 @@ public class ControladorABMCostosVariables {
             productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
 
             List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariablesProdIntermedio(productoIntermedioBase);
-            
+
             if (costosVariablesEncontrados != null) {
                 for (CostoVariable costoVariable : costosVariablesEncontrados) {
-                    
+
                     costosVariablesAEditar.add(costoVariable);
-                    
+
                     if (costoVariable.isEsCentro()) {//cargo tabla centro trabajo
                         DTOCentro dtocentrosACargar = new DTOCentro();
 
@@ -506,22 +536,21 @@ public class ControladorABMCostosVariables {
         pantallaABMCostosVariables.getComboBoxCentroTrabajo().setEnabled(false);
         pantallaABMCostosVariables.getComboBoxMateriaPrima().setEnabled(false);
     }
-    
-  
+
     public void guardarCostosVariablesEditados() {
         //se elimina todo lo que tenia y se carga lo que salga en la tabla
-        
-         List<MaestroDeArticulo> productoFinal = expertoABMCostosVariables.buscarProductoFinal();
+
+        List<MaestroDeArticulo> productoFinal = expertoABMCostosVariables.buscarProductoFinal();
 
         Object Item = pantallaListarCostosVariables.getComboBoxProducto().getSelectedItem();
 
-        
+
         for (int i = 0; i < costosVariablesAEditar.size(); i++) {
             costosVariablesAEditar.get(i).setEliminado(true);
             expertoABMCostosVariables.guardarCostoVariable(costosVariablesAEditar.get(i));
-            
+
         }
- 
+
         for (int i = 0; i < modeloTablaMateriasPrimasEditar.getListaElementos().size(); i++) {
             if (nuevoCosto == null) {
                 nuevoCosto = new CostoVariable();
@@ -583,7 +612,7 @@ public class ControladorABMCostosVariables {
         }
         limpiarPantalla();
         JOptionPane.showMessageDialog(pantallaABMCostosVariables, "Costos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
 
     public void cargarTablaMateriasPrimasEditar() throws ExpertoCostosVariablesException {

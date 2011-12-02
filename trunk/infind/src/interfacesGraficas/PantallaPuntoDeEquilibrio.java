@@ -10,7 +10,10 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.Controladores.ControladorPuntoEquilibrio;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -93,6 +96,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(jToolBar1, gridBagConstraints);
 
@@ -115,7 +119,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Desodorante para pisos lavanda", "Detergente de limon", "Enjuage para ropa imitacion vivere" }));
+        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para pisos lavanda", "Enjuage para ropa imitacion vivere" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -133,6 +137,11 @@ ControladorPuntoEquilibrio controlador;
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Search-20.png"))); // NOI18N
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -180,7 +189,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel1.add(jPanel3, gridBagConstraints);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Equivalencias"));
@@ -214,7 +223,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
         jPanel4.add(campoCostoEstandar, gridBagConstraints);
@@ -223,7 +232,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
         jPanel4.add(campoCostoDetergente, gridBagConstraints);
@@ -232,7 +241,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
         jPanel4.add(campoCostoEnjuague, gridBagConstraints);
@@ -257,7 +266,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
         jPanel4.add(costoEstandarDetergente, gridBagConstraints);
@@ -266,7 +275,7 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
         jPanel4.add(costoEstandarEnjuague, gridBagConstraints);
@@ -308,18 +317,20 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel1.add(jPanel4, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1125, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1165, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -329,6 +340,14 @@ ControladorPuntoEquilibrio controlador;
     private void botonSaliurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSaliurActionPerformed
         dispose();
     }//GEN-LAST:event_botonSaliurActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            controlador.buscarProducto();
+        } catch (ExpertoPuntoEquilibrioException ex) {
+            Logger.getLogger(PantallaPuntoDeEquilibrio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
