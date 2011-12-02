@@ -48,7 +48,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         botonGuardar = new javax.swing.JButton();
-        botonNuevaDemanda = new javax.swing.JButton();
         botonEliminarDemanda = new javax.swing.JButton();
         botonImprimirDemanda = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
@@ -63,6 +62,7 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         jLabelProductos = new javax.swing.JLabel();
         jComboBoxPeriodo = new javax.swing.JComboBox();
         jButtonBuscarDemanda = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,18 +81,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
             }
         });
         jToolBar1.add(botonGuardar);
-
-        botonNuevaDemanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
-        botonNuevaDemanda.setToolTipText("Alta Costos");
-        botonNuevaDemanda.setFocusable(false);
-        botonNuevaDemanda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonNuevaDemanda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonNuevaDemanda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNuevaDemandaActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonNuevaDemanda);
 
         botonEliminarDemanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/user-trash-30.png"))); // NOI18N
         botonEliminarDemanda.setToolTipText("Eliminar");
@@ -199,8 +187,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel3.add(campoValorDemanda, gridBagConstraints);
-
-        comboListaProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Desodorante para pisos lavanda", "Enjuague para ropa imitacion vivere", "Detergente de limon" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -226,12 +212,25 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         jPanel3.add(jComboBoxPeriodo, gridBagConstraints);
 
         jButtonBuscarDemanda.setText("Buscar");
+        jButtonBuscarDemanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarDemandaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 10, 0, 0);
         jPanel3.add(jButtonBuscarDemanda, gridBagConstraints);
+
+        botonAgregar.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 6, 0, 0);
+        jPanel3.add(botonAgregar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -257,10 +256,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonNuevaDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevaDemandaActionPerformed
-        controlador.nuevaDemanda();
-    }//GEN-LAST:event_botonNuevaDemandaActionPerformed
-
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
@@ -272,7 +267,7 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
     }//GEN-LAST:event_botonEliminarDemandaActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        controlador.guardarDemanda();
+        controlador.actualizarDemandas();
 
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -283,17 +278,21 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
     private void tablaDemandasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDemandasMouseClicked
         int fila = getTablaDemandas().rowAtPoint(evt.getPoint());
         int click = evt.getClickCount();
-
         controlador.tabla(fila, click);
     }//GEN-LAST:event_tablaDemandasMouseClicked
+
+    private void jButtonBuscarDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarDemandaActionPerformed
+        controlador.buscarDemandas();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscarDemandaActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonEliminarDemanda;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonImprimirDemanda;
-    private javax.swing.JButton botonNuevaDemanda;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoValorDemanda;
     private javax.swing.JComboBox comboListaProducto;
@@ -324,14 +323,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
 
     public void setBotonImprimirDemanda(JButton botonImprimirDemanda) {
         this.botonImprimirDemanda = botonImprimirDemanda;
-    }
-
-    public JButton getBotonNuevaDemanda() {
-        return botonNuevaDemanda;
-    }
-
-    public void setBotonNuevaDemanda(JButton botonNuevaDemanda) {
-        this.botonNuevaDemanda = botonNuevaDemanda;
     }
 
     public JTextField getCampoValorDemanda() {
