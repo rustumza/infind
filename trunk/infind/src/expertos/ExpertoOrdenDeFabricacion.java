@@ -13,11 +13,14 @@ import Entidades.ProductoFinal;
 import Entidades.ProductoIntermedio;
 import Entidades.ProductoTipoIQE;
 import Entidades.ProductosFabricables;
+import excepciones.OrdenDeFabricacionExeption;
 import excepciones.StockExcepcion;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import persistencia.Conexion;
@@ -269,6 +272,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
         }
         catch(Exception e){
             Conexion.getInstancia().deshacerTx();
+            Logger.getLogger(ExpertoStock.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
         
@@ -396,6 +400,9 @@ public class ExpertoOrdenDeFabricacion extends Experto {
 
             //expStock.iniciarManejoDeStock();
             expertoStock.agregarStockPorLlegar(orden.getProductoFabricable(), orden.getCantidadDeLotesOptimos() * orden.getProductoFabricable().getTamanioLoteEstandar());
+            for (OrdenDeFabricacion ordenDeFabricacion : orden.getListaDeOrdenes()) {
+                Fachada.getInstancia().guardarSinTranasaccion(ordenDeFabricacion);
+            }
             return orden;
         } catch (StockExcepcion e) {
             throw e;
@@ -422,14 +429,97 @@ public class ExpertoOrdenDeFabricacion extends Experto {
         return ordenEditar;
     }
 
-    public void camibiarEstadoDeLaOrden() {
-        if(ordenEditar.getEstado().equals("Generada")){
-       
-       
-        }else{
+    public void camibiarEstadoDeLaOrden() throws OrdenDeFabricacionExeption, StockExcepcion {
+        try{
+            ExpertoStock expStock = new ExpertoStock();
+            if(ordenEditar.getEstado().equals("Generada")){
+                for (OrdenDeFabricacion ordenDeFabricacion : ordenEditar.getListaDeOrdenes()) {
+                    if(!ordenDeFabricacion.getEstado().equals("Finalizada")){
+                        throw new OrdenDeFabricacionExeption(1);
+                    }
+                }
 
+                for (PedidoAProveedor ordenDeCompra : ordenEditar.getListaDePedido()) {
+                    if(!ordenDeCompra.isEstaConcretado()){
+                        throw new OrdenDeFabricacionExeption(2);
+                    }
+                }
+
+                for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                    float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                    if(detalle.getMaestroArticulo().getStock().getCantidadFisicaReal()< cantidad){
+                        throw new OrdenDeFabricacionExeption(2, detalle.getMaestroArticulo().getCodigo());
+                    }
+                }
+
+                for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                    float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                    if(detalle.getMaestroArticulo().getStock().getCantidadFisicaReal()< cantidad){
+                        throw new OrdenDeFabricacionExeption(2, detalle.getMaestroArticulo().getCodigo());
+                    }
+                }
+
+                ordenEditar.setEstado("En curso");
+                
+
+                Conexion.getInstancia().iniciarTX();
+
+                for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                    float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                    expStock.restarStock(detalle.getMaestroArticulo(), cantidad);
+                }
+
+                for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                    float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                    expStock.restarStock(detalle.getMaestroArticulo(), cantidad);
+                }
+                Fachada.getInstancia().guardarSinTranasaccion(ordenEditar);
+                
+                Conexion.getInstancia().confirmarTx();
+                
+
+
+            }else{
+                ordenEditar.setEstado("Finalizada");
+                Conexion.getInstancia().iniciarTX();
+                expStock.cambiarStockPorLlegarPorStockReal(ordenEditar.getProductoFabricable(), ordenEditar.getCantidadDeLotesOptimos() * ordenEditar.getProductoFabricable().getTamanioLoteEstandar());
+                Fachada.getInstancia().guardarSinTranasaccion(ordenEditar);
+                Conexion.getInstancia().confirmarTx();
+            }
+    
+        }catch(StockExcepcion e){
+            Conexion.getInstancia().deshacerTx();
+            throw e;
         }
     }
+
+    public void eliminarOrden() throws StockExcepcion, OrdenDeFabricacionExeption {
+        try{
+            if(ordenEditar.getOrden() != null){
+                if(!ordenEditar.getEliminado()){
+                    throw new OrdenDeFabricacionExeption(4);
+                }
+            }
+            ordenEditar.setEliminado(Boolean.TRUE);
+            ExpertoStock expStock = new ExpertoStock();
+            Conexion.getInstancia().iniciarTX();
+            Fachada.getInstancia().guardarSinTranasaccion(ordenEditar);
+            for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                expStock.liberarStockReservado(detalle.getMaestroArticulo(), cantidad);
+            }
+
+            for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+                float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
+                expStock.liberarStockReservado(detalle.getMaestroArticulo(), cantidad);
+            }
+
+            Conexion.getInstancia().confirmarTx();
+        }catch(StockExcepcion e){
+            Conexion.getInstancia().deshacerTx();
+            throw e;
+        }
+}
     
     
     

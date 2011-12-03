@@ -70,6 +70,18 @@ public class ExpertoStock {
         
     }
     
+    public void liberarStockReservado(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion {
+    
+    
+        Stock stock = articulo.getStock();
+        if(stock.getCantidadReservada() < cantidad){
+            throw new StockExcepcion(5);
+        }
+        stock.setCantidadReservada(stock.getCantidadReservada() - cantidad);
+        Fachada.getInstancia().guardarSinTranasaccion(stock);
+        
+    }
+    
     public void restarStock(MaestroDeArticulo articulo, float cantidad) throws StockExcepcion{
     
     
@@ -98,8 +110,6 @@ public class ExpertoStock {
     public boolean getDisponiblilidadDeStockParaFechaDeterminada(MaestroDeArticulo articulo, float cantidad, Date fecha){
     
         float cantidadRealDisponible = articulo.getStock().getCantidadFisicaReal() - articulo.getStock().getCantidadReservada();
-        System.out.println("cantidad fisica");
-        System.out.println(articulo.getStock().getCantidadFisicaReal());
         if(cantidadRealDisponible >= cantidad){
             return true;
         }
@@ -115,8 +125,6 @@ public class ExpertoStock {
                 cantidadAux += pedidoAProveedor.getCantidad();
             }
         }
-        System.out.println("cantidad disponible");
-        System.out.println(cantidadAux + cantidadRealDisponible);
         if(cantidadAux + cantidadRealDisponible - articulo.getStock().getCantidadReservada() >= cantidad){
             return true;
         }
@@ -127,8 +135,6 @@ public class ExpertoStock {
     public boolean getDisponiblilidadDeStockParaFechaDeterminadaSinTx(MaestroDeArticulo articulo, float cantidad, Date fecha){
     
         float cantidadRealDisponible = articulo.getStock().getCantidadFisicaReal() - articulo.getStock().getCantidadReservada();
-        System.out.println("cantidad fisica");
-        System.out.println(articulo.getStock().getCantidadFisicaReal());
         if(cantidadRealDisponible >= cantidad){
             return true;
         }
@@ -144,8 +150,6 @@ public class ExpertoStock {
                 cantidadAux += pedidoAProveedor.getCantidad();
             }
         }
-        System.out.println("cantidad disponible");
-        System.out.println(cantidadAux + cantidadRealDisponible);
         if(cantidadAux + cantidadRealDisponible - articulo.getStock().getCantidadReservada() >= cantidad){
             return true;
         }

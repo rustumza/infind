@@ -5,6 +5,8 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.OrdenDeFabricacion;
+import excepciones.OrdenDeFabricacionExeption;
+import excepciones.StockExcepcion;
 import expertos.ExpertoOrdenDeFabricacion;
 import interfacesGraficas.ModeloTablas.ModeloTablaListarOrdenesDeProduccion;
 import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion;
@@ -55,8 +57,8 @@ public class ControladorListarOrdenesDeFabricacion {
     public void editarOrden() {
         int columnaSeleccionada = pantalla.getTablaOrdenesDeProduccion().getSelectedRow();
         orden = experto.getOrdenSeleccionada(columnaSeleccionada);
-        pantallaEditar = new PantallaEditarEstadoALaOrdenDeProduccion(controladorPantallaMadre.getPantalla(), true, this);
-        
+        pantallaEditar = new PantallaEditarEstadoALaOrdenDeProduccion(controladorPantallaMadre.getPantalla(), false, this);
+        pantallaEditar.setLocationRelativeTo(null);
         pantallaEditar.getProductoAFabricarValorReal().setText(orden.getProductoFabricable().getNombre());
         if(orden.getEstado().equals("Generada")){
             pantallaEditar.getCambiarAEstadoValorReal().setText("En curso");
@@ -89,11 +91,35 @@ public class ControladorListarOrdenesDeFabricacion {
 
 
     public void cambiarEstadoALaOrden() {
-        
-        experto.camibiarEstadoDeLaOrden();
+        try {
+            experto.camibiarEstadoDeLaOrden();
+            JOptionPane.showMessageDialog(pantalla, "Estado de la orden modificada con éxito", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditar.dispose();
+            List<OrdenDeFabricacion> lista = experto.buscarOrdenes((String)pantalla.getEstadoOrdenListBox().getSelectedItem());
+            ModeloTablaListarOrdenesDeProduccion mod = new ModeloTablaListarOrdenesDeProduccion();
+            mod.setListaElementos(lista);
+            pantalla.getTablaOrdenesDeProduccion().setModel(mod);
+            
+        }catch(StockExcepcion e){
+            JOptionPane.showMessageDialog(pantalla, e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }catch(OrdenDeFabricacionExeption e){
+            JOptionPane.showMessageDialog(pantalla, e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);        
+        }
     }
 
     public void eliminarOrden() {
-        
+        try {
+            experto.eliminarOrden();
+            JOptionPane.showMessageDialog(pantalla, "Orden eliminada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantallaEditar.dispose();
+            List<OrdenDeFabricacion> lista = experto.buscarOrdenes((String)pantalla.getEstadoOrdenListBox().getSelectedItem());
+            ModeloTablaListarOrdenesDeProduccion mod = new ModeloTablaListarOrdenesDeProduccion();
+            mod.setListaElementos(lista);
+            pantalla.getTablaOrdenesDeProduccion().setModel(mod);
+        } catch (StockExcepcion ex) {
+            JOptionPane.showMessageDialog(pantalla, ex.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);        
+        } catch (OrdenDeFabricacionExeption e){
+            JOptionPane.showMessageDialog(pantalla, e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);        
+        }
     }
 }

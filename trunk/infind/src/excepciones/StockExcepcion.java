@@ -23,6 +23,7 @@ public class StockExcepcion extends Exception{
      **          2 - "Stock insuficiente"
      **          3 - "Stock disponible insuficiente"
      **          4 - "No se ha iniciado el manejo de stock"
+     **          5 - "El stock reservado que se quiere liberar es insuficiente"
      **
      ** 
      */
@@ -51,7 +52,9 @@ public class StockExcepcion extends Exception{
         }else if(codigo == 3){
             return "Stock disponible insuficiente";
         }else if(codigo == 4){
-            return "No se ha iniciado el manejo de stock";            
+            return "No se ha iniciado el manejo de stock";
+        }else if(codigo == 5){    
+            return "El stock reservado que se quiere liberar es insuficiente";
         }else return "Error: no existe el stock";
     }
 

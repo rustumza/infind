@@ -50,6 +50,9 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
     @ManyToOne
     private ProductosFabricables productoFabricable;
     
+    @ManyToOne
+    private OrdenDeFabricacion orden;
+    
     private String estado;
 
     public String getEstado() {
@@ -115,6 +118,14 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
     public void setProductoFabricable(ProductosFabricables prod) {
         this.productoFabricable = prod;
     }
+
+    public OrdenDeFabricacion getOrden() {
+        return orden;
+    }
+
+    public void setOrden(OrdenDeFabricacion orden) {
+        this.orden = orden;
+    }
     
     
     
@@ -143,6 +154,7 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
         //if (!getDetallesDeFactura().contains(detalle)) {
         if (!estaEnLaListaOrden(orden)) {
             getListaDeOrdenes().add(orden);
+            orden.setOrden(this);
         }
     }
 
