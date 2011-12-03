@@ -69,7 +69,7 @@ public class ControladorListarOrdenesDeFabricacion {
             pantallaEditar.getCambiarAEstadoValorReal().setText("Finalizada");
             pantallaEditar.getSi().setEnabled(true);
             pantallaEditar.getNo().setEnabled(true);
-            pantallaEditar.getEliminar().setEnabled(true);
+            pantallaEditar.getEliminar().setEnabled(false);
         }else{
             pantallaEditar.getSi().setEnabled(false);
             pantallaEditar.getNo().setEnabled(false);
@@ -108,7 +108,7 @@ public class ControladorListarOrdenesDeFabricacion {
     }
 
     public void eliminarOrden() {
-        try {
+        try {         
             experto.eliminarOrden();
             JOptionPane.showMessageDialog(pantalla, "Orden eliminada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditar.dispose();

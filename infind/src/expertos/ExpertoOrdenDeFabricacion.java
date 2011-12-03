@@ -448,14 +448,14 @@ public class ExpertoOrdenDeFabricacion extends Experto {
                 for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
                     float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
                     if(detalle.getMaestroArticulo().getStock().getCantidadFisicaReal()< cantidad){
-                        throw new OrdenDeFabricacionExeption(2, detalle.getMaestroArticulo().getCodigo());
+                        throw new OrdenDeFabricacionExeption(3, detalle.getMaestroArticulo().getCodigo());
                     }
                 }
 
                 for (DetalleEstructuraDeProducto detalle : ordenEditar.getProductoFabricable().getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
                     float cantidad = detalle.getCantidad() * ordenEditar.getCantidadDeLotesOptimos();
                     if(detalle.getMaestroArticulo().getStock().getCantidadFisicaReal()< cantidad){
-                        throw new OrdenDeFabricacionExeption(2, detalle.getMaestroArticulo().getCodigo());
+                        throw new OrdenDeFabricacionExeption(3, detalle.getMaestroArticulo().getCodigo());
                     }
                 }
 
