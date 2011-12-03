@@ -11,11 +11,11 @@ import utilidades.formateadorfechas;
  *
  * @author rustu
  */
-public class ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion extends ModeloTabla{
+public class ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion extends ModeloTabla{
 
-   public ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion() {
+   public ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar");
+        super("Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -34,6 +34,8 @@ public class ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion extends Model
                 return orden.getCantidadDeLotesOptimos();
             case 3:
                 return formateadorfechas.fechaAStringDDMMAAAA(orden.getFecha());    
+            case 4:
+                return orden.getEstado();   
             default:
                 return "";
         }
