@@ -123,7 +123,7 @@ public class ControladorCrearOrdenDeFabricacion {
     
     
     
-    public void generarOrden() throws StockExcepcion {
+    public void generarOrden(){
         try{
             Date fecha = pantalla.getFechaDeInicioDateChooser().getDate();
             if(fecha == null){
