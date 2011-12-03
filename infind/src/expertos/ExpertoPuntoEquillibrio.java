@@ -30,7 +30,18 @@ public class ExpertoPuntoEquillibrio extends Experto{
         return costosEncontrados;
     }
      
-     public List<MaestroDeArticulo> buscarProductoFinal(){
+     public List<ProductoFinal> buscarProductoFinal(){
+        List<ProductoFinal> productoFinalEncontrados = null;
+        Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
+        criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
+        productoFinalEncontrados = Fachada.getInstancia().buscar(ProductoFinal.class, criterioFinalIntermedio);
+
+        return productoFinalEncontrados;
+        
+        
+    }
+     
+     public List<MaestroDeArticulo> buscarProducto(){
         List<MaestroDeArticulo> productoFinalEncontrados = null;
         Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
         criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
