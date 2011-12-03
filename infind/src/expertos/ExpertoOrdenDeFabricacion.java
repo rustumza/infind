@@ -93,17 +93,11 @@ public class ExpertoOrdenDeFabricacion extends Experto {
         ExpertoPedidoAproveedores expertoPedidoAProveedores = new ExpertoPedidoAproveedores();
         ExpertoStock expertoStock = new ExpertoStock();
         for (DetalleEstructuraDeProducto detalle : estructura.getDetalleEstructuraProductoList()) {
-            System.out.println("------------------------------");
-            System.out.println(detalle.getMaestroArticulo().getNombre());
             if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
                 int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
                 if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                     cantidadLotesAUsarDeUnProducto++;
                 }
-                System.out.println("cantidad de lotes " + detalle.getMaestroArticulo().getTamanioLoteEstandar());
-                System.out.println(cantidadLotesAUsarDeUnProducto);
-                System.out.println("cantidad a usar");
-                System.out.println(detalle.getCantidad() * cantidadDeLotesAFabricar);
                 Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
                 calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
 
@@ -117,19 +111,11 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             }
         }
         for (DetalleEstructuraDeProducto detalle : estructuraIQE.getDetalleEstructuraProductoList()) {
-            System.out.println("------------------------------");
-            System.out.println(detalle.getMaestroArticulo().getNombre());
             if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
                 int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
                 if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                     cantidadLotesAUsarDeUnProducto++;
                 }
-
-                System.out.println("cantidad de lotes " + detalle.getMaestroArticulo().getTamanioLoteEstandar());
-                System.out.println(cantidadLotesAUsarDeUnProducto);
-                System.out.println("cantidad a usar");
-                System.out.println(detalle.getCantidad() * cantidadDeLotesAFabricar);
-
                 Calendar calendar = new GregorianCalendar(fecha.getYear() + 1900, fecha.getMonth(), fecha.getDate());
                 calendar.add(Calendar.DATE, -detalle.getMaestroArticulo().getTiempoDeObtenecion());
                 if (detalle.getMaestroArticulo().getClass().equals(ProductoIntermedio.class)) {
