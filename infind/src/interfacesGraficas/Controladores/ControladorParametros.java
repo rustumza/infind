@@ -6,9 +6,9 @@ package interfacesGraficas.Controladores;
 
 import Entidades.Parametros;
 import Fabricas.FabricaExpertos;
-import excepciones.ExpertoCostosFijosException;
 import expertos.ExpertoParametros;
 import interfacesGraficas.PantallaParametros;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,5 +39,8 @@ public class ControladorParametros {
         nuevoParametros.setGama(Double.valueOf(pantallaParametros.getjComboBoxGama().getSelectedItem().toString()));
         nuevoParametros.setPeriodosAPredecir(Integer.valueOf(pantallaParametros.getComboBoxPeriodos().getSelectedItem().toString()));
         nuevoParametros.setErrorAceptable(Double.valueOf(pantallaParametros.getjComboBoxError().getSelectedItem().toString()));
+        nuevoParametros.setMetodo(pantallaParametros.getjComboBoxMetodo().getSelectedItem().toString());
+        expertoParametros.guardarParametros(nuevoParametros);
+        JOptionPane.showMessageDialog(pantallaParametros, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 }

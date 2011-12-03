@@ -57,6 +57,8 @@ public class PantallaParametros extends javax.swing.JDialog {
         jComboBoxGama = new javax.swing.JComboBox();
         jLabelError = new javax.swing.JLabel();
         jComboBoxError = new javax.swing.JComboBox();
+        jLabelMetodo = new javax.swing.JLabel();
+        jComboBoxMetodo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,6 +71,11 @@ public class PantallaParametros extends javax.swing.JDialog {
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardar);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -91,8 +98,8 @@ public class PantallaParametros extends javax.swing.JDialog {
         jPanel1.add(jToolBar1, gridBagConstraints);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Parametros"));
-        jPanel2.setMinimumSize(new java.awt.Dimension(350, 250));
-        jPanel2.setPreferredSize(new java.awt.Dimension(350, 250));
+        jPanel2.setMinimumSize(new java.awt.Dimension(350, 290));
+        jPanel2.setPreferredSize(new java.awt.Dimension(350, 290));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         comboBoxPeriodos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
@@ -115,7 +122,7 @@ public class PantallaParametros extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelPeriodos, gridBagConstraints);
 
@@ -159,7 +166,7 @@ public class PantallaParametros extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
         jPanel2.add(jComboBoxGama, gridBagConstraints);
 
-        jLabelError.setText("Error aceptable:");
+        jLabelError.setText("% de error aceptable:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -167,13 +174,29 @@ public class PantallaParametros extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelError, gridBagConstraints);
 
-        jComboBoxError.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1%", "2%", "5%", "10%", "20%", "30%", "40%", "50%" }));
+        jComboBoxError.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "5", "10", "20", "30", "40", "50" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
         jPanel2.add(jComboBoxError, gridBagConstraints);
+
+        jLabelMetodo.setText("Metodo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel2.add(jLabelMetodo, gridBagConstraints);
+
+        jComboBoxMetodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Promedio ponderado movil", "Promedio ponderado Exponencialmente", "Metodo Regresion lineal", "Metodo Estacionalidad" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
+        jPanel2.add(jComboBoxMetodo, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -189,11 +212,13 @@ public class PantallaParametros extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,6 +227,10 @@ public class PantallaParametros extends javax.swing.JDialog {
 private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
     dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+controlador.guardar();
+    }//GEN-LAST:event_botonGuardarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -213,15 +242,33 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JComboBox jComboBoxBeta;
     private javax.swing.JComboBox jComboBoxError;
     private javax.swing.JComboBox jComboBoxGama;
+    private javax.swing.JComboBox jComboBoxMetodo;
     private javax.swing.JLabel jLabelAlfa;
     private javax.swing.JLabel jLabelBeta;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JLabel jLabelGama;
+    private javax.swing.JLabel jLabelMetodo;
     private javax.swing.JLabel jLabelPeriodos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getjLabelMetodo() {
+        return jLabelMetodo;
+    }
+
+    public void setjLabelMetodo(JLabel jLabelMetodo) {
+        this.jLabelMetodo = jLabelMetodo;
+    }
+
+    public JComboBox getjComboBoxMetodo() {
+        return jComboBoxMetodo;
+    }
+
+    public void setjComboBoxMetodo(JComboBox jComboBoxMetodo) {
+        this.jComboBoxMetodo = jComboBoxMetodo;
+    }
 
     public JButton getBotonGuardar() {
         return botonGuardar;
