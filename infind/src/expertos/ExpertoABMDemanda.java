@@ -33,11 +33,15 @@ public class ExpertoABMDemanda extends Experto {
     }
 
     public List<ProductoFinal> buscarProductoFinal() {
-         List<ProductoFinal> productoencontrado = null;
+        List<ProductoFinal> productoencontrado = null;
 
         Criteria criterioProducto = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
         criterioProducto.add(Restrictions.eq("eliminado", false));
         productoencontrado = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProducto);
         return productoencontrado;
+    }
+
+    public void guardarProductoFinal(ProductoFinal productoFinal) {
+        Fachada.getInstancia().guardar(productoFinal);
     }
 }

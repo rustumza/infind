@@ -27,7 +27,7 @@ import persistencia.ObjetoPersitente;
  * @author eduardo
  */
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "Tipo", discriminatorType = DiscriminatorType.STRING)
 public class MaestroDeArticulo extends ObjetoPersitente implements Serializable {
 
@@ -52,14 +52,15 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String ubicacionEnAlmacen;
     private String unidadDeMedida;
     private int tiempoDeObtenecion;
-    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Demanda> demanda;
     @OneToOne
     private Stock stock;
-    @OneToMany @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<CostoVariable> costosVariables;
 
-    
     public Long getId() {
         return id;
     }
@@ -75,7 +76,6 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public void setCostosVariables(List<CostoVariable> costosVariables) {
         this.costosVariables = costosVariables;
     }
-    
 
     public void setDemanda(List<Demanda> demanda) {
         this.demanda = demanda;
@@ -212,8 +212,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public void setUnidadDeMedida(String unidadDeMedida) {
         this.unidadDeMedida = unidadDeMedida;
     }
-    
-    
+
     public int getTiempoDeObtenecion() {
         return tiempoDeObtenecion;
     }
@@ -221,8 +220,6 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public void setTiempoDeObtenecion(int tiempoDeObtenecion) {
         this.tiempoDeObtenecion = tiempoDeObtenecion;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -242,6 +239,14 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
             return false;
         }
         return true;
+    }
+
+    public void addDemanda(Demanda demanda) {
+        getDemanda().add(demanda);
+//        if (demanda.getArticulo() != null) {
+//            demanda.getArticulo().getDemanda().remove(demanda);
+//        }
+        demanda.setArticulo(this);
     }
 
     @Override

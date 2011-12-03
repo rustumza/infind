@@ -5,6 +5,7 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.Demanda;
+import Entidades.MaestroDeArticulo;
 import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoCostosFijosException;
@@ -27,6 +28,7 @@ public class ControladorABMDemanda {
     //ModeloTablaDemandas modeloTablaDemandas;
     Demanda nuevaDemanda = null;
     Demanda demandaSeleccionada;
+    List<ProductoFinal> listaproductos;
 
     public ControladorABMDemanda(ControladorPantallaMadre controlador) {
 
@@ -40,7 +42,7 @@ public class ControladorABMDemanda {
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
         pantallaABMDemanda.setLocationRelativeTo(null);
-        List<ProductoFinal> listaproductos = expertoABMDemanda.buscarProductoFinal();
+        listaproductos = expertoABMDemanda.buscarProductoFinal();
         pantallaABMDemanda.getComboListaProducto().setModel(new DefaultComboBoxModel(listaproductos.toArray()));
         pantallaABMDemanda.setVisible(true);
     }
@@ -68,8 +70,12 @@ public class ControladorABMDemanda {
     public void guardarDemanda() {
         try {
             if (pantallaABMDemanda.getCampoValorDemanda().isEnabled()) {
+                nuevaDemanda = new Demanda();
                 nuevaDemanda.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
+                nuevaDemanda.setPeriodo(Integer.valueOf(pantallaABMDemanda.getjComboBoxPeriodo().getSelectedItem().toString()));
+                ((MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).addDemanda(nuevaDemanda);
                 expertoABMDemanda.guardarDemanda(nuevaDemanda);
+                expertoABMDemanda.guardarProductoFinal((ProductoFinal)nuevaDemanda.getArticulo());
                 JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                 ModeloTablaDemandas modeloTablaDemandas = (ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel();
                 modeloTablaDemandas.addRow(nuevaDemanda);

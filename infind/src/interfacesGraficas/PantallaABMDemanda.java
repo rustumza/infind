@@ -47,6 +47,7 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
+        botonAlta = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
         botonEliminarDemanda = new javax.swing.JButton();
         botonImprimirDemanda = new javax.swing.JButton();
@@ -62,13 +63,24 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         jLabelProductos = new javax.swing.JLabel();
         jComboBoxPeriodo = new javax.swing.JComboBox();
         jButtonBuscarDemanda = new javax.swing.JButton();
-        botonAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
+
+        botonAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/folder_new-30.png"))); // NOI18N
+        botonAlta.setToolTipText("Nueva Demanda");
+        botonAlta.setFocusable(false);
+        botonAlta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonAlta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAltaActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonAlta);
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
         botonGuardar.setToolTipText("Guardar");
@@ -224,19 +236,6 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(12, 10, 0, 0);
         jPanel3.add(jButtonBuscarDemanda, gridBagConstraints);
 
-        botonAgregar.setText("Agregar");
-        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 6, 0, 0);
-        jPanel3.add(botonAgregar, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -270,7 +269,7 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
     }//GEN-LAST:event_botonEliminarDemandaActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        controlador.actualizarDemandas();
+        controlador.guardarDemanda();
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonImprimirDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirDemandaActionPerformed
@@ -288,14 +287,15 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarDemandaActionPerformed
 
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+    private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
         controlador.nuevaDemanda();
-    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    }//GEN-LAST:event_botonAltaActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregar;
+    private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonEliminarDemanda;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonImprimirDemanda;
