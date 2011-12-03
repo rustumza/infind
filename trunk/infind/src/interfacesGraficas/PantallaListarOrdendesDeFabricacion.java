@@ -86,7 +86,7 @@ public class PantallaListarOrdendesDeFabricacion extends javax.swing.JDialog {
 
         estadoOrdenLabel.setText("Estado de la orden");
 
-        estadoOrdenListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Generada", "En curso", "Finalizada" }));
+        estadoOrdenListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Generada", "En curso", "Finalizada" }));
         estadoOrdenListBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estadoOrdenListBoxActionPerformed(evt);
