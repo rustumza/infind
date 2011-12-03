@@ -54,8 +54,18 @@ public class PantallaEditarEstadoALaOrdenDeProduccion extends javax.swing.JDialo
         cambiarAEstadoLabel.setText("Cambiar estado de la orden a: ");
 
         si.setText("Sí");
+        si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siActionPerformed(evt);
+            }
+        });
 
         no.setText("No");
+        no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenes de produccion"));
 
@@ -91,6 +101,11 @@ public class PantallaEditarEstadoALaOrdenDeProduccion extends javax.swing.JDialo
         productoAFabricarLabel.setText("Producto a fabricar: ");
 
         eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,6 +158,18 @@ public class PantallaEditarEstadoALaOrdenDeProduccion extends javax.swing.JDialo
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
+    dispose();
+}//GEN-LAST:event_noActionPerformed
+
+private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
+    controlador.cambiarEstadoALaOrden();
+}//GEN-LAST:event_siActionPerformed
+
+private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+    controlador.eliminarOrden();
+}//GEN-LAST:event_eliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cambiarAEstadoLabel;
@@ -244,6 +271,14 @@ public class PantallaEditarEstadoALaOrdenDeProduccion extends javax.swing.JDialo
 
     public void setTablaOrdenesDeProduccion(JTable tablaOrdenesDeProduccion) {
         this.tablaOrdenesDeProduccion = tablaOrdenesDeProduccion;
+    }
+
+    public JButton getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JButton eliminar) {
+        this.eliminar = eliminar;
     }
 
     

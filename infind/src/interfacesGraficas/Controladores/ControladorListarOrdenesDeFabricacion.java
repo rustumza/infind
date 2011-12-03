@@ -5,14 +5,12 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.OrdenDeFabricacion;
-import Entidades.PedidoAProveedor;
 import expertos.ExpertoOrdenDeFabricacion;
 import interfacesGraficas.ModeloTablas.ModeloTablaListarOrdenesDeProduccion;
 import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion;
 import interfacesGraficas.ModeloTablas.ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion;
 import interfacesGraficas.PantallaEditarEstadoALaOrdenDeProduccion;
 import interfacesGraficas.PantallaListarOrdendesDeFabricacion;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -26,6 +24,7 @@ public class ControladorListarOrdenesDeFabricacion {
     PantallaListarOrdendesDeFabricacion pantalla;    
     ExpertoOrdenDeFabricacion experto;
     PantallaEditarEstadoALaOrdenDeProduccion pantallaEditar;
+    OrdenDeFabricacion orden;
     
     public ControladorListarOrdenesDeFabricacion(ControladorPantallaMadre contPantMad) {
         controladorPantallaMadre = contPantMad;
@@ -35,11 +34,11 @@ public class ControladorListarOrdenesDeFabricacion {
     
     
     public void iniciar(){
-        List<OrdenDeFabricacion> lista = experto.buscarOrdenes(null);
+        List<OrdenDeFabricacion> lista = experto.buscarOrdenes("Todas");
         ModeloTablaListarOrdenesDeProduccion mod = new ModeloTablaListarOrdenesDeProduccion();
         mod.setListaElementos(lista);
         pantalla.getTablaOrdenesDeProduccion().setModel(mod);
-        pantalla.setLocationRelativeTo(null);
+        pantalla.setLocationRelativeTo(controladorPantallaMadre.getPantalla());
         pantalla.setVisible(true);
     
     }
@@ -55,18 +54,24 @@ public class ControladorListarOrdenesDeFabricacion {
 
     public void editarOrden() {
         int columnaSeleccionada = pantalla.getTablaOrdenesDeProduccion().getSelectedRow();
-        OrdenDeFabricacion orden = experto.getOrdenSeleccionada(columnaSeleccionada);
+        orden = experto.getOrdenSeleccionada(columnaSeleccionada);
         pantallaEditar = new PantallaEditarEstadoALaOrdenDeProduccion(controladorPantallaMadre.getPantalla(), true, this);
         
         pantallaEditar.getProductoAFabricarValorReal().setText(orden.getProductoFabricable().getNombre());
         if(orden.getEstado().equals("Generada")){
             pantallaEditar.getCambiarAEstadoValorReal().setText("En curso");
+            pantallaEditar.getSi().setEnabled(true);
+            pantallaEditar.getNo().setEnabled(true);
+            pantallaEditar.getEliminar().setEnabled(true);
         }else if(orden.getEstado().equals("En curso")){
             pantallaEditar.getCambiarAEstadoValorReal().setText("Finalizada");
+            pantallaEditar.getSi().setEnabled(true);
+            pantallaEditar.getNo().setEnabled(true);
+            pantallaEditar.getEliminar().setEnabled(true);
         }else{
-            JOptionPane.showMessageDialog(pantalla, "Ya no se le puede cambiar el estado a esta orden porque está finalizada", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            pantallaEditar = null;
-            return;
+            pantallaEditar.getSi().setEnabled(false);
+            pantallaEditar.getNo().setEnabled(false);
+            pantallaEditar.getEliminar().setEnabled(false);
         }
         ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion();
         mod.setListaElementos(orden.getListaDePedido());
@@ -81,22 +86,14 @@ public class ControladorListarOrdenesDeFabricacion {
     }
     
     
-//    private List<PedidoAProveedor> listaDePedidos(OrdenDeFabricacion orden){
-//        List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
-//        listaDePedidos.addAll(orden.getListaDePedido());
-//        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
-//            listaDePedidos.addAll(listaDePedidos(ord));            
-//        }
-//        return listaDePedidos;
-//    }
-//    
-//    
-//    private List<OrdenDeFabricacion> listaDeOrdenes(OrdenDeFabricacion orden){
-//        List<OrdenDeFabricacion> listaDeOrdenes = new ArrayList<OrdenDeFabricacion>();
-//        listaDeOrdenes.addAll(orden.getListaDeOrdenes());
-//        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
-//            listaDeOrdenes.addAll(listaDeOrdenes(ord));            
-//        }
-//        return listaDeOrdenes;
-//    }
+
+
+    public void cambiarEstadoALaOrden() {
+        
+        experto.camibiarEstadoDeLaOrden();
+    }
+
+    public void eliminarOrden() {
+        
+    }
 }

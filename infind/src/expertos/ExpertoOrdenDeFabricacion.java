@@ -31,6 +31,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
 
     MaestroDeArticulo articulo;
     List<OrdenDeFabricacion> listaDeOrdenesDeFabricacion;
+    OrdenDeFabricacion ordenEditar;
 
     public MaestroDeArticulo buscarProductoFinal(String codigo) {
         List<ProductoFinal> listaFinal = null;
@@ -408,7 +409,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
     public List<OrdenDeFabricacion> buscarOrdenes(String estado){
         
         Criteria criterioOrdenes = Fachada.getInstancia().crearCriterio(OrdenDeFabricacion.class);
-        if(estado != null){
+        if(!estado.equals("Todas")){
             criterioOrdenes.add(Restrictions.eq("estado", estado));
         }
         listaDeOrdenesDeFabricacion = Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioOrdenes);
@@ -417,7 +418,17 @@ public class ExpertoOrdenDeFabricacion extends Experto {
     }
 
     public OrdenDeFabricacion getOrdenSeleccionada(int columnaSeleccionada) {
-        return listaDeOrdenesDeFabricacion.get(columnaSeleccionada);
+        ordenEditar = listaDeOrdenesDeFabricacion.get(columnaSeleccionada);
+        return ordenEditar;
+    }
+
+    public void camibiarEstadoDeLaOrden() {
+        if(ordenEditar.getEstado().equals("Generada")){
+       
+       
+        }else{
+
+        }
     }
     
     
