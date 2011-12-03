@@ -15,7 +15,7 @@ public class ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion extends Model
 
    public ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar");
+        super("Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -34,6 +34,8 @@ public class ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion extends Model
                 return orden.getCantidadDeLotesOptimos();
             case 3:
                 return formateadorfechas.fechaAStringDDMMAAAA(orden.getFecha());    
+            case 4:
+                return orden.getEstado();   
             default:
                 return "";
         }

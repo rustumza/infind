@@ -50,6 +50,15 @@ public class OrdenDeFabricacion extends ObjetoPersitente implements Serializable
     @ManyToOne
     private ProductosFabricables productoFabricable;
     
+    private String estado;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
     public Long getId() {
         return id;

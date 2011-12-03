@@ -93,7 +93,9 @@ public class ControladorCrearOrdenDeFabricacion {
             orden = experto.probarGeneracionDeOrdenDeFabricacion(fecha, cantidadInt);
             
             pantalla.getFechaPosibleRealizacionDataChooser().setDate(orden.getFecha());
+            
             ((ProductosFabricables)experto.getArticulo()).removeOrden(orden);
+            
             ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion();
             List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
             listaDePedidos = listaDePedidos(orden);
@@ -157,9 +159,9 @@ public class ControladorCrearOrdenDeFabricacion {
             JOptionPane.showMessageDialog(pantalla, "Error al reservar el stock para generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             return;
             
-        /*}catch(Exception e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(pantalla, "Error al generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            return;*/
+            return;
         }
     }
     
