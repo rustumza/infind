@@ -55,6 +55,8 @@ ControladorPuntoEquilibrio controlador;
         comboBoxProducto = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        campoVolumen = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPuntoEquilibrio = new javax.swing.JTable();
@@ -115,16 +117,15 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        comboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Producto Intermedio Base", "Desodorante para pisos lavanda", "Enjuage para ropa imitacion vivere" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 20);
         jPanel2.add(comboBoxProducto, gridBagConstraints);
 
         jLabel3.setText("Detergente de Limón");
@@ -148,6 +149,21 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 10);
         jPanel2.add(jButton1, gridBagConstraints);
+
+        jLabel11.setText("Volumen:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 0);
+        jPanel2.add(jLabel11, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 0);
+        jPanel2.add(campoVolumen, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -360,12 +376,14 @@ ControladorPuntoEquilibrio controlador;
     private javax.swing.JTextField campoCostoEstandar;
     private javax.swing.JTextField campoRelacionDetergente;
     private javax.swing.JTextField campoRelacionEnjuague;
+    private javax.swing.JTextField campoVolumen;
     private javax.swing.JComboBox comboBoxProducto;
     private javax.swing.JTextField costoEstandarDetergente;
     private javax.swing.JTextField costoEstandarEnjuague;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -578,6 +596,31 @@ ControladorPuntoEquilibrio controlador;
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
     }
+
+    public JTextField getCampoVolumen() {
+        return campoVolumen;
+    }
+
+    public void setCampoVolumen(JTextField campoVolumen) {
+        this.campoVolumen = campoVolumen;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+    
 
     public void setjScrollPane1(JScrollPane jScrollPane1) {
         this.jScrollPane1 = jScrollPane1;
