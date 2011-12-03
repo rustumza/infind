@@ -16,7 +16,7 @@ public class ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion extends Mo
    
     public ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar");
+        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -35,6 +35,13 @@ public class ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion extends Mo
                 return pedido.getCantidad();
             case 3:
                 return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
+            case 4:
+                if(pedido.isEstaConcretado()){
+                    return "Concretada";
+                }    
+                else{
+                    return "Sin concretar";
+                }
             default:
                 return "";
         }

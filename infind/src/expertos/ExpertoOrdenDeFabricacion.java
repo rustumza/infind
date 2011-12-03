@@ -14,7 +14,6 @@ import Entidades.ProductoIntermedio;
 import Entidades.ProductoTipoIQE;
 import Entidades.ProductosFabricables;
 import excepciones.StockExcepcion;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -31,14 +30,20 @@ import persistencia.Fachada;
 public class ExpertoOrdenDeFabricacion extends Experto {
 
     MaestroDeArticulo articulo;
+    List<OrdenDeFabricacion> listaDeOrdenesDeFabricacion;
 
     public MaestroDeArticulo buscarProductoFinal(String codigo) {
         List<ProductoFinal> listaFinal = null;
         Criteria criterioProdFinal = Fachada.getInstancia().crearCriterio(ProductoFinal.class);
         criterioProdFinal.add(Restrictions.eq("codigo", codigo));
         listaFinal = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProdFinal);
-        articulo = listaFinal.get(0);
-        return articulo;
+        if(listaFinal.isEmpty()){
+            articulo = null;
+            return null;
+        }else{
+            articulo = listaFinal.get(0);
+            return articulo;
+        }
     }
 
     public MaestroDeArticulo buscarProductoIntermedio(String codigo) {
@@ -46,8 +51,13 @@ public class ExpertoOrdenDeFabricacion extends Experto {
         Criteria criterioProdInt = Fachada.getInstancia().crearCriterio(ProductoIntermedio.class);
         criterioProdInt.add(Restrictions.eq("codigo", codigo));
         listaIntermedio = Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioProdInt);
-        articulo = listaIntermedio.get(0);
-        return articulo;
+        if(listaIntermedio.isEmpty()){
+            articulo = null;
+            return null;
+        }else{
+            articulo = listaIntermedio.get(0);
+            return articulo;
+        }
     }
     
     public void setArticulo(MaestroDeArticulo art){
@@ -69,6 +79,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
     public OrdenDeFabricacion probarGeneracionDeOrdenDeFabricacion(Date fecha, int cantidadDeLotesAFabricar) {
         OrdenDeFabricacion orden = new OrdenDeFabricacion();
         orden.setEliminado(false);
+        orden.setEstado("Generada");
         ((ProductosFabricables) articulo).addOrden(orden);
         ProductoTipoIQE iqe = ((ProductosFabricables) articulo).getProductoTipoIQE();
         MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();
@@ -186,7 +197,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
     metodoAux(orden);
     //Conexion.getInstancia().confirmarTx();
     }*/
-    private void metodoAux(OrdenDeFabricacion orden) throws StockExcepcion {
+    /*private void metodoAux(OrdenDeFabricacion orden) throws StockExcepcion {
         try {
             for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
                 metodoAux(ord);
@@ -213,10 +224,10 @@ public class ExpertoOrdenDeFabricacion extends Experto {
 
 
             //Conexion.getInstancia().iniciarTXTx()();
-        /*for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
+        for (PedidoAProveedor pedidoAProveedor : listaDePedidos) {
             Fachada.getInstancia().guardarSinTranasaccion(pedidoAProveedor);
             expStock.agregarStockPorLlegar((MaestroDeArticulo)pedidoAProveedor.getArticulo(),pedidoAProveedor.getCantidad());
-            }*/
+            }
             //Conexion.getInstancia().confirmarTx();
             //expPedido.asentarPedidos();
 
@@ -256,7 +267,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             throw e;
         }
 
-    }
+    }*/
 
     public OrdenDeFabricacion generarOrdenesPrimero(Date fecha, int cantidadDeLotesAFabricar) throws StockExcepcion {
         try{
@@ -269,10 +280,10 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             throw e;
             
         }
-        /*catch(Exception e){
+        catch(Exception e){
             Conexion.getInstancia().deshacerTx();
             return null;
-        }*/
+        }
         
     }
     
@@ -281,6 +292,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
         try {
             OrdenDeFabricacion orden = new OrdenDeFabricacion();
             orden.setEliminado(false);
+            orden.setEstado("Generada");
             ((ProductosFabricables) artic).addOrden(orden);
             ProductoTipoIQE iqe = ((ProductosFabricables) artic).getProductoTipoIQE();
             MaestroDeEstructuraDeProducto estructuraIQE = iqe.getMaestroEstructuraDeProducto();
@@ -402,4 +414,27 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             throw e;
         }
     }
+    
+    
+    //LISTAR ORDENES
+    
+    
+    public List<OrdenDeFabricacion> buscarOrdenes(String estado){
+        
+        Criteria criterioOrdenes = Fachada.getInstancia().crearCriterio(OrdenDeFabricacion.class);
+        if(estado != null){
+            criterioOrdenes.add(Restrictions.eq("estado", estado));
+        }
+        listaDeOrdenesDeFabricacion = Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioOrdenes);
+        return listaDeOrdenesDeFabricacion;
+    
+    }
+
+    public OrdenDeFabricacion getOrdenSeleccionada(int columnaSeleccionada) {
+        return listaDeOrdenesDeFabricacion.get(columnaSeleccionada);
+    }
+    
+    
+    
+    
 }

@@ -160,4 +160,8 @@ public class ControladorPantallaMadre {
     public void abmDemandas() throws ExpertoCostosFijosException {
         new ControladorABMDemanda(this).iniciar();
     }
+
+    public void listarOrdenesDeFabricacion() {
+        new ControladorListarOrdenesDeFabricacion(this).iniciar();
+    }
 }

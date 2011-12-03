@@ -77,6 +77,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         listarPedidosAProveedores = new javax.swing.JMenuItem();
         ordenesDeProduccion = new javax.swing.JMenu();
         crearOrdenDeProduccion = new javax.swing.JMenuItem();
+        listarOrdenesDeProduccion = new javax.swing.JMenuItem();
         inventarios = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -329,6 +330,14 @@ public class PantallaMadre extends javax.swing.JFrame {
         });
         ordenesDeProduccion.add(crearOrdenDeProduccion);
 
+        listarOrdenesDeProduccion.setText("Listar ordenes de Produccion");
+        listarOrdenesDeProduccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarOrdenesDeProduccionActionPerformed(evt);
+            }
+        });
+        ordenesDeProduccion.add(listarOrdenesDeProduccion);
+
         jMenuBar1.add(ordenesDeProduccion);
 
         inventarios.setText("Inventarios");
@@ -522,6 +531,10 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuABMDemandasHistoricasActionPerformed
+
+private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarOrdenesDeProduccionActionPerformed
+    controlador.listarOrdenesDeFabricacion();
+}//GEN-LAST:event_listarOrdenesDeProduccionActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -584,6 +597,7 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
+    private javax.swing.JMenuItem listarOrdenesDeProduccion;
     private javax.swing.JMenuItem listarPedidosAProveedores;
     private javax.swing.JMenuItem listarProductosComponentes;
     private javax.swing.JMenuItem listarProductosFinales;
