@@ -225,6 +225,11 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         jPanel3.add(jButtonBuscarDemanda, gridBagConstraints);
 
         botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -262,13 +267,10 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
 
     private void botonEliminarDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarDemandaActionPerformed
         controlador.eliminarDemanda();
-
-
     }//GEN-LAST:event_botonEliminarDemandaActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         controlador.actualizarDemandas();
-
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonImprimirDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirDemandaActionPerformed
@@ -285,6 +287,10 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         controlador.buscarDemandas();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarDemandaActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        controlador.nuevaDemanda();
+    }//GEN-LAST:event_botonAgregarActionPerformed
     /**
      * @param args the command line arguments
      */

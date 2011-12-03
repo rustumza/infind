@@ -372,6 +372,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuDemanda.add(menuCalcularDemanda);
 
         menuParametros.setText("Parametros");
+        menuParametros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuParametrosActionPerformed(evt);
+            }
+        });
         menuDemanda.add(menuParametros);
 
         menuABMDemandasHistoricas.setText("ABM Demandas Historicas");
@@ -535,6 +540,11 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarOrdenesDeProduccionActionPerformed
     controlador.listarOrdenesDeFabricacion();
 }//GEN-LAST:event_listarOrdenesDeProduccionActionPerformed
+
+    private void menuParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParametrosActionPerformed
+        controlador.parametros();
+
+    }//GEN-LAST:event_menuParametrosActionPerformed
     /**
      * @param args the command line arguments
      */
