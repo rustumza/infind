@@ -26,7 +26,7 @@ import interfacesGraficas.ModeloTablas.ModeloTablaCentroDeTrabajoEditar;
 import interfacesGraficas.ModeloTablas.ModeloTablaMateriasPrimas;
 import interfacesGraficas.ModeloTablas.ModeloTablaMateriasPrimasEditar;
 import interfacesGraficas.PantallaABMCostosVariables;
-import interfacesGraficas.PantallaListarCostosVariables;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import javax.swing.JOptionPane;
 public class ControladorABMCostosVariables {
 
     PantallaABMCostosVariables pantallaABMCostosVariables;
-    PantallaListarCostosVariables pantallaListarCostosVariables;
+
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMCostosVariables expertoABMCostosVariables;
     ModeloTablaMateriasPrimas modeloTablaMateriasPrimas;
@@ -118,7 +118,7 @@ public class ControladorABMCostosVariables {
     }
 
     public void listarCostosVariables() throws ExpertoCostosVariablesException {
-        pantallaListarCostosVariables = new PantallaListarCostosVariables(controladorPantMadre.getPantalla(), true, this);
+      
         modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar();
         modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar(expertoABMCostosVariables.buscarMaestroArticulo());
         modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar();
@@ -127,14 +127,7 @@ public class ControladorABMCostosVariables {
         modeloTablaMateriasPrimasEditar = new ModeloTablaMateriasPrimasEditar();
         modeloTablaCentroTrabajoEditarEnMemoria = new ModeloTablaCentroDeTrabajoEditar();
         modeloTablaMateriasPrimasEditarEnMemoria = new ModeloTablaMateriasPrimasEditar();
-        pantallaListarCostosVariables.getTablaCentroTrabajo().setModel(modeloTablaCentroTrabajoEditar);
-        pantallaListarCostosVariables.getTablaMateriaPrima().setModel(modeloTablaMateriasPrimasEditar);
-        pantallaListarCostosVariables.getComboBoxCentroTrabajo().setModel(modeloComboBoxCentroTrabajoEditar);
-        pantallaListarCostosVariables.getComboBoxMateriaPrima().setModel(modeloComboBoxMateriaPrimaEditar);
-
-        pantallaListarCostosVariables.setLocationRelativeTo(null);
-        pantallaListarCostosVariables.setVisible(true);
-    }
+      }
 
     public void buscarCostoVariableDelProducto() throws ExpertoCostosVariablesException {
 
