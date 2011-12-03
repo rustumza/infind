@@ -69,38 +69,34 @@ public class ControladorListarOrdenesDeFabricacion {
             return;
         }
         ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion();
-        List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
-        listaDePedidos = listaDePedidos(orden);
-        mod.setListaElementos(listaDePedidos);
+        mod.setListaElementos(orden.getListaDePedido());
         pantallaEditar.getTablaOrdenesDeCompraYProduccion().setModel(mod);
 
 
         ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion mod1 = new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion();
-        List<OrdenDeFabricacion> listaDeOrdenes = new ArrayList<OrdenDeFabricacion>();
-        listaDeOrdenes = listaDeOrdenes(orden);
-        mod1.setListaElementos(listaDeOrdenes);
+        mod1.setListaElementos(orden.getListaDeOrdenes());
         pantallaEditar.getTablaOrdenesDeProduccion().setModel(mod1);
         
         pantallaEditar.setVisible(true);
     }
     
     
-    private List<PedidoAProveedor> listaDePedidos(OrdenDeFabricacion orden){
-        List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
-        listaDePedidos.addAll(orden.getListaDePedido());
-        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
-            listaDePedidos.addAll(listaDePedidos(ord));            
-        }
-        return listaDePedidos;
-    }
-    
-    
-    private List<OrdenDeFabricacion> listaDeOrdenes(OrdenDeFabricacion orden){
-        List<OrdenDeFabricacion> listaDeOrdenes = new ArrayList<OrdenDeFabricacion>();
-        listaDeOrdenes.addAll(orden.getListaDeOrdenes());
-        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
-            listaDeOrdenes.addAll(listaDeOrdenes(ord));            
-        }
-        return listaDeOrdenes;
-    }
+//    private List<PedidoAProveedor> listaDePedidos(OrdenDeFabricacion orden){
+//        List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
+//        listaDePedidos.addAll(orden.getListaDePedido());
+//        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
+//            listaDePedidos.addAll(listaDePedidos(ord));            
+//        }
+//        return listaDePedidos;
+//    }
+//    
+//    
+//    private List<OrdenDeFabricacion> listaDeOrdenes(OrdenDeFabricacion orden){
+//        List<OrdenDeFabricacion> listaDeOrdenes = new ArrayList<OrdenDeFabricacion>();
+//        listaDeOrdenes.addAll(orden.getListaDeOrdenes());
+//        for (OrdenDeFabricacion ord : orden.getListaDeOrdenes()) {
+//            listaDeOrdenes.addAll(listaDeOrdenes(ord));            
+//        }
+//        return listaDeOrdenes;
+//    }
 }
