@@ -11,12 +11,12 @@ import utilidades.formateadorfechas;
  *
  * @author rustu
  */
-public class ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion extends ModeloTabla{
+public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion extends ModeloTabla{
 
    
-    public ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion() {
+    public ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar");
+        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -35,6 +35,13 @@ public class ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion extends Mo
                 return pedido.getCantidad();
             case 3:
                 return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
+            case 4:
+                if(pedido.isEstaConcretado()){
+                    return "Concretada";
+                }    
+                else{
+                    return "Sin concretar";
+                }
             default:
                 return "";
         }

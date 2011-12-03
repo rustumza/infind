@@ -10,8 +10,8 @@ import Entidades.PedidoAProveedor;
 import Entidades.ProductosFabricables;
 import excepciones.StockExcepcion;
 import expertos.ExpertoOrdenDeFabricacion;
-import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion;
-import interfacesGraficas.ModeloTablas.ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion;
+import interfacesGraficas.ModeloTablas.ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion;
+import interfacesGraficas.ModeloTablas.ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion;
 import interfacesGraficas.PantallaCrearOrdenDeFabricacion;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,8 +42,8 @@ public class ControladorCrearOrdenDeFabricacion {
         pantalla = new PantallaCrearOrdenDeFabricacion(controladorPantallaMadre.getPantalla(), false, this);
         pantalla.setLocationRelativeTo(null);
         pantalla.getGenerar().setEnabled(false);
-        pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion());
-        pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion());
+        pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion());
+        pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion());
         pantalla.setVisible(true);
     }
 
@@ -96,14 +96,14 @@ public class ControladorCrearOrdenDeFabricacion {
             
             ((ProductosFabricables)experto.getArticulo()).removeOrden(orden);
             
-            ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion();
+            ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion mod = new ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion();
             List<PedidoAProveedor> listaDePedidos = new ArrayList<PedidoAProveedor>();
             listaDePedidos = listaDePedidos(orden);
             mod.setListaElementos(listaDePedidos);
             pantalla.getTablaOrdenesDeCompraYProduccion().setModel(mod);
             
             
-            ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion mod1 = new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion();
+            ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion mod1 = new ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion();
             List<OrdenDeFabricacion> listaDeOrdenes = new ArrayList<OrdenDeFabricacion>();
             listaDeOrdenes = listaDeOrdenes(orden);
             mod1.setListaElementos(listaDeOrdenes);
@@ -145,8 +145,8 @@ public class ControladorCrearOrdenDeFabricacion {
                 //throw new Exception();
             }
             pantalla.getGenerar().setEnabled(false);
-            pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaOrdenDeFabricacion());
-            pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaOrdenDeproduccion());
+            pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion());
+            pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion());
             pantalla.getCantidadDeLotesTextBox().setText("");
             pantalla.getFechaDeInicioDateChooser().setDate(null);
             pantalla.getCodigoTextBox().setText("");
