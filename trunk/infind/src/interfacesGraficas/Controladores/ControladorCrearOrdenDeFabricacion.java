@@ -153,7 +153,9 @@ public class ControladorCrearOrdenDeFabricacion {
             pantalla.getProductoSeleccionadoTextBox().setText("");
             pantalla.getLoteEstandarTextBox().setText("");
             pantalla.getUnidadDeMedida().setText("");
+            pantalla.getFechaPosibleRealizacionDataChooser().setDate(null);
             experto = new ExpertoOrdenDeFabricacion();
+            JOptionPane.showMessageDialog(pantalla, "Orden generada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             
         }catch(StockExcepcion e){
             JOptionPane.showMessageDialog(pantalla, "Error al reservar el stock para generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
