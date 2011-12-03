@@ -20,13 +20,13 @@ public class ModeloComboBoxMateriaPrima extends DefaultComboBoxModel{
 
 
     public ModeloComboBoxMateriaPrima() {
-        addElement("Seleccione una Materia Prima");
+     //   addElement("Seleccione una Materia Prima");
     }
 
     public ModeloComboBoxMateriaPrima(List<MaestroDeArticulo> nuevalista) {
 
         listaMateriaPrima = nuevalista;
-        addElement("Seleccione Una Materia Prima");
+        //addElement("Seleccione Una Materia Prima");
         for (MaestroDeArticulo tipo : nuevalista) {
             addElement(tipo.getNombre());
 

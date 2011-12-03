@@ -30,9 +30,9 @@ public class ModeloTablaMateriasPrimasEditar extends ModeloTabla{
             case 0:
                 return costos.getNombreProducto();
             case 1:
-                return costos.getCantidad();
+                return "1";
             case 2:
-                return costos.getCostoTotal();
+                return costos.getCostoMateriaPrima();
             
             default:
                 return "";

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package interfacesGraficas.Controladores;
-//TODO cargar los tipos de operarios jefe de produccion y operario, y asignarle a los centros de trabajo esos tipos de operarios
+
 import DTOs.DTOCentro;
 import DTOs.DTOCostosVariables;
 import Entidades.CostoVariable;
@@ -30,6 +30,7 @@ import interfacesGraficas.PantallaABMCostosVariables;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,15 +40,9 @@ import javax.swing.JOptionPane;
 public class ControladorABMCostosVariables {
 
     PantallaABMCostosVariables pantallaABMCostosVariables;
-
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMCostosVariables expertoABMCostosVariables;
     ModeloTablaMateriasPrimas modeloTablaMateriasPrimas;
-    ModeloTablaMateriasPrimasEditar modeloTablaMateriasPrimasEditar;
-    ModeloTablaMateriasPrimasEditar modeloTablaMateriasPrimasEditarEnMemoria;
-    ModeloTablaCentroDeTrabajo modeloTablaCentroTrabajo;
-    ModeloTablaCentroDeTrabajoEditar modeloTablaCentroTrabajoEditar;
-    ModeloTablaCentroDeTrabajoEditar modeloTablaCentroTrabajoEditarEnMemoria;
     ModeloComboBoxCentroDeTrabajo modeloComboBoxCentroTrabajo;
     ModeloComboBoxCentroDeTrabajoEditar modeloComboBoxCentroTrabajoEditar;
     ModeloComboBoxMateriaPrima modeloComboBoxMateriaPrima;
@@ -67,173 +62,90 @@ public class ControladorABMCostosVariables {
     public void iniciar() throws ExpertoCostosVariablesException {
         pantallaABMCostosVariables = new PantallaABMCostosVariables(controladorPantMadre.getPantalla(), true, this);
 
-        modeloTablaCentroTrabajo = new ModeloTablaCentroDeTrabajo();
+
         modeloTablaMateriasPrimas = new ModeloTablaMateriasPrimas();
-        modeloComboBoxMateriaPrima = new ModeloComboBoxMateriaPrima(expertoABMCostosVariables.buscarProducto());
-        pantallaABMCostosVariables.getComboBoxProducto().setModel(modeloComboBoxMateriaPrima);
+        pantallaABMCostosVariables.getComboBoxProducto().setModel(new DefaultComboBoxModel(expertoABMCostosVariables.buscarProducto().toArray()));
         pantallaABMCostosVariables.getTablaMateriaPrima().setModel(modeloTablaMateriasPrimas);
         pantallaABMCostosVariables.setLocationRelativeTo(null);
         pantallaABMCostosVariables.setVisible(true);
     }
 
-    
-    
-    public void cargarTablaMateriasPrimas() throws ExpertoCostosVariablesException {
-
-        Object Item = pantallaABMCostosVariables.getComboBoxProducto().getSelectedItem();
-        DTOCostosVariables dtoCostosACargar = new DTOCostosVariables();
-
-        String nombreArticulo = "Producto Intermedio Base";
-        if (Item.toString() == "Producto Intermedio Base") {
-        }
-        MaestroDeArticulo maestroArtSelecc = modeloComboBoxMateriaPrima.getMaestroArtSeleccionado();
-        if (maestroArtSelecc.getNombre().equals(nombreArticulo)) {
-
-            productoIntermedioBase = expertoABMCostosVariables.buscarProductoIntermedioBase();
-            List<CostoVariable> costosVariablesEncontrados = expertoABMCostosVariables.buscarCostosVariables(productoIntermedioBase);
-            double costo = 0.0;
-            for (CostoVariable costoVariable : costosVariablesEncontrados) {
-                costo = costo + costoVariable.getCosto();
-
-            }
-//            double cantidadpr = Double.valueOf(pantallaABMCostosVariables.getCampoCAntidad().getText());
-//            double cossssto = (cantidadpr * costo) / 500;
-//            dtoCostosACargar.setNombreProducto("Producto Intermedio Base");
-//            dtoCostosACargar.setCantidad(pantallaABMCostosVariables.getCampoCAntidad().getText());
-//            dtoCostosACargar.setCostoUnitario(String.valueOf(cossssto));
-//            dtoCostosACargar.setCostoTotal(String.valueOf(cossssto));
-//            modeloTablaMateriasPrimas.addRow(dtoCostosACargar);
-
-        } else {
-            dtoCostosACargar.setNombreProducto(maestroArtSelecc.getNombre());
-            //     dtoCostosACargar.setCantidad(pantallaABMCostosVariables.getCampoCAntidad().getText());
-            //   dtoCostosACargar.setCostoUnitario(String.valueOf(maestroArtSelecc.getCostoUnitarioPorOmision()));
-            //  dtoCostosACargar.setCostoTotal(String.valueOf((maestroArtSelecc.getCostoUnitarioPorOmision() * Double.valueOf(pantallaABMCostosVariables.getCampoCAntidad().getText()))));
-            modeloTablaMateriasPrimas.addRow(dtoCostosACargar);
-        }
-
-
-
-
-    }
-
     public void listarCostosVariables() throws ExpertoCostosVariablesException {
-      
+
         modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar();
         modeloComboBoxMateriaPrimaEditar = new ModeloComboBoxMateriaPrimaEditar(expertoABMCostosVariables.buscarMaestroArticulo());
         modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar();
         modeloComboBoxCentroTrabajoEditar = new ModeloComboBoxCentroDeTrabajoEditar(expertoABMCostosVariables.buscarCentroDeTrabajo());
-        modeloTablaCentroTrabajoEditar = new ModeloTablaCentroDeTrabajoEditar();
-        modeloTablaMateriasPrimasEditar = new ModeloTablaMateriasPrimasEditar();
-        modeloTablaCentroTrabajoEditarEnMemoria = new ModeloTablaCentroDeTrabajoEditar();
-        modeloTablaMateriasPrimasEditarEnMemoria = new ModeloTablaMateriasPrimasEditar();
-      }
+    }
 
     public void buscarCostoVariableDelProducto() throws ExpertoCostosVariablesException {
 
+        limpiarPantalla();
         Object productoSeleccionado = pantallaABMCostosVariables.getComboBoxProducto().getSelectedItem();
+        List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = new ArrayList<DetalleEstructuraDeProducto>();
+        ProductoFinal prod = expertoABMCostosVariables.buscarProductoFinal((ProductoFinal) pantallaABMCostosVariables.getComboBoxProducto().getSelectedItem());
 
 
-        //if (productoSeleccionado.toString().equals("Desodorante para pisos lavanda")) {
+        double costoTotalMAteriasPrimas = 0.0;
+        double costoTOtalManoDeObra = 0.0;
+        double costoTotalGastosFAbricacion = 0.0;
 
-        productoFinal = expertoABMCostosVariables.buscarProductoFinal();
-        for (ProductoFinal prodFinal : productoFinal) {
-            if (prodFinal.getNombre().equals("Desodorante para pisos lavanda")) {
-                double costoTotalMAteriasPrimas = 0.0;
-                double costoTOtalManoDeObra = 0.0;
-                double costoTotalGastosFAbricacion = 0.0;
+        //busco los costos de materia prima para un lote optimo
+        detalleEstructuraProductoMateriasPrimas = prod.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
 
-                //busco los costos de materia prima para un lote optimo
-                List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = prodFinal.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : detalleEstructuraProductoMateriasPrimas) {
 
-                for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : detalleEstructuraProductoMateriasPrimas) {
-
-                    costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
-                }
-                //busco los costos de mano de obra
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion) {
-                    for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
-                        costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
-                    }
-
-                }
-                //busco los gastos de fabricacion
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion1 = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion1) {
-
-                    costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
-                }
-
-            } else if (prodFinal.getNombre().equals("Detergente de limon")) {
-                double costoTotalMAteriasPrimas = 0.0;
-                double costoTOtalManoDeObra = 0.0;
-                double costoTotalGastosFAbricacion = 0.0;
-
-                //busco los costos de materia prima para un lote optimo
-                List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = prodFinal.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-
-                for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : detalleEstructuraProductoMateriasPrimas) {
-
-                    costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
-                }
-                //busco los costos de mano de obra
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion) {
-                    for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
-                        costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
-                    }
-
-                }
-                //busco los gastos de fabricacion
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion1 = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion1) {
-
-                    costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
-                }
-
-            } else if (prodFinal.getNombre().equals("Enjuague para ropa imitacion vivere")) {
-                double costoTotalMAteriasPrimas = 0.0;
-                double costoTOtalManoDeObra = 0.0;
-                double costoTotalGastosFAbricacion = 0.0;
-
-                //busco los costos de materia prima para un lote optimo
-                List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = prodFinal.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
-
-                for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : detalleEstructuraProductoMateriasPrimas) {
-
-                    costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
-                }
-                //busco los costos de mano de obra
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion) {
-                    for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
-                        costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
-                    }
-
-                }
-                //busco los gastos de fabricacion
-                List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion1 = prodFinal.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
-
-                for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion1) {
-
-                    costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
-                }
-
-            }
+            costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
         }
+        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : prod.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+
+            costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
+        }
+        //busco los costos de mano de obra
+        List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion) {
+            for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
+                costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
+            }
+
+        }
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : prod.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion()) {
+            if (etapaDeRutaDeFabricacion.getMaestroCentroTrabajo() != null) {
+
+                for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
+                    costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
+                }
+            }
 
 
+        }
+        //busco los gastos de fabricacion
+        List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion1 = prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion1) {
+
+            costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
+        }
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion()) {
+
+            costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
+        }
+        DTOCostosVariables dtoCostos = new DTOCostosVariables();
+        dtoCostos.setNombreProducto(productoSeleccionado.toString());
+        dtoCostos.setCostoMateriaPrima(String.valueOf(costoTotalMAteriasPrimas));
+        dtoCostos.setCostosManoObra(String.valueOf(costoTOtalManoDeObra));
+        dtoCostos.setGastoFabricacion(String.valueOf(costoTotalGastosFAbricacion));
+        modeloTablaMateriasPrimas.addRow(dtoCostos);
+        pantallaABMCostosVariables.getTablaMateriaPrima().setModel(modeloTablaMateriasPrimas);
+        detalleEstructuraProductoMateriasPrimas = null;
     }
 
     public void limpiarPantalla() {
 
         modeloTablaMateriasPrimas.clear();
         modeloTablaMateriasPrimas.fireTableDataChanged();
-        modeloTablaCentroTrabajo.clear();
-        modeloTablaCentroTrabajo.fireTableDataChanged();
+
+
 
     }
 }

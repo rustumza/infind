@@ -18,7 +18,7 @@ public class ModeloTablaMateriasPrimas extends ModeloTabla{
 
     public ModeloTablaMateriasPrimas() {
 
-        super("Componente", "Cantidad", "Costo/Cantidad ($)");
+        super("Producto", "Costo Materia Prima", "Costo Mano de Obra", "Gastos de Fabricación");
     }
 
     @Override
@@ -32,10 +32,11 @@ public class ModeloTablaMateriasPrimas extends ModeloTabla{
             case 0:
                 return costos.getNombreProducto();
             case 1:
-                return costos.getCantidad();
+                return costos.getCostoMateriaPrima();
             case 2:
-                return costos.getCostoTotal();
-            
+                return costos.getCostosManoObra();
+            case 3:
+                return costos.getGastoFabricacion();
             default:
                 return "";
         }
