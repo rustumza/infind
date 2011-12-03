@@ -141,6 +141,9 @@ public class ControladorCrearOrdenDeFabricacion {
                 return;
             }            
             OrdenDeFabricacion ordenFab = experto.generarOrdenesPrimero(fecha, cantidadInt);
+            if(ordenFab == null){
+                JOptionPane.showMessageDialog(pantalla, "Error al generar la orden", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
             pantalla.getGenerar().setEnabled(false);
             pantalla.getTablaOrdenesDeCompraYProduccion().setModel(new ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion());
             pantalla.getTablaOrdenesDeProduccion().setModel(new ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion());
