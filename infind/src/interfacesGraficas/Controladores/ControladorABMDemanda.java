@@ -12,8 +12,6 @@ import expertos.ExpertoABMDemanda;
 import interfacesGraficas.ModeloTablas.ModeloTablaDemandas;
 import interfacesGraficas.PantallaABMDemanda;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 

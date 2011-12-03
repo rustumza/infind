@@ -32,17 +32,17 @@ public class ControladorPantallaMadre {
     public void iniciar() {
         pantalla.setVisible(true);
         pantalla.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+
         /*List<MaestroDeArticulo> lista = Fachada.getInstancia().buscar(MaestroDeArticulo.class, null);
         for (MaestroDeArticulo maestroDeArticulo : lista) {
-            Stock stock = new Stock();
-            stock.setCantidadFisicaReal((float)0);
-            stock.setCantidadPorEntrar((float)0);
-            stock.setCantidadReservada((float)0);
-            stock.setEliminado(Boolean.TRUE);
-            maestroDeArticulo.setStock(stock);
-            Fachada.getInstancia().guardar(stock);
-            Fachada.getInstancia().guardar(maestroDeArticulo);
+        Stock stock = new Stock();
+        stock.setCantidadFisicaReal((float)0);
+        stock.setCantidadPorEntrar((float)0);
+        stock.setCantidadReservada((float)0);
+        stock.setEliminado(Boolean.TRUE);
+        maestroDeArticulo.setStock(stock);
+        Fachada.getInstancia().guardar(stock);
+        Fachada.getInstancia().guardar(maestroDeArticulo);
         }
          * 
          */
@@ -136,8 +136,8 @@ public class ControladorPantallaMadre {
     public void crearOrdeDeProduccion() {
         new ControladorCrearOrdenDeFabricacion(this).iniciar();
     }
-    
-    public void abmCostosFijos(){
+
+    public void abmCostosFijos() {
         try {
             new ControladorABMCostosFijos(this).iniciar();
         } catch (ExpertoCostosFijosException ex) {
@@ -163,5 +163,9 @@ public class ControladorPantallaMadre {
 
     public void listarOrdenesDeFabricacion() {
         new ControladorListarOrdenesDeFabricacion(this).iniciar();
+    }
+
+    public void parametros() {
+        new ControladorParametros(this).iniciar();
     }
 }

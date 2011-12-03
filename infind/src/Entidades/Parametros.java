@@ -16,12 +16,22 @@ import javax.persistence.Id;
  */
 @Entity
 public class Parametros implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double alfa;
     private double beta;
+    private double gama;
+
+    public double getGama() {
+        return gama;
+    }
+
+    public void setGama(double gama) {
+        this.gama = gama;
+    }
     private String metodo;
     private double errorAceptable;
     private double periodosAPredecir;
@@ -98,5 +108,4 @@ public class Parametros implements Serializable {
     public String toString() {
         return "Entidades.Parametros[ id=" + id + " ]";
     }
-    
 }
