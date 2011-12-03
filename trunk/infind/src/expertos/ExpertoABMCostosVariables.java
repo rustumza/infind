@@ -81,13 +81,14 @@ public class ExpertoABMCostosVariables extends Experto {
         return productoIntermedioEncontrados.get(0);
     }
     
-    public List<ProductoFinal> buscarProductoFinal(){
+    public ProductoFinal buscarProductoFinal(ProductoFinal producto){
         List<ProductoFinal> productoFinalEncontrados = null;
         Criteria criterioFinalIntermedio = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
         criterioFinalIntermedio.add(Restrictions.eq("eliminado", false));
+        criterioFinalIntermedio.add(Restrictions.eq("codigo", producto.getCodigo()));
         productoFinalEncontrados = Fachada.getInstancia().buscar(ProductoFinal.class, criterioFinalIntermedio);
 
-        return productoFinalEncontrados;
+        return productoFinalEncontrados.get(0);
         
         
     }

@@ -13,9 +13,9 @@ public class DTOCostosVariables {
     
 
     private String nombreProducto;
-    private String cantidad;
-    private String costoUnitario;
-    private String costoTotal;
+    private String costosManoObra;
+    private String gastoFabricacion;
+    private String costoMateriaPrima;
     
     public DTOCostosVariables() {
     }
@@ -23,37 +23,35 @@ public class DTOCostosVariables {
 
     public DTOCostosVariables(String nombre, String cant, String cost, String costoTot) {
         this.nombreProducto = nombre;
-        this.cantidad = cant;
-        this.costoUnitario = cost;
-        this.costoTotal = costoTot;
+        this.costosManoObra = cant;
+        this.gastoFabricacion = cost;
+        this.costoMateriaPrima = costoTot;
         
 
     }
 
-    public String getCantidad() {
-        return cantidad;
+    public String getCostoMateriaPrima() {
+        return costoMateriaPrima;
     }
 
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
+    public void setCostoMateriaPrima(String costoMateriaPrima) {
+        this.costoMateriaPrima = costoMateriaPrima;
     }
 
-    public String getCostoTotal() {
-        return costoTotal;
+    public String getCostosManoObra() {
+        return costosManoObra;
     }
 
-    public void setCostoTotal(String costoTotal) {
-        this.costoTotal = costoTotal;
-    }
-    
-    
-
-    public String getCostoUnitario() {
-        return costoUnitario;
+    public void setCostosManoObra(String costosManoObra) {
+        this.costosManoObra = costosManoObra;
     }
 
-    public void setCostoUnitario(String costoUnitario) {
-        this.costoUnitario = costoUnitario;
+    public String getGastoFabricacion() {
+        return gastoFabricacion;
+    }
+
+    public void setGastoFabricacion(String gastoFabricacion) {
+        this.gastoFabricacion = gastoFabricacion;
     }
 
     public String getNombreProducto() {
@@ -63,7 +61,5 @@ public class DTOCostosVariables {
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
     }
-    
-    
     
 }
