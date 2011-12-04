@@ -5,7 +5,7 @@
 package interfacesGraficas.Controladores;
 
 import Entidades.Demanda;
-import Entidades.MaestroDeArticulo;
+import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoABMDemandaExcepcion;
 import expertos.ExpertoABMDemanda;
@@ -25,7 +25,7 @@ public class ControladorABMDemanda {
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMDemanda expertoABMDemanda;
     Demanda demandaSeleccionada;
-    List<MaestroDeArticulo> listaproductos;
+    List<ProductoFinal> listaproductos;
 
     public ControladorABMDemanda(ControladorPantallaMadre controlador) {
         controladorPantMadre = controlador;
@@ -63,12 +63,12 @@ public class ControladorABMDemanda {
                 Demanda nuevaDemanda = new Demanda();
                 nuevaDemanda.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
                 nuevaDemanda.setPeriodo(Integer.valueOf(pantallaABMDemanda.getjComboBoxPeriodo().getSelectedItem().toString()));
-                ((MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).addDemanda(nuevaDemanda);
+                ((ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).addDemanda(nuevaDemanda);
                 expertoABMDemanda.guardarDemanda(nuevaDemanda);
-                expertoABMDemanda.guardarProductos((MaestroDeArticulo)nuevaDemanda.getArticulo());
+                expertoABMDemanda.guardarProductos((ProductoFinal)nuevaDemanda.getArticulo());
                 JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                 ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
-                modeloTablaDemandas.setListaElementos(((MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).getDemanda());
+                modeloTablaDemandas.setListaElementos(((ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).getDemanda());
                 pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
                 pantallaABMDemanda.getCampoValorDemanda().setText("");
         } catch (NumberFormatException e) {
@@ -91,7 +91,7 @@ public class ControladorABMDemanda {
     }
 
     public void buscarDemandas() {
-        MaestroDeArticulo prod = (MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
+        ProductoFinal prod = (ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         modeloTablaDemandas.setListaElementos(prod.getDemanda());
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);

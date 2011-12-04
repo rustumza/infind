@@ -199,7 +199,7 @@ public class ControladorEditarPedidoAProveedor {
     public void editar() {
         try{
             int seleccionado = pantallaEditarPedidoAProveedor.getTablaDePedidos().getSelectedRow();
-            List<PedidoAProveedor> lista = experto.editar(seleccionado, Integer.parseInt(pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().getText()), (Proveedor)pantallaEditarPedidoAProveedor.getProveedorListBox().getSelectedItem(), pantallaEditarPedidoAProveedor.getSeConcreto().isSelected());
+            List<PedidoAProveedor> lista = experto.editar(seleccionado, Integer.valueOf(pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().getText()), (Proveedor)pantallaEditarPedidoAProveedor.getProveedorListBox().getSelectedItem(), pantallaEditarPedidoAProveedor.getSeConcreto().isSelected());
             ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
             mod.setListaElementos(lista);
             pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
