@@ -4,7 +4,9 @@
  */
 package interfacesGraficas.Controladores;
 
+import DTOs.DTOPE;
 import DTOs.DTOPuntoEquilibrio;
+import Entidades.Demanda;
 import Entidades.DetalleEstructuraDeProducto;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.MaestroDeArticulo;
@@ -13,7 +15,9 @@ import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoPuntoEquilibrioException;
 import expertos.ExpertoPuntoEquillibrio;
+import interfacesGraficas.ModeloTablas.ModeloListarPuntoEquilibrio;
 import interfacesGraficas.ModeloTablas.ModeloTablaPuntoEquilibrio;
+import interfacesGraficas.PantallaListarPuntoEquilibrio;
 import interfacesGraficas.PantallaPuntoDeEquilibrio;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -29,11 +33,15 @@ public class ControladorPuntoEquilibrio {
 
     ControladorPantallaMadre controlador;
     PantallaPuntoDeEquilibrio pantallaPuntoEquil;
+    PantallaListarPuntoEquilibrio pantallaListarPE;
     ModeloTablaPuntoEquilibrio modeloTablaPuntoEqui;
+    ModeloListarPuntoEquilibrio modeloListarPE;
     ExpertoPuntoEquillibrio expertoPuntoEquilibrio;
     MaestroDeArticulo productoEstandar;
     private List<MaestroDeArticulo> productoFinal;
     private NumberFormat nF = NumberFormat.getNumberInstance();
+    double relacionEnjuague = 0.0;
+    double relacionDesodorante = 0.0;
 
     public ControladorPuntoEquilibrio(ControladorPantallaMadre control) {
 
@@ -68,7 +76,7 @@ public class ControladorPuntoEquilibrio {
 
     public void buscarProducto() throws ExpertoPuntoEquilibrioException {
         if (pantallaPuntoEquil.getCampoVolumen().getText().equals("")) {
-            
+
             JOptionPane.showMessageDialog(pantallaPuntoEquil, "Debe ingresar un Volúmen de venta", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (!modeloTablaPuntoEqui.getListaElementos().isEmpty()) {
@@ -80,7 +88,7 @@ public class ControladorPuntoEquilibrio {
             ProductoFinal productoSeleccionado = (ProductoFinal) pantallaPuntoEquil.getComboBoxProducto().getSelectedItem();
             List<DTOPuntoEquilibrio> dtoPE = new ArrayList<DTOPuntoEquilibrio>();
             Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
-            double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado();
+            double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado(productoSeleccionado);
             dtoPE = expertoPuntoEquilibrio.calcularFilaDeTabla(valorVolumen, productoSeleccionado, costoVariableProductoSeleccionado);
             modeloTablaPuntoEqui.addAllRow(dtoPE);
             pantallaPuntoEquil.getCampoPE().setText(dtoPE.get(0).getPuntoEquilibrio());
@@ -255,8 +263,6 @@ public class ControladorPuntoEquilibrio {
         String text1 = pantallaPuntoEquil.getCampoCostoEnjuague().getText();
         String text2 = pantallaPuntoEquil.getCampoCostoDetergente().getText();
 
-        double relacionEnjuague = 0.0;
-        double relacionDesodorante = 0.0;
 
         relacionDesodorante = Double.valueOf(text2) / Double.valueOf(text);
         relacionEnjuague = Double.valueOf(text1) / Double.valueOf(text);
@@ -265,11 +271,11 @@ public class ControladorPuntoEquilibrio {
 
     }
 
-    public double costoVariableProductoSeleccionado() {
+    public double costoVariableProductoSeleccionado(ProductoFinal producto) {
 
 
         List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = new ArrayList<DetalleEstructuraDeProducto>();
-        ProductoFinal prod = expertoPuntoEquilibrio.buscarProductoFinal((ProductoFinal) pantallaPuntoEquil.getComboBoxProducto().getSelectedItem());
+        ProductoFinal prod = producto;//expertoPuntoEquilibrio.buscarProductoFinal((ProductoFinal) pantallaPuntoEquil.getComboBoxProducto().getSelectedItem());
 
         double costoTotalMAteriasPrimas = 0.0;
         double costoTOtalManoDeObra = 0.0;
@@ -322,8 +328,72 @@ public class ControladorPuntoEquilibrio {
 
         return costoVariableTotal;
     }
-    
-    
-    
+
     // hacer todo lo listado de PE del producto standard por periodo 
+    public void listarPE() {
+        pantallaListarPE = new PantallaListarPuntoEquilibrio(controlador.getPantalla(), true, this);
+        modeloListarPE = new ModeloListarPuntoEquilibrio();
+        pantallaListarPE.getTablaListadoDePE().setModel(modeloListarPE);
+        pantallaListarPE.setLocationRelativeTo(null);
+        pantallaListarPE.setVisible(true);
+    }
+
+    public void buscarPE() throws ExpertoPuntoEquilibrioException {
+        if (!modeloListarPE.getListaElementos().isEmpty()) {
+            modeloListarPE.clear();
+            modeloListarPE.fireTableDataChanged();
+
+        }
+        DTOPE dto = new DTOPE();
+        
+        //double demandaTotal = 0.0;
+        List<ProductoFinal> productoFinal = expertoPuntoEquilibrio.buscarProductoFinal();
+double demandaTotalProductoStandard = 0.0;
+            double demandaTotalProductoDesodorantte = 0.0;
+            double demandaTotalProductoEnjuague = 0.0;
+            double demandaTotalPeriodo = 0.0;
+        for (ProductoFinal producto : productoFinal) {
+            
+            
+            if (producto.getNombre().equals("Detergente de limon")) {// punto de equilibrio del estandard
+                DTOPuntoEquilibrio dtoPE = new DTOPuntoEquilibrio();
+                demandaTotalProductoStandard = producto.getDemanda().get(Integer.valueOf(pantallaListarPE.getComboBoxPeriodo().getSelectedItem().toString()) - 1).getDemandaHistorica();
+                //Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
+                double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado(producto);
+                dtoPE = expertoPuntoEquilibrio.calcularPEProductos(demandaTotalProductoStandard, producto, costoVariableProductoSeleccionado);
+                dto.setPePRodEstandar(dtoPE.getPuntoEquilibrio());
+            } else if (producto.getNombre().equals("Desodorante para pisos lavanda")) {
+                DTOPuntoEquilibrio dtoPE = new DTOPuntoEquilibrio();
+                demandaTotalProductoDesodorantte = producto.getDemanda().get(Integer.valueOf(pantallaListarPE.getComboBoxPeriodo().getSelectedItem().toString()) - 1).getDemandaHistorica();
+                //Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
+                double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado(producto);
+                dtoPE = expertoPuntoEquilibrio.calcularPEProductos(demandaTotalProductoDesodorantte, producto, costoVariableProductoSeleccionado);
+               // dto.setPeDesodorante(dtoPE.getPuntoEquilibrio());
+                demandaTotalProductoDesodorantte = demandaTotalProductoDesodorantte * relacionDesodorante;
+            } else if (producto.getNombre().equals("Enjuague para ropa imitacion vivere")) {
+                DTOPuntoEquilibrio dtoPE = new DTOPuntoEquilibrio();
+                demandaTotalProductoEnjuague = producto.getDemanda().get(Integer.valueOf(pantallaListarPE.getComboBoxPeriodo().getSelectedItem().toString()) - 1).getDemandaHistorica();
+                //Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
+                double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado(producto);
+                dtoPE = expertoPuntoEquilibrio.calcularPEProductos(demandaTotalProductoEnjuague, producto, costoVariableProductoSeleccionado);
+                //dto.setPeEnjuague(dtoPE.getPuntoEquilibrio());
+                demandaTotalProductoEnjuague = demandaTotalProductoEnjuague * relacionEnjuague;
+            }
+            demandaTotalPeriodo = demandaTotalProductoDesodorantte + demandaTotalProductoEnjuague + demandaTotalProductoStandard;
+            dto.setTotalDemandaPeriodo(String.valueOf(demandaTotalPeriodo));
+
+        }
+
+        modeloListarPE.addRow(dto);
+        pantallaListarPE.getTablaListadoDePE().setModel(modeloListarPE);
+//buscar las demandas del periodo seleccionado y sumarlas
+
+
+
+        //calcular el ingreso por venta del producto estandar dependiendo de su lote optimo
+        // calcular el ingreso por venta del producto seleccionado en base a la cantidad de demanda obtenida anteriormente
+        // convertirla al valor de producto estandar
+
+
+    }
 }

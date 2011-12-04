@@ -102,6 +102,11 @@ ControladorPuntoEquilibrio controlador;
         botonListadoPE.setFocusable(false);
         botonListadoPE.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonListadoPE.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonListadoPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonListadoPEActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonListadoPE);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -391,6 +396,10 @@ ControladorPuntoEquilibrio controlador;
             Logger.getLogger(PantallaPuntoDeEquilibrio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+private void botonListadoPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListadoPEActionPerformed
+    controlador.listarPE();
+}//GEN-LAST:event_botonListadoPEActionPerformed
 
     /**
      * @param args the command line arguments

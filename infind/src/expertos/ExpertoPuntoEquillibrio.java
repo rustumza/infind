@@ -115,7 +115,7 @@ public class ExpertoPuntoEquillibrio extends Experto{
              //cv/unidad: es el costo variable sobre la demanda
              dtoPuntoEquilibrio.setCvUnidad(String.valueOf(totalCostosVariables / volumenes.get(i)));
              // faltaria calcular el Punto de equilibrio(cuando el ingreso por venta corta al costo total, el valor de volumen que da , es el punto de equilibrio)
-             dtoPuntoEquilibrio.setPuntoEquilibrio(String.valueOf(totalCostosFijos / (producto.getPrecioBase()-(totalCostosVariables/500))));
+             dtoPuntoEquilibrio.setPuntoEquilibrio(String.valueOf(totalCostosFijos / (producto.getPrecioBase()-(totalCostosVariables/producto.getTamanioLoteEstandar()))));
              dtosADevolver.add(dtoPuntoEquilibrio);
              
              
@@ -126,6 +126,29 @@ public class ExpertoPuntoEquillibrio extends Experto{
         return  dtosADevolver;
         
     }
+    
+    public DTOPuntoEquilibrio calcularPEProductos(double demanda, ProductoFinal producto, double costoVariable) throws ExpertoPuntoEquilibrioException {
+       
+       double totalCostosFijos = 0.0;
+       double totalCostosVariables =costoVariable;
+       double costoTotal = 0.0;
+       double ingresoXVenta = 0.0;
+       //costos fijos: los busco en la base de datos y los sumo
+        List<CostosFijos> costosFijosDevueltos = buscarCostosFijos();
+        for (CostosFijos costosFijos : costosFijosDevueltos) {
+            totalCostosFijos = totalCostosFijos + costosFijos.getCosto();
+        }
+        // lleno los dto (cada dto es una fila)
+       
+             DTOPuntoEquilibrio dtoPuntoEquilibrio = new DTOPuntoEquilibrio();
+             
+             dtoPuntoEquilibrio.setPuntoEquilibrio(String.valueOf(totalCostosFijos / (producto.getPrecioBase()-(totalCostosVariables/producto.getTamanioLoteEstandar()))));
+             
+             
+        return  dtoPuntoEquilibrio;
+        
+    }
+    
     
     public List<CostosFijos> buscarCostosFijos(){
         List<CostosFijos> costosFijosEcontrados = null;
