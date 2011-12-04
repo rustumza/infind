@@ -47,7 +47,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String nombre;
     private String observacion;
     private float precioBase;
-    private int tamanioLoteEstandar;
+    private float tamanioLoteEstandar;
     private String tipo;
     private String ubicacionEnAlmacen;
     private String unidadDeMedida;
@@ -60,7 +60,10 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<CostoVariable> costosVariables;
-
+    private float costoDePedido;
+    private float costoDeAlmacenamiento;
+    private String tipoInventario;
+    
     public Long getId() {
         return id;
     }
@@ -181,11 +184,11 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
         this.stock = stock;
     }
 
-    public int getTamanioLoteEstandar() {
+    public float getTamanioLoteEstandar() {
         return tamanioLoteEstandar;
     }
 
-    public void setTamanioLoteEstandar(int tamanioLoteEstandar) {
+    public void setTamanioLoteEstandar(float tamanioLoteEstandar) {
         this.tamanioLoteEstandar = tamanioLoteEstandar;
     }
 
@@ -220,6 +223,32 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public void setTiempoDeObtenecion(int tiempoDeObtenecion) {
         this.tiempoDeObtenecion = tiempoDeObtenecion;
     }
+
+    public float getCostoDeAlmacenamiento() {
+        return costoDeAlmacenamiento;
+    }
+
+    public void setCostoDeAlmacenamiento(float costoDeAlmacenamiento) {
+        this.costoDeAlmacenamiento = costoDeAlmacenamiento;
+    }
+
+    public float getCostoDePedido() {
+        return costoDePedido;
+    }
+
+    public void setCostoDePedido(float costoDePedido) {
+        this.costoDePedido = costoDePedido;
+    }
+
+    public String getTipoInventario() {
+        return tipoInventario;
+    }
+
+    public void setTipoInventario(String tipoInventario) {
+        this.tipoInventario = tipoInventario;
+    }
+    
+    
 
     @Override
     public int hashCode() {

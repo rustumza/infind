@@ -179,7 +179,11 @@
                                       <Component id="categoriaListBox" min="-2" pref="58" max="-2" attributes="0"/>
                                       <Component id="unidadDeMedidaListBox" min="-2" max="-2" attributes="0"/>
                                       <Component id="costoUnitarioPorOmisionTextBox" alignment="0" min="-2" pref="109" max="-2" attributes="1"/>
-                                      <Component id="tamanioLoteEstandarTextBox" min="-2" pref="98" max="-2" attributes="1"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="tamanioLoteEstandarTextBox" min="-2" pref="98" max="-2" attributes="1"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" pref="233" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="ubicacionAlamcenTextBox" min="-2" pref="165" max="-2" attributes="1"/>
                                       <Component id="jScrollPane3" min="-2" pref="352" max="-2" attributes="1"/>
                                   </Group>
@@ -281,6 +285,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="tamanioLoteEstandarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tamanioLoteEstandarTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -498,6 +503,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tiempo de obtenci&#xf3;n (d&#xed;as)"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de inventarios"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

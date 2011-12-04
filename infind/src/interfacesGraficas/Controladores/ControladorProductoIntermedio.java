@@ -21,7 +21,7 @@ import persistencia.Fachada;
  *
  * @author rustu
  */
-public class ControladorProductoIntermedio {
+public class ControladorProductoIntermedio implements Controlador{
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearProductoIntermedio pantallaCrearProductoIntermedio;
@@ -101,7 +101,7 @@ public class ControladorProductoIntermedio {
         }
         
         try{
-            proInter.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearProductoIntermedio.getTamanioLoteEstandarTextBox().getText()));
+            proInter.setTamanioLoteEstandar(Float.valueOf(pantallaCrearProductoIntermedio.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaCrearProductoIntermedio, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearProductoIntermedio.getTamanioLoteEstandarTextBox().requestFocus();
@@ -117,7 +117,9 @@ public class ControladorProductoIntermedio {
         proInter.setUbicacionEnAlmacen(pantallaCrearProductoIntermedio.getUbicacionAlamcenTextBox().getText());
         proInter.setObservacion(pantallaCrearProductoIntermedio.getObservacionTextArea().getText());
         proInter.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoIntermedio.getProductoIQERelacionadoListBox().getSelectedItem());
-        
+        proInter.setTipoInventario(null);
+        proInter.setCostoDeAlmacenamiento((float)0);
+        proInter.setCostoDePedido((float)0);
         experto.guardar(proInter);
         
         
@@ -206,7 +208,7 @@ public class ControladorProductoIntermedio {
         }
         
         try{
-            proInter.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().getText()));
+            proInter.setTamanioLoteEstandar(Float.valueOf(pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoIntermedio, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().requestFocus();
@@ -226,6 +228,14 @@ public class ControladorProductoIntermedio {
         
         
         JOptionPane.showMessageDialog(pantallaEditarProductoIntermedio, "Producto Intermedio guardado con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void gestionDeInventario() {
+       new ControladorGestionDeInventarios(controladorPantallaMadre, this).iniciar(experto.getProductoIntermedio());
+    }
+
+    public void actualizarPorGestionDeInventarios() {
+         pantallaEditarProductoIntermedio.getTamanioLoteEstandarTextBox().setText(String.valueOf(experto.getProductoIntermedio().getTamanioLoteEstandar()));
     }
     
     
