@@ -8,7 +8,7 @@ import Entidades.Demanda;
 import Entidades.MaestroDeArticulo;
 import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
-import excepciones.ExpertoCostosFijosException;
+import excepciones.ExpertoABMDemandaExcepcion;
 import expertos.ExpertoABMDemanda;
 import interfacesGraficas.ModeloTablas.ModeloTablaDemandas;
 import interfacesGraficas.PantallaABMDemanda;
@@ -36,7 +36,7 @@ public class ControladorABMDemanda {
 
     }
 
-    public void iniciar() throws ExpertoCostosFijosException {
+    public void iniciar() throws ExpertoABMDemandaExcepcion {
         pantallaABMDemanda = new PantallaABMDemanda(controladorPantMadre.getPantalla(), true, this);
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
@@ -60,10 +60,6 @@ public class ControladorABMDemanda {
         modeloTablaDemandas.fireTableDataChanged();
         pantallaABMDemanda.getCampoValorDemanda().setText("");
         pantallaABMDemanda.getBotonGuardar().setEnabled(true);
-    }
-
-    public void editarDemanda() {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public void guardarDemanda() {
@@ -105,7 +101,6 @@ public class ControladorABMDemanda {
         ProductoFinal prod = (ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         modeloTablaDemandas.setListaElementos(prod.getDemanda());
-        pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
     }
 }
