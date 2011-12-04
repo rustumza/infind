@@ -5,6 +5,7 @@
 package expertos;
 
 import Entidades.Demanda;
+import Entidades.MaestroDeArticulo;
 import Entidades.Parametros;
 import excepciones.ExpertoCalcularDemandaException;
 import excepciones.ExpertoCostosFijosException;
@@ -28,5 +29,13 @@ public class ExpertoCalcularDemanda extends Experto {
 
     public void guardarDemanda(Demanda demanda) {
         Fachada.getInstancia().guardar(demanda);
+    }
+
+    public List<MaestroDeArticulo> buscarProductos() {
+                List<MaestroDeArticulo> productosEncontrados = null;
+        Criteria criterioProducto = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeArticulo.class);
+        criterioProducto.add(Restrictions.eq("eliminado", false));
+        productosEncontrados = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioProducto);
+        return productosEncontrados;
     }
 }

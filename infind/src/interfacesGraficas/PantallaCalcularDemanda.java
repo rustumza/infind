@@ -64,6 +64,8 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         jLabelMetodo2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxListaProductos = new javax.swing.JComboBox();
+        jLabelFactor = new javax.swing.JLabel();
+        jLabelFactor2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCalculosDemanda = new javax.swing.JTable();
@@ -79,6 +81,11 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         botonCalcular.setFocusable(false);
         botonCalcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCalcular.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalcularActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonCalcular);
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
@@ -113,8 +120,8 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         jPanel1.add(jToolBar1, gridBagConstraints);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Parametros"));
-        jPanel2.setMinimumSize(new java.awt.Dimension(350, 290));
-        jPanel2.setPreferredSize(new java.awt.Dimension(350, 290));
+        jPanel2.setMinimumSize(new java.awt.Dimension(350, 320));
+        jPanel2.setPreferredSize(new java.awt.Dimension(350, 320));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabelAlfa.setText("Alfa:");
@@ -216,7 +223,7 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         jLabel1.setText("Producto Final:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
@@ -224,10 +231,26 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         jComboBoxListaProductos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 0);
+        jPanel2.add(jComboBoxListaProductos, gridBagConstraints);
+
+        jLabelFactor.setText("% Factor ponderacion");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel2.add(jLabelFactor, gridBagConstraints);
+
+        jLabelFactor2.setText("factor");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel2.add(jComboBoxListaProductos, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelFactor2, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -286,7 +309,7 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
@@ -297,8 +320,12 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-controlador.guardar();
+        controlador.guardar();
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
+        controlador.buscarDemandas();
+    }//GEN-LAST:event_botonCalcularActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -314,6 +341,8 @@ controlador.guardar();
     private javax.swing.JLabel jLabelBeta2;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JLabel jLabelError2;
+    private javax.swing.JLabel jLabelFactor;
+    private javax.swing.JLabel jLabelFactor2;
     private javax.swing.JLabel jLabelGama;
     private javax.swing.JLabel jLabelGama2;
     private javax.swing.JLabel jLabelMetodo;
@@ -327,6 +356,22 @@ controlador.guardar();
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable tablaCalculosDemanda;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getjLabelFactor() {
+        return jLabelFactor;
+    }
+
+    public void setjLabelFactor(JLabel jLabelFactor) {
+        this.jLabelFactor = jLabelFactor;
+    }
+
+    public JLabel getjLabelFactor2() {
+        return jLabelFactor2;
+    }
+
+    public void setjLabelFactor2(JLabel jLabelFactor2) {
+        this.jLabelFactor2 = jLabelFactor2;
+    }
 
     public JTable getTablaCalculosDemanda() {
         return tablaCalculosDemanda;
@@ -519,6 +564,4 @@ controlador.guardar();
     public void setjToolBar1(JToolBar jToolBar1) {
         this.jToolBar1 = jToolBar1;
     }
-
-   
 }

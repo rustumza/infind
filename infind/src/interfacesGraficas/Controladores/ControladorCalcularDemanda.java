@@ -4,9 +4,10 @@
  */
 package interfacesGraficas.Controladores;
 
+import DTOs.DTOPromedioPonderadoMovil;
 import Entidades.Demanda;
+import Entidades.MaestroDeArticulo;
 import Entidades.Parametros;
-import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoCalcularDemandaException;
 import expertos.ExpertoCalcularDemanda;
@@ -17,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +33,8 @@ public class ControladorCalcularDemanda {
     ExpertoCalcularDemanda expertoCalcularDemanda;
     Demanda nuevaDemanda = null;
     List<Parametros> parametros = null;
+    List<MaestroDeArticulo> articulos;
+    
 
     public ControladorCalcularDemanda(ControladorPantallaMadre controlador) {
         controladorPantMadre = controlador;
@@ -42,6 +46,7 @@ public class ControladorCalcularDemanda {
 
             public void actionPerformed(ActionEvent e) {
                 buscarDemandas();
+                calcularPPMovil();
             }
         });
     }
@@ -61,18 +66,10 @@ public class ControladorCalcularDemanda {
             pantallaCalcularDemanda.setVisible(true);
         }
         buscarParametros();
+        
     }
 
     public void guardar() {
-//        nuevoParametros = new Parametros();
-//        nuevoParametros.setAlfa(Double.valueOf(pantallaCalcularDemanda.getjComboBoxAlfa().getSelectedItem().toString()));
-//        nuevoParametros.setBeta(Double.valueOf(pantallaCalcularDemanda.getjComboBoxBeta().getSelectedItem().toString()));
-//        nuevoParametros.setGama(Double.valueOf(pantallaCalcularDemanda.getjComboBoxGama().getSelectedItem().toString()));
-//        nuevoParametros.setPeriodosAPredecir(Integer.valueOf(pantallaCalcularDemanda.getComboBoxPeriodos().getSelectedItem().toString()));
-//        nuevoParametros.setErrorAceptable(Double.valueOf(pantallaCalcularDemanda.getjComboBoxError().getSelectedItem().toString()));
-//        nuevoParametros.setMetodo(pantallaCalcularDemanda.getjComboBoxMetodo().getSelectedItem().toString());
-//        expertoCalcularDemanda.guardarParametros(nuevoParametros);
-//        JOptionPane.showMessageDialog(pantallaCalcularDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void buscarParametros() throws ExpertoCalcularDemandaException {
@@ -85,13 +82,32 @@ public class ControladorCalcularDemanda {
         pantallaCalcularDemanda.getjLabelPeriodos2().setText(String.valueOf(parametros.get(ultimo).getPeriodosAPredecir()));
         pantallaCalcularDemanda.getjLabelError2().setText(String.valueOf(parametros.get(ultimo).getErrorAceptable()));
         pantallaCalcularDemanda.getjLabelMetodo2().setText(String.valueOf(parametros.get(ultimo).getMetodo()));
-        
+        articulos = expertoCalcularDemanda.buscarProductos();
+        pantallaCalcularDemanda.getjComboBoxListaProductos().setModel(new DefaultComboBoxModel(articulos.toArray()));
     }
 
     public void buscarDemandas() {
-        ProductoFinal prod = (ProductoFinal) pantallaCalcularDemanda.getjComboBoxListaProductos().getSelectedItem();
+        MaestroDeArticulo prod = (MaestroDeArticulo) pantallaCalcularDemanda.getjComboBoxListaProductos().getSelectedItem();
         ModeloTablaCalcularDemandas modeloTablaCalcularDemandas = new ModeloTablaCalcularDemandas();
         modeloTablaCalcularDemandas.setListaElementos(prod.getDemanda());
         pantallaCalcularDemanda.getTablaCalculosDemanda().setModel(modeloTablaCalcularDemandas);
+    }
+    
+    public void calcularPPMovil(){
+        MaestroDeArticulo productoSeleccionado = (MaestroDeArticulo) pantallaCalcularDemanda.getjComboBoxListaProductos().getSelectedItem();
+        List<Demanda> demanda = productoSeleccionado.getDemanda();
+        double factor = 0.1;// Todavia falta esto (Double.parseDouble(pantallaCalcularDemanda.getjLabelFactor2().getText()));
+        int incremento = (int) factor;
+        int periodoAPredecir = (Integer.parseInt(pantallaCalcularDemanda.getjLabelPeriodos2().getText()));
+        int periodoInicial = demanda.size() - periodoAPredecir;
+        int periodoFinal = demanda.size();
+        List<DTOPromedioPonderadoMovil> dtoPPMovil = new ArrayList<DTOPromedioPonderadoMovil>();
+        for (int i = periodoInicial; i < periodoFinal; i++) {
+            //obtener las demandas de los periodos y multiplicrlas por 
+            // el factor, dar una vuelta mas del for e incrementar el factor
+            dtoPPMovil.get(i).setDemandaPronosticada(incremento *demanda.get(i).getDemandaHistorica());
+            incremento+= factor;
+            System.out.println("Demanda con Promedio Movil Ponderado: " + dtoPPMovil.get(i).getDemandaPronosticada());
+        }
     }
 }
