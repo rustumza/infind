@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JToolBar;
 
 /**
@@ -44,27 +46,40 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
+        botonCalcular = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        comboBoxPeriodos = new javax.swing.JComboBox();
         jLabelAlfa = new javax.swing.JLabel();
         jLabelPeriodos = new javax.swing.JLabel();
-        jComboBoxAlfa = new javax.swing.JComboBox();
         jLabelBeta = new javax.swing.JLabel();
-        jComboBoxBeta = new javax.swing.JComboBox();
         jLabelGama = new javax.swing.JLabel();
-        jComboBoxGama = new javax.swing.JComboBox();
         jLabelError = new javax.swing.JLabel();
-        jComboBoxError = new javax.swing.JComboBox();
         jLabelMetodo = new javax.swing.JLabel();
-        jComboBoxMetodo = new javax.swing.JComboBox();
+        jLabelPeriodos2 = new javax.swing.JLabel();
+        jLabelAlfa2 = new javax.swing.JLabel();
+        jLabelBeta2 = new javax.swing.JLabel();
+        jLabelGama2 = new javax.swing.JLabel();
+        jLabelError2 = new javax.swing.JLabel();
+        jLabelMetodo2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBoxListaProductos = new javax.swing.JComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaCalculosDemanda = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
+
+        botonCalcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/agt_action_success-20.png"))); // NOI18N
+        botonCalcular.setToolTipText("Calcular");
+        botonCalcular.setFocusable(false);
+        botonCalcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCalcular.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(botonCalcular);
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
         botonGuardar.setToolTipText("Guardar");
@@ -102,14 +117,6 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 290));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        comboBoxPeriodos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(comboBoxPeriodos, gridBagConstraints);
-
         jLabelAlfa.setText("Alfa:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -126,14 +133,6 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelPeriodos, gridBagConstraints);
 
-        jComboBoxAlfa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(jComboBoxAlfa, gridBagConstraints);
-
         jLabelBeta.setText("Beta:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -141,14 +140,6 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelBeta, gridBagConstraints);
-
-        jComboBoxBeta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(jComboBoxBeta, gridBagConstraints);
 
         jLabelGama.setText("Gama:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -158,14 +149,6 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelGama, gridBagConstraints);
 
-        jComboBoxGama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(jComboBoxGama, gridBagConstraints);
-
         jLabelError.setText("% de error aceptable:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -174,29 +157,77 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelError, gridBagConstraints);
 
-        jComboBoxError.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "5", "10", "20", "30", "40", "50" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(jComboBoxError, gridBagConstraints);
-
         jLabelMetodo.setText("Metodo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
         jPanel2.add(jLabelMetodo, gridBagConstraints);
 
-        jComboBoxMetodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Promedio ponderado movil", "Promedio ponderado Exponencialmente", "Metodo Regresion lineal", "Metodo Estacionalidad" }));
+        jLabelPeriodos2.setText("periodo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 10);
-        jPanel2.add(jComboBoxMetodo, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelPeriodos2, gridBagConstraints);
+
+        jLabelAlfa2.setText("alfa");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelAlfa2, gridBagConstraints);
+
+        jLabelBeta2.setText("beta");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelBeta2, gridBagConstraints);
+
+        jLabelGama2.setText("gama");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelGama2, gridBagConstraints);
+
+        jLabelError2.setText("error");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelError2, gridBagConstraints);
+
+        jLabelMetodo2.setText("metodo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 0, 0);
+        jPanel2.add(jLabelMetodo2, gridBagConstraints);
+
+        jLabel1.setText("Producto Final:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 0, 0);
+        jPanel2.add(jLabel1, gridBagConstraints);
+
+        jComboBoxListaProductos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        jPanel2.add(jComboBoxListaProductos, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -206,19 +237,56 @@ public class PantallaCalcularDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel1.add(jPanel2, gridBagConstraints);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Calculos"));
+
+        tablaCalculosDemanda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaCalculosDemanda);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(306, 306, 306))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,39 +303,45 @@ controlador.guardar();
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCalcular;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JComboBox comboBoxPeriodos;
-    private javax.swing.JComboBox jComboBoxAlfa;
-    private javax.swing.JComboBox jComboBoxBeta;
-    private javax.swing.JComboBox jComboBoxError;
-    private javax.swing.JComboBox jComboBoxGama;
-    private javax.swing.JComboBox jComboBoxMetodo;
+    private javax.swing.JComboBox jComboBoxListaProductos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAlfa;
+    private javax.swing.JLabel jLabelAlfa2;
     private javax.swing.JLabel jLabelBeta;
+    private javax.swing.JLabel jLabelBeta2;
     private javax.swing.JLabel jLabelError;
+    private javax.swing.JLabel jLabelError2;
     private javax.swing.JLabel jLabelGama;
+    private javax.swing.JLabel jLabelGama2;
     private javax.swing.JLabel jLabelMetodo;
+    private javax.swing.JLabel jLabelMetodo2;
     private javax.swing.JLabel jLabelPeriodos;
+    private javax.swing.JLabel jLabelPeriodos2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tablaCalculosDemanda;
     // End of variables declaration//GEN-END:variables
 
-    public JLabel getjLabelMetodo() {
-        return jLabelMetodo;
+    public JTable getTablaCalculosDemanda() {
+        return tablaCalculosDemanda;
     }
 
-    public void setjLabelMetodo(JLabel jLabelMetodo) {
-        this.jLabelMetodo = jLabelMetodo;
+    public void setTablaCalculosDemanda(JTable tablaCalculosDemanda) {
+        this.tablaCalculosDemanda = tablaCalculosDemanda;
     }
 
-    public JComboBox getjComboBoxMetodo() {
-        return jComboBoxMetodo;
+    public JButton getBotonCalcular() {
+        return botonCalcular;
     }
 
-    public void setjComboBoxMetodo(JComboBox jComboBoxMetodo) {
-        this.jComboBoxMetodo = jComboBoxMetodo;
+    public void setBotonCalcular(JButton botonCalcular) {
+        this.botonCalcular = botonCalcular;
     }
 
     public JButton getBotonGuardar() {
@@ -276,86 +350,6 @@ controlador.guardar();
 
     public void setBotonGuardar(JButton botonGuardar) {
         this.botonGuardar = botonGuardar;
-    }
-
-    public JComboBox getComboBoxPeriodos() {
-        return comboBoxPeriodos;
-    }
-
-    public void setComboBoxPeriodos(JComboBox comboBoxPeriodos) {
-        this.comboBoxPeriodos = comboBoxPeriodos;
-    }
-
-    public JComboBox getjComboBoxAlfa() {
-        return jComboBoxAlfa;
-    }
-
-    public void setjComboBoxAlfa(JComboBox jComboBoxAlfa) {
-        this.jComboBoxAlfa = jComboBoxAlfa;
-    }
-
-    public JComboBox getjComboBoxBeta() {
-        return jComboBoxBeta;
-    }
-
-    public void setjComboBoxBeta(JComboBox jComboBoxBeta) {
-        this.jComboBoxBeta = jComboBoxBeta;
-    }
-
-    public JComboBox getjComboBoxError() {
-        return jComboBoxError;
-    }
-
-    public void setjComboBoxError(JComboBox jComboBoxError) {
-        this.jComboBoxError = jComboBoxError;
-    }
-
-    public JComboBox getjComboBoxGama() {
-        return jComboBoxGama;
-    }
-
-    public void setjComboBoxGama(JComboBox jComboBoxGama) {
-        this.jComboBoxGama = jComboBoxGama;
-    }
-
-    public JLabel getjLabelAlfa() {
-        return jLabelAlfa;
-    }
-
-    public void setjLabelAlfa(JLabel jLabelAlfa) {
-        this.jLabelAlfa = jLabelAlfa;
-    }
-
-    public JLabel getjLabelBeta() {
-        return jLabelBeta;
-    }
-
-    public void setjLabelBeta(JLabel jLabelBeta) {
-        this.jLabelBeta = jLabelBeta;
-    }
-
-    public JLabel getjLabelError() {
-        return jLabelError;
-    }
-
-    public void setjLabelError(JLabel jLabelError) {
-        this.jLabelError = jLabelError;
-    }
-
-    public JLabel getjLabelGama() {
-        return jLabelGama;
-    }
-
-    public void setjLabelGama(JLabel jLabelGama) {
-        this.jLabelGama = jLabelGama;
-    }
-
-    public JLabel getjLabelPeriodos() {
-        return jLabelPeriodos;
-    }
-
-    public void setjLabelPeriodos(JLabel jLabelPeriodos) {
-        this.jLabelPeriodos = jLabelPeriodos;
     }
 
     public JButton getBotonSalir() {
@@ -374,6 +368,118 @@ controlador.guardar();
         this.controlador = controlador;
     }
 
+    public JComboBox getjComboBoxListaProductos() {
+        return jComboBoxListaProductos;
+    }
+
+    public void setjComboBoxListaProductos(JComboBox jComboBoxListaProductos) {
+        this.jComboBoxListaProductos = jComboBoxListaProductos;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabelAlfa() {
+        return jLabelAlfa;
+    }
+
+    public void setjLabelAlfa(JLabel jLabelAlfa) {
+        this.jLabelAlfa = jLabelAlfa;
+    }
+
+    public JLabel getjLabelAlfa2() {
+        return jLabelAlfa2;
+    }
+
+    public void setjLabelAlfa2(JLabel jLabelAlfa2) {
+        this.jLabelAlfa2 = jLabelAlfa2;
+    }
+
+    public JLabel getjLabelBeta() {
+        return jLabelBeta;
+    }
+
+    public void setjLabelBeta(JLabel jLabelBeta) {
+        this.jLabelBeta = jLabelBeta;
+    }
+
+    public JLabel getjLabelBeta2() {
+        return jLabelBeta2;
+    }
+
+    public void setjLabelBeta2(JLabel jLabelBeta2) {
+        this.jLabelBeta2 = jLabelBeta2;
+    }
+
+    public JLabel getjLabelError() {
+        return jLabelError;
+    }
+
+    public void setjLabelError(JLabel jLabelError) {
+        this.jLabelError = jLabelError;
+    }
+
+    public JLabel getjLabelError2() {
+        return jLabelError2;
+    }
+
+    public void setjLabelError2(JLabel jLabelError2) {
+        this.jLabelError2 = jLabelError2;
+    }
+
+    public JLabel getjLabelGama() {
+        return jLabelGama;
+    }
+
+    public void setjLabelGama(JLabel jLabelGama) {
+        this.jLabelGama = jLabelGama;
+    }
+
+    public JLabel getjLabelGama2() {
+        return jLabelGama2;
+    }
+
+    public void setjLabelGama2(JLabel jLabelGama2) {
+        this.jLabelGama2 = jLabelGama2;
+    }
+
+    public JLabel getjLabelMetodo() {
+        return jLabelMetodo;
+    }
+
+    public void setjLabelMetodo(JLabel jLabelMetodo) {
+        this.jLabelMetodo = jLabelMetodo;
+    }
+
+    public JLabel getjLabelMetodo2() {
+        return jLabelMetodo2;
+    }
+
+    public void setjLabelMetodo2(JLabel jLabelMetodo2) {
+        this.jLabelMetodo2 = jLabelMetodo2;
+    }
+
+    public JLabel getjLabelPeriodos() {
+        return jLabelPeriodos;
+    }
+
+    public void setjLabelPeriodos(JLabel jLabelPeriodos) {
+        this.jLabelPeriodos = jLabelPeriodos;
+    }
+
+    public JLabel getjLabelPeriodos2() {
+        return jLabelPeriodos2;
+    }
+
+    public void setjLabelPeriodos2(JLabel jLabelPeriodos2) {
+        this.jLabelPeriodos2 = jLabelPeriodos2;
+    }
+
     public JPanel getjPanel1() {
         return jPanel1;
     }
@@ -390,6 +496,22 @@ controlador.guardar();
         this.jPanel2 = jPanel2;
     }
 
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
     public JToolBar getjToolBar1() {
         return jToolBar1;
     }
@@ -397,4 +519,6 @@ controlador.guardar();
     public void setjToolBar1(JToolBar jToolBar1) {
         this.jToolBar1 = jToolBar1;
     }
+
+   
 }

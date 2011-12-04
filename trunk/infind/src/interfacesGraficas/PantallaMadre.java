@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoABMDemandaExcepcion;
 import excepciones.ExpertoCalcularDemandaException;
 import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoPuntoEquilibrioException;
@@ -538,7 +539,7 @@ private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void menuABMDemandasHistoricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuABMDemandasHistoricasActionPerformed
         try {
             controlador.abmDemandas();
-        } catch (ExpertoCostosFijosException ex) {
+        } catch (ExpertoABMDemandaExcepcion ex) {
             Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuABMDemandasHistoricasActionPerformed

@@ -4,6 +4,7 @@
  */
 package interfacesGraficas.Controladores;
 
+import excepciones.ExpertoABMDemandaExcepcion;
 import excepciones.ExpertoCalcularDemandaException;
 import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoCostosVariablesException;
@@ -158,7 +159,7 @@ public class ControladorPantallaMadre {
         new ControladorPuntoEquilibrio(this).iniciar();
     }
 
-    public void abmDemandas() throws ExpertoCostosFijosException {
+    public void abmDemandas() throws ExpertoABMDemandaExcepcion {
         new ControladorABMDemanda(this).iniciar();
     }
 

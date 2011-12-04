@@ -6,7 +6,7 @@ package expertos;
 
 import Entidades.Demanda;
 import Entidades.ProductoFinal;
-import excepciones.ExpertoCostosFijosException;
+import excepciones.ExpertoABMDemandaExcepcion;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -18,7 +18,7 @@ import persistencia.Fachada;
  */
 public class ExpertoABMDemanda extends Experto {
 
-    public List<Demanda> buscarDemandas() throws ExpertoCostosFijosException {
+    public List<Demanda> buscarDemandas() throws ExpertoABMDemandaExcepcion {
 
         List<Demanda> demandaEncontrada = null;
 
