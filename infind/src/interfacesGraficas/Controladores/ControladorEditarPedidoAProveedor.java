@@ -131,7 +131,7 @@ public class ControladorEditarPedidoAProveedor {
             pantallaEditarPedidoAProveedor.getProveedorListBox().setSelectedItem(pedido.getProveedor());
         }
         pantallaEditarPedidoAProveedor.getCodigoProductoTextBox().setText(pedido.getArticulo().getCodigo());
-        pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText(String.valueOf((int)pedido.getCantidad()/pedido.getArticulo().getTamanioLoteEstandar()));
+        pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().setText(String.valueOf((int)(pedido.getCantidad()/pedido.getArticulo().getTamanioLoteEstandar())));
         pantallaEditarPedidoAProveedor.getProductoSeleccionadoTextBox().setText(pedido.getArticulo().getNombre());
         pantallaEditarPedidoAProveedor.getLoteEstandarTextBox().setText(String.valueOf(pedido.getArticulo().getTamanioLoteEstandar()));
         pantallaEditarPedidoAProveedor.getTiempoDeDemoraTextBox().setText(String.valueOf(pedido.getArticulo().getTiempoDeObtenecion()));
