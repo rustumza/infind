@@ -25,6 +25,15 @@ public class Parametros extends ObjetoPersitente implements Serializable {
     private double alfa;
     private double beta;
     private double gama;
+    private boolean eliminado = false;
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
 
     public double getGama() {
         return gama;

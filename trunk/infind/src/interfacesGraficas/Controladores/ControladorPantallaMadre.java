@@ -4,6 +4,7 @@
  */
 package interfacesGraficas.Controladores;
 
+import excepciones.ExpertoCalcularDemandaException;
 import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoCostosVariablesException;
 import excepciones.ExpertoPuntoEquilibrioException;
@@ -167,5 +168,9 @@ public class ControladorPantallaMadre {
 
     public void parametros() {
         new ControladorParametros(this).iniciar();
+    }
+
+    public void calcularDemanda() throws ExpertoCalcularDemandaException {
+        new ControladorCalcularDemanda(this).iniciar();
     }
 }
