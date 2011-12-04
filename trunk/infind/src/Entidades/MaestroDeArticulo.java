@@ -65,6 +65,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String tipoInventario;
     private float puntoDePedido;
     private float stockDeSeguridad;
+    
     public Long getId() {
         return id;
     }

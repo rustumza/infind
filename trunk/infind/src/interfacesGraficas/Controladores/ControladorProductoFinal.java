@@ -123,6 +123,8 @@ public class ControladorProductoFinal implements Controlador{
         proFinal.setTipoInventario(null);
         proFinal.setCostoDeAlmacenamiento((float)0);
         proFinal.setCostoDePedido((float)0);
+        proFinal.setPuntoDePedido((float)0);
+        proFinal.setStockDeSeguridad((float)0);
         experto.guardar(proFinal);
         
         

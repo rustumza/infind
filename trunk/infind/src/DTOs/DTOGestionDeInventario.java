@@ -13,6 +13,8 @@ public class DTOGestionDeInventario {
     private float costoDePedido;
     private float loteOptimo;
     private String tipoInventario;
+    private float puntoDePedido;
+    private float stockDeSeguridad;
 
     public float getCostoDeAlmacenamiento() {
         return costoDeAlmacenamiento;
@@ -45,8 +47,20 @@ public class DTOGestionDeInventario {
     public void setTipoInventario(String tipoInventario) {
         this.tipoInventario = tipoInventario;
     }
-    
-    
-    
-    
+
+    public float getPuntoDePedido() {
+        return puntoDePedido;
+    }
+
+    public void setPuntoDePedido(float puntoDePedido) {
+        this.puntoDePedido = puntoDePedido;
+    }
+
+    public float getStockDeSeguridad() {
+        return stockDeSeguridad;
+    }
+
+    public void setStockDeSeguridad(float stockDeSeguridad) {
+        this.stockDeSeguridad = stockDeSeguridad;
+    }
 }
