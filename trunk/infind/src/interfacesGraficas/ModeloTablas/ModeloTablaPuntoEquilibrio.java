@@ -14,7 +14,7 @@ public class ModeloTablaPuntoEquilibrio extends ModeloTabla {
 
     public ModeloTablaPuntoEquilibrio() {
 
-        super("Producto", "Volumen", "CF", "CV", "CT", "Ingr por Venta", "PE", "Precio ($)", "CV/Unidad");
+        super("Volumen", "CF", "CV", "CT", "Ingr por Venta", "Precio ($)", "CV/Unidad");
     }
 
     @Override
@@ -26,23 +26,20 @@ public class ModeloTablaPuntoEquilibrio extends ModeloTabla {
 
         switch (columnIndex) {
             case 0:
-                return puntoEquilibrio.getNombreArticulo();
-            case 1:
                 return puntoEquilibrio.getVolumen();
-            case 2:
+            case 1:
                 return puntoEquilibrio.getCostoFijo();
-            case 3:
+            case 2:
                 return puntoEquilibrio.getCostoVariable();
-            case 4:
+            case 3:
                 return puntoEquilibrio.getCostoTotales();
-            case 5:
+            case 4:
                 return puntoEquilibrio.getIngresoPorVenta();
-            case 6:
-                return puntoEquilibrio.getPuntoEquilibrio();
-            case 7:
+            case 5:
                 return puntoEquilibrio.getPrecio();
-            case 8:
+            case 6:
                 return puntoEquilibrio.getCvUnidad();
+            
             default:
                 return "";
         }

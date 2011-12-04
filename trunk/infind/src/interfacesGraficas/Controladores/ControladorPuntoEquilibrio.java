@@ -5,8 +5,6 @@
 package interfacesGraficas.Controladores;
 
 import DTOs.DTOPuntoEquilibrio;
-import Entidades.CostoVariable;
-import Entidades.Demanda;
 import Entidades.DetalleEstructuraDeProducto;
 import Entidades.EtapaDeRutaDeFabricacion;
 import Entidades.MaestroDeArticulo;
@@ -45,22 +43,57 @@ public class ControladorPuntoEquilibrio {
     }
 
     void iniciar() throws ExpertoPuntoEquilibrioException {
-        
-        
+
+
         pantallaPuntoEquil = new PantallaPuntoDeEquilibrio(controlador.getPantalla(), true, this);
-        
+
         modeloTablaPuntoEqui = new ModeloTablaPuntoEquilibrio();
         pantallaPuntoEquil.getTablaPuntoEquilibrio().setModel(modeloTablaPuntoEqui);
 
         pantallaPuntoEquil.getComboBoxProducto().setModel(new DefaultComboBoxModel(expertoPuntoEquilibrio.buscarProducto().toArray()));
-        
-        
+
+
 ////////////////////////////////// cargo los datos de los costos estandares y relaciones//////////////////////////////
 
 
+
+        calcularCostosVariables();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        pantallaPuntoEquil.setLocationRelativeTo(null);
+        pantallaPuntoEquil.setVisible(true);
+
+    }
+
+    public void buscarProducto() throws ExpertoPuntoEquilibrioException {
+        if (pantallaPuntoEquil.getCampoVolumen().getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(pantallaPuntoEquil, "Debe ingresar un Volúmen de venta", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (!modeloTablaPuntoEqui.getListaElementos().isEmpty()) {
+                modeloTablaPuntoEqui.clear();
+                modeloTablaPuntoEqui.fireTableDataChanged();
+            }
+            pantallaPuntoEquil.getCampoPE().setText("");
+            //busco los historiales de demandas y costos del producto seleccinado por pantalla
+            ProductoFinal productoSeleccionado = (ProductoFinal) pantallaPuntoEquil.getComboBoxProducto().getSelectedItem();
+            List<DTOPuntoEquilibrio> dtoPE = new ArrayList<DTOPuntoEquilibrio>();
+            Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
+            double costoVariableProductoSeleccionado = costoVariableProductoSeleccionado();
+            dtoPE = expertoPuntoEquilibrio.calcularFilaDeTabla(valorVolumen, productoSeleccionado, costoVariableProductoSeleccionado);
+            modeloTablaPuntoEqui.addAllRow(dtoPE);
+            pantallaPuntoEquil.getCampoPE().setText(dtoPE.get(0).getPuntoEquilibrio());
+            pantallaPuntoEquil.getTablaPuntoEquilibrio().setModel(modeloTablaPuntoEqui);
+        }
+
+    }
+
+    public void calcularCostosVariables() {
+
         List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = new ArrayList<DetalleEstructuraDeProducto>();
         List<ProductoFinal> prod = expertoPuntoEquilibrio.buscarProductoFinal();
-        
+
         for (ProductoFinal productoFinal : prod) {
 
             if (productoFinal.getNombre().equals("Detergente de limon")) {
@@ -116,8 +149,8 @@ public class ControladorPuntoEquilibrio {
                 pantallaPuntoEquil.getCampoCostoEstandar().setText(String.valueOf(costoVariableTotal));
                 pantallaPuntoEquil.getCostoEstandarDetergente().setText(String.valueOf(costoVariableTotal));
                 pantallaPuntoEquil.getCostoEstandarEnjuague().setText(String.valueOf(costoVariableTotal));
-            }else if(productoFinal.getNombre().equals("Desodorante para pisos lavanda")){
-                
+            } else if (productoFinal.getNombre().equals("Desodorante para pisos lavanda")) {
+
                 double costoTotalMAteriasPrimas = 0.0;
                 double costoTOtalManoDeObra = 0.0;
                 double costoTotalGastosFAbricacion = 0.0;
@@ -165,8 +198,8 @@ public class ControladorPuntoEquilibrio {
                 detalleEstructuraProductoMateriasPrimas = null;
                 costoVariableTotal = costoTOtalManoDeObra + costoTotalGastosFAbricacion + costoTotalMAteriasPrimas;
                 pantallaPuntoEquil.getCampoCostoDetergente().setText(String.valueOf(costoVariableTotal));
-                        
-            }else if(productoFinal.getNombre().equals("Enjuague para ropa imitacion vivere")){
+
+            } else if (productoFinal.getNombre().equals("Enjuague para ropa imitacion vivere")) {
                 double costoTotalMAteriasPrimas = 0.0;
                 double costoTOtalManoDeObra = 0.0;
                 double costoTotalGastosFAbricacion = 0.0;
@@ -221,39 +254,76 @@ public class ControladorPuntoEquilibrio {
         String text = pantallaPuntoEquil.getCampoCostoEstandar().getText();
         String text1 = pantallaPuntoEquil.getCampoCostoEnjuague().getText();
         String text2 = pantallaPuntoEquil.getCampoCostoDetergente().getText();
-        
+
         double relacionEnjuague = 0.0;
         double relacionDesodorante = 0.0;
-        
+
         relacionDesodorante = Double.valueOf(text2) / Double.valueOf(text);
-        relacionEnjuague = Double.valueOf(text1) /Double.valueOf(text);
+        relacionEnjuague = Double.valueOf(text1) / Double.valueOf(text);
         pantallaPuntoEquil.getCampoRelacionDetergente().setText(String.valueOf(nF.format(relacionDesodorante)));
         pantallaPuntoEquil.getCampoRelacionEnjuague().setText(String.valueOf(nF.format(relacionEnjuague)));
-        
-        
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        pantallaPuntoEquil.setLocationRelativeTo(null);
-        pantallaPuntoEquil.setVisible(true);
 
     }
 
-    public void buscarProducto() throws ExpertoPuntoEquilibrioException {
+    public double costoVariableProductoSeleccionado() {
 
-        //busco los historiales de demandas y costos del producto seleccinado por pantalla
-        List<Integer> volumen = new ArrayList<Integer>();
-        ProductoFinal productoSeleccionado = (ProductoFinal)pantallaPuntoEquil.getComboBoxProducto().getSelectedItem();
-        DTOPuntoEquilibrio dtoPE = new DTOPuntoEquilibrio();
-        List<Demanda> demanda = productoSeleccionado.getDemanda();
-        Integer valorVolumen = Integer.valueOf(pantallaPuntoEquil.getCampoVolumen().getText());
-        valorVolumen = valorVolumen -100;
-        for (int i = 0; i < 12; i++) {
-            valorVolumen = valorVolumen + 100;
-            volumen.add(valorVolumen);
+
+        List<DetalleEstructuraDeProducto> detalleEstructuraProductoMateriasPrimas = new ArrayList<DetalleEstructuraDeProducto>();
+        ProductoFinal prod = expertoPuntoEquilibrio.buscarProductoFinal((ProductoFinal) pantallaPuntoEquil.getComboBoxProducto().getSelectedItem());
+
+        double costoTotalMAteriasPrimas = 0.0;
+        double costoTOtalManoDeObra = 0.0;
+        double costoTotalGastosFAbricacion = 0.0;
+        double costoVariableTotal = 0.0;
+
+        //busco los costos de materia prima para un lote optimo
+        detalleEstructuraProductoMateriasPrimas = prod.getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList();
+
+        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : detalleEstructuraProductoMateriasPrimas) {
+
+            costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
         }
-        
-        volumen.isEmpty();
-         for (Demanda deman : demanda) {
-            
+        for (DetalleEstructuraDeProducto detalleEstructuraDeProducto : prod.getProductoTipoIQE().getMaestroEstructuraDeProducto().getDetalleEstructuraProductoList()) {
+
+            costoTotalMAteriasPrimas = costoTotalMAteriasPrimas + (detalleEstructuraDeProducto.getCantidad() * detalleEstructuraDeProducto.getMaestroArticulo().getCostoUnitarioPorOmision());
         }
+        //busco los costos de mano de obra
+        List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion = prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion) {
+            for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
+                costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
+            }
+
+        }
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : prod.getProductoTipoIQE().getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion()) {
+            if (etapaDeRutaDeFabricacion.getMaestroCentroTrabajo() != null) {
+
+                for (Operario operario : etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getOperario()) {
+                    costoTOtalManoDeObra = costoTOtalManoDeObra + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeOperarios() * operario.getTipoOperario().getCostoXHora() / 60); //es dividido 60 para pasar el costo por hora a minutos
+                }
+            }
+
+
+        }
+        //busco los gastos de fabricacion
+        List<EtapaDeRutaDeFabricacion> etapaRutaFabricacion1 = prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion();
+
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : etapaRutaFabricacion1) {
+
+            costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
+        }
+        for (EtapaDeRutaDeFabricacion etapaDeRutaDeFabricacion : prod.getMaestroEstructuraDeProducto().getMaestroRutaFabricacion().getEtapaRutaFabricacion()) {
+
+            costoTotalGastosFAbricacion = costoTotalGastosFAbricacion + (etapaDeRutaDeFabricacion.getTiempoDeTrabajoDeMaquinas() * etapaDeRutaDeFabricacion.getMaestroCentroTrabajo().getCostoCentroDeTrabajo());
+        }
+        detalleEstructuraProductoMateriasPrimas = null;
+
+        costoVariableTotal = costoTOtalManoDeObra + costoTotalGastosFAbricacion + costoTotalMAteriasPrimas;
+
+        return costoVariableTotal;
     }
+    
+    
+    
+    // hacer todo lo listado de PE del producto standard por periodo 
 }
