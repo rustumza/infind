@@ -215,7 +215,7 @@ public class PantallaABMDemanda extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
         jPanel3.add(jLabelProductos, gridBagConstraints);
 
-        jComboBoxPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", " " }));
+        jComboBoxPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
