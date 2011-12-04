@@ -46,6 +46,13 @@ public class ControladorGestionDeInventarios {
         }else{
             pantalla.getTipoInventarioComboBox().setModel(new DefaultComboBoxModel(otroInv));
             pantalla.getTipoInventarioComboBox().setEnabled(true);
+            if(articulo.getCategoria() == 'A'){
+                pantalla.getTipoInventarioComboBox().setSelectedItem("Lote fijo");
+            }else if(articulo.getCategoria() == 'B'){
+                pantalla.getTipoInventarioComboBox().setSelectedItem("Lote fijo");
+            }else{
+                pantalla.getTipoInventarioComboBox().setSelectedItem("Intervalo fijo");
+            }
         
         }
         pantalla.setLocationRelativeTo(null);
