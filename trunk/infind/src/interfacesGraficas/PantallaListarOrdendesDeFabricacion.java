@@ -25,7 +25,7 @@ import javax.swing.JToolBar;
 public class PantallaListarOrdendesDeFabricacion extends javax.swing.JDialog {
 
     ControladorListarOrdenesDeFabricacion controlador;
-    
+
     /** Creates new form PantallaListarOrdendesDeFabricacion */
     public PantallaListarOrdendesDeFabricacion(java.awt.Frame parent, boolean modal, ControladorListarOrdenesDeFabricacion control) {
         super(parent, modal);
@@ -54,16 +54,23 @@ public class PantallaListarOrdendesDeFabricacion extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        guardar.setText("Guardar");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        guardar.setToolTipText("Guardar");
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(guardar);
 
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
+        salir.setToolTipText("Salir");
         salir.setFocusable(false);
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         jToolBar1.add(salir);
 
         tablaOrdenesDeProduccion.setModel(new javax.swing.table.DefaultTableModel(
@@ -97,23 +104,24 @@ public class PantallaListarOrdendesDeFabricacion extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(estadoOrdenLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(estadoOrdenListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(estadoOrdenLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estadoOrdenListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(233, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estadoOrdenLabel)
                     .addComponent(estadoOrdenListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,12 +138,15 @@ private void estadoOrdenListBoxActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_estadoOrdenListBoxActionPerformed
 
 private void tablaOrdenesDeProduccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaOrdenesDeProduccionMouseClicked
-    if(evt.getClickCount()==2){
+    if (evt.getClickCount() == 2) {
         controlador.editarOrden();
     }
 }//GEN-LAST:event_tablaOrdenesDeProduccionMouseClicked
 
-    
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        dispose();
+
+    }//GEN-LAST:event_salirActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel estadoOrdenLabel;
     private javax.swing.JComboBox estadoOrdenListBox;
@@ -209,6 +220,4 @@ private void tablaOrdenesDeProduccionMouseClicked(java.awt.event.MouseEvent evt)
     public void setControlador(ControladorListarOrdenesDeFabricacion controlador) {
         this.controlador = controlador;
     }
-
-   
 }

@@ -6,7 +6,6 @@ package interfacesGraficas.Controladores;
 
 import Entidades.Demanda;
 import Entidades.MaestroDeArticulo;
-import Entidades.ProductoFinal;
 import Fabricas.FabricaExpertos;
 import excepciones.ExpertoABMDemandaExcepcion;
 import expertos.ExpertoABMDemanda;
@@ -25,15 +24,12 @@ public class ControladorABMDemanda {
     PantallaABMDemanda pantallaABMDemanda;
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMDemanda expertoABMDemanda;
-    Demanda nuevaDemanda = null;
     Demanda demandaSeleccionada;
-    List<ProductoFinal> listaproductos;
+    List<MaestroDeArticulo> listaproductos;
 
     public ControladorABMDemanda(ControladorPantallaMadre controlador) {
-
         controladorPantMadre = controlador;
         expertoABMDemanda = (ExpertoABMDemanda) FabricaExpertos.getInstancia().getExperto(FabricaExpertos.expertos.ABM_DEMANDA);
-
     }
 
     public void iniciar() throws ExpertoABMDemandaExcepcion {
@@ -41,7 +37,7 @@ public class ControladorABMDemanda {
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
         pantallaABMDemanda.setLocationRelativeTo(null);
-        listaproductos = expertoABMDemanda.buscarProductoFinal();
+        listaproductos = expertoABMDemanda.buscarProductos();
         pantallaABMDemanda.getComboListaProducto().setModel(new DefaultComboBoxModel(listaproductos.toArray()));
         pantallaABMDemanda.setVisible(true);
     }
@@ -64,20 +60,17 @@ public class ControladorABMDemanda {
 
     public void guardarDemanda() {
         try {
-            if (pantallaABMDemanda.getCampoValorDemanda().isEnabled()) {
-                nuevaDemanda = new Demanda();
+                Demanda nuevaDemanda = new Demanda();
                 nuevaDemanda.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
                 nuevaDemanda.setPeriodo(Integer.valueOf(pantallaABMDemanda.getjComboBoxPeriodo().getSelectedItem().toString()));
                 ((MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).addDemanda(nuevaDemanda);
                 expertoABMDemanda.guardarDemanda(nuevaDemanda);
-                expertoABMDemanda.guardarProductoFinal((ProductoFinal)nuevaDemanda.getArticulo());
+                expertoABMDemanda.guardarProductos((MaestroDeArticulo)nuevaDemanda.getArticulo());
                 JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                ModeloTablaDemandas modeloTablaDemandas = (ModeloTablaDemandas) pantallaABMDemanda.getTablaDemandas().getModel();
-                modeloTablaDemandas.addRow(nuevaDemanda);
+                ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
+                modeloTablaDemandas.setListaElementos(((MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).getDemanda());
+                pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);
                 pantallaABMDemanda.getCampoValorDemanda().setText("");
-            } else {
-                JOptionPane.showMessageDialog(pantallaABMDemanda, "Debe Ingresar Datos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(pantallaABMDemanda, "El valor ingresado es incorrecto", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -98,7 +91,7 @@ public class ControladorABMDemanda {
     }
 
     public void buscarDemandas() {
-        ProductoFinal prod = (ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
+        MaestroDeArticulo prod = (MaestroDeArticulo) pantallaABMDemanda.getComboListaProducto().getSelectedItem();
         ModeloTablaDemandas modeloTablaDemandas = new ModeloTablaDemandas();
         modeloTablaDemandas.setListaElementos(prod.getDemanda());
         pantallaABMDemanda.getTablaDemandas().setModel(modeloTablaDemandas);

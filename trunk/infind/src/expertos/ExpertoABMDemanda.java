@@ -5,7 +5,7 @@
 package expertos;
 
 import Entidades.Demanda;
-import Entidades.ProductoFinal;
+import Entidades.MaestroDeArticulo;
 import excepciones.ExpertoABMDemandaExcepcion;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -19,9 +19,7 @@ import persistencia.Fachada;
 public class ExpertoABMDemanda extends Experto {
 
     public List<Demanda> buscarDemandas() throws ExpertoABMDemandaExcepcion {
-
         List<Demanda> demandaEncontrada = null;
-
         Criteria criterioDemanda = Fachada.getInstancia().crearCriterioSinEliminado(Demanda.class);
         criterioDemanda.add(Restrictions.eq("eliminado", false));
         demandaEncontrada = Fachada.getInstancia().buscar(Demanda.class, criterioDemanda);
@@ -32,16 +30,15 @@ public class ExpertoABMDemanda extends Experto {
         Fachada.getInstancia().guardar(demanda);
     }
 
-    public List<ProductoFinal> buscarProductoFinal() {
-        List<ProductoFinal> productoencontrado = null;
-
-        Criteria criterioProducto = Fachada.getInstancia().crearCriterioSinEliminado(ProductoFinal.class);
+    public List<MaestroDeArticulo> buscarProductos() {
+        List<MaestroDeArticulo> productoencontrado = null;
+        Criteria criterioProducto = Fachada.getInstancia().crearCriterioSinEliminado(MaestroDeArticulo.class);
         criterioProducto.add(Restrictions.eq("eliminado", false));
-        productoencontrado = Fachada.getInstancia().buscar(ProductoFinal.class, criterioProducto);
+        productoencontrado = Fachada.getInstancia().buscar(MaestroDeArticulo.class, criterioProducto);
         return productoencontrado;
     }
 
-    public void guardarProductoFinal(ProductoFinal productoFinal) {
-        Fachada.getInstancia().guardar(productoFinal);
+    public void guardarProductos(MaestroDeArticulo productos) {
+        Fachada.getInstancia().guardar(productos);
     }
 }
