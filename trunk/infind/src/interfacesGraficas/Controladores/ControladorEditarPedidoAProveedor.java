@@ -10,7 +10,7 @@ import Entidades.ProductoComponente;
 import Entidades.Proveedor;
 import excepciones.StockExcepcion;
 import expertos.ExpertoPedidoAproveedores;
-import interfacesGraficas.ModeloTablas.ModeloTablaPedidoAProveedores;
+import interfacesGraficas.ModeloTablas.ModeloTablaListarPedidoAProveedores;
 import interfacesGraficas.PantallaEditarPedidoAProveedores;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class ControladorEditarPedidoAProveedor {
     
     public void iniciar(){
         pantallaEditarPedidoAProveedor = new PantallaEditarPedidoAProveedores(controladorPantallaMadre.getPantalla(), false, this);
-        ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+        ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
         pantallaEditarPedidoAProveedor.getSoloSinConfirmar().setSelected(true);
         pantallaEditarPedidoAProveedor.getSeConcreto().setSelected(true);
         pantallaEditarPedidoAProveedor.getGuardar().setEnabled(true);
@@ -178,7 +178,7 @@ public class ControladorEditarPedidoAProveedor {
 
     public void cancelar() {
         
-            ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+            ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
             mod.setListaElementos(experto.getListaDePedidos());
             pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
             pantallaEditarPedidoAProveedor.getCodigoProductoTextBox().setText("");
@@ -200,7 +200,7 @@ public class ControladorEditarPedidoAProveedor {
         try{
             int seleccionado = pantallaEditarPedidoAProveedor.getTablaDePedidos().getSelectedRow();
             List<PedidoAProveedor> lista = experto.editar(seleccionado, Integer.valueOf(pantallaEditarPedidoAProveedor.getCantidadDeLotesTextBox().getText()), (Proveedor)pantallaEditarPedidoAProveedor.getProveedorListBox().getSelectedItem(), pantallaEditarPedidoAProveedor.getSeConcreto().isSelected());
-            ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+            ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
             mod.setListaElementos(lista);
             pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
             pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
@@ -229,7 +229,7 @@ public class ControladorEditarPedidoAProveedor {
     public void quitar() {
         int seleccionado = pantallaEditarPedidoAProveedor.getTablaDePedidos().getSelectedRow();
         List<PedidoAProveedor> lista = experto.quitar(seleccionado);
-        ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+        ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
         mod.setListaElementos(lista);
         pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
         pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
@@ -252,7 +252,7 @@ public class ControladorEditarPedidoAProveedor {
             experto.confirmarPedido();
             JOptionPane.showMessageDialog(pantallaEditarPedidoAProveedor, "Pedidos guardados con éxito", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             
-            ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+            ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
             mod.setListaElementos(new ArrayList<PedidoAProveedor>());
             pantallaEditarPedidoAProveedor.getTablaDePedidos().setModel(mod);
             pantallaEditarPedidoAProveedor.getQuitar().setEnabled(false);
@@ -275,7 +275,7 @@ public class ControladorEditarPedidoAProveedor {
     public void soloSinConfirmar() {
         boolean soloSinConfirmar = pantallaEditarPedidoAProveedor.getSoloSinConfirmar().isSelected();
         List<PedidoAProveedor> lista = experto.buscarPedidos(soloSinConfirmar);
-        ModeloTablaPedidoAProveedores mod = new ModeloTablaPedidoAProveedores();
+        ModeloTablaListarPedidoAProveedores mod = new ModeloTablaListarPedidoAProveedores();
         mod.setListaElementos(lista);
         if(soloSinConfirmar){
             pantallaEditarPedidoAProveedor.getSeConcreto().setEnabled(true);
