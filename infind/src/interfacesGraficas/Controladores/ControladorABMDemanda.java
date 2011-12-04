@@ -25,7 +25,6 @@ public class ControladorABMDemanda {
     PantallaABMDemanda pantallaABMDemanda;
     ControladorPantallaMadre controladorPantMadre;
     ExpertoABMDemanda expertoABMDemanda;
-    //ModeloTablaDemandas modeloTablaDemandas;
     Demanda nuevaDemanda = null;
     Demanda demandaSeleccionada;
     List<ProductoFinal> listaproductos;
@@ -100,18 +99,6 @@ public class ControladorABMDemanda {
             pantallaABMDemanda.getCampoValorDemanda().setText(String.valueOf(dem.getDemandaHistorica()));
             pantallaABMDemanda.getBotonGuardar().setEnabled(true);
         }
-    }
-
-    public void actualizarDemandas() {
-        demandaSeleccionada.setDemandaHistorica(Double.valueOf(pantallaABMDemanda.getCampoValorDemanda().getText()));
-        expertoABMDemanda.guardarDemanda(demandaSeleccionada);
-        JOptionPane.showMessageDialog(pantallaABMDemanda, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        List<Demanda> dem = ((ProductoFinal) pantallaABMDemanda.getComboListaProducto().getSelectedItem()).getDemanda();
-        ModeloTablaDemandas mod = new ModeloTablaDemandas();
-        mod.setListaElementos(dem);
-        pantallaABMDemanda.getTablaDemandas().setModel(mod);
-        pantallaABMDemanda.getCampoValorDemanda().setText("");
-        pantallaABMDemanda.getBotonGuardar().setEnabled(true);
     }
 
     public void buscarDemandas() {

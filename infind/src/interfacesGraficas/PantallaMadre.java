@@ -10,6 +10,7 @@
  */
 package interfacesGraficas;
 
+import excepciones.ExpertoCalcularDemandaException;
 import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
@@ -368,10 +369,15 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuDemanda.setText("Demanda");
         menuDemanda.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
-        menuCalcularDemanda.setText("Calcular");
+        menuCalcularDemanda.setText("Calcular Demanda");
+        menuCalcularDemanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCalcularDemandaActionPerformed(evt);
+            }
+        });
         menuDemanda.add(menuCalcularDemanda);
 
-        menuParametros.setText("Parametros");
+        menuParametros.setText("Parametros-Prediccion");
         menuParametros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuParametrosActionPerformed(evt);
@@ -545,6 +551,14 @@ private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent
         controlador.parametros();
 
     }//GEN-LAST:event_menuParametrosActionPerformed
+
+    private void menuCalcularDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCalcularDemandaActionPerformed
+        try {
+            controlador.calcularDemanda();
+        } catch (ExpertoCalcularDemandaException ex) {
+            Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuCalcularDemandaActionPerformed
     /**
      * @param args the command line arguments
      */
