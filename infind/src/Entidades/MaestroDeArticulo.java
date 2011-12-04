@@ -65,6 +65,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private String tipoInventario;
     private float puntoDePedido;
     private float stockDeSeguridad;
+    private float stockMaximoInventarioIntervaloFijo;
     
     public Long getId() {
         return id;
@@ -264,6 +265,14 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
 
     public void setStockDeSeguridad(float stockDeSeguridad) {
         this.stockDeSeguridad = stockDeSeguridad;
+    }
+
+    public float getStockMaximoInventarioIntervaloFijo() {
+        return stockMaximoInventarioIntervaloFijo;
+    }
+
+    public void setStockMaximoInventarioIntervaloFijo(float stockMaximoInventarioIntervaloFijo) {
+        this.stockMaximoInventarioIntervaloFijo = stockMaximoInventarioIntervaloFijo;
     }
     
     

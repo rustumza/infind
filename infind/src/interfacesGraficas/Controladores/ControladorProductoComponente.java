@@ -119,6 +119,7 @@ public class ControladorProductoComponente implements Controlador{
         proComp.setCostoDePedido((float)0);
         proComp.setPuntoDePedido((float)0);
         proComp.setStockDeSeguridad((float)0);
+        proComp.setStockMaximoInventarioIntervaloFijo((float)0);
         experto.guardar(proComp);
         
         

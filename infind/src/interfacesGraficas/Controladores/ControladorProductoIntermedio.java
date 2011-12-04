@@ -122,6 +122,7 @@ public class ControladorProductoIntermedio implements Controlador{
         proInter.setCostoDePedido((float)0);
         proInter.setPuntoDePedido((float)0);
         proInter.setStockDeSeguridad((float)0);
+        proInter.setStockMaximoInventarioIntervaloFijo((float)0);
         experto.guardar(proInter);
         
         

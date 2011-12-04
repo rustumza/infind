@@ -111,6 +111,7 @@ public class ControladorProductoIQE {
         proIQE.setCostoDePedido((float)0);
         proIQE.setPuntoDePedido((float)0);
         proIQE.setStockDeSeguridad((float)0);
+        proIQE.setStockMaximoInventarioIntervaloFijo((float)0);
         experto.guardar(proIQE);
         
         

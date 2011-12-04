@@ -11,6 +11,8 @@
 package interfacesGraficas;
 
 import interfacesGraficas.Controladores.ControladorGestionDeInventarios;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -30,6 +32,15 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         controlador = cont;
+        
+        //toma el evento cuando cierro la pantalla, y asi puedo volver a la pantalla principal
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                controlador.actualizarOtrasPantallas();
+            }
+        });
+        
     }
 
     /** This method is called from within the constructor to
@@ -50,10 +61,18 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         costoDePedidoLabel = new javax.swing.JLabel();
         costoAlmacenamientoTextBox = new javax.swing.JTextField();
         costoDePedidoTextBox = new javax.swing.JTextField();
+        cantidadMaximaLabel = new javax.swing.JLabel();
+        cantidadMaximaTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tipoInventarioLabel.setText("Tipo de inventario");
+
+        tipoInventarioComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoInventarioComboBoxActionPerformed(evt);
+            }
+        });
 
         jToolBar1.setRollover(true);
 
@@ -72,11 +91,18 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         salir.setFocusable(false);
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         jToolBar1.add(salir);
 
         costoAlmacenamientoLabel.setText("Costo alacenamiento");
 
         costoDePedidoLabel.setText("Costo de pedido");
+
+        cantidadMaximaLabel.setText("Cantidad maxima");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,13 +114,15 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(costoAlmacenamientoLabel)
                     .addComponent(costoDePedidoLabel)
-                    .addComponent(tipoInventarioLabel))
+                    .addComponent(tipoInventarioLabel)
+                    .addComponent(cantidadMaximaLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tipoInventarioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(costoDePedidoTextBox)
-                        .addComponent(costoAlmacenamientoTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cantidadMaximaTextBox, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(costoDePedidoTextBox, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(costoAlmacenamientoTextBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +141,11 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(costoDePedidoLabel)
                     .addComponent(costoDePedidoTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cantidadMaximaLabel)
+                    .addComponent(cantidadMaximaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,8 +155,18 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     controlador.guardar();
 }//GEN-LAST:event_guardarActionPerformed
 
+private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+    dispose();
+}//GEN-LAST:event_salirActionPerformed
+
+private void tipoInventarioComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoInventarioComboBoxActionPerformed
+    controlador.eventoComboBox();
+}//GEN-LAST:event_tipoInventarioComboBoxActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cantidadMaximaLabel;
+    private javax.swing.JTextField cantidadMaximaTextBox;
     private javax.swing.JLabel costoAlmacenamientoLabel;
     private javax.swing.JTextField costoAlmacenamientoTextBox;
     private javax.swing.JLabel costoDePedidoLabel;
@@ -217,6 +259,22 @@ private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     public void setTipoInventarioLabel(JLabel tipoInventarioLabel) {
         this.tipoInventarioLabel = tipoInventarioLabel;
+    }
+
+    public JLabel getCantidadMaximaLabel() {
+        return cantidadMaximaLabel;
+    }
+
+    public void setCantidadMaximaLabel(JLabel cantidadMaximaLabel) {
+        this.cantidadMaximaLabel = cantidadMaximaLabel;
+    }
+
+    public JTextField getCantidadMaximaTextBox() {
+        return cantidadMaximaTextBox;
+    }
+
+    public void setCantidadMaximaTextBox(JTextField cantidadMaximaTextBox) {
+        this.cantidadMaximaTextBox = cantidadMaximaTextBox;
     }
 
     

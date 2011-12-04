@@ -38,18 +38,17 @@ public class ExpertoGestionDeInventarios {
         articulo.setCostoDeAlmacenamiento(dto.getCostoDeAlmacenamiento());
         articulo.setCostoDePedido(dto.getCostoDePedido());
         articulo.setTipoInventario(dto.getTipoInventario());
-        float puntoDePedido = 0;
         float demandaDiaria = demanda / 28; //un periodo tiene 28 días
-        float stockDeSeguridad = 0;
         
         if(dto.getTipoInventario().equals("Fabricacion interna")){
         
         }else if(dto.getTipoInventario().equals("Lote fijo")){
-            stockDeSeguridad = (float)Math.sqrt(articulo.getTiempoDeObtenecion());
+            articulo.setStockDeSeguridad((float)Math.sqrt(articulo.getTiempoDeObtenecion()));
+            articulo.setPuntoDePedido(demandaDiaria * articulo.getTiempoDeObtenecion() + articulo.getStockDeSeguridad());
             
         }else if(dto.getTipoInventario().equals("Intervalo fijo")){
-        
-            
+            articulo.setStockDeSeguridad((float)Math.sqrt(articulo.getTiempoDeObtenecion()));
+            articulo.setStockMaximoInventarioIntervaloFijo(dto.getCantidadMaximaDeStock());
         }
         
     

@@ -14,7 +14,7 @@ public class ModeloTablaListarOrdenesDeProduccion extends ModeloTabla {
 
     public ModeloTablaListarOrdenesDeProduccion() {
 
-        super("Producto fabricable", "Cantidad", "Fecha", "Estado");
+        super("Nro","Producto fabricable", "Cantidad", "Fecha", "Estado");
     }
 
     @Override
@@ -26,12 +26,18 @@ public class ModeloTablaListarOrdenesDeProduccion extends ModeloTabla {
 
         switch (columnIndex) {
             case 0:
-                return ordenes.getProductoFabricable().getNombre();
+                if(ordenes.getId() == null){
+                    return "";
+                }else{
+                    return ordenes.getId();
+                }
             case 1:
-                return ordenes.getCantidadDeLotesOptimos();
+                return ordenes.getProductoFabricable().getNombre();
             case 2:
-                return ordenes.getFecha();
+                return ordenes.getCantidadDeLotesOptimos();
             case 3:
+                return ordenes.getFecha();
+            case 4:
                 return ordenes.getEstado();
             default:
                 return "";
