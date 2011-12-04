@@ -15,7 +15,7 @@ public class ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion extends
 
    public ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar", "Estado");
+        super("Nro","Código Producto", "Nombre Producto","Cantidad de lotes optimos","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -27,14 +27,20 @@ public class ModeloTablaOrdenDeProduccionPantallaListarOrdenDeProduccion extends
 
         switch (columnIndex) {
             case 0:
-                return orden.getProductoFabricable().getCodigo();
+                if(orden.getId() == null){
+                    return "";
+                }else{
+                    return orden.getId();
+                }
             case 1:
-                return orden.getProductoFabricable().getNombre();
+                return orden.getProductoFabricable().getCodigo();
             case 2:
-                return orden.getCantidadDeLotesOptimos();
+                return orden.getProductoFabricable().getNombre();
             case 3:
-                return formateadorfechas.fechaAStringDDMMAAAA(orden.getFecha());    
+                return orden.getCantidadDeLotesOptimos();
             case 4:
+                return formateadorfechas.fechaAStringDDMMAAAA(orden.getFecha());    
+            case 5:
                 return orden.getEstado();   
             default:
                 return "";

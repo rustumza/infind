@@ -121,6 +121,7 @@ public class ControladorMateriaPrima implements Controlador{
         matPrim.setCostoDePedido((float)0);
         matPrim.setPuntoDePedido((float)0);
         matPrim.setStockDeSeguridad((float)0);
+        matPrim.setStockMaximoInventarioIntervaloFijo((float)0);
         experto.guardar(matPrim);
         
         

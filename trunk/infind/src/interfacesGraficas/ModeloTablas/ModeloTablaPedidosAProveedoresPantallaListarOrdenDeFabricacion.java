@@ -16,7 +16,7 @@ public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion exte
    
     public ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion() {
 
-        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar", "Estado");
+        super("Nro","Código Producto", "Nombre Producto","Cantidad","Fecha a realizar", "Estado");
     }
 
     @Override
@@ -28,14 +28,20 @@ public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion exte
 
         switch (columnIndex) {
             case 0:
-                return pedido.getArticulo().getCodigo();
+                if(pedido.getId() == null){
+                    return "";
+                }else{
+                    return pedido.getId();
+                }
             case 1:
-                return pedido.getArticulo().getNombre();
+                return pedido.getArticulo().getCodigo();
             case 2:
-                return pedido.getCantidad();
+                return pedido.getArticulo().getNombre();
             case 3:
-                return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
+                return pedido.getCantidad();
             case 4:
+                return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
+            case 5:
                 if(pedido.isEstaConcretado()){
                     return "Concretada";
                 }    

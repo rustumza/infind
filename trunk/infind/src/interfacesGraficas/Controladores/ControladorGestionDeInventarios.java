@@ -53,6 +53,7 @@ public class ControladorGestionDeInventarios {
             }else{
                 pantalla.getTipoInventarioComboBox().setSelectedItem("Intervalo fijo");
             }
+            eventoComboBox();
         
         }
         pantalla.setLocationRelativeTo(null);
@@ -78,13 +79,37 @@ public class ControladorGestionDeInventarios {
             pantalla.getCostoDePedidoTextBox().requestFocus();
             return;
         }
+        if(pantalla.getTipoInventarioComboBox().getSelectedItem().equals("Intervalo fijo")){
+            try{
+                dto.setCantidadMaximaDeStock(Float.valueOf(pantalla.getCantidadMaximaTextBox().getText())); 
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(pantalla, "Stock máximo incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getCantidadMaximaTextBox().requestFocus();
+                return;
+            }                    
+        }
         
         experto.calcularInventario(dto);
+    
+        JOptionPane.showMessageDialog(pantalla, "Información generada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+        
+    }
+    
+    public void actualizarOtrasPantallas(){
         contDeRetorno.actualizarPorGestionDeInventarios();
-        JOptionPane.showMessageDialog(pantalla, "El lote optimo es: " + experto.getArticulo().getTamanioLoteEstandar(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        pantalla.dispose();
         
-        
+    }
+
+    public void eventoComboBox() {
+        if(pantalla.getTipoInventarioComboBox().getSelectedItem().equals("Intervalo fijo")){
+            pantalla.getCantidadMaximaLabel().setVisible(true);
+            pantalla.getCantidadMaximaTextBox().setVisible(true);
+        }else{
+            pantalla.getCantidadMaximaLabel().setVisible(false);
+            pantalla.getCantidadMaximaTextBox().setVisible(false);
+        }
     }
     
 }

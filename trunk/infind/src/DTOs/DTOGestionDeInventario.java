@@ -15,6 +15,7 @@ public class DTOGestionDeInventario {
     private String tipoInventario;
     private float puntoDePedido;
     private float stockDeSeguridad;
+    private float cantidadMaximaDeStock;
 
     public float getCostoDeAlmacenamiento() {
         return costoDeAlmacenamiento;
@@ -63,4 +64,14 @@ public class DTOGestionDeInventario {
     public void setStockDeSeguridad(float stockDeSeguridad) {
         this.stockDeSeguridad = stockDeSeguridad;
     }
+
+    public float getCantidadMaximaDeStock() {
+        return cantidadMaximaDeStock;
+    }
+
+    public void setCantidadMaximaDeStock(float cantidadMaximaDeStock) {
+        this.cantidadMaximaDeStock = cantidadMaximaDeStock;
+    }
+
+
 }
