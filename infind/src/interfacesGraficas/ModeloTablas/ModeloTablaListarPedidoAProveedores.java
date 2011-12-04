@@ -11,12 +11,14 @@ import utilidades.formateadorfechas;
  *
  * @author rustu
  */
-public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion extends ModeloTabla{
 
-   
-    public ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion() {
+public class ModeloTablaListarPedidoAProveedores extends ModeloTabla{
 
-        super("Código Producto", "Nombre Producto","Cantidad","Fecha a realizar", "Estado");
+
+
+    public ModeloTablaListarPedidoAProveedores() {
+
+        super("Nro","Código Producto", "Nombre Producto","Cantidad","Fecha a realiazar","Proveedor", "Confirmado" );
     }
 
     @Override
@@ -28,20 +30,29 @@ public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion exte
 
         switch (columnIndex) {
             case 0:
-                return pedido.getArticulo().getCodigo();
-            case 1:
-                return pedido.getArticulo().getNombre();
-            case 2:
-                return pedido.getCantidad();
-            case 3:
-                return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
-            case 4:
-                if(pedido.isEstaConcretado()){
-                    return "Concretada";
-                }    
-                else{
-                    return "Sin concretar";
+                if(pedido.getId() == null){
+                    return "";
                 }
+                else{
+                    return pedido.getId();
+                }
+            case 1:
+                return pedido.getArticulo().getCodigo();
+            case 2:
+                return pedido.getArticulo().getNombre();
+            case 3:
+                return pedido.getCantidad();
+            case 4:
+                return formateadorfechas.fechaAStringDDMMAAAA(pedido.getFechaARealizarElPedido());    
+            case 5:
+                return pedido.getProveedor().getNombre();    
+            case 6:
+                if(pedido.isEstaConcretado()){
+                    return "Sí";    
+                }else{
+                    return "No";    
+                }
+                
             default:
                 return "";
         }
@@ -56,4 +67,7 @@ public class ModeloTablaPedidosAProveedoresPantallaListarOrdenDeFabricacion exte
         
         fireTableDataChanged();
     }
+
+
+
 }
