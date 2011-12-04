@@ -10,7 +10,6 @@ import Entidades.Proveedor;
 import expertos.ExpertoMateriaPrima;
 import interfacesGraficas.PantallaCrearMateriaPrima;
 import interfacesGraficas.PantallaEditarMateriaPrima;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -22,7 +21,7 @@ import persistencia.Fachada;
  *
  * @author rustu
  */
-public class ControladorMateriaPrima {
+public class ControladorMateriaPrima implements Controlador{
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearMateriaPrima pantallaCrearMateriPrima;
@@ -102,7 +101,7 @@ public class ControladorMateriaPrima {
         }
         
         try{
-            matPrim.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().getText()));
+            matPrim.setTamanioLoteEstandar(Float.valueOf(pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaCrearMateriPrima, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
@@ -117,7 +116,9 @@ public class ControladorMateriaPrima {
         }
         matPrim.setUbicacionEnAlmacen(pantallaCrearMateriPrima.getUbicacionAlamcenTextBox().getText());
         matPrim.setObservacion(pantallaCrearMateriPrima.getObservacionTextArea().getText());
-        
+        matPrim.setTipoInventario(null);
+        matPrim.setCostoDeAlmacenamiento((float)0);
+        matPrim.setCostoDePedido((float)0);
         experto.guardar(matPrim);
         
         
@@ -230,7 +231,7 @@ public class ControladorMateriaPrima {
         }
         
         try{
-            matPrim.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().getText()));
+            matPrim.setTamanioLoteEstandar(Float.valueOf(pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().requestFocus();
@@ -250,6 +251,14 @@ public class ControladorMateriaPrima {
         
         
         JOptionPane.showMessageDialog(pantallaEditarMateriPrima, "Materia prima guardada con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void gestionDeInventario() {
+       new ControladorGestionDeInventarios(controladorPantallaMadre, this).iniciar(experto.getMateriaPrima());
+    }
+
+    public void actualizarPorGestionDeInventarios() {
+         pantallaEditarMateriPrima.getTamanioLoteEstandarTextBox().setText(String.valueOf(experto.getMateriaPrima().getTamanioLoteEstandar()));
     }
     
     

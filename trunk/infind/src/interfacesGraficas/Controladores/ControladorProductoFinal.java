@@ -21,7 +21,7 @@ import persistencia.Fachada;
  *
  * @author rustu
  */
-public class ControladorProductoFinal {
+public class ControladorProductoFinal implements Controlador{
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearProductoFinal pantallaCrearProductoFinal;
@@ -104,7 +104,7 @@ public class ControladorProductoFinal {
         }
         
         try{
-            proFinal.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearProductoFinal.getTamanioLoteEstandarTextBox().getText()));
+            proFinal.setTamanioLoteEstandar(Float.valueOf(pantallaCrearProductoFinal.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaCrearProductoFinal, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearProductoFinal.getTamanioLoteEstandarTextBox().requestFocus();
@@ -120,7 +120,9 @@ public class ControladorProductoFinal {
         proFinal.setUbicacionEnAlmacen(pantallaCrearProductoFinal.getUbicacionAlamcenTextBox().getText());
         proFinal.setObservacion(pantallaCrearProductoFinal.getObservacionTextArea().getText());
         proFinal.setProductoTipoIQE((ProductoTipoIQE)pantallaCrearProductoFinal.getProductoIQERelacionadoListBox().getSelectedItem());
-        
+        proFinal.setTipoInventario(null);
+        proFinal.setCostoDeAlmacenamiento((float)0);
+        proFinal.setCostoDePedido((float)0);
         experto.guardar(proFinal);
         
         
@@ -211,7 +213,7 @@ public class ControladorProductoFinal {
         }
         
         try{
-            pFinal.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().getText()));
+            pFinal.setTamanioLoteEstandar(Float.valueOf(pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoFinal, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().requestFocus();
@@ -265,8 +267,14 @@ public class ControladorProductoFinal {
         }
     }
     
-    
-    //Domisanitarios
-    //Higiene Personal
+
+
+    public void gestionDeInventario() {
+       new ControladorGestionDeInventarios(controladorPantallaMadre, this).iniciar(experto.getProductoFinal());
+    }
+
+    public void actualizarPorGestionDeInventarios() {
+         pantallaEditarProductoFinal.getTamanioLoteEstandarTextBox().setText(String.valueOf(experto.getProductoFinal().getTamanioLoteEstandar()));
+    }
     
 }

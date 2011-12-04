@@ -21,7 +21,7 @@ import persistencia.Fachada;
  *
  * @author rustu
  */
-public class ControladorProductoComponente {
+public class ControladorProductoComponente implements Controlador{
 
     ControladorPantallaMadre controladorPantallaMadre;
     PantallaCrearProductoComponente pantallaCrearProductoComponente;
@@ -99,7 +99,7 @@ public class ControladorProductoComponente {
         }
         
         try{
-            proComp.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearProductoComponente.getTamanioLoteEstandarTextBox().getText()));
+            proComp.setTamanioLoteEstandar(Float.valueOf(pantallaCrearProductoComponente.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaCrearProductoComponente, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearProductoComponente.getTamanioLoteEstandarTextBox().requestFocus();
@@ -114,7 +114,9 @@ public class ControladorProductoComponente {
         }
         proComp.setUbicacionEnAlmacen(pantallaCrearProductoComponente.getUbicacionAlamcenTextBox().getText());
         proComp.setObservacion(pantallaCrearProductoComponente.getObservacionTextArea().getText());
-        
+        proComp.setTipoInventario(null);
+        proComp.setCostoDeAlmacenamiento((float)0);
+        proComp.setCostoDePedido((float)0);
         experto.guardar(proComp);
         
         
@@ -205,7 +207,7 @@ public class ControladorProductoComponente {
         }
         
         try{
-            proComp.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarProductoComponente.getTamanioLoteEstandarTextBox().getText()));
+            proComp.setTamanioLoteEstandar(Float.valueOf(pantallaEditarProductoComponente.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoComponente, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoComponente.getTamanioLoteEstandarTextBox().requestFocus();
@@ -225,6 +227,14 @@ public class ControladorProductoComponente {
         
         
         JOptionPane.showMessageDialog(pantallaEditarProductoComponente, "Producto componente guardado con éxito", "¡En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void gestionDeInventario() {
+        new ControladorGestionDeInventarios(controladorPantallaMadre, this).iniciar(experto.getProductoComponente());
+    }
+
+    public void actualizarPorGestionDeInventarios() {
+         pantallaEditarProductoComponente.getTamanioLoteEstandarTextBox().setText(String.valueOf(experto.getProductoComponente().getTamanioLoteEstandar()));
     }
     
     

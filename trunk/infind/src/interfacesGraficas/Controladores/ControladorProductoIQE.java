@@ -98,7 +98,7 @@ public class ControladorProductoIQE {
         }
         
         try{
-            proIQE.setTamanioLoteEstandar(Integer.valueOf(pantallaCrearProductoIQE.getTamanioLoteEstandarTextBox().getText()));
+            proIQE.setTamanioLoteEstandar(Float.valueOf(pantallaCrearProductoIQE.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaCrearProductoIQE, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaCrearProductoIQE.getTamanioLoteEstandarTextBox().requestFocus();
@@ -106,7 +106,9 @@ public class ControladorProductoIQE {
         }
         proIQE.setUbicacionEnAlmacen(pantallaCrearProductoIQE.getUbicacionAlamcenTextBox().getText());
         proIQE.setObservacion(pantallaCrearProductoIQE.getObservacionTextArea().getText());
-        
+        proIQE.setTipoInventario(null);
+        proIQE.setCostoDeAlmacenamiento((float)0);
+        proIQE.setCostoDePedido((float)0);
         experto.guardar(proIQE);
         
         
@@ -193,7 +195,7 @@ public class ControladorProductoIQE {
         }
         
         try{
-            pIQE.setTamanioLoteEstandar(Integer.valueOf(pantallaEditarProductoIQE.getTamanioLoteEstandarTextBox().getText()));
+            pIQE.setTamanioLoteEstandar(Float.valueOf(pantallaEditarProductoIQE.getTamanioLoteEstandarTextBox().getText()));
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(pantallaEditarProductoIQE, "Ha ingresado un tamaño de lote estandar incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantallaEditarProductoIQE.getTamanioLoteEstandarTextBox().requestFocus();
