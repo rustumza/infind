@@ -49,6 +49,7 @@ ControladorPuntoEquilibrio controlador;
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         botonSaliur = new javax.swing.JButton();
+        botonListadoPE = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -57,6 +58,8 @@ ControladorPuntoEquilibrio controlador;
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         campoVolumen = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        campoPE = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPuntoEquilibrio = new javax.swing.JTable();
@@ -93,6 +96,13 @@ ControladorPuntoEquilibrio controlador;
             }
         });
         jToolBar1.add(botonSaliur);
+
+        botonListadoPE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Combo-Box-30.png"))); // NOI18N
+        botonListadoPE.setToolTipText("Listado del PE por periodo");
+        botonListadoPE.setFocusable(false);
+        botonListadoPE.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonListadoPE.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(botonListadoPE);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -162,8 +172,25 @@ ControladorPuntoEquilibrio controlador;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoVolumen, gridBagConstraints);
+
+        jLabel12.setText("Punto de equilibrio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 20, 0, 0);
+        jPanel2.add(jLabel12, gridBagConstraints);
+
+        campoPE.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
+        jPanel2.add(campoPE, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -370,10 +397,12 @@ ControladorPuntoEquilibrio controlador;
      */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonListadoPE;
     private javax.swing.JButton botonSaliur;
     private javax.swing.JTextField campoCostoDetergente;
     private javax.swing.JTextField campoCostoEnjuague;
     private javax.swing.JTextField campoCostoEstandar;
+    private javax.swing.JTextField campoPE;
     private javax.swing.JTextField campoRelacionDetergente;
     private javax.swing.JTextField campoRelacionEnjuague;
     private javax.swing.JTextField campoVolumen;
@@ -384,6 +413,7 @@ ControladorPuntoEquilibrio controlador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -408,6 +438,32 @@ ControladorPuntoEquilibrio controlador;
     public void setBotonSaliur(JButton botonSaliur) {
         this.botonSaliur = botonSaliur;
     }
+
+    public JTextField getCampoPE() {
+        return campoPE;
+    }
+
+    public JButton getBotonListadoPE() {
+        return botonListadoPE;
+    }
+
+    public void setBotonListadoPE(JButton botonListadoPE) {
+        this.botonListadoPE = botonListadoPE;
+    }
+
+    
+    public void setCampoPE(JTextField campoPE) {
+        this.campoPE = campoPE;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public void setjLabel12(JLabel jLabel12) {
+        this.jLabel12 = jLabel12;
+    }
+    
 
     public JTextField getCampoCostoDetergente() {
         return campoCostoDetergente;
