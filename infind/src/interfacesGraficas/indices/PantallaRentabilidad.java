@@ -50,8 +50,8 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
         botonGuardar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        campoGradoDependencia = new javax.swing.JTextField();
-        campoIndiceLiquidez = new javax.swing.JTextField();
+        campoUtilidad = new javax.swing.JTextField();
+        campoActivoTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -66,6 +66,11 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardar);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -92,7 +97,7 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jPanel1, gridBagConstraints);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Estructura Financiera"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Rentabilidad"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -100,25 +105,29 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoGradoDependencia, gridBagConstraints);
+        jPanel2.add(campoUtilidad, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
+        jPanel2.add(campoActivoTotal, gridBagConstraints);
 
         jLabel7.setText("Utilidades");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel7, gridBagConstraints);
 
         jLabel9.setText("Activo total");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel9, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -136,6 +145,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
    dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
 
+private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+    controlador.guardarRentabilidad();
+}//GEN-LAST:event_botonGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,8 +156,8 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoGradoDependencia;
-    private javax.swing.JTextField campoIndiceLiquidez;
+    private javax.swing.JTextField campoActivoTotal;
+    private javax.swing.JTextField campoUtilidad;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -168,20 +181,20 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.botonSalir = botonSalir;
     }
 
-    public JTextField getCampoGradoDependencia() {
-        return campoGradoDependencia;
+    public JTextField getCampoActivoTotal() {
+        return campoActivoTotal;
     }
 
-    public void setCampoGradoDependencia(JTextField campoGradoDependencia) {
-        this.campoGradoDependencia = campoGradoDependencia;
+    public void setCampoActivoTotal(JTextField campoActivoTotal) {
+        this.campoActivoTotal = campoActivoTotal;
     }
 
-    public JTextField getCampoIndiceLiquidez() {
-        return campoIndiceLiquidez;
+    public JTextField getCampoUtilidad() {
+        return campoUtilidad;
     }
 
-    public void setCampoIndiceLiquidez(JTextField campoIndiceLiquidez) {
-        this.campoIndiceLiquidez = campoIndiceLiquidez;
+    public void setCampoUtilidad(JTextField campoUtilidad) {
+        this.campoUtilidad = campoUtilidad;
     }
 
     public ControladorABMIndices getControlador() {
@@ -232,5 +245,5 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jToolBar1 = jToolBar1;
     }
 
-    
+   
 }

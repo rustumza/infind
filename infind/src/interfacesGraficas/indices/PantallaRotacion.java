@@ -13,6 +13,11 @@ package interfacesGraficas.indices;
 import interfacesGraficas.Controladores.ControladorABMIndices;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.util.ResourceBundle.Control;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -46,16 +51,16 @@ public class PantallaRotacion extends javax.swing.JDialog {
         botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        campoGradoDependencia = new javax.swing.JTextField();
+        campoVentas = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campoNivelCredito = new javax.swing.JTextField();
-        campoIndiceLiquidez = new javax.swing.JTextField();
+        campoActivoNeto = new javax.swing.JTextField();
+        campoActivoTotal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        campoDeudasxcobrar = new javax.swing.JTextField();
+        campoNivelStock = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -68,6 +73,11 @@ public class PantallaRotacion extends javax.swing.JDialog {
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardar);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -94,10 +104,10 @@ public class PantallaRotacion extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jPanel1, gridBagConstraints);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Estructura Financiera"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Rotacion"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Rotacion de las inversiones");
+        jLabel1.setText("Rotacion de las inversiones:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -110,9 +120,9 @@ public class PantallaRotacion extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoGradoDependencia, gridBagConstraints);
+        jPanel2.add(campoVentas, gridBagConstraints);
 
-        jLabel2.setText("De los capitales propios");
+        jLabel2.setText("De los capitales propios:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -120,7 +130,7 @@ public class PantallaRotacion extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        jLabel3.setText("Rotacion de Stock");
+        jLabel3.setText("Rotacion de Stock:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -133,43 +143,53 @@ public class PantallaRotacion extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoNivelCredito, gridBagConstraints);
+        jPanel2.add(campoActivoNeto, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
+        jPanel2.add(campoActivoTotal, gridBagConstraints);
 
         jLabel6.setText("Nivel de Stock");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("Ventas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("Activo neto");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("Activo total");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel9, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 30;
-        jPanel2.add(campoDeudasxcobrar, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        jPanel2.add(campoNivelStock, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -186,6 +206,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
    dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
 
+private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+    controlador.guardarRotacioin();
+}//GEN-LAST:event_botonGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,10 +217,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoDeudasxcobrar;
-    private javax.swing.JTextField campoGradoDependencia;
-    private javax.swing.JTextField campoIndiceLiquidez;
-    private javax.swing.JTextField campoNivelCredito;
+    private javax.swing.JTextField campoActivoNeto;
+    private javax.swing.JTextField campoActivoTotal;
+    private javax.swing.JTextField campoNivelStock;
+    private javax.swing.JTextField campoVentas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -208,4 +232,143 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBotonGuardar() {
+        return botonGuardar;
+    }
+
+    public void setBotonGuardar(JButton botonGuardar) {
+        this.botonGuardar = botonGuardar;
+    }
+
+    public JButton getBotonSalir() {
+        return botonSalir;
+    }
+
+    public void setBotonSalir(JButton botonSalir) {
+        this.botonSalir = botonSalir;
+    }
+
+    public JTextField getCampoActivoNeto() {
+        return campoActivoNeto;
+    }
+
+    public void setCampoActivoNeto(JTextField campoActivoNeto) {
+        this.campoActivoNeto = campoActivoNeto;
+    }
+
+    public JTextField getCampoActivoTotal() {
+        return campoActivoTotal;
+    }
+
+    public void setCampoActivoTotal(JTextField campoActivoTotal) {
+        this.campoActivoTotal = campoActivoTotal;
+    }
+
+    public JTextField getCampoNivelStock() {
+        return campoNivelStock;
+    }
+
+    public void setCampoNivelStock(JTextField campoNivelStock) {
+        this.campoNivelStock = campoNivelStock;
+    }
+
+    public JTextField getCampoVentas() {
+        return campoVentas;
+    }
+
+    public void setCampoVentas(JTextField campoVentas) {
+        this.campoVentas = campoVentas;
+    }
+
+    public ControladorABMIndices getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorABMIndices controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    
+    
 }

@@ -13,6 +13,11 @@ package interfacesGraficas.indices;
 import interfacesGraficas.Controladores.ControladorABMIndices;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.util.ResourceBundle.Control;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -46,23 +51,13 @@ public class PantallaRelacionConClients extends javax.swing.JDialog {
         botonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        campoGradoDependencia = new javax.swing.JTextField();
+        campoNroClientesNuevos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        campoNivelCredito = new javax.swing.JTextField();
-        campoIndiceLiquidez = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        campoClientesPrincipales = new javax.swing.JTextField();
+        campoTotalClientes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        campoDeudasxcobrar = new javax.swing.JTextField();
-        campoProCobros = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        campoPasivoCortoPlazo = new javax.swing.JTextField();
-        campoDeudasContraigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -75,6 +70,11 @@ public class PantallaRelacionConClients extends javax.swing.JDialog {
         botonGuardar.setFocusable(false);
         botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(botonGuardar);
 
         botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
@@ -104,12 +104,12 @@ public class PantallaRelacionConClients extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Estructura Financiera"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Cartera Clientes");
+        jLabel1.setText("Cartera Clientes:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -117,107 +117,53 @@ public class PantallaRelacionConClients extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoGradoDependencia, gridBagConstraints);
+        jPanel2.add(campoNroClientesNuevos, gridBagConstraints);
 
-        jLabel2.setText("Volumen de compra");
+        jLabel2.setText("Volumen de compra:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
-
-        jLabel3.setText("Nivel de descuento");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel3, gridBagConstraints);
-
-        jLabel4.setText("Nivel de creditos;");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel4, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoNivelCredito, gridBagConstraints);
+        jPanel2.add(campoClientesPrincipales, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
-
-        jLabel6.setText("Precio real");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        jPanel2.add(jLabel6, gridBagConstraints);
+        jPanel2.add(campoTotalClientes, gridBagConstraints);
 
         jLabel7.setText("Nro clientes nuevos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("clientes principales");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("Total clientes");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel9, gridBagConstraints);
-
-        jLabel10.setText("precio nominal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        jPanel2.add(jLabel10, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        jPanel2.add(campoDeudasxcobrar, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        jPanel2.add(campoProCobros, gridBagConstraints);
-
-        jLabel12.setText("cuentas a cobrar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        jPanel2.add(jLabel12, gridBagConstraints);
-
-        jLabel13.setText("ventas totales x dia");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        jPanel2.add(jLabel13, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 30;
-        jPanel2.add(campoPasivoCortoPlazo, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 30;
-        jPanel2.add(campoDeudasContraigo, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -234,6 +180,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
    dispose();
 }//GEN-LAST:event_botonSalirActionPerformed
 
+private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+    controlador.guardarRelacionCliente();
+}//GEN-LAST:event_botonGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,21 +191,11 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoDeudasContraigo;
-    private javax.swing.JTextField campoDeudasxcobrar;
-    private javax.swing.JTextField campoGradoDependencia;
-    private javax.swing.JTextField campoIndiceLiquidez;
-    private javax.swing.JTextField campoNivelCredito;
-    private javax.swing.JTextField campoPasivoCortoPlazo;
-    private javax.swing.JTextField campoProCobros;
+    private javax.swing.JTextField campoClientesPrincipales;
+    private javax.swing.JTextField campoNroClientesNuevos;
+    private javax.swing.JTextField campoTotalClientes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -263,4 +203,119 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBotonGuardar() {
+        return botonGuardar;
+    }
+
+    public void setBotonGuardar(JButton botonGuardar) {
+        this.botonGuardar = botonGuardar;
+    }
+
+    public JButton getBotonSalir() {
+        return botonSalir;
+    }
+
+    public void setBotonSalir(JButton botonSalir) {
+        this.botonSalir = botonSalir;
+    }
+
+    public JTextField getCampoClientesPrincipales() {
+        return campoClientesPrincipales;
+    }
+
+    public void setCampoClientesPrincipales(JTextField campoClientesPrincipales) {
+        this.campoClientesPrincipales = campoClientesPrincipales;
+    }
+
+    public JTextField getCampoNroClientesNuevos() {
+        return campoNroClientesNuevos;
+    }
+
+    public void setCampoNroClientesNuevos(JTextField campoNroClientesNuevos) {
+        this.campoNroClientesNuevos = campoNroClientesNuevos;
+    }
+
+    public JTextField getCampoTotalClientes() {
+        return campoTotalClientes;
+    }
+
+    public void setCampoTotalClientes(JTextField campoTotalClientes) {
+        this.campoTotalClientes = campoTotalClientes;
+    }
+
+    public ControladorABMIndices getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorABMIndices controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    
+    
 }
