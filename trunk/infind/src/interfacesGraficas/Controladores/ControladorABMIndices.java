@@ -404,21 +404,21 @@ public class ControladorABMIndices {
         lista.add(new Indices("Rendimiento De Las Ventas", Double.valueOf(pantallaValoresNormales.getCampoVentas1().getText()), Double.valueOf(pantallaValoresNormales.getCampoVentas2().getText())));
         lista.add(new Indices("Eficiencia Vendedor", Double.valueOf(pantallaValoresNormales.getCampoEficVendedor1().getText()), Double.valueOf(pantallaValoresNormales.getCampoEficVendedor2().getText())));
         lista.add(new Indices("Grado Dependencia Empresa", Double.valueOf(pantallaValoresNormales.getCampoGradoDependencia1().getText()), Double.valueOf(pantallaValoresNormales.getCampoGradoDependencia2().getText())));
-        lista.add(new Indices("Indice liquides", Double.valueOf(pantallaValoresNormales.getCampoLiquides1().getText()), Double.valueOf(pantallaValoresNormales.getCampoLiquides2().getText())));
-        lista.add(new Indices("Nivel ausentismo", Double.valueOf(pantallaValoresNormales.getCampoNivelAusentismo1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelAusentismo2().getText())));
-        lista.add(new Indices("Nivel de credito", Double.valueOf(pantallaValoresNormales.getCampoNivelCredito1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelCredito2().getText())));
-        lista.add(new Indices("Nivel de descuento", Double.valueOf(pantallaValoresNormales.getCampoDescuentos1().getText()), Double.valueOf(pantallaValoresNormales.getCampoDescuentos2().getText())));
-        lista.add(new Indices("Nivel de rechazos", Double.valueOf(pantallaValoresNormales.getCampoRechazos1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRechazos2().getText())));
-        lista.add(new Indices("Nivel de rotacion", Double.valueOf(pantallaValoresNormales.getCampoNivelRotacion1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelRotacion2().getText())));
-        lista.add(new Indices("Seguimiento plan sugerencias", Double.valueOf(pantallaValoresNormales.getCampoPlanSugerencias1().getText()), Double.valueOf(pantallaValoresNormales.getCampoPlanSugerencias2().getText())));
-        lista.add(new Indices("Ventas en cuotas", Double.valueOf(pantallaValoresNormales.getCampoProporcionCuotas1().getText()), Double.valueOf(pantallaValoresNormales.getCampoProporcionCuotas1().getText())));
-        lista.add(new Indices("Que se debe", Double.valueOf(pantallaValoresNormales.getCampoQueSeDebe1().getText()), Double.valueOf(pantallaValoresNormales.getCampoQueSeDEbe2().getText())));
-        lista.add(new Indices("Rotacion externa", Double.valueOf(pantallaValoresNormales.getCampoRotacionExterna1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRotacionExterna2().getText())));
-        lista.add(new Indices("Rotacion interna", Double.valueOf(pantallaValoresNormales.getCampoRotacionInterna1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRotacionInterna2().getText())));
-        lista.add(new Indices("Rotacion de stock", Double.valueOf(pantallaValoresNormales.getCampoStock1().getText()), Double.valueOf(pantallaValoresNormales.getCampoStock2().getText())));
-        lista.add(new Indices("Uso de hp", Double.valueOf(pantallaValoresNormales.getCampoUsoHP1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUsoHP2().getText())));
-        lista.add(new Indices("utilidad activo total", Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal2().getText())));
-        lista.add(new Indices("volumen de compra", Double.valueOf(pantallaValoresNormales.getCampoVolumenCOmpra1().getText()), Double.valueOf(pantallaValoresNormales.getCampoVolumenCompra2().getText())));
+        lista.add(new Indices("Indice Liquides", Double.valueOf(pantallaValoresNormales.getCampoLiquides1().getText()), Double.valueOf(pantallaValoresNormales.getCampoLiquides2().getText())));
+        lista.add(new Indices("Nivel Ausentismo", Double.valueOf(pantallaValoresNormales.getCampoNivelAusentismo1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelAusentismo2().getText())));
+        lista.add(new Indices("Nivel De Credito", Double.valueOf(pantallaValoresNormales.getCampoNivelCredito1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelCredito2().getText())));
+        lista.add(new Indices("Nivel De Descuento", Double.valueOf(pantallaValoresNormales.getCampoDescuentos1().getText()), Double.valueOf(pantallaValoresNormales.getCampoDescuentos2().getText())));
+        lista.add(new Indices("Nivel De Rechazos", Double.valueOf(pantallaValoresNormales.getCampoRechazos1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRechazos2().getText())));
+        lista.add(new Indices("Nivel De Rotacion", Double.valueOf(pantallaValoresNormales.getCampoNivelRotacion1().getText()), Double.valueOf(pantallaValoresNormales.getCampoNivelRotacion2().getText())));
+        lista.add(new Indices("Seguimiento Plan Sugerencias", Double.valueOf(pantallaValoresNormales.getCampoPlanSugerencias1().getText()), Double.valueOf(pantallaValoresNormales.getCampoPlanSugerencias2().getText())));
+        lista.add(new Indices("Ventas En Cuotas", Double.valueOf(pantallaValoresNormales.getCampoProporcionCuotas1().getText()), Double.valueOf(pantallaValoresNormales.getCampoProporcionCuotas1().getText())));
+        lista.add(new Indices("Que Se Debe", Double.valueOf(pantallaValoresNormales.getCampoQueSeDebe1().getText()), Double.valueOf(pantallaValoresNormales.getCampoQueSeDEbe2().getText())));
+        lista.add(new Indices("Rotacion Externa", Double.valueOf(pantallaValoresNormales.getCampoRotacionExterna1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRotacionExterna2().getText())));
+        lista.add(new Indices("Rotacion Interna", Double.valueOf(pantallaValoresNormales.getCampoRotacionInterna1().getText()), Double.valueOf(pantallaValoresNormales.getCampoRotacionInterna2().getText())));
+        lista.add(new Indices("Rotacion De Stock", Double.valueOf(pantallaValoresNormales.getCampoStock1().getText()), Double.valueOf(pantallaValoresNormales.getCampoStock2().getText())));
+        lista.add(new Indices("Uso De Hp", Double.valueOf(pantallaValoresNormales.getCampoUsoHP1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUsoHP2().getText())));
+        lista.add(new Indices("Utilidad Activo Total", Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal2().getText())));
+        lista.add(new Indices("Volumen De Compra", Double.valueOf(pantallaValoresNormales.getCampoVolumenCOmpra1().getText()), Double.valueOf(pantallaValoresNormales.getCampoVolumenCompra2().getText())));
         
         expertoABMIndice.guardarValoresNormales(lista);
         
