@@ -67,7 +67,7 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private float stockDeSeguridad;
     private float stockMaximoInventarioIntervaloFijo;
     private float tasaDeProduccion;
-    private float numeroDeCiclosDeFabricacionOptimo;
+    private float numeroDeCiclosDeFabricacionOptimo = 0;
     
     public Long getId() {
         return id;

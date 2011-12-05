@@ -76,15 +76,43 @@ public class ControladorEditarRutaDeFabricacion {
 
     public void tabla(Integer fila, Integer click) {
 
-        etapaSeleccionado = modeloTAblaEtapaAgregada.buscarEtapasRutas(pantallaEditarRuta.getTablaEtapasAgregadas().getValueAt(fila, 1).toString());
 
-        if (etapaSeleccionado.isTipoIQE()) {
-            desbloquearCampos();
-            cargarEtapaNoEditable(etapaSeleccionado);
-        } else {
-            bloquearCampos();
-            cargarEtapaEditable(etapaSeleccionado);
+        etapaSeleccionado = modeloTAblaEtapaAgregada.buscarEtapasRutas(pantallaEditarRuta.getTablaEtapasAgregadas().getValueAt(fila, 1).toString());
+        Object selectedItem = pantallaEditarRuta.getComboBoxTipoProducto().getSelectedItem();
+        if (selectedItem.toString() == "Producto Final") {
+
+            if (etapaSeleccionado.isTipoIQE()) {
+                bloquearCampos();
+                cargarEtapaNoEditable(etapaSeleccionado);
+            } else {
+                desbloquearCampos();
+                cargarEtapaEditable(etapaSeleccionado);
+            }
+
+
+        } else if (selectedItem.toString() == "Producto Intermedio") {
+            if (etapaSeleccionado.isTipoIQE()) {
+                bloquearCampos();
+                cargarEtapaNoEditable(etapaSeleccionado);
+            } else {
+                desbloquearCampos();
+                cargarEtapaEditable(etapaSeleccionado);
+            }
+            
+        } else {// si es tipo iqe,
+            
+            if (etapaSeleccionado.isTipoIQE()) {
+                desbloquearCampos();
+                cargarEtapaEditable(etapaSeleccionado);
+            } else {
+                //desbloquearCampos();
+                //cargarEtapaEditable(etapaSeleccionado);
+            }
+            
         }
+        //si es prod final o intermedio, y selecciono las etapas del tipo iqe, las tiene qe mosstrar con los compos deshabilitados , sino habilitaods
+        //si es producto tipoiqe las tiene que mostrar habilitados
+
 
     }
 
@@ -222,11 +250,11 @@ public class ControladorEditarRutaDeFabricacion {
                                         modeloTAblaEtapaAgregada.addRow(etapaDeRutaDeFabricacion);//tengo que poner la fila deshabilitada    
                                         pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
 
-                                    } else {
-
-                                        modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
-                                        pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    }
+                                    } /*else {
+                                    
+                                    modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
+                                    pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
+                                    }*/
 
                                 }
 
@@ -274,10 +302,10 @@ public class ControladorEditarRutaDeFabricacion {
                                     if (etapaDeRutaDeFabricacion.isTipoIQE()) {
                                         modeloTAblaEtapaAgregada.addRow(etapaDeRutaDeFabricacion);//tengo que poner la fila deshabilitada    
                                         pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    } else {
-                                        modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
-                                        pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    }
+                                    } /*else {
+                                    modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
+                                    pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
+                                    }*/
 
                                 }
 
@@ -329,10 +357,10 @@ public class ControladorEditarRutaDeFabricacion {
                                     if (etapaDeRutaDeFabricacion.isTipoIQE()) {
                                         modeloTAblaEtapaAgregada.addRow(etapaDeRutaDeFabricacion);//tengo que poner la fila deshabilitada    
                                         pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    } else {
-                                        modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
-                                        pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    }
+                                    }/* else {
+                                    modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
+                                    pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
+                                    }*/
 
                                 }
                             }
@@ -381,10 +409,10 @@ public class ControladorEditarRutaDeFabricacion {
                                     if (etapaDeRutaDeFabricacion.isTipoIQE()) {
                                         modeloTAblaEtapaAgregada.addRow(etapaDeRutaDeFabricacion);//tengo que poner la fila deshabilitada    
                                         pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    } else {
-                                        modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
-                                        pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
-                                    }
+                                    } /*else {
+                                    modeloTAblaEtapaAgregada.addAllRow(etapaRutaFabricacionTipoIQE);
+                                    pantallaEditarRuta.getTablaEtapasAgregadas().setModel(modeloTAblaEtapaAgregada);
+                                    }*/
 
                                 }
 
