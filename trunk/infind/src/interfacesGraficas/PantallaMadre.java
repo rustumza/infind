@@ -365,9 +365,19 @@ public class PantallaMadre extends javax.swing.JFrame {
         inventarios.add(jMenuItem7);
 
         jMenuItem8.setText("Listar productos por debajo del punto de pedido");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         inventarios.add(jMenuItem8);
 
         jMenuItem9.setText("Listar productos por debajo del punto de stock de seguridad");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         inventarios.add(jMenuItem9);
 
         jMenuBar1.add(inventarios);
@@ -594,6 +604,14 @@ private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
     controlador.cgiParaTodosLosProductos();
 }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    controlador.listarProductosBajoElPuntoDePedido();
+}//GEN-LAST:event_jMenuItem8ActionPerformed
+
+private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    controlador.listarProductosBajoElStockDeSeguridad();
+}//GEN-LAST:event_jMenuItem9ActionPerformed
     /**
      * @param args the command line arguments
      */

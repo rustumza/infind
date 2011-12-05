@@ -183,4 +183,12 @@ public class ControladorPantallaMadre {
     public void cgiParaTodosLosProductos() {
         new ControladorGestionDeInventariosParaTodosLosProductos(this).iniciar();
     }
+
+    public void listarProductosBajoElPuntoDePedido() {
+        new ControladorProductosPorDebajoDelPuntoDePedido(this).iniciar();
+    }
+
+    public void listarProductosBajoElStockDeSeguridad() {
+        new ControladorProductosQueTieneElStockDebajoDelNivelDeSeguridad(this).iniciar();
+    }
 }
