@@ -78,7 +78,8 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        guardar.setText("Guardar");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
+        guardar.setToolTipText("Guardar");
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -89,7 +90,8 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         });
         jToolBar1.add(guardar);
 
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
+        salir.setToolTipText("Salir");
         salir.setFocusable(false);
         salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -100,7 +102,7 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         });
         jToolBar1.add(salir);
 
-        costoAlmacenamientoLabel.setText("Costo alacenamiento");
+        costoAlmacenamientoLabel.setText("Costo almacenamiento");
 
         costoDePedidoLabel.setText("Costo de pedido");
 
@@ -112,7 +114,7 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +131,7 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
                         .addComponent(cantidadMaximaTextBox, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(costoDePedidoTextBox, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(costoAlmacenamientoTextBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

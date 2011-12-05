@@ -54,7 +54,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/utilidades/imagenes/iconos/agt_action_success-20.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Guardar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Calcular"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -102,10 +102,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelProducto" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelPeriodos" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
-                          <Component id="jLabelAlfa" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabelAlfa" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelBeta" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelGama" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelError" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -127,7 +124,7 @@
                       <Component id="jComboBoxProducto" alignment="0" pref="292" max="32767" attributes="1"/>
                       <Component id="jComboBoxMetodo" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace pref="54" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

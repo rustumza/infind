@@ -67,7 +67,7 @@ public class PantallaPrediccionDemanda extends javax.swing.JDialog {
         jToolBar1.setRollover(true);
 
         botonGenerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/agt_action_success-20.png"))); // NOI18N
-        botonGenerar.setToolTipText("Guardar");
+        botonGenerar.setToolTipText("Calcular");
         botonGenerar.setFocusable(false);
         botonGenerar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonGenerar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -145,9 +145,7 @@ public class PantallaPrediccionDemanda extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelProducto, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelPeriodos, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(jLabelAlfa))
+                    .addComponent(jLabelAlfa, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelBeta, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelGama, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelError, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -166,7 +164,7 @@ public class PantallaPrediccionDemanda extends javax.swing.JDialog {
                     .addComponent(jComboBoxGama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxProducto, 0, 292, Short.MAX_VALUE)
                     .addComponent(jComboBoxMetodo, 0, 0, Short.MAX_VALUE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
