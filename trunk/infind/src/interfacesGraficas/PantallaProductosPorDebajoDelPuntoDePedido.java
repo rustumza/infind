@@ -45,6 +45,7 @@ public class PantallaProductosPorDebajoDelPuntoDePedido extends javax.swing.JDia
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Producots por debajo del punto de pedido");
 
         jToolBar1.setRollover(true);
 
