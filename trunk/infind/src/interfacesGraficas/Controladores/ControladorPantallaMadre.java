@@ -191,4 +191,8 @@ public class ControladorPantallaMadre {
     public void listarProductosBajoElStockDeSeguridad() {
         new ControladorProductosQueTieneElStockDebajoDelNivelDeSeguridad(this).iniciar();
     }
+
+    public void mostrarNivelesDeNormalidadDeIndices() {
+        new ControladorIndicesAnormales(this).iniciar();
+    }
 }
