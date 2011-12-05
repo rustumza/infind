@@ -90,6 +90,8 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuABMDemandasHistoricas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informática Industrial - EON Argentina");
@@ -409,13 +411,26 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setText("Índices");
+        jMenu4.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem5.setText("ABM Indices");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1430, Short.MAX_VALUE)
+            .addGap(0, 1454, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,6 +575,10 @@ private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent
             Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuCalcularDemandaActionPerformed
+
+private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    controlador.crearIndices();
+}//GEN-LAST:event_jMenuItem5ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -615,11 +634,13 @@ private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarOrdenesDeProduccion;

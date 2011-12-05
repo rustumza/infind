@@ -174,4 +174,8 @@ public class ControladorPantallaMadre {
     public void calcularDemanda() throws ExpertoCalcularDemandaException {
         new ControladorCalcularDemanda(this).iniciar();
     }
+
+    public void crearIndices() {
+        new ControladorABMIndices(this).iniciar();
+    }
 }
