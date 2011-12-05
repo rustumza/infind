@@ -9,6 +9,7 @@ import expertos.ExpertoABMIndices;
 import interfacesGraficas.ModeloTablas.ModeloTablaIndicesAnormales;
 import interfacesGraficas.indices.PantallaIndicesAnormales;
 import java.util.List;
+import utilidades.Render;
 
 /**
  *
@@ -35,6 +36,7 @@ public class ControladorIndicesAnormales {
         List<DTOIndices> lista = experto.buscarIndicesParaPantalla();
         mod.setListaElementos(lista);
         pantalla.getTabla().setModel(mod);
+        pantalla.getTabla().setDefaultRenderer (Object.class, new Render());
         pantalla.setVisible(true);
     }
     
