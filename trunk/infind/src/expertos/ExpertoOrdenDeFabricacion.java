@@ -261,9 +261,9 @@ public class ExpertoOrdenDeFabricacion extends Experto {
 
     public OrdenDeFabricacion generarOrdenesPrimero(Date fecha, int cantidadDeLotesAFabricar) throws StockExcepcion {
         try{
-            Conexion.getInstancia().iniciarTX();
+            //Conexion.getInstancia().iniciarTX();
             OrdenDeFabricacion orden = generarOrdenes(articulo, fecha, cantidadDeLotesAFabricar);
-            Conexion.getInstancia().confirmarTx();
+            //Conexion.getInstancia().confirmarTx();
             return orden;
         }catch(StockExcepcion e){
             Conexion.getInstancia().deshacerTx();
@@ -297,7 +297,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             ExpertoPedidoAproveedores expertoPedidoAProveedores = new ExpertoPedidoAproveedores();
             ExpertoStock expertoStock = new ExpertoStock();
             for (DetalleEstructuraDeProducto detalle : estructura.getDetalleEstructuraProductoList()) {
-                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminadaSinTx(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
                     int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
                     if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                         cantidadLotesAUsarDeUnProducto++;
@@ -316,7 +316,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
                 }
             }
             for (DetalleEstructuraDeProducto detalle : estructuraIQE.getDetalleEstructuraProductoList()) {
-                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminadaSinTx(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
+                if (!expertoStock.getDisponiblilidadDeStockParaFechaDeterminada(detalle.getMaestroArticulo(), detalle.getCantidad() * cantidadDeLotesAFabricar, fecha)) {
                     int cantidadLotesAUsarDeUnProducto = (int) ((detalle.getCantidad() * cantidadDeLotesAFabricar) / detalle.getMaestroArticulo().getTamanioLoteEstandar());
                     if ((detalle.getCantidad() * cantidadDeLotesAFabricar) % detalle.getMaestroArticulo().getTamanioLoteEstandar() > 0) {
                         cantidadLotesAUsarDeUnProducto++;
@@ -382,6 +382,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
 
             orden.setCantidadDeLotesOptimos(cantidadDeLotesAFabricar);
 
+            Conexion.getInstancia().iniciarTX();
             expertoPedidoAProveedores.asentarPedidosSinTx();
 
             for (DetalleEstructuraDeProducto detalleEstruc : estructura.getDetalleEstructuraProductoList()) {
@@ -403,6 +404,7 @@ public class ExpertoOrdenDeFabricacion extends Experto {
             for (OrdenDeFabricacion ordenDeFabricacion : orden.getListaDeOrdenes()) {
                 Fachada.getInstancia().guardarSinTranasaccion(ordenDeFabricacion);
             }
+            Conexion.getInstancia().confirmarTx();
             return orden;
         } catch (StockExcepcion e) {
             throw e;
