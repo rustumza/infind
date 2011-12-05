@@ -155,4 +155,11 @@ public class ExpertoStock {
         }
         return false;
     }
+    
+    public float getStockDisponibleAFuturo(MaestroDeArticulo articulo){
+        Stock stock = articulo.getStock();
+        float aux = stock.getCantidadFisicaReal() + stock.getCantidadPorEntrar() - stock.getCantidadReservada();
+        return aux;
+    
+    }
 }
