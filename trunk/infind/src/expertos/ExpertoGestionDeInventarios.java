@@ -115,6 +115,9 @@ public class ExpertoGestionDeInventarios {
             }
         demanda = demanda / contAux;
         float cGI = (float)0;
+        if(art.getTipoInventario() == null){
+            return ((float)-1);
+        }
         if(art.getTipoInventario().equals("Fabricacion interna")){
             cGI = art.getCostoDeAlmacenamiento() * demanda / 2 + art.getCostoDePedido() * demanda/ art.getTamanioLoteEstandar();
         }else{
@@ -170,13 +173,13 @@ public class ExpertoGestionDeInventarios {
     
     public List<ProductoComponente> buscarProductosComponente(){
     
-        Criteria criterioProdInt = Fachada.getInstancia().crearCriterioSinEliminado(ProductoIntermedio.class);
-        return Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioProdInt);
+        Criteria criterioProdComp = Fachada.getInstancia().crearCriterioSinEliminado(ProductoComponente.class);
+        return Fachada.getInstancia().buscar(ProductoComponente.class, criterioProdComp);
     }
     
     public List<ProductoIntermedio> buscarProductoIntermedios(){
-        Criteria criterioProdComp = Fachada.getInstancia().crearCriterioSinEliminado(ProductoComponente.class);
-        return Fachada.getInstancia().buscar(ProductoComponente.class, criterioProdComp);
+        Criteria criterioProdInt = Fachada.getInstancia().crearCriterioSinEliminado(ProductoIntermedio.class);
+        return Fachada.getInstancia().buscar(ProductoIntermedio.class, criterioProdInt);
     }
 
     public float calcularCGIParaMateriaPrima(String codigo) {
@@ -210,6 +213,89 @@ public class ExpertoGestionDeInventarios {
         }else{
             return calculoDeCostoDeGestionDeInvetario(lista.get(0));
         }
+    }
+    
+    public List<MaestroDeArticulo> buscarProductosPorDebajoDelPuntoDePedido(){
+    
+        List<MaestroDeArticulo> lista = new ArrayList<MaestroDeArticulo>(); 
+        ExpertoStock expStock = new ExpertoStock();
+        
+        
+        List<MateriaPrima> listaMateriaPrima = buscarMateriasPrimas();
+        
+        
+        for (MateriaPrima materiaPrima : listaMateriaPrima) {
+            if(materiaPrima.getPuntoDePedido() != 0){
+                if(materiaPrima.getPuntoDePedido()>expStock.getStockDisponibleAFuturo(materiaPrima)){
+                    lista.add(materiaPrima);
+                }
+            }
+        }
+        
+        List<ProductoIntermedio> listaProductoIntermedios = buscarProductoIntermedios();
+        
+        for (ProductoIntermedio prodInt : listaProductoIntermedios) {
+            if(prodInt.getPuntoDePedido() != 0){
+                if(prodInt.getPuntoDePedido()>expStock.getStockDisponibleAFuturo(prodInt)){
+                        lista.add(prodInt);
+                }
+            }
+        }
+        
+        List<ProductoComponente> listaProductoComponente = buscarProductosComponente();
+        
+        
+        for (ProductoComponente prodComp : listaProductoComponente) {
+            if(prodComp.getPuntoDePedido() != 0){
+                if(prodComp.getPuntoDePedido()>expStock.getStockDisponibleAFuturo(prodComp)){
+                        lista.add(prodComp);
+                }
+            }
+        }
+    
+        return lista;
+    }
+
+    public List<MaestroDeArticulo> buscarProductosPorDebajoDelStockDeSeguridad() {
+        
+        List<MaestroDeArticulo> lista = new ArrayList<MaestroDeArticulo>(); 
+        ExpertoStock expStock = new ExpertoStock();
+        
+        
+        List<MateriaPrima> listaMateriaPrima = buscarMateriasPrimas();
+        
+        
+        for (MateriaPrima materiaPrima : listaMateriaPrima) {
+            if(materiaPrima.getStockDeSeguridad() != 0){
+                if(materiaPrima.getStockDeSeguridad()>expStock.getStockDisponibleAFuturo(materiaPrima)){
+                    lista.add(materiaPrima);
+                }
+            }
+        }
+        
+        List<ProductoIntermedio> listaProductoIntermedios = buscarProductoIntermedios();
+        
+        for (ProductoIntermedio prodInt : listaProductoIntermedios) {
+            if(prodInt.getStockDeSeguridad() != 0){
+                if(prodInt.getStockDeSeguridad()>expStock.getStockDisponibleAFuturo(prodInt)){
+                        lista.add(prodInt);
+                }
+            }
+        }
+        
+        List<ProductoComponente> listaProductoComponente = buscarProductosComponente();
+        
+        
+        for (ProductoComponente prodComp : listaProductoComponente) {
+            if(prodComp.getStockDeSeguridad() != 0){
+                if(prodComp.getStockDeSeguridad()>expStock.getStockDisponibleAFuturo(prodComp)){
+                        lista.add(prodComp);
+                }
+            }
+        }
+    
+        return lista;
+        
     }
     
 }

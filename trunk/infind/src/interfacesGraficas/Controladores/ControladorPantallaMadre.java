@@ -179,4 +179,8 @@ public class ControladorPantallaMadre {
     public void cgiParaUnProducto() {
         new ControladorGestionDeInventarioParaUnProducto(this).iniciar();
     }
+
+    public void cgiParaTodosLosProductos() {
+        new ControladorGestionDeInventariosParaTodosLosProductos(this).iniciar();
+    }
 }

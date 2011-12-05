@@ -357,6 +357,11 @@ public class PantallaMadre extends javax.swing.JFrame {
         inventarios.add(jMenuItem6);
 
         jMenuItem7.setText("Costo de gestion de inventario para todos los productos");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         inventarios.add(jMenuItem7);
 
         jMenuItem8.setText("Listar productos por debajo del punto de pedido");
@@ -585,6 +590,10 @@ private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
     controlador.cgiParaUnProducto();
 }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    controlador.cgiParaTodosLosProductos();
+}//GEN-LAST:event_jMenuItem7ActionPerformed
     /**
      * @param args the command line arguments
      */

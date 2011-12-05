@@ -56,9 +56,10 @@ public class ControladorGestionDeInventarios {
             eventoComboBox();
         
         }
+        experto.setArticulo(articulo);
         pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
-        experto.setArticulo(articulo);
+        
         
     }
 
@@ -101,7 +102,7 @@ public class ControladorGestionDeInventarios {
         experto.calcularInventario(dto);
     
         JOptionPane.showMessageDialog(pantalla, "Información generada correctamente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        
+        pantalla.dispose();
         
         
     }
