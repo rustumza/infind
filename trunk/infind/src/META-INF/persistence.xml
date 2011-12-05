@@ -31,6 +31,8 @@
     <class>Entidades.OrdenDeFabricacion</class>
     <class>Entidades.PedidoAProveedor</class>
     <class>Entidades.Parametros</class>
+    <class>Entidades.CostoVariable</class>
+    <class>Entidades.Indices</class>
     <properties>
       <property name="hibernate.connection.username" value="inf"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
