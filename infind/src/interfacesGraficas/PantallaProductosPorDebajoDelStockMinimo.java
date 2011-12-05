@@ -46,6 +46,7 @@ public class PantallaProductosPorDebajoDelStockMinimo extends javax.swing.JDialo
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Productos por debajo del Stock minimo");
 
         jToolBar1.setRollover(true);
 
