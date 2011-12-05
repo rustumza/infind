@@ -4,6 +4,7 @@
  */
 package expertos;
 
+import DTOs.DTOIndices;
 import Entidades.CostosFijos;
 import Entidades.indices.DesarrolloCarteraCLiente;
 import Entidades.indices.EficienciaVendedor;
@@ -24,7 +25,9 @@ import Entidades.indices.RotacionInterna;
 import Entidades.indices.SeguimientoPlanSugerencias;
 import Entidades.indices.UsoDeHP;
 import Entidades.indices.VentasEnCuotas;
+import Entidades.indices.VolumenDeCompra;
 import excepciones.ExpertoCostosFijosException;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -123,8 +126,183 @@ public class ExpertoABMIndices extends Experto {
         Fachada.getInstancia().guardar(nuevoEficienciaVendedor);
     }
 
-    
+    public List<DTOIndices> buscarIndicesParaPantalla() {
+        List<DTOIndices> listaDto = new ArrayList<DTOIndices>();
+        List<Indices> listaInd = null;
+        Criteria criterioInd = Fachada.getInstancia().crearCriterio(Indices.class);
+        listaInd = Fachada.getInstancia().buscarSinTx(Indices.class, criterioInd);
+        for (Indices indices : listaInd) {
+            DTOIndices dto = new DTOIndices();
+            if(indices.getNombre().equals("Desarrollo Cartera Cliente")){ //
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(DesarrolloCarteraCLiente.class);
+                List<DesarrolloCarteraCLiente> lista1 = Fachada.getInstancia().buscarSinTx(DesarrolloCarteraCLiente.class, criterio1);
+                DesarrolloCarteraCLiente desarrolloCarteraCLiente = lista1.get(0);
+                for (DesarrolloCarteraCLiente desarrolloCarteraCLiente1 : lista1) {
+                    if(desarrolloCarteraCLiente1.getId() > desarrolloCarteraCLiente.getId()){
+                        desarrolloCarteraCLiente = desarrolloCarteraCLiente1;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(desarrolloCarteraCLiente.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(desarrolloCarteraCLiente.getTotal());
+                
 
+            }else if(indices.getNombre().equals("Grado Dependencia Empresa")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(GradoDependenciaEmpresa.class);
+                List<GradoDependenciaEmpresa> lista1 = Fachada.getInstancia().buscarSinTx(GradoDependenciaEmpresa.class, criterio1);
+                GradoDependenciaEmpresa objAux = lista1.get(0);
+                for (GradoDependenciaEmpresa aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+                
+            }else
+            if(indices.getNombre().equals("Indice Liquides")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(IndiceLiquides.class);
+                List<IndiceLiquides> lista1 = Fachada.getInstancia().buscarSinTx(IndiceLiquides.class, criterio1);
+                IndiceLiquides objAux = lista1.get(0);
+                for (IndiceLiquides aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+            }else
+            if(indices.getNombre().equals("Nivel Ausentismo")){//
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(NivelAusentismo.class);
+                List<NivelAusentismo> lista1 = Fachada.getInstancia().buscarSinTx(NivelAusentismo.class, criterio1);
+                NivelAusentismo objAux = lista1.get(0);
+                for (NivelAusentismo aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+            }else
+            if(indices.getNombre().equals("Nivel De Credito")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(NivelDeCredito.class);
+                List<NivelDeCredito> lista1 = Fachada.getInstancia().buscarSinTx(NivelDeCredito.class, criterio1);
+                NivelDeCredito objAux = lista1.get(0);
+                for (NivelDeCredito aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+            }else
+            if(indices.getNombre().equals("Que Se Debe")){ //
+            
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(QueSeDebe.class);
+                List<QueSeDebe> lista1 = Fachada.getInstancia().buscarSinTx(QueSeDebe.class, criterio1);
+                QueSeDebe objAux = lista1.get(0);
+                for (QueSeDebe aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+                
+            }else
+            if(indices.getNombre().equals("Rotacion Externa")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(RotacionExterna.class);
+                List<RotacionExterna> lista1 = Fachada.getInstancia().buscarSinTx(RotacionExterna.class, criterio1);
+                RotacionExterna objAux = lista1.get(0);
+                for (RotacionExterna aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+                
+            }else
+            if(indices.getNombre().equals("Rotacion Interna")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(RotacionInterna.class);
+                List<RotacionInterna> lista1 = Fachada.getInstancia().buscarSinTx(RotacionInterna.class, criterio1);
+                RotacionInterna objAux = lista1.get(0);
+                for (RotacionInterna aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+            }else
+            if(indices.getNombre().equals("Seguimiento Plan Sugerencias")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(SeguimientoPlanSugerencias.class);
+                List<SeguimientoPlanSugerencias> lista1 = Fachada.getInstancia().buscarSinTx(SeguimientoPlanSugerencias.class, criterio1);
+                SeguimientoPlanSugerencias objAux = lista1.get(0);
+                for (SeguimientoPlanSugerencias aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+                
+            }else
+            if(indices.getNombre().equals("Volumen De Compra")){ //
+
+                dto.setInd(indices);
+                Criteria criterio1 = Fachada.getInstancia().crearCriterio(VolumenDeCompra.class);
+                List<VolumenDeCompra> lista1 = Fachada.getInstancia().buscarSinTx(VolumenDeCompra.class, criterio1);
+                VolumenDeCompra objAux = lista1.get(0);
+                for (VolumenDeCompra aux : lista1) {
+                    if(aux.getId() > objAux.getId()){
+                        objAux = aux;
+                    }
+                }
+                dto.setNormalidad(valoresEntre(objAux.getTotal(), indices.getMinimo(), indices.getMaximo()));
+                dto.setValor(objAux.getTotal());
+                
+            }
+        
+        }
+        
+        
+        return listaDto;
+    }
+    
+ 
+    public int valoresEntre(double valor, double menor, double mayor){
+        if(valor< menor)
+            return -1;
+        else if(valor> mayor)
+            return 1;
+        else return 0;
+    
+    }
+    
     public void guardarValoresNormales(List<Indices> lista) {
     
         for (Indices indices : lista) {
@@ -133,6 +311,5 @@ public class ExpertoABMIndices extends Experto {
         }
         
     }
-    
     
 }
