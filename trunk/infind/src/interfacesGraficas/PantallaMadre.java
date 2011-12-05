@@ -11,8 +11,6 @@
 package interfacesGraficas;
 
 import excepciones.ExpertoABMDemandaExcepcion;
-import excepciones.ExpertoCalcularDemandaException;
-import excepciones.ExpertoCostosFijosException;
 import excepciones.ExpertoPuntoEquilibrioException;
 import interfacesGraficas.Controladores.ControladorPantallaMadre;
 import java.util.logging.Level;
@@ -85,8 +83,7 @@ public class PantallaMadre extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         menuDemanda = new javax.swing.JMenu();
-        menuCalcularDemanda = new javax.swing.JMenuItem();
-        menuParametros = new javax.swing.JMenuItem();
+        menuPrediccion = new javax.swing.JMenuItem();
         menuABMDemandasHistoricas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -372,21 +369,13 @@ public class PantallaMadre extends javax.swing.JFrame {
         menuDemanda.setText("Demanda");
         menuDemanda.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
-        menuCalcularDemanda.setText("Calcular Demanda");
-        menuCalcularDemanda.addActionListener(new java.awt.event.ActionListener() {
+        menuPrediccion.setText("Calcular Predicción");
+        menuPrediccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCalcularDemandaActionPerformed(evt);
+                menuPrediccionActionPerformed(evt);
             }
         });
-        menuDemanda.add(menuCalcularDemanda);
-
-        menuParametros.setText("Parametros-Prediccion");
-        menuParametros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuParametrosActionPerformed(evt);
-            }
-        });
-        menuDemanda.add(menuParametros);
+        menuDemanda.add(menuPrediccion);
 
         menuABMDemandasHistoricas.setText("ABM Demandas Historicas");
         menuABMDemandasHistoricas.addActionListener(new java.awt.event.ActionListener() {
@@ -563,18 +552,9 @@ private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent
     controlador.listarOrdenesDeFabricacion();
 }//GEN-LAST:event_listarOrdenesDeProduccionActionPerformed
 
-    private void menuParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuParametrosActionPerformed
-        controlador.parametros();
-
-    }//GEN-LAST:event_menuParametrosActionPerformed
-
-    private void menuCalcularDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCalcularDemandaActionPerformed
-        try {
-            controlador.calcularDemanda();
-        } catch (ExpertoCalcularDemandaException ex) {
-            Logger.getLogger(PantallaMadre.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_menuCalcularDemandaActionPerformed
+    private void menuPrediccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrediccionActionPerformed
+        controlador.prediccion();
+    }//GEN-LAST:event_menuPrediccionActionPerformed
 
 private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
     controlador.crearIndices();
@@ -650,12 +630,11 @@ private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem listarProductosIQE;
     private javax.swing.JMenuItem listarProductosIntermedios;
     private javax.swing.JMenuItem menuABMDemandasHistoricas;
-    private javax.swing.JMenuItem menuCalcularDemanda;
     private javax.swing.JMenu menuDemanda;
     private javax.swing.JMenuItem menuEditarOperarios;
     private javax.swing.JMenuItem menuEditarRuta;
     private javax.swing.JMenuItem menuIngresarOperarios;
-    private javax.swing.JMenuItem menuParametros;
+    private javax.swing.JMenuItem menuPrediccion;
     private javax.swing.JMenu operarios;
     private javax.swing.JMenu ordenesDeProduccion;
     private javax.swing.JMenu proveedores;

@@ -167,13 +167,10 @@ public class ControladorPantallaMadre {
         new ControladorListarOrdenesDeFabricacion(this).iniciar();
     }
 
-    public void parametros() {
-        new ControladorParametros(this).iniciar();
+    public void prediccion() {
+        new ControladorPrediccionDemanda(this).iniciar();
     }
 
-    public void calcularDemanda() throws ExpertoCalcularDemandaException {
-        new ControladorCalcularDemanda(this).iniciar();
-    }
 
     public void crearIndices() {
         new ControladorABMIndices(this).iniciar();

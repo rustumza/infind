@@ -4,26 +4,48 @@
  */
 package DTOs;
 
+import Entidades.Demanda;
+
 /**
  *
  * @author edu
  */
 public class DTOPromedioPonderadoMovil {
 
-    private Double demandaPronosticada;
+    private double  demandaPronosticada;
+    private Demanda demanda;
+    private double error;
 
-    public Double getDemandaPronosticada() {
+    public double getError() {
+        return error;
+    }
+
+    public void setError(double error) {
+        this.error = error;
+    }
+
+    public double getDemandaPronosticada() {
         return demandaPronosticada;
     }
 
-    public void setDemandaPronosticada(Double demandaPronosticada) {
+    public void setDemandaPronosticada(double demandaPronosticada) {
         this.demandaPronosticada = demandaPronosticada;
     }
 
     public DTOPromedioPonderadoMovil() {
     }
 
-    public DTOPromedioPonderadoMovil(Double demandaPronosticada) {
+    public DTOPromedioPonderadoMovil(double demandaPronosticada) {
         this.demandaPronosticada = demandaPronosticada;
     }
+
+    public Demanda getDemanda() {
+        return demanda;
+    }
+
+    public void setDemanda(Demanda demanda) {
+        this.demanda = demanda;
+    }
+    
+    
 }
