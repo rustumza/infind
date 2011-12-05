@@ -51,8 +51,6 @@ public class PantallaVentas extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         campoNivelCredito = new javax.swing.JTextField();
         campoIndiceLiquidez = new javax.swing.JTextField();
-        campoQueSeDebe = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -108,8 +106,6 @@ public class PantallaVentas extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
-
-        campoGradoDependencia.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -133,8 +129,6 @@ public class PantallaVentas extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
-
-        campoNivelCredito.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -142,8 +136,6 @@ public class PantallaVentas extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoNivelCredito, gridBagConstraints);
-
-        campoIndiceLiquidez.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -151,21 +143,6 @@ public class PantallaVentas extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
-
-        campoQueSeDebe.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoQueSeDebe, gridBagConstraints);
-
-        jLabel5.setText("Ventas totales");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        jPanel2.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("Ventas delegacion");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -196,15 +173,11 @@ public class PantallaVentas extends javax.swing.JDialog {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         jPanel2.add(jLabel10, gridBagConstraints);
-
-        campoDeudasxcobrar.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 30;
         jPanel2.add(campoDeudasxcobrar, gridBagConstraints);
-
-        campoProCobros.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -238,12 +211,10 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTextField campoIndiceLiquidez;
     private javax.swing.JTextField campoNivelCredito;
     private javax.swing.JTextField campoProCobros;
-    private javax.swing.JTextField campoQueSeDebe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

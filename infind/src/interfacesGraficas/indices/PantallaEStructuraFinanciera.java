@@ -115,8 +115,6 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         jPanel2.add(jLabel1, gridBagConstraints);
-
-        campoGradoDependencia.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -148,8 +146,6 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
-
-        campoNivelCredito.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -157,8 +153,6 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoNivelCredito, gridBagConstraints);
-
-        campoIndiceLiquidez.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -166,8 +160,6 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
-
-        campoQueSeDebe.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -217,22 +209,16 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
         jPanel2.add(jLabel11, gridBagConstraints);
-
-        campoDeudasxcobrar.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 30;
         jPanel2.add(campoDeudasxcobrar, gridBagConstraints);
-
-        campoProCobros.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 30;
         jPanel2.add(campoProCobros, gridBagConstraints);
-
-        campoPasivoCorriente.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 1;
@@ -250,15 +236,11 @@ public class PantallaEStructuraFinanciera extends javax.swing.JDialog {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         jPanel2.add(jLabel13, gridBagConstraints);
-
-        campoPasivoCortoPlazo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 30;
         jPanel2.add(campoPasivoCortoPlazo, gridBagConstraints);
-
-        campoDeudasContraigo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;

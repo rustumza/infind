@@ -94,8 +94,6 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Estructura Financiera"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        campoGradoDependencia.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -103,8 +101,6 @@ public class PantallaRentabilidad extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
         jPanel2.add(campoGradoDependencia, gridBagConstraints);
-
-        campoIndiceLiquidez.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
