@@ -17,22 +17,21 @@ import persistencia.ObjetoPersitente;
  */
 @Entity
 public class Indices extends ObjetoPersitente implements Serializable {
-    
-    public Indices(){
-    
+
+    public Indices() {
     }
-    public Indices(String nom ,double min, double max){
+
+    public Indices(String nom, double min, double max) {
         nombre = nom;
         minimo = min;
         maximo = max;
-    
+
     }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private boolean eliminado= false;
-  
+    private boolean eliminado = false;
     private String nombre;
     private double minimo;
     private double maximo;
@@ -68,7 +67,7 @@ public class Indices extends ObjetoPersitente implements Serializable {
     public void setMaximo(double hasta) {
         this.maximo = hasta;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -96,12 +95,12 @@ public class Indices extends ObjetoPersitente implements Serializable {
 
     @Override
     public Long getId() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return id;
     }
 
     @Override
     public void setId(Long oid) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.id = oid;
     }
-    
+
 }

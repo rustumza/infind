@@ -398,7 +398,7 @@ public class ControladorABMIndices {
 
         nuevoIndice = new Indices();
         List<Indices> lista = new ArrayList<Indices>();
-        lista.add(new Indices("Rotacion De Los Capitales Propios", Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText()), Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText())));
+//        lista.add(new Indices("Rotacion De Los Capitales Propios", Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText()), Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText())));
         lista.add(new Indices("Desarrollo Cartera Cliente", Double.valueOf(pantallaValoresNormales.getCampoCArteraClients1().getText()), Double.valueOf(pantallaValoresNormales.getCampoCarteraCliente2().getText())));
         lista.add(new Indices("Composicion Ventas", Double.valueOf(pantallaValoresNormales.getCampoComposicionVentas1().getText()), Double.valueOf(pantallaValoresNormales.getCampoComposicionVentas2().getText())));
         lista.add(new Indices("Creditos", Double.valueOf(pantallaValoresNormales.getCampoCredito1().getText()), Double.valueOf(pantallaValoresNormales.getCampoCredito2().getText())));
@@ -423,8 +423,9 @@ public class ControladorABMIndices {
         lista.add(new Indices("Volumen De Compra", Double.valueOf(pantallaValoresNormales.getCampoVolumenCOmpra1().getText()), Double.valueOf(pantallaValoresNormales.getCampoVolumenCompra2().getText())));
 
         expertoABMIndice.guardarValoresNormales(lista);
+        JOptionPane.showMessageDialog(pantallaValoresNormales, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
 
-
+        pantallaValoresNormales.dispose();
 
 
     }
