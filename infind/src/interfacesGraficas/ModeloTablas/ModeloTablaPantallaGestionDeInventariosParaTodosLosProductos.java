@@ -30,7 +30,11 @@ public class ModeloTablaPantallaGestionDeInventariosParaTodosLosProductos extend
             case 1:
                 return dto.getArticulo().getNombre();
             case 2:
-                return dto.getCgi();
+                if(dto.getCgi() == (float)-1){
+                    return "";
+                }else{
+                    return dto.getCgi();
+                }
             default:
                 return "";
         }
