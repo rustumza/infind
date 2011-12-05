@@ -340,20 +340,12 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuCalcularDemanda">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPrediccion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Calcular Demanda"/>
+                <Property name="text" type="java.lang.String" value="Calcular Predicci&#xf3;n"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCalcularDemandaActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuParametros">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Parametros-Prediccion"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuParametrosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPrediccionActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuABMDemandasHistoricas">
