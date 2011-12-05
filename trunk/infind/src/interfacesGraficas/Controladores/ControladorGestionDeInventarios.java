@@ -87,6 +87,15 @@ public class ControladorGestionDeInventarios {
                 pantalla.getCantidadMaximaTextBox().requestFocus();
                 return;
             }                    
+        }else if(pantalla.getTipoInventarioComboBox().getSelectedItem().equals("Fabricacion interna")){
+            try{
+                dto.setTasaDeProduccion(Float.valueOf(pantalla.getTasaDeProduccionTextBox().getText())); 
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(pantalla, "Tasa de producción incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getTasaDeProduccionTextBox().requestFocus();
+                return;
+            }                    
+        
         }
         
         experto.calcularInventario(dto);
@@ -106,9 +115,19 @@ public class ControladorGestionDeInventarios {
         if(pantalla.getTipoInventarioComboBox().getSelectedItem().equals("Intervalo fijo")){
             pantalla.getCantidadMaximaLabel().setVisible(true);
             pantalla.getCantidadMaximaTextBox().setVisible(true);
-        }else{
+            pantalla.getTasaDeProduccionLabel().setVisible(false);
+            pantalla.getTasaDeProduccionTextBox().setVisible(false);
+        }else if(pantalla.getTipoInventarioComboBox().getSelectedItem().equals("Lote fijo")){
             pantalla.getCantidadMaximaLabel().setVisible(false);
             pantalla.getCantidadMaximaTextBox().setVisible(false);
+            pantalla.getTasaDeProduccionLabel().setVisible(false);
+            pantalla.getTasaDeProduccionTextBox().setVisible(false);
+        }else{// fabricacion interna
+            pantalla.getCantidadMaximaLabel().setVisible(false);
+            pantalla.getCantidadMaximaTextBox().setVisible(false);
+            pantalla.getTasaDeProduccionLabel().setVisible(true);
+            pantalla.getTasaDeProduccionTextBox().setVisible(true);
+        
         }
     }
     

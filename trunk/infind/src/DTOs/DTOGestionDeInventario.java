@@ -16,7 +16,16 @@ public class DTOGestionDeInventario {
     private float puntoDePedido;
     private float stockDeSeguridad;
     private float cantidadMaximaDeStock;
+    private float tasaDeProduccion;
 
+    public float getTasaDeProduccion() {
+        return tasaDeProduccion;
+    }
+
+    public void setTasaDeProduccion(float tasaDeProduccion) {
+        this.tasaDeProduccion = tasaDeProduccion;
+    }
+   
     public float getCostoDeAlmacenamiento() {
         return costoDeAlmacenamiento;
     }

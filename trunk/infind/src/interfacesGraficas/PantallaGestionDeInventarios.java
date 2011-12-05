@@ -63,6 +63,8 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
         costoDePedidoTextBox = new javax.swing.JTextField();
         cantidadMaximaLabel = new javax.swing.JLabel();
         cantidadMaximaTextBox = new javax.swing.JTextField();
+        tasaDeProduccionLabel = new javax.swing.JLabel();
+        tasaDeProduccionTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,6 +106,8 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
 
         cantidadMaximaLabel.setText("Cantidad maxima");
 
+        tasaDeProduccionLabel.setText("Tasa de produccion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,11 +119,13 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
                     .addComponent(costoAlmacenamientoLabel)
                     .addComponent(costoDePedidoLabel)
                     .addComponent(tipoInventarioLabel)
-                    .addComponent(cantidadMaximaLabel))
+                    .addComponent(cantidadMaximaLabel)
+                    .addComponent(tasaDeProduccionLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tipoInventarioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(tasaDeProduccionTextBox, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cantidadMaximaTextBox, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(costoDePedidoTextBox, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(costoAlmacenamientoTextBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
@@ -145,7 +151,11 @@ public class PantallaGestionDeInventarios extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadMaximaLabel)
                     .addComponent(cantidadMaximaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tasaDeProduccionLabel)
+                    .addComponent(tasaDeProduccionTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,6 +184,8 @@ private void tipoInventarioComboBoxActionPerformed(java.awt.event.ActionEvent ev
     private javax.swing.JButton guardar;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton salir;
+    private javax.swing.JLabel tasaDeProduccionLabel;
+    private javax.swing.JTextField tasaDeProduccionTextBox;
     private javax.swing.JComboBox tipoInventarioComboBox;
     private javax.swing.JLabel tipoInventarioLabel;
     // End of variables declaration//GEN-END:variables
@@ -275,6 +287,22 @@ private void tipoInventarioComboBoxActionPerformed(java.awt.event.ActionEvent ev
 
     public void setCantidadMaximaTextBox(JTextField cantidadMaximaTextBox) {
         this.cantidadMaximaTextBox = cantidadMaximaTextBox;
+    }
+
+    public JLabel getTasaDeProduccionLabel() {
+        return tasaDeProduccionLabel;
+    }
+
+    public void setTasaDeProduccionLabel(JLabel tasaDeProduccionLabel) {
+        this.tasaDeProduccionLabel = tasaDeProduccionLabel;
+    }
+
+    public JTextField getTasaDeProduccionTextBox() {
+        return tasaDeProduccionTextBox;
+    }
+
+    public void setTasaDeProduccionTextBox(JTextField tasaDeProduccionTextBox) {
+        this.tasaDeProduccionTextBox = tasaDeProduccionTextBox;
     }
 
     

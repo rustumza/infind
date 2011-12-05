@@ -66,6 +66,8 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     private float puntoDePedido;
     private float stockDeSeguridad;
     private float stockMaximoInventarioIntervaloFijo;
+    private float tasaDeProduccion;
+    private float numeroDeCiclosDeFabricacionOptimo;
     
     public Long getId() {
         return id;
@@ -274,6 +276,23 @@ public class MaestroDeArticulo extends ObjetoPersitente implements Serializable 
     public void setStockMaximoInventarioIntervaloFijo(float stockMaximoInventarioIntervaloFijo) {
         this.stockMaximoInventarioIntervaloFijo = stockMaximoInventarioIntervaloFijo;
     }
+
+    public float getTasaDeProduccion() {
+        return tasaDeProduccion;
+    }
+
+    public void setTasaDeProduccion(float tasaDeProduccion) {
+        this.tasaDeProduccion = tasaDeProduccion;
+    }
+
+    public float getNumeroDeCiclosDeFabricacionOptimo() {
+        return numeroDeCiclosDeFabricacionOptimo;
+    }
+
+    public void setNumeroDeCiclosDeFabricacionOptimo(float numeroDeCiclosDeFabricacionOptimo) {
+        this.numeroDeCiclosDeFabricacionOptimo = numeroDeCiclosDeFabricacionOptimo;
+    }
+    
     
     
 
