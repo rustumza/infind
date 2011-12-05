@@ -83,9 +83,6 @@ public class ControladorABMIndices {
     RotacionDeStock nuevoRotacionStock;
     VentasEnCuotas nuevoVentasCuotas;
     EficienciaVendedor nuevoEficienciaVendedor;
-    
-    
-    
 
     public ControladorABMIndices(ControladorPantallaMadre controlador) {
 
@@ -194,25 +191,29 @@ public class ControladorABMIndices {
         nuevaRotacionExterna.setFecha(fecha);
         nuevaRotacionExterna.setCantidadPErsonal(Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()));
         nuevaRotacionExterna.setBajasVoluntarias(Integer.valueOf(pantallaCLimaSocial.getCampoBajasVoluntarias().getText()));
+        nuevaRotacionExterna.setTotal(Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()) / Integer.valueOf(pantallaCLimaSocial.getCampoBajasVoluntarias().getText()));
 
         expertoABMIndice.guardarRotacionExterna(nuevaRotacionExterna);
 
         nuevaRotacionInterna.setFecha(fecha);
         nuevaRotacionInterna.setNroEmpleadosRotaron(Integer.valueOf(pantallaCLimaSocial.getCampoNroEmpleadosRotaron().getText()));
         nuevaRotacionInterna.setTotalEmpleados(Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()));
-
+        nuevaRotacionInterna.setTotal(Integer.valueOf(pantallaCLimaSocial.getCampoNroEmpleadosRotaron().getText()) / Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()));
         expertoABMIndice.guardarRotacionInterna(nuevaRotacionInterna);
 
         nuevoNivelAusentismo.setFecha(fecha);
         nuevoNivelAusentismo.setHorasATrabajas(Double.valueOf(pantallaCLimaSocial.getCampoHorasNormales().getText()));
         nuevoNivelAusentismo.setHorasAusentismo(Double.valueOf(pantallaCLimaSocial.getCampoHorasAusentismo().getText()));
-
+        nuevoNivelAusentismo.setTotal(Double.valueOf(pantallaCLimaSocial.getCampoHorasAusentismo().getText()) / Double.valueOf(pantallaCLimaSocial.getCampoHorasNormales().getText()));
         expertoABMIndice.guardarNivelAusentismo(nuevoNivelAusentismo);
 
         nuevoSeguimientoPlan.setFecha(fecha);
         nuevoSeguimientoPlan.setSugerenciasRecibidas(Integer.valueOf(pantallaCLimaSocial.getCampoSugerenciasREcibidads().getText()));
         nuevoSeguimientoPlan.setTotalEmpleados(Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()));
+        nuevoSeguimientoPlan.setTotal(Integer.valueOf(pantallaCLimaSocial.getCampoSugerenciasREcibidads().getText()) / Integer.valueOf(pantallaCLimaSocial.getCampoTotalPersonal().getText()));
+
         expertoABMIndice.guardarSeguimientPlan(nuevoSeguimientoPlan);
+
         JOptionPane.showMessageDialog(pantallaCLimaSocial, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaCLimaSocial.getCampoBajasVoluntarias().setText("");
         pantallaCLimaSocial.getCampoHorasAusentismo().setText("");
@@ -237,18 +238,20 @@ public class ControladorABMIndices {
         nuevoNivelCredito.setFecha(fecha);
         nuevoNivelCredito.setCuentasPorCobrar(Double.valueOf(pantallaEstructuraFinanciera.getCampoDeudasxcobrar().getText()));
         nuevoNivelCredito.setPromocionCobro(Double.valueOf(pantallaEstructuraFinanciera.getCampoProCobros().getText()));
+        nuevoNivelCredito.setTotal(Double.valueOf(pantallaEstructuraFinanciera.getCampoDeudasxcobrar().getText()) / Double.valueOf(pantallaEstructuraFinanciera.getCampoProCobros().getText()));
         expertoABMIndice.guardarNivelCredito(nuevoNivelCredito);
+
 
         nuevoQueSeDebe.setFecha(fecha);
         nuevoQueSeDebe.setDeudasQueContraigo(Double.valueOf(pantallaEstructuraFinanciera.getCampoDeudasContraigo().getText()));
         nuevoQueSeDebe.setPasivoaCortoPlazo(Double.valueOf(pantallaEstructuraFinanciera.getCampoPasivoCortoPlazo().getText()));
-
+        nuevoQueSeDebe.setTotal(Double.valueOf(pantallaEstructuraFinanciera.getCampoPasivoCortoPlazo().getText()) / Double.valueOf(pantallaEstructuraFinanciera.getCampoDeudasContraigo().getText()));
         expertoABMIndice.guardarQueSeDebe(nuevoQueSeDebe);
 
         nuevoGradoDependenciaEmpresa.setFecha(fecha);
         nuevoGradoDependenciaEmpresa.setPasivoPropio(Integer.valueOf(pantallaEstructuraFinanciera.getCampoPasivoPropio().getText()));
         nuevoGradoDependenciaEmpresa.setPasivoTotal(Integer.valueOf(pantallaEstructuraFinanciera.getCampoPasivoTotal().getText()));
-
+        nuevoGradoDependenciaEmpresa.setTotal(Integer.valueOf(pantallaEstructuraFinanciera.getCampoPasivoPropio().getText()) / Integer.valueOf(pantallaEstructuraFinanciera.getCampoPasivoTotal().getText()));
         expertoABMIndice.guardarGradoDependenciaEmpresa(nuevoGradoDependenciaEmpresa);
 
 
@@ -256,7 +259,7 @@ public class ControladorABMIndices {
         nuevoIndiceLiquidez.setDisponibilidad(Double.valueOf(pantallaEstructuraFinanciera.getCampoDisponibilidad().getText()));
         nuevoIndiceLiquidez.setPasivoCorriente(Double.valueOf(pantallaEstructuraFinanciera.getCampoPasivoCorriente().getText()));
         nuevoIndiceLiquidez.setRealizableACortoPlazo(Double.valueOf(pantallaEstructuraFinanciera.getCampoRealizCortoPlazo().getText()));
-
+        nuevoIndiceLiquidez.setTotal((Double.valueOf(pantallaEstructuraFinanciera.getCampoDisponibilidad().getText()) + Double.valueOf(pantallaEstructuraFinanciera.getCampoRealizCortoPlazo().getText())) / Double.valueOf(pantallaEstructuraFinanciera.getCampoPasivoCorriente().getText()));
         expertoABMIndice.guardarIndiceLiquides(nuevoIndiceLiquidez);
 
         JOptionPane.showMessageDialog(pantallaCLimaSocial, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
@@ -270,111 +273,112 @@ public class ControladorABMIndices {
         pantallaEstructuraFinanciera.getCampoProCobros().setText("");
         pantallaEstructuraFinanciera.getCampoRealizCortoPlazo().setText("");
         pantallaEstructuraFinanciera.setVisible(false);
-        
+
 
 
     }
 
     public void guardarRelacionCliente() {
-         Date fecha = new Date();
-         nuevoDesarrolloCarteraCliente = new DesarrolloCarteraCLiente();
-         nuevoVolumenDeComra = new VolumenDeCompra();
-         
-         nuevoDesarrolloCarteraCliente.setFecha(fecha);
-         nuevoDesarrolloCarteraCliente.setClientesNuevos(Integer.valueOf(pantallaRelacionClientes.getCampoNroClientesNuevos().getText()));
-         nuevoDesarrolloCarteraCliente.setTotalCLientesM(Integer.valueOf(pantallaRelacionClientes.getCampoTotalClientes().getText()));
-         
-        expertoABMIndice.guardarDesarrolloCarteraCliente(nuevoDesarrolloCarteraCliente); 
-        
+        Date fecha = new Date();
+        nuevoDesarrolloCarteraCliente = new DesarrolloCarteraCLiente();
+        nuevoVolumenDeComra = new VolumenDeCompra();
+
+        nuevoDesarrolloCarteraCliente.setFecha(fecha);
+        nuevoDesarrolloCarteraCliente.setClientesNuevos(Integer.valueOf(pantallaRelacionClientes.getCampoNroClientesNuevos().getText()));
+        nuevoDesarrolloCarteraCliente.setTotalCLientesM(Integer.valueOf(pantallaRelacionClientes.getCampoTotalClientes().getText()));
+        nuevoDesarrolloCarteraCliente.setTotal(Integer.valueOf(pantallaRelacionClientes.getCampoNroClientesNuevos().getText()) / Integer.valueOf(pantallaRelacionClientes.getCampoTotalClientes().getText()));
+
+        expertoABMIndice.guardarDesarrolloCarteraCliente(nuevoDesarrolloCarteraCliente);
+
         JOptionPane.showMessageDialog(pantallaRelacionClientes, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaRelacionClientes.getCampoClientesPrincipales().setText("");
         pantallaRelacionClientes.getCampoNroClientesNuevos().setText("");
         pantallaRelacionClientes.getCampoTotalClientes().setText("");
-        
+
         pantallaRelacionClientes.setVisible(false);
-         
+
     }
 
     public void guardarRendimiento() {
         Date fecha = new Date();
         nuevoRendimiento = new RendimientoDeLasVentas();
-        
+
         nuevoRendimiento.setFecha(fecha);
         nuevoRendimiento.setUtilidades(Double.valueOf(pantallaRendimiento.getCampoUtilidades().getText()));
         nuevoRendimiento.setVenta(Double.valueOf(pantallaRendimiento.getCampoVentas().getText()));
-        expertoABMIndice.guardarrendimiento(nuevoRendimiento); 
-        
+        expertoABMIndice.guardarrendimiento(nuevoRendimiento);
+
         JOptionPane.showMessageDialog(pantallaRendimiento, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaRendimiento.getCampoUtilidades().setText("");
         pantallaRendimiento.getCampoVentas().setText("");
         pantallaRendimiento.setVisible(false);
-        
+
     }
 
     public void guardarRentabilidad() {
         Date fecha = new Date();
         nuevoRentabilidad = new Rentabiliadda();
-        
+
         nuevoRentabilidad.setFecha(fecha);
         nuevoRentabilidad.setActivoTotal(Double.valueOf(pantallaRentabilidad.getCampoActivoTotal().getText()));
         nuevoRentabilidad.setUtilidades(Double.valueOf(pantallaRentabilidad.getCampoUtilidad().getText()));
-        expertoABMIndice.guardarrentabilidad(nuevoRentabilidad); 
-        
+        expertoABMIndice.guardarrentabilidad(nuevoRentabilidad);
+
         JOptionPane.showMessageDialog(pantallaRentabilidad, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaRentabilidad.getCampoUtilidad().setText("");
         pantallaRentabilidad.getCampoActivoTotal().setText("");
         pantallaRentabilidad.setVisible(false);
-        
+
     }
 
     public void guardarRotacioin() {
         Date fecha = new Date();
-        
+
         nuevoRotacionCapitalesPropios = new RotacionDeLosCapitalesPropios();
         nuevoRotacionInversiones = new RotacionDeLasInversiones();
         nuevoRotacionStock = new RotacionDeStock();
-        
+
         nuevoRotacionCapitalesPropios.setFecha(fecha);
         nuevoRotacionCapitalesPropios.setActivoNeto(Double.valueOf(pantallaRotacion.getCampoActivoNeto().getText()));
         nuevoRotacionCapitalesPropios.setVentas(Double.valueOf(pantallaRotacion.getCampoVentas().getText()));
-         expertoABMIndice.guardarRotacionCapitalesPropios(nuevoRotacionCapitalesPropios); 
-         
-         nuevoRotacionCapitalesPropios.setFecha(fecha);
-         nuevoRotacionInversiones.setActivoTotal(Double.valueOf(pantallaRotacion.getCampoActivoTotal().getText()));
-         nuevoRotacionInversiones.setVentas(Double.valueOf(pantallaRotacion.getCampoVentas().getText()));
-         expertoABMIndice.guardarRotacionInversiones(nuevoRotacionInversiones); 
-         
-         nuevoRotacionStock.setFecha(fecha);
-         nuevoRotacionStock.setNivelStock(Double.valueOf(pantallaRotacion.getCampoNivelStock().getText()));
-         nuevoRotacionStock.setVentas(Double.valueOf(pantallaRotacion.getCampoVentas().getText()));
-         expertoABMIndice.guardarRotacionStock(nuevoRotacionStock); 
-        
+        expertoABMIndice.guardarRotacionCapitalesPropios(nuevoRotacionCapitalesPropios);
+
+        nuevoRotacionCapitalesPropios.setFecha(fecha);
+        nuevoRotacionInversiones.setActivoTotal(Double.valueOf(pantallaRotacion.getCampoActivoTotal().getText()));
+        nuevoRotacionInversiones.setVentas(Double.valueOf(pantallaRotacion.getCampoVentas().getText()));
+        expertoABMIndice.guardarRotacionInversiones(nuevoRotacionInversiones);
+
+        nuevoRotacionStock.setFecha(fecha);
+        nuevoRotacionStock.setNivelStock(Double.valueOf(pantallaRotacion.getCampoNivelStock().getText()));
+        nuevoRotacionStock.setVentas(Double.valueOf(pantallaRotacion.getCampoVentas().getText()));
+        expertoABMIndice.guardarRotacionStock(nuevoRotacionStock);
+
         JOptionPane.showMessageDialog(pantallaRotacion, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaRotacion.getCampoActivoNeto().setText("");
         pantallaRotacion.getCampoActivoTotal().setText("");
         pantallaRotacion.getCampoNivelStock().setText("");
         pantallaRotacion.getCampoVentas().setText("");
         pantallaRotacion.setVisible(false);
-        
-                
-        
+
+
+
     }
 
     public void guardarVentas() {
         Date fecha = new Date();
         nuevoEficienciaVendedor = new EficienciaVendedor();
         nuevoVentasCuotas = new VentasEnCuotas();
-        
+
         nuevoEficienciaVendedor.setFecha(fecha);
         nuevoEficienciaVendedor.setNroVendedores(Integer.valueOf(pantallaVentas.getCampoNroVendedores().getText()));
         nuevoEficienciaVendedor.setVentasDelegacion(Double.valueOf(pantallaVentas.getCampoVentasDelegacion().getText()));
-         expertoABMIndice.guardarEficienciaVendedor(nuevoEficienciaVendedor); 
-         
-         nuevoVentasCuotas.setFecha(fecha);
-         nuevoVentasCuotas.setVentasEnCuotas(Double.valueOf(pantallaVentas.getCampoVentasCotas().getText()));
-         nuevoVentasCuotas.setVentasTotales(Double.valueOf(pantallaVentas.getCampoVentasTotales().getText()));
-         expertoABMIndice.guardarVentasCuotas(nuevoVentasCuotas); 
-          
+        expertoABMIndice.guardarEficienciaVendedor(nuevoEficienciaVendedor);
+
+        nuevoVentasCuotas.setFecha(fecha);
+        nuevoVentasCuotas.setVentasEnCuotas(Double.valueOf(pantallaVentas.getCampoVentasCotas().getText()));
+        nuevoVentasCuotas.setVentasTotales(Double.valueOf(pantallaVentas.getCampoVentasTotales().getText()));
+        expertoABMIndice.guardarVentasCuotas(nuevoVentasCuotas);
+
         JOptionPane.showMessageDialog(pantallaVentas, "Datos Guardados Correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         pantallaVentas.getCampoNroVendedores().setText("");
         pantallaVentas.getCampoVentasCotas().setText("");
@@ -383,17 +387,15 @@ public class ControladorABMIndices {
         pantallaVentas.setVisible(false);
     }
 
-    
-
     public void crearValoresNormales() {
         pantallaValoresNormales = new PantallaValoresNormalesIndices(controladorPantMadre.getPantalla(), true, this);
         pantallaValoresNormales.setLocationRelativeTo(null);
         pantallaValoresNormales.setVisible(true);
-        
+
     }
-    
+
     public void guardarValoresNormales() {
-        
+
         nuevoIndice = new Indices();
         List<Indices> lista = new ArrayList<Indices>();
         lista.add(new Indices("Rotacion De Los Capitales Propios", Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText()), Double.valueOf(pantallaValoresNormales.getCampoCampialesPropios1().getText())));
@@ -419,11 +421,11 @@ public class ControladorABMIndices {
         lista.add(new Indices("Uso De Hp", Double.valueOf(pantallaValoresNormales.getCampoUsoHP1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUsoHP2().getText())));
         lista.add(new Indices("Utilidad Activo Total", Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal1().getText()), Double.valueOf(pantallaValoresNormales.getCampoUtilidadActivoTotal2().getText())));
         lista.add(new Indices("Volumen De Compra", Double.valueOf(pantallaValoresNormales.getCampoVolumenCOmpra1().getText()), Double.valueOf(pantallaValoresNormales.getCampoVolumenCompra2().getText())));
-        
+
         expertoABMIndice.guardarValoresNormales(lista);
-        
-        
-        
-        
+
+
+
+
     }
 }
