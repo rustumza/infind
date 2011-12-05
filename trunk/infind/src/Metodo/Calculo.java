@@ -4,6 +4,9 @@
  */
 package Metodo;
 
+import Entidades.Demanda;
+import java.util.Comparator;
+
 /**
  *
  * @author diego
@@ -110,5 +113,12 @@ public class Calculo {
         int tmp = (int) aux;
 
         return (double) (tmp / aux0);
+    }
+
+    private static class OrdenarDemandas implements Comparator<Demanda> {
+
+        public int compare(Demanda t, Demanda t1) {
+            return new Integer(t.getPeriodo()).compareTo(t1.getPeriodo());
+        }
     }
 }
