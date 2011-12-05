@@ -175,4 +175,8 @@ public class ControladorPantallaMadre {
     public void crearIndices() {
         new ControladorABMIndices(this).iniciar();
     }
+
+    public void cgiParaUnProducto() {
+        new ControladorGestionDeInventarioParaUnProducto(this).iniciar();
+    }
 }

@@ -79,6 +79,10 @@ public class PantallaMadre extends javax.swing.JFrame {
         crearOrdenDeProduccion = new javax.swing.JMenuItem();
         listarOrdenesDeProduccion = new javax.swing.JMenuItem();
         inventarios = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -343,6 +347,24 @@ public class PantallaMadre extends javax.swing.JFrame {
 
         inventarios.setText("Inventarios");
         inventarios.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem6.setText("Costo de gestion de inventario para un producto");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        inventarios.add(jMenuItem6);
+
+        jMenuItem7.setText("Costo de gestion de inventario para todos los productos");
+        inventarios.add(jMenuItem7);
+
+        jMenuItem8.setText("Listar productos por debajo del punto de pedido");
+        inventarios.add(jMenuItem8);
+
+        jMenuItem9.setText("Listar productos por debajo del punto de stock de seguridad");
+        inventarios.add(jMenuItem9);
+
         jMenuBar1.add(inventarios);
 
         jMenu2.setText("Costos");
@@ -559,6 +581,10 @@ private void listarOrdenesDeProduccionActionPerformed(java.awt.event.ActionEvent
 private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
     controlador.crearIndices();
 }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    controlador.cgiParaUnProducto();
+}//GEN-LAST:event_jMenuItem6ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -621,6 +647,10 @@ private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuListarProveedores;
     private javax.swing.JMenuItem listarMateriasPrimas;
     private javax.swing.JMenuItem listarOrdenesDeProduccion;

@@ -30,11 +30,13 @@
                   <Component id="costoDePedidoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="tipoInventarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="cantidadMaximaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="tasaDeProduccionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="tipoInventarioComboBox" min="-2" pref="202" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="tasaDeProduccionTextBox" alignment="0" max="32767" attributes="1"/>
                       <Component id="cantidadMaximaTextBox" alignment="0" max="32767" attributes="1"/>
                       <Component id="costoDePedidoTextBox" alignment="0" max="32767" attributes="1"/>
                       <Component id="costoAlmacenamientoTextBox" alignment="0" pref="147" max="32767" attributes="1"/>
@@ -68,7 +70,12 @@
                   <Component id="cantidadMaximaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cantidadMaximaTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tasaDeProduccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tasaDeProduccionTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,6 +142,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cantidadMaximaTextBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="tasaDeProduccionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tasa de produccion"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tasaDeProduccionTextBox">
     </Component>
   </SubComponents>
 </Form>
