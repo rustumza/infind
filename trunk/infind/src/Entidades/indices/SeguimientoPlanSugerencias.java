@@ -28,10 +28,20 @@ public class SeguimientoPlanSugerencias extends ObjetoPersitente implements Seri
     private Date fecha;
      private int sugerenciasRecibidas;
      private int totalEmpleados;
+     private int total;
 
     public boolean isEliminado() {
         return eliminado;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
 
     public void setEliminado(boolean eliminado) {
         this.eliminado = eliminado;

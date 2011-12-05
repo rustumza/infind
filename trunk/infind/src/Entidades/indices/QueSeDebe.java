@@ -28,6 +28,7 @@ public class QueSeDebe extends ObjetoPersitente implements Serializable {
     private Date fecha;
     private double pasivoaCortoPlazo;
      private double deudasQueContraigo;
+     private double total;
 
     public double getDeudasQueContraigo() {
         return deudasQueContraigo;
@@ -36,6 +37,15 @@ public class QueSeDebe extends ObjetoPersitente implements Serializable {
     public void setDeudasQueContraigo(double deudasQueContraigo) {
         this.deudasQueContraigo = deudasQueContraigo;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
 
     public boolean isEliminado() {
         return eliminado;

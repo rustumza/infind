@@ -26,12 +26,22 @@ public class NivelDeCredito extends ObjetoPersitente implements Serializable {
     private boolean eliminado = false;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    private double total;
     private double cuentasPorCobrar;
     private double promocionCobro;
 
     public double getCuentasPorCobrar() {
         return cuentasPorCobrar;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
 
     public void setCuentasPorCobrar(double cuentasPorCobrar) {
         this.cuentasPorCobrar = cuentasPorCobrar;
