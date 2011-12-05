@@ -53,7 +53,6 @@ ControladorABMIndices controlador;
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -99,7 +98,6 @@ ControladorABMIndices controlador;
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
@@ -109,7 +107,6 @@ ControladorABMIndices controlador;
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
@@ -134,7 +131,6 @@ ControladorABMIndices controlador;
         campoRechazos1 = new javax.swing.JTextField();
         campoUsoHP1 = new javax.swing.JTextField();
         campoDelasInversiones1 = new javax.swing.JTextField();
-        campoCampialesPropios1 = new javax.swing.JTextField();
         campoStock1 = new javax.swing.JTextField();
         campoNivelRotacion1 = new javax.swing.JTextField();
         campoVentas1 = new javax.swing.JTextField();
@@ -156,7 +152,6 @@ ControladorABMIndices controlador;
         campoRechazos2 = new javax.swing.JTextField();
         campoUsoHP2 = new javax.swing.JTextField();
         campoDelasInversiones2 = new javax.swing.JTextField();
-        campoCApitalesPropios2 = new javax.swing.JTextField();
         campoNivelRotacion2 = new javax.swing.JTextField();
         campoStock2 = new javax.swing.JTextField();
         campoVentas2 = new javax.swing.JTextField();
@@ -262,14 +257,6 @@ ControladorABMIndices controlador;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel8, gridBagConstraints);
-
-        jLabel9.setText("Capitales propios:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel9, gridBagConstraints);
 
         jLabel10.setText("De las Inversiones:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -631,14 +618,6 @@ ControladorABMIndices controlador;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel54, gridBagConstraints);
 
-        jLabel55.setText("Desde:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel55, gridBagConstraints);
-
         jLabel56.setText("Desde:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -710,14 +689,6 @@ ControladorABMIndices controlador;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel2.add(jLabel64, gridBagConstraints);
-
-        jLabel65.setText("Hasta:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel65, gridBagConstraints);
 
         jLabel66.setText("Hasta:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -891,13 +862,6 @@ ControladorABMIndices controlador;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
         jPanel2.add(campoDelasInversiones1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
-        jPanel2.add(campoCampialesPropios1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.ipadx = 50;
@@ -1051,13 +1015,6 @@ ControladorABMIndices controlador;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
         jPanel2.add(campoDelasInversiones2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
-        jPanel2.add(campoCApitalesPropios2, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.ipadx = 50;
@@ -1092,13 +1049,13 @@ ControladorABMIndices controlador;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -1123,9 +1080,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField campoCApitalesPropios2;
     private javax.swing.JTextField campoCArteraClients1;
-    private javax.swing.JTextField campoCampialesPropios1;
     private javax.swing.JTextField campoCarteraCliente2;
     private javax.swing.JTextField campoComposicionVentas1;
     private javax.swing.JTextField campoComposicionVentas2;
@@ -1219,7 +1174,6 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -1230,27 +1184,18 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
-    public JTextField getCampoCApitalesPropios2() {
-        return campoCApitalesPropios2;
-    }
-
-    public void setCampoCApitalesPropios2(JTextField campoCApitalesPropios2) {
-        this.campoCApitalesPropios2 = campoCApitalesPropios2;
-    }
-
+   
     public JTextField getCampoCArteraClients1() {
         return campoCArteraClients1;
     }
@@ -1259,14 +1204,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.campoCArteraClients1 = campoCArteraClients1;
     }
 
-    public JTextField getCampoCampialesPropios1() {
-        return campoCampialesPropios1;
-    }
-
-    public void setCampoCampialesPropios1(JTextField campoCampialesPropios1) {
-        this.campoCampialesPropios1 = campoCampialesPropios1;
-    }
-
+   
     public JTextField getCampoCarteraCliente2() {
         return campoCarteraCliente2;
     }
@@ -2036,14 +1974,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jLabel54 = jLabel54;
     }
 
-    public JLabel getjLabel55() {
-        return jLabel55;
-    }
-
-    public void setjLabel55(JLabel jLabel55) {
-        this.jLabel55 = jLabel55;
-    }
-
+  
     public JLabel getjLabel56() {
         return jLabel56;
     }
@@ -2124,14 +2055,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jLabel64 = jLabel64;
     }
 
-    public JLabel getjLabel65() {
-        return jLabel65;
-    }
-
-    public void setjLabel65(JLabel jLabel65) {
-        this.jLabel65 = jLabel65;
-    }
-
+   
     public JLabel getjLabel66() {
         return jLabel66;
     }
@@ -2180,14 +2104,7 @@ private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.jLabel8 = jLabel8;
     }
 
-    public JLabel getjLabel9() {
-        return jLabel9;
-    }
-
-    public void setjLabel9(JLabel jLabel9) {
-        this.jLabel9 = jLabel9;
-    }
-
+   
     public JPanel getjPanel1() {
         return jPanel1;
     }
