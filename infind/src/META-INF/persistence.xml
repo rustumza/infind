@@ -32,7 +32,27 @@
     <class>Entidades.PedidoAProveedor</class>
     <class>Entidades.Parametros</class>
     <class>Entidades.CostoVariable</class>
-    <class>Entidades.Indices</class>
+    <class>Entidades.indices.Indices</class>
+    <class>Entidades.indices.GradoDependenciaEmpresa</class>
+    <class>Entidades.indices.IndiceLiquides</class>
+    <class>Entidades.indices.NivelDeCredito</class>
+    <class>Entidades.indices.QueSeDebe</class>
+    <class>Entidades.indices.RotacionDeLasInversiones</class>
+    <class>Entidades.indices.RotacionDeLosCapitalesPropios</class>
+    <class>Entidades.indices.RotacionDeStock</class>
+    <class>Entidades.indices.Rentabiliadda</class>
+    <class>Entidades.indices.RendimientoDeLasVentas</class>
+    <class>Entidades.indices.VentasEnCuotas</class>
+    <class>Entidades.indices.EficienciaVendedor</class>
+    <class>Entidades.indices.NivelDeRechazos</class>
+    <class>Entidades.indices.UsoDeHP</class>
+    <class>Entidades.indices.NivelDeRotacion</class>
+    <class>Entidades.indices.RotacionExterna</class>
+    <class>Entidades.indices.SeguimientoPlanSugerencias</class>
+    <class>Entidades.indices.RotacionInterna</class>
+    <class>Entidades.indices.NivelAusentismo</class>
+    <class>Entidades.indices.DesarrolloCarteraCLiente</class>
+    <class>Entidades.indices.VolumenDeCompra</class>
     <properties>
       <property name="hibernate.connection.username" value="inf"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
