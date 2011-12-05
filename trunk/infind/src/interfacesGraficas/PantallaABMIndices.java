@@ -45,118 +45,31 @@ ControladorABMIndices controlador;
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        botonGuardar = new javax.swing.JButton();
-        botonNuevo = new javax.swing.JButton();
-        botonEditar = new javax.swing.JButton();
-        botonGuardarEditado = new javax.swing.JButton();
         botonSalur = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        campoGradoDependencia = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        campoNivelCredito = new javax.swing.JTextField();
-        campoIndiceLiquidez = new javax.swing.JTextField();
-        campoQueSeDebe = new javax.swing.JTextField();
+        botonEstructuraFinanciera = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        fff = new javax.swing.JLabel();
-        jhj = new javax.swing.JLabel();
-        ee = new javax.swing.JLabel();
-        campoInversiones = new javax.swing.JTextField();
-        campoCapitalesPropios = new javax.swing.JTextField();
-        campoStocks = new javax.swing.JTextField();
+        botonRotacion = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        campoUtilidadActivoTotal = new javax.swing.JTextField();
+        botonRentabilidad = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        campoProporCuotoas = new javax.swing.JTextField();
-        campoCOmposicionVentas = new javax.swing.JTextField();
-        campoEficienciaVendedor = new javax.swing.JTextField();
+        botonVentas = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        campoNivelRechazos = new javax.swing.JTextField();
-        campoUsoHP = new javax.swing.JTextField();
+        botonCalidad = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        ffdsgf = new javax.swing.JLabel();
-        campoDeLasVentas = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        campoNivelRotacion = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        campoRotacionExterna = new javax.swing.JTextField();
-        campoPlanSugerencia = new javax.swing.JTextField();
-        campoRotacionInterna = new javax.swing.JTextField();
-        campoNivelAusentismo = new javax.swing.JTextField();
+        botonClimaSocial = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        campoCarteraCliente = new javax.swing.JTextField();
-        campoVolumenCompra = new javax.swing.JTextField();
-        campoNivelDescuento = new javax.swing.JTextField();
-        campoCredito = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jToolBar1.setRollover(true);
-
-        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Save_30.png"))); // NOI18N
-        botonGuardar.setFocusable(false);
-        botonGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonGuardar);
-
-        botonNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/proveedor-30.png"))); // NOI18N
-        botonNuevo.setToolTipText("Nuevo");
-        botonNuevo.setFocusable(false);
-        botonNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNuevoActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonNuevo);
-
-        botonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/office3_256.png"))); // NOI18N
-        botonEditar.setToolTipText("Editar");
-        botonEditar.setFocusable(false);
-        botonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEditarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonEditar);
-
-        botonGuardarEditado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/save-20.png"))); // NOI18N
-        botonGuardarEditado.setFocusable(false);
-        botonGuardarEditado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonGuardarEditado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonGuardarEditado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarEditadoActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(botonGuardarEditado);
 
         botonSalur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Log-out-30.png"))); // NOI18N
         botonSalur.setToolTipText("Salir");
@@ -179,73 +92,13 @@ ControladorABMIndices controlador;
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Estructura Financiera"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Grado Dependencia:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
-        jPanel2.add(jLabel1, gridBagConstraints);
-
-        campoGradoDependencia.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoGradoDependencia, gridBagConstraints);
-
-        jLabel2.setText("Índice Liquidez");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel2, gridBagConstraints);
-
-        jLabel3.setText("Nivel de crédito");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel3, gridBagConstraints);
-
-        jLabel4.setText("Que se debe");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel2.add(jLabel4, gridBagConstraints);
-
-        campoNivelCredito.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoNivelCredito, gridBagConstraints);
-
-        campoIndiceLiquidez.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoIndiceLiquidez, gridBagConstraints);
-
-        campoQueSeDebe.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanel2.add(campoQueSeDebe, gridBagConstraints);
+        botonEstructuraFinanciera.setText("Estructura Financiera");
+        botonEstructuraFinanciera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEstructuraFinancieraActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonEstructuraFinanciera, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -258,56 +111,17 @@ ControladorABMIndices controlador;
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Rotación"));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        fff.setText("De las Inversiones");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(fff, gridBagConstraints);
+        botonRotacion.setText("Rotacion");
+        botonRotacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRotacionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(botonRotacion, new java.awt.GridBagConstraints());
 
-        jhj.setText("Capitales propios");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(jhj, gridBagConstraints);
-
-        ee.setText("De los Stocks");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel3.add(ee, gridBagConstraints);
-
-        campoInversiones.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
-        jPanel3.add(campoInversiones, gridBagConstraints);
-
-        campoCapitalesPropios.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
-        jPanel3.add(campoCapitalesPropios, gridBagConstraints);
-
-        campoStocks.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
-        jPanel3.add(campoStocks, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jPanel3, gridBagConstraints);
@@ -315,18 +129,13 @@ ControladorABMIndices controlador;
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Rentabilidad"));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jLabel9.setText("Utilidad/Activo Total");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel4.add(jLabel9, gridBagConstraints);
-
-        campoUtilidadActivoTotal.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel4.add(campoUtilidadActivoTotal, gridBagConstraints);
+        botonRentabilidad.setText("Rentabilidad");
+        botonRentabilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRentabilidadActionPerformed(evt);
+            }
+        });
+        jPanel4.add(botonRentabilidad, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -338,55 +147,16 @@ ControladorABMIndices controlador;
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Ventas"));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        jLabel8.setText("Proporcion cuotas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel5.add(jLabel8, gridBagConstraints);
-
-        jLabel12.setText("Composicion ventas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel5.add(jLabel12, gridBagConstraints);
-
-        jLabel14.setText("Eficiencia vendedor");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel5.add(jLabel14, gridBagConstraints);
-
-        campoProporCuotoas.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel5.add(campoProporCuotoas, gridBagConstraints);
-
-        campoCOmposicionVentas.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel5.add(campoCOmposicionVentas, gridBagConstraints);
-
-        campoEficienciaVendedor.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel5.add(campoEficienciaVendedor, gridBagConstraints);
+        botonVentas.setText("Ventas");
+        botonVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVentasActionPerformed(evt);
+            }
+        });
+        jPanel5.add(botonVentas, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
@@ -395,35 +165,13 @@ ControladorABMIndices controlador;
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Calidad"));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        jLabel10.setText("Nivel de rechazos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel6.add(jLabel10, gridBagConstraints);
-
-        jLabel13.setText("Uso de HP");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel6.add(jLabel13, gridBagConstraints);
-
-        campoNivelRechazos.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel6.add(campoNivelRechazos, gridBagConstraints);
-
-        campoUsoHP.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel6.add(campoUsoHP, gridBagConstraints);
+        botonCalidad.setText("Calidad");
+        botonCalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalidadActionPerformed(evt);
+            }
+        });
+        jPanel6.add(botonCalidad, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -435,22 +183,17 @@ ControladorABMIndices controlador;
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Rendimiento"));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
-        ffdsgf.setText("De las Ventas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel7.add(ffdsgf, gridBagConstraints);
-
-        campoDeLasVentas.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel7.add(campoDeLasVentas, gridBagConstraints);
+        jButton6.setText("Rendimiento");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton6, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jPanel7, gridBagConstraints);
@@ -458,18 +201,13 @@ ControladorABMIndices controlador;
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Stock"));
         jPanel8.setLayout(new java.awt.GridBagLayout());
 
-        jLabel15.setText("Nivel de Rotacion");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel8.add(jLabel15, gridBagConstraints);
-
-        campoNivelRotacion.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel8.add(campoNivelRotacion, gridBagConstraints);
+        jButton5.setText("Stock");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton5, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -481,69 +219,13 @@ ControladorABMIndices controlador;
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Clima Social"));
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jLabel16.setText("Rotacion externa");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel9.add(jLabel16, gridBagConstraints);
-
-        jLabel17.setText("Seg. plan sugerencias");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel9.add(jLabel17, gridBagConstraints);
-
-        jLabel18.setText("Rotacion interna");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel9.add(jLabel18, gridBagConstraints);
-
-        jLabel19.setText("Nivel de ausentismo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel9.add(jLabel19, gridBagConstraints);
-
-        campoRotacionExterna.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel9.add(campoRotacionExterna, gridBagConstraints);
-
-        campoPlanSugerencia.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel9.add(campoPlanSugerencia, gridBagConstraints);
-
-        campoRotacionInterna.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel9.add(campoRotacionInterna, gridBagConstraints);
-
-        campoNivelAusentismo.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel9.add(campoNivelAusentismo, gridBagConstraints);
+        botonClimaSocial.setText("Clima Social");
+        botonClimaSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonClimaSocialActionPerformed(evt);
+            }
+        });
+        jPanel9.add(botonClimaSocial, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -556,74 +238,17 @@ ControladorABMIndices controlador;
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Relación con los Clientes"));
         jPanel10.setLayout(new java.awt.GridBagLayout());
 
-        jLabel20.setText("Cartera de clientes");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel10.add(jLabel20, gridBagConstraints);
+        jButton4.setText("Relacion con CLiente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jButton4, new java.awt.GridBagConstraints());
 
-        jLabel21.setText("Volumen de compra");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel10.add(jLabel21, gridBagConstraints);
-
-        jLabel22.setText("Nivel de descuento");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel10.add(jLabel22, gridBagConstraints);
-
-        jLabel23.setText("Nivel de crédito");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
-        jPanel10.add(jLabel23, gridBagConstraints);
-
-        campoCarteraCliente.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel10.add(campoCarteraCliente, gridBagConstraints);
-
-        campoVolumenCompra.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel10.add(campoVolumenCompra, gridBagConstraints);
-
-        campoNivelDescuento.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel10.add(campoNivelDescuento, gridBagConstraints);
-
-        campoCredito.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
-        jPanel10.add(campoCredito, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jPanel10, gridBagConstraints);
@@ -638,7 +263,9 @@ ControladorABMIndices controlador;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -648,82 +275,62 @@ private void botonSalurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     dispose();
 }//GEN-LAST:event_botonSalurActionPerformed
 
-private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        try {
-            controlador.editarIndices();
-        } catch (ExpertoCostosFijosException ex) {
-            Logger.getLogger(PantallaABMIndices.class.getName()).log(Level.SEVERE, null, ex);
-        }
+private void botonEstructuraFinancieraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstructuraFinancieraActionPerformed
+    controlador.crearEstructuraFinanciera();
+}//GEN-LAST:event_botonEstructuraFinancieraActionPerformed
+
+private void botonRentabilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRentabilidadActionPerformed
+    controlador.crearRentabilidad();
     
-}//GEN-LAST:event_botonEditarActionPerformed
+}//GEN-LAST:event_botonRentabilidadActionPerformed
 
-private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
-    controlador.crearIndices();
-}//GEN-LAST:event_botonNuevoActionPerformed
+private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    controlador.crearStock();
+    
+}//GEN-LAST:event_jButton5ActionPerformed
 
-private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-    controlador.guardarIndices();
-}//GEN-LAST:event_botonGuardarActionPerformed
+private void botonClimaSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClimaSocialActionPerformed
+    controlador.crearClimaSocial();
+}//GEN-LAST:event_botonClimaSocialActionPerformed
 
-private void botonGuardarEditadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarEditadoActionPerformed
-    controlador.guardarIndicesEditados();
-}//GEN-LAST:event_botonGuardarEditadoActionPerformed
+private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
+    controlador.crearVentas();
+            
+}//GEN-LAST:event_botonVentasActionPerformed
+
+private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    controlador.crearRElacionCliente();
+    
+}//GEN-LAST:event_jButton4ActionPerformed
+
+private void botonCalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalidadActionPerformed
+    controlador.crearCalidad();
+    
+}//GEN-LAST:event_botonCalidadActionPerformed
+
+private void botonRotacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRotacionActionPerformed
+    controlador.crearRotacion();
+}//GEN-LAST:event_botonRotacionActionPerformed
+
+private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    controlador.crearRendimiento();
+}//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEditar;
-    private javax.swing.JButton botonGuardar;
-    private javax.swing.JButton botonGuardarEditado;
-    private javax.swing.JButton botonNuevo;
+    private javax.swing.JButton botonCalidad;
+    private javax.swing.JButton botonClimaSocial;
+    private javax.swing.JButton botonEstructuraFinanciera;
+    private javax.swing.JButton botonRentabilidad;
+    private javax.swing.JButton botonRotacion;
     private javax.swing.JButton botonSalur;
-    private javax.swing.JTextField campoCOmposicionVentas;
-    private javax.swing.JTextField campoCapitalesPropios;
-    private javax.swing.JTextField campoCarteraCliente;
-    private javax.swing.JTextField campoCredito;
-    private javax.swing.JTextField campoDeLasVentas;
-    private javax.swing.JTextField campoEficienciaVendedor;
-    private javax.swing.JTextField campoGradoDependencia;
-    private javax.swing.JTextField campoIndiceLiquidez;
-    private javax.swing.JTextField campoInversiones;
-    private javax.swing.JTextField campoNivelAusentismo;
-    private javax.swing.JTextField campoNivelCredito;
-    private javax.swing.JTextField campoNivelDescuento;
-    private javax.swing.JTextField campoNivelRechazos;
-    private javax.swing.JTextField campoNivelRotacion;
-    private javax.swing.JTextField campoPlanSugerencia;
-    private javax.swing.JTextField campoProporCuotoas;
-    private javax.swing.JTextField campoQueSeDebe;
-    private javax.swing.JTextField campoRotacionExterna;
-    private javax.swing.JTextField campoRotacionInterna;
-    private javax.swing.JTextField campoStocks;
-    private javax.swing.JTextField campoUsoHP;
-    private javax.swing.JTextField campoUtilidadActivoTotal;
-    private javax.swing.JTextField campoVolumenCompra;
-    private javax.swing.JLabel ee;
-    private javax.swing.JLabel ffdsgf;
-    private javax.swing.JLabel fff;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton botonVentas;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -735,32 +342,10 @@ private void botonGuardarEditadoActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel jhj;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBotonEditar() {
-        return botonEditar;
-    }
+   
 
-    public void setBotonEditar(JButton botonEditar) {
-        this.botonEditar = botonEditar;
-    }
-
-    public JButton getBotonGuardar() {
-        return botonGuardar;
-    }
-
-    public void setBotonGuardar(JButton botonGuardar) {
-        this.botonGuardar = botonGuardar;
-    }
-
-    public JButton getBotonNuevo() {
-        return botonNuevo;
-    }
-
-    public void setBotonNuevo(JButton botonNuevo) {
-        this.botonNuevo = botonNuevo;
-    }
 
     public JButton getBotonSalur() {
         return botonSalur;
@@ -770,198 +355,7 @@ private void botonGuardarEditadoActionPerformed(java.awt.event.ActionEvent evt) 
         this.botonSalur = botonSalur;
     }
 
-    public JTextField getCampoCOmposicionVentas() {
-        return campoCOmposicionVentas;
-    }
 
-    public void setCampoCOmposicionVentas(JTextField campoCOmposicionVentas) {
-        this.campoCOmposicionVentas = campoCOmposicionVentas;
-    }
-
-    public JTextField getCampoCapitalesPropios() {
-        return campoCapitalesPropios;
-    }
-
-    public void setCampoCapitalesPropios(JTextField campoCapitalesPropios) {
-        this.campoCapitalesPropios = campoCapitalesPropios;
-    }
-
-    public JTextField getCampoCarteraCliente() {
-        return campoCarteraCliente;
-    }
-
-    public void setCampoCarteraCliente(JTextField campoCarteraCliente) {
-        this.campoCarteraCliente = campoCarteraCliente;
-    }
-
-    public JTextField getCampoCredito() {
-        return campoCredito;
-    }
-
-    public void setCampoCredito(JTextField campoCredito) {
-        this.campoCredito = campoCredito;
-    }
-
-    public JTextField getCampoEficienciaVendedor() {
-        return campoEficienciaVendedor;
-    }
-
-    public void setCampoEficienciaVendedor(JTextField campoEficienciaVendedor) {
-        this.campoEficienciaVendedor = campoEficienciaVendedor;
-    }
-
-    public JTextField getCampoGradoDependencia() {
-        return campoGradoDependencia;
-    }
-
-    public void setCampoGradoDependencia(JTextField campoGradoDependencia) {
-        this.campoGradoDependencia = campoGradoDependencia;
-    }
-
-    public JTextField getCampoIndiceLiquidez() {
-        return campoIndiceLiquidez;
-    }
-
-    public void setCampoIndiceLiquidez(JTextField campoIndiceLiquidez) {
-        this.campoIndiceLiquidez = campoIndiceLiquidez;
-    }
-
-    public JTextField getCampoInversiones() {
-        return campoInversiones;
-    }
-
-    public void setCampoInversiones(JTextField campoInversiones) {
-        this.campoInversiones = campoInversiones;
-    }
-
-    public JTextField getCampoNivelAusentismo() {
-        return campoNivelAusentismo;
-    }
-
-    public void setCampoNivelAusentismo(JTextField campoNivelAusentismo) {
-        this.campoNivelAusentismo = campoNivelAusentismo;
-    }
-
-    public JTextField getCampoNivelCredito() {
-        return campoNivelCredito;
-    }
-
-    public void setCampoNivelCredito(JTextField campoNivelCredito) {
-        this.campoNivelCredito = campoNivelCredito;
-    }
-
-    public JTextField getCampoNivelDescuento() {
-        return campoNivelDescuento;
-    }
-
-    public void setCampoNivelDescuento(JTextField campoNivelDescuento) {
-        this.campoNivelDescuento = campoNivelDescuento;
-    }
-
-    public JTextField getCampoNivelRechazos() {
-        return campoNivelRechazos;
-    }
-
-    public void setCampoNivelRechazos(JTextField campoNivelRechazos) {
-        this.campoNivelRechazos = campoNivelRechazos;
-    }
-
-    public JTextField getCampoNivelRotacion() {
-        return campoNivelRotacion;
-    }
-
-    public void setCampoNivelRotacion(JTextField campoNivelRotacion) {
-        this.campoNivelRotacion = campoNivelRotacion;
-    }
-
-    public JTextField getCampoPlanSugerencia() {
-        return campoPlanSugerencia;
-    }
-
-    public void setCampoPlanSugerencia(JTextField campoPlanSugerencia) {
-        this.campoPlanSugerencia = campoPlanSugerencia;
-    }
-
-    public JTextField getCampoProporCuotoas() {
-        return campoProporCuotoas;
-    }
-
-    public void setCampoProporCuotoas(JTextField campoProporCuotoas) {
-        this.campoProporCuotoas = campoProporCuotoas;
-    }
-
-    public JTextField getCampoQueSeDebe() {
-        return campoQueSeDebe;
-    }
-
-    public void setCampoQueSeDebe(JTextField campoQueSeDebe) {
-        this.campoQueSeDebe = campoQueSeDebe;
-    }
-
-    public JTextField getCampoRotacionExterna() {
-        return campoRotacionExterna;
-    }
-
-    public void setCampoRotacionExterna(JTextField campoRotacionExterna) {
-        this.campoRotacionExterna = campoRotacionExterna;
-    }
-
-    public JTextField getCampoRotacionInterna() {
-        return campoRotacionInterna;
-    }
-
-    public void setCampoRotacionInterna(JTextField campoRotacionInterna) {
-        this.campoRotacionInterna = campoRotacionInterna;
-    }
-
-    public JButton getBotonGuardarEditado() {
-        return botonGuardarEditado;
-    }
-
-    public void setBotonGuardarEditado(JButton botonGuardarEditado) {
-        this.botonGuardarEditado = botonGuardarEditado;
-    }
-    
-
-    public JTextField getCampoStocks() {
-        return campoStocks;
-    }
-
-    public void setCampoStocks(JTextField campoStocks) {
-        this.campoStocks = campoStocks;
-    }
-
-    public JTextField getCampoUsoHP() {
-        return campoUsoHP;
-    }
-
-    public void setCampoUsoHP(JTextField campoUsoHP) {
-        this.campoUsoHP = campoUsoHP;
-    }
-
-    public JTextField getCampoUtilidadActivoTotal() {
-        return campoUtilidadActivoTotal;
-    }
-
-    public void setCampoUtilidadActivoTotal(JTextField campoUtilidadActivoTotal) {
-        this.campoUtilidadActivoTotal = campoUtilidadActivoTotal;
-    }
-
-    public JTextField getCampoVolumenCompra() {
-        return campoVolumenCompra;
-    }
-
-    public void setCampoVolumenCompra(JTextField campoVolumenCompra) {
-        this.campoVolumenCompra = campoVolumenCompra;
-    }
-
-    public JTextField getCampoDeLasVentas() {
-        return campoDeLasVentas;
-    }
-
-    public void setCampoDeLasVentas(JTextField campoDeLasVentas) {
-        this.campoDeLasVentas = campoDeLasVentas;
-    }
 
    
     
