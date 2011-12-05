@@ -28,10 +28,21 @@ public class NivelAusentismo extends ObjetoPersitente implements Serializable {
     private Date fecha;
     private double horasAusentismo;
     private double horasATrabajas;
+    private double total;
 
     public boolean isEliminado() {
         return eliminado;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    
 
     public void setEliminado(boolean eliminado) {
         this.eliminado = eliminado;

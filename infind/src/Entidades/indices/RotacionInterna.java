@@ -28,10 +28,20 @@ public class RotacionInterna extends ObjetoPersitente implements Serializable {
     private Date fecha;
     private int nroEmpleadosRotaron;
     private int totalEmpleados;
+    private int total;
 
     public boolean isEliminado() {
         return eliminado;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
 
     public void setEliminado(boolean eliminado) {
         this.eliminado = eliminado;

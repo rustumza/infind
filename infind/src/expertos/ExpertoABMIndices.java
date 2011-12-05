@@ -122,6 +122,17 @@ public class ExpertoABMIndices extends Experto {
     public void guardarEficienciaVendedor(EficienciaVendedor nuevoEficienciaVendedor) {
         Fachada.getInstancia().guardar(nuevoEficienciaVendedor);
     }
+
+    
+
+    public void guardarValoresNormales(List<Indices> lista) {
+    
+        for (Indices indices : lista) {
+            Fachada.getInstancia().guardar(indices);
+            
+        }
+        
+    }
     
     
 }

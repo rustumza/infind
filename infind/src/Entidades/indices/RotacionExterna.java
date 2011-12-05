@@ -28,10 +28,20 @@ public class RotacionExterna extends ObjetoPersitente implements Serializable {
     private Date fecha;
     private int bajasVoluntarias;
     private int cantidadPErsonal;
+    private int total;
 
     public int getBajasVoluntarias() {
         return bajasVoluntarias;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
 
     public void setBajasVoluntarias(int bajasVoluntarias) {
         this.bajasVoluntarias = bajasVoluntarias;

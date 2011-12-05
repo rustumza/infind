@@ -26,6 +26,7 @@ public class GradoDependenciaEmpresa extends ObjetoPersitente implements Seriali
     private Long id;
     private int pasivoPropio;
     private int pasivoTotal;
+    private int total;
     private boolean eliminado = false;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
@@ -37,6 +38,15 @@ public class GradoDependenciaEmpresa extends ObjetoPersitente implements Seriali
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
 
     public boolean isEliminado() {
         return eliminado;

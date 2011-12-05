@@ -26,6 +26,7 @@ public class IndiceLiquides extends ObjetoPersitente implements Serializable {
     private boolean eliminado = false;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    private double total;
     private double disponibilidad;
     private double pasivoCorriente;
     private double realizableACortoPlazo;
@@ -34,6 +35,16 @@ public class IndiceLiquides extends ObjetoPersitente implements Serializable {
     public Long getId() {
         return id;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    
 
     public void setId(Long id) {
         this.id = id;
