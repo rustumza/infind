@@ -46,6 +46,7 @@ ControladorABMIndices controlador;
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         botonSalur = new javax.swing.JButton();
+        botonValoresNormales = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         botonEstructuraFinanciera = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -82,6 +83,18 @@ ControladorABMIndices controlador;
             }
         });
         jToolBar1.add(botonSalur);
+
+        botonValoresNormales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilidades/imagenes/iconos/Table-Add-30.png"))); // NOI18N
+        botonValoresNormales.setToolTipText("Valores Normales");
+        botonValoresNormales.setFocusable(false);
+        botonValoresNormales.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonValoresNormales.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonValoresNormales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonValoresNormalesActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(botonValoresNormales);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 3;
@@ -316,6 +329,10 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     controlador.crearRendimiento();
 }//GEN-LAST:event_jButton6ActionPerformed
 
+private void botonValoresNormalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonValoresNormalesActionPerformed
+    controlador.crearValoresNormales();
+}//GEN-LAST:event_botonValoresNormalesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -327,6 +344,7 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton botonRentabilidad;
     private javax.swing.JButton botonRotacion;
     private javax.swing.JButton botonSalur;
+    private javax.swing.JButton botonValoresNormales;
     private javax.swing.JButton botonVentas;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -355,6 +373,183 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.botonSalur = botonSalur;
     }
 
+    public JButton getBotonCalidad() {
+        return botonCalidad;
+    }
+
+    public void setBotonCalidad(JButton botonCalidad) {
+        this.botonCalidad = botonCalidad;
+    }
+
+    public JButton getBotonClimaSocial() {
+        return botonClimaSocial;
+    }
+
+    public void setBotonClimaSocial(JButton botonClimaSocial) {
+        this.botonClimaSocial = botonClimaSocial;
+    }
+
+    public JButton getBotonEstructuraFinanciera() {
+        return botonEstructuraFinanciera;
+    }
+
+    public void setBotonEstructuraFinanciera(JButton botonEstructuraFinanciera) {
+        this.botonEstructuraFinanciera = botonEstructuraFinanciera;
+    }
+
+    public JButton getBotonRentabilidad() {
+        return botonRentabilidad;
+    }
+
+    public void setBotonRentabilidad(JButton botonRentabilidad) {
+        this.botonRentabilidad = botonRentabilidad;
+    }
+
+    public JButton getBotonRotacion() {
+        return botonRotacion;
+    }
+
+    public void setBotonRotacion(JButton botonRotacion) {
+        this.botonRotacion = botonRotacion;
+    }
+
+    public JButton getBotonValoresNormales() {
+        return botonValoresNormales;
+    }
+
+    public void setBotonValoresNormales(JButton botonValoresNormales) {
+        this.botonValoresNormales = botonValoresNormales;
+    }
+
+    public JButton getBotonVentas() {
+        return botonVentas;
+    }
+
+    public void setBotonVentas(JButton botonVentas) {
+        this.botonVentas = botonVentas;
+    }
+
+    public ControladorABMIndices getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorABMIndices controlador) {
+        this.controlador = controlador;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel10() {
+        return jPanel10;
+    }
+
+    public void setjPanel10(JPanel jPanel10) {
+        this.jPanel10 = jPanel10;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JPanel getjPanel6() {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6) {
+        this.jPanel6 = jPanel6;
+    }
+
+    public JPanel getjPanel7() {
+        return jPanel7;
+    }
+
+    public void setjPanel7(JPanel jPanel7) {
+        this.jPanel7 = jPanel7;
+    }
+
+    public JPanel getjPanel8() {
+        return jPanel8;
+    }
+
+    public void setjPanel8(JPanel jPanel8) {
+        this.jPanel8 = jPanel8;
+    }
+
+    public JPanel getjPanel9() {
+        return jPanel9;
+    }
+
+    public void setjPanel9(JPanel jPanel9) {
+        this.jPanel9 = jPanel9;
+    }
+
+    public JToolBar getjToolBar1() {
+        return jToolBar1;
+    }
+
+    public void setjToolBar1(JToolBar jToolBar1) {
+        this.jToolBar1 = jToolBar1;
+    }
+
+    
 
 
    
