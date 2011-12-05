@@ -760,7 +760,7 @@ public class ControladorCrearRutaDeFabricacion {
 
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Tipo IQE asociado al Producto Intermedio: " + " '" + articuloEncontradoFinal.getNombre() + "' " + " no tiene una Ruta de Fabricación", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(pantallaCrearRutaFabricacion, "El Producto Tipo IQE asociado al Producto Intermedio: " + " '" + articuloEncontradoIntermedio.getNombre() + "' " + " no tiene una Ruta de Fabricación", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                                 pantallaCrearRutaFabricacion.getBotonGuardarEtapa().setEnabled(false);
                             }
                         }

@@ -86,7 +86,7 @@ public class ControladorEditarRutaDeFabricacion {
                 cargarEtapaNoEditable(etapaSeleccionado);
             } else {
                 desbloquearCampos();
-                cargarEtapaEditable(etapaSeleccionado);
+                cargarEtapaNoEditable(etapaSeleccionado);
             }
 
 
@@ -96,14 +96,14 @@ public class ControladorEditarRutaDeFabricacion {
                 cargarEtapaNoEditable(etapaSeleccionado);
             } else {
                 desbloquearCampos();
-                cargarEtapaEditable(etapaSeleccionado);
+                cargarEtapaNoEditable(etapaSeleccionado);
             }
             
         } else {// si es tipo iqe,
             
             if (etapaSeleccionado.isTipoIQE()) {
                 desbloquearCampos();
-                cargarEtapaEditable(etapaSeleccionado);
+                cargarEtapaNoEditable(etapaSeleccionado);
             } else {
                 //desbloquearCampos();
                 //cargarEtapaEditable(etapaSeleccionado);
@@ -579,10 +579,10 @@ public class ControladorEditarRutaDeFabricacion {
         pantallaEditarRuta.getCampoTpoMaquinaEtapaRuta().setText(String.valueOf(etapaSeleccionado.getTiempoDeTrabajoDeMaquinas()));
         pantallaEditarRuta.getCampoNroOperariosEtapaRuta().setText(String.valueOf(etapaSeleccionado.getCantidadDeOperarios()));
         List<DetalleDeArticuloEnEtapaDeFabricacion> detallesArtEnEtapaFabList = etapaSeleccionado.getDetallesArtEnEtapaFabList();
-        List<MaestroDeArticulo> listaAAgregar = null;
+        List<MaestroDeArticulo> listaAAgregar = new ArrayList<MaestroDeArticulo>();
 
         for (DetalleDeArticuloEnEtapaDeFabricacion detalleDeArticuloEnEtapaDeFabricacion : detallesArtEnEtapaFabList) {
-            MateriaPrima maestroArticulo = (MateriaPrima) detalleDeArticuloEnEtapaDeFabricacion.getMaestroArticulo();
+            MaestroDeArticulo maestroArticulo = (MaestroDeArticulo) detalleDeArticuloEnEtapaDeFabricacion.getMaestroArticulo();
             listaAAgregar.add(maestroArticulo);
         }
 
